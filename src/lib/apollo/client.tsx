@@ -1,13 +1,15 @@
-import 'isomorphic-fetch';
 import ApolloClient from 'apollo-client';
 import {InMemoryCache} from 'apollo-cache-inmemory';
 import {setContext} from 'apollo-link-context';
 import {onError} from 'apollo-link-error';
 import {ApolloLink} from 'apollo-link';
 import {createUploadLink} from 'apollo-upload-client';
+import 'isomorphic-fetch';
+
+import Config from 'react-native-config';
 
 const cache = new InMemoryCache();
-const serverUri = process.env.API_HOST;
+const serverUri = Config.API_HOST;
 
 const uploadLink = createUploadLink({
   uri: serverUri,
