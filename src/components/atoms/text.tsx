@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import {BLACK} from './colors';
+import Colors from '@src/constants/colors';
 
 type IProps = {
   level?: number;
@@ -27,7 +27,7 @@ const SKETCH_LINE = [15, 18, 22, 24, 29];
 const defaultProps = {
   level: 0,
   fontWeight: 'regular',
-  color: BLACK,
+  color: Colors.primary,
 };
 
 export default function Text(props: IProps) {
