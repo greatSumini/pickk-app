@@ -6,6 +6,6 @@ export const BLACK = '#333';
 export const BACKGROUND_BLACK = '#222';
 
 export default {
-    primary:'#333',
-    secondary:'#999999',
-}
+  primary: '#333',
+  secondary: '#999999',
+};
