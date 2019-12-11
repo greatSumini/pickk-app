@@ -7,6 +7,10 @@
     "jsx": "react",
     "lib": ["es6"],
     "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["src/*"]
+    },
     "noEmit": true,
     "strict": false,
     "target": "esnext",
