@@ -9,9 +9,9 @@ type IProps = {
   fontWeight?: number | string;
   style?: any;
   children?: any;
-  width?: string;
+  width?: number;
   onPress?: any;
-  textAlign?: string;
+  textAlign?: 'left' | 'center' | 'right';
   ellipsis?: boolean;
   preWrap?: boolean;
 };
@@ -38,40 +38,29 @@ export default function Text(props: IProps) {
     onPress,
     textAlign,
     ellipsis,
-    preWrap,
     level,
     color,
     fontWeight,
   } = props;
 
-  const _Text = styled.Text`
-    padding: 0;
-    margin: 0;
-    font-size: ${0.1 + level * 0.02}rem;
-    color: ${color};
-    font-weight: ${typeof fontWeight === 'number'
-      ? fontWeight
-      : FONT_WEIGHT[fontWeight]};
-    width: ${width || 'fit-content'};
-    height: fit-content;
-    text-align: ${textAlign || 'left'};
+  const _Text = styled.Text({
+    padding: 0,
+    margin: 0,
+    fontSize: 10 + level * 2,
+    color: color,
+    fontWeight:
+      typeof fontWeight === 'number' ? fontWeight : FONT_WEIGHT[fontWeight],
+    width: width,
+    textAlign: textAlign || 'left',
+    lineHeight: SKETCH_LINE[level] / (10 + level * 2),
+    letterSpacing: -0.56,
+  });
 
-    line-height: ${SKETCH_LINE[level] / (10 + level * 2)};
-    letter-spacing: -0.56px;
-    word-break: break-all;
-    ${ellipsis &&
-      `white-space: nowrap;
-      text-overflow: ellipsis;
-      display: block;
-      overflow: hidden
-    `}
-    ${preWrap &&
-      `
-    white-space: pre-wrap; word-break: keep-all;
-    `}
-  `;
   return (
-    <_Text style={style} onPress={onPress}>
+    <_Text
+      style={style}
+      onPress={onPress}
+      ellipsizeMode={ellipsis ? 'tail' : null}>
       {children}
     </_Text>
   );
