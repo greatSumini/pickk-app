@@ -1,6 +1,6 @@
 import {createStackNavigator} from 'react-navigation-stack';
 
-import PostScreen from '@src/components/screens/post';
+import PostScreen from '@src/components/post-list';
 
 const PostStack = createStackNavigator(
   {
