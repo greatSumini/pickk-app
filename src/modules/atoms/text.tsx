@@ -46,11 +46,11 @@ export default function Text(props: IProps) {
     padding: 0,
     margin: 0,
     fontSize: 10 + level * 2,
-    color: color,
+    color,
     fontWeight:
       typeof fontWeight === 'number' ? fontWeight : FONT_WEIGHT[fontWeight],
-    width: width,
-    textAlign: textAlign,
+    width,
+    textAlign,
     letterSpacing: -0.56,
   });
 
