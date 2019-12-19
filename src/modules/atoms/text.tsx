@@ -5,7 +5,7 @@ import Colors from '@src/constants/colors';
 
 type IProps = {
   level?: number;
-  color?: 'PRIMARY' | string;
+  color?: string;
   fontWeight?: number | string;
   style?: any;
   children?: any;
@@ -22,12 +22,11 @@ const FONT_WEIGHT = {
   bold: 700,
 };
 
-const SKETCH_LINE = [15, 18, 22, 24, 29];
-
 const defaultProps = {
   level: 0,
   fontWeight: 'regular',
   color: Colors.primary,
+  textAlign: 'left',
 };
 
 export default function Text(props: IProps) {
@@ -51,8 +50,7 @@ export default function Text(props: IProps) {
     fontWeight:
       typeof fontWeight === 'number' ? fontWeight : FONT_WEIGHT[fontWeight],
     width: width,
-    textAlign: textAlign || 'left',
-    lineHeight: SKETCH_LINE[level] / (10 + level * 2),
+    textAlign: textAlign,
     letterSpacing: -0.56,
   });
 
