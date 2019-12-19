@@ -2,4 +2,4 @@ import {Dimensions} from 'react-native';
 
 const {width} = Dimensions.get('window');
 
-export default width / 360;
+export default num => (num * width) / 360;
