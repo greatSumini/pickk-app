@@ -6,8 +6,8 @@ labels: implement
 assignees: ''
 ---
 
-**생성할 파일 경로**
-ex : src/modules/list/page, src/modules/list/scroll
+**작업할 경로**
+ex : src/modules/list
 
 **구현물의 기능**
 ex1 : 서버에서 데이터의 목록을 가져와 listItem component들의 props로 mapping 시켜준다.
