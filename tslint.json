@@ -14,9 +14,10 @@
       "allow-leading-underscore"
     ],
     "object-literal-sort-keys": false,
-    "interface-over-type-literal": false
+    "interface-over-type-literal": false,
+    "ordered-imports": false
   },
   "linterOptions": {
-    "exclude": ["src/__generated__/*", "src/lib/apollo/*"]
+    "exclude": ["src/__generated__/*"]
   }
 }

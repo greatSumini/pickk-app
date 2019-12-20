@@ -20,6 +20,7 @@ const uploadLink = createUploadLink({
 
 const errorLink = onError(({graphQLErrors}) => {
   if (graphQLErrors) {
+    // tslint:disable-next-line: no-console
     graphQLErrors.map(({message}) => console.log(message));
   }
 });
@@ -35,6 +36,6 @@ const authLink = setContext((_, {headers}) => {
 });
 
 export const client = new ApolloClient({
-  cache: cache,
+  cache,
   link: ApolloLink.from([ApolloLink.from([errorLink, authLink]), uploadLink]),
 });
