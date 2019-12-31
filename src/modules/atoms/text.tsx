@@ -14,6 +14,7 @@ type IProps = {
   textAlign?: 'left' | 'center' | 'right';
   ellipsis?: boolean;
   preWrap?: boolean;
+  lines?: number;
 };
 
 const FONT_WEIGHT = {
@@ -27,6 +28,7 @@ const defaultProps = {
   fontWeight: 'regular',
   color: Colors.primary,
   textAlign: 'left',
+  lines: 1,
 };
 
 export default function Text(props: IProps) {
@@ -40,6 +42,7 @@ export default function Text(props: IProps) {
     level,
     color,
     fontWeight,
+    lines,
   } = props;
 
   const _Text = styled.Text({
@@ -58,7 +61,7 @@ export default function Text(props: IProps) {
     <_Text
       style={style}
       onPress={onPress}
-      numberOfLines={1}
+      numberOfLines={lines}
       ellipsizeMode={ellipsis ? 'tail' : null}>
       {children}
     </_Text>
