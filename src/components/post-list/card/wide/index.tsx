@@ -1,10 +1,5 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {
-  TouchableOpacity,
-  TouchableNativeFeedback,
-  Platform,
-} from 'react-native';
 
 import PostCardWideProps from './props';
 import PostCardWideHeader from './header';
@@ -16,6 +11,7 @@ import PostCardWideThumnailProps from './card-thumnail/props';
 import PostCardWideItemRowProps from './item-row/props';
 import PostCardWideFooterProps from './footer/props';
 import rem from '@src/constants/rem';
+import TouchableCmp from '@src/modules/atoms/touchable-component';
 
 export default function PostCardWide(props: PostCardWideProps) {
   const {
@@ -67,9 +63,6 @@ export default function PostCardWide(props: PostCardWideProps) {
     </Touchable>
   );
 }
-
-const TouchableCmp =
-  Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback;
 
 const Wrapper = styled.View({
   width: '100%',

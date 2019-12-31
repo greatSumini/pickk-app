@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import Text from '@src/modules/atoms/text';
 import PostCardWideItemRowProps from './props';
+import Text from '@src/modules/atoms/text';
 import rem from '@src/constants/rem';
 import colors from '@src/constants/colors';
 

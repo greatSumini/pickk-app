@@ -10,8 +10,7 @@ import ThumsUp from '@src/assets/icons/thums-up';
 import Comment from '@src/assets/icons/comment';
 import Space from '@src/modules/atoms/space';
 
-const color = 'white';
-const iconSize = rem(12).toString();
+const iconSize = rem(12);
 
 export default function PostCardWideFooter(props: PostCardWideFooterProps) {
   const {viewCount, pickCount, commentCount} = props;
@@ -40,22 +39,22 @@ const IconText = (props: {
   Icon: any;
   children: number;
   style?: any;
-  width: string;
-  height: string;
+  width: number;
+  height: number;
 }) => {
   const {Icon, children, style, width, height} = props;
   return (
     <IconTextWrapper style={style}>
       <Icon
         style={{width: width, height: height, marginRight: rem(5)}}
-        fill={color}
+        fill={colors.white}
         fillIn="#fff"
-        fillOut={color}
+        fillOut={colors.white}
         fillLeft={colors.primary}
-        fillRight={color}
+        fillRight={colors.white}
       />
 
-      <Text color={color} level={1} ellipsis={true}>
+      <Text color={colors.white} level={1} ellipsis={true}>
         {children}
       </Text>
     </IconTextWrapper>
