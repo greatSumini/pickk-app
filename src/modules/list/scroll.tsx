@@ -11,7 +11,7 @@ type IProps = {
   // tslint:disable-next-line: no-any
   query: any;
   // tslint:disable-next-line: no-any
-  ListItem: React.FunctionComponent<{data: any}>;
+  ListItem: React.FunctionComponent<any>;
   Skeleton?: React.FunctionComponent;
 };
 
@@ -42,7 +42,8 @@ export default function ScrollList(props: IProps) {
     <SafeAreaView>
       <FlatList
         data={data[propName]}
-        renderItem={item => <ListItem data={item}></ListItem>}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({item}) => <ListItem {...item}></ListItem>}
         refreshing={networkStatus === 4}
         onRefresh={() => refetch()}
         onEndReachedThreshold={0.5}
@@ -54,7 +55,7 @@ export default function ScrollList(props: IProps) {
               ...filter,
             },
             updateQuery: (previousResult, {fetchMoreResult}) => {
-              if (!fetchMoreResult || fetchMoreResult.feed.length === 0) {
+              if (!fetchMoreResult || fetchMoreResult[propName].length === 0) {
                 return previousResult;
               }
 
