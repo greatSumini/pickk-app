@@ -58,6 +58,7 @@ export default function Text(props: IProps) {
     <_Text
       style={style}
       onPress={onPress}
+      numberOfLines={1}
       ellipsizeMode={ellipsis ? 'tail' : null}>
       {children}
     </_Text>

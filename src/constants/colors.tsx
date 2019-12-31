@@ -8,4 +8,5 @@ export const BACKGROUND_BLACK = '#222';
 export default {
   primary: '#333',
   secondary: '#999999',
+  lightGrey: '#F0F0F0',
 };
