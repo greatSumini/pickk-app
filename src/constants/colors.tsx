@@ -10,4 +10,6 @@ export default {
   secondary: '#999999',
   lightGrey: '#F0F0F0',
   white: '#FFF',
+  salePercent: '#d95050',
+  backgroundBlack: '#222',
 };
