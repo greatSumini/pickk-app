@@ -5,10 +5,14 @@ import PostCardWideHeaderProps from './props';
 import Text from '@src/modules/atoms/text';
 import rem from '@src/constants/rem';
 import colors from '@src/constants/colors';
-import {stringifyPassedTime} from '@src/lib/apollo/utils/time';
+import {stringifyPassedTime} from '@src/lib/utils/time-parser';
 
-export default function PostCardWideHeader(props: PostCardWideHeaderProps) {
-  const {time, title, name, profileImageUrl} = props;
+export default function PostCardWideHeader({
+  time,
+  title,
+  name,
+  profileImageUrl,
+}: PostCardWideHeaderProps) {
   return (
     <Wrapper>
       <ProfileImg source={{uri: profileImageUrl}} />

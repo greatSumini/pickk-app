@@ -5,6 +5,9 @@ import gql from 'graphql-tag';
 import PostCardWide from './card/wide';
 import colors from '@src/constants/colors';
 import ScrollList from '@src/modules/list/scroll';
+import PostCardReviewNarrow from '@src/components/post-list/card/narrow/review/index';
+import PostCardLookNarrow from '@src/components/post-list/card/narrow/look/index';
+import rem from '@src/constants/rem';
 
 export default function PostListScreen() {
   return (
@@ -12,7 +15,9 @@ export default function PostListScreen() {
       <ScrollList
         query={ALL_RECOMMEND_POSTS}
         category="allRecommendPosts"
-        ListItem={PostCardWide}
+        ListItem={PostCardLookNarrow}
+        numColumns={2}
+        style={{paddingHorizontal: rem(7)}}
       />
     </Wrapper>
   );
@@ -20,7 +25,7 @@ export default function PostListScreen() {
 
 const Wrapper = styled.View({
   flex: 1,
-  backgroundColor: colors.lightGrey,
+  backgroundColor: colors.white,
 });
 
 const ALL_RECOMMEND_POSTS = gql`

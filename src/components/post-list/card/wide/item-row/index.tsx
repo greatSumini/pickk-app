@@ -6,11 +6,11 @@ import Text from '@src/modules/atoms/text';
 import rem from '@src/constants/rem';
 import colors from '@src/constants/colors';
 
-export default function PostCardWideItemRow(props: PostCardWideItemRowProps) {
-  const {simpleItemList: itemList} = props;
-
+export default function PostCardWideItemRow({
+  simpleItemList: itemList,
+}: PostCardWideItemRowProps) {
   return (
-    <Wrapper>
+    <Wrapper onStartShouldSetResponder={() => true}>
       <ItemRow horizontal>
         {itemList &&
           itemList.map((item, index) => (
@@ -58,6 +58,7 @@ const ItemImg = styled.Image({
 const ItemName = styled(Text)({
   marginTop: rem(4),
   color: colors.primary,
+  textAlign: 'center',
 });
 
 const ItemNameWrapper = styled.View({

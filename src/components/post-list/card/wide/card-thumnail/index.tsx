@@ -3,31 +3,21 @@ import styled from 'styled-components/native';
 
 import PostCardWideThumnailProps from './props';
 import rem from '@src/constants/rem';
+import {imageUriHandler} from '@src/lib/utils/url-parser';
 
-export default function PostCardWideThumnail(props: PostCardWideThumnailProps) {
-  const {titleType, titleImageUrl, titleYoutubeUrl} = props;
-
+export default function PostCardWideThumnail({
+  titleType,
+  titleImageUrl,
+  titleYoutubeUrl,
+}: PostCardWideThumnailProps) {
   return (
-    <Wrapper>
-      {titleType === 'IMAGE' ? (
-        <Thumnail source={{uri: titleImageUrl}} />
-      ) : (
-        <Thumnail
-          source={{
-            uri: `https://img.youtube.com/vi/${titleYoutubeUrl}/sddefault.jpg`,
-          }}
-        />
-      )}
-    </Wrapper>
+    <Thumnail
+      source={{uri: imageUriHandler(titleType, titleImageUrl, titleYoutubeUrl)}}
+    />
   );
 }
 
-const Wrapper = styled.View({
-  width: '100%',
-  height: rem(203),
-});
-
 const Thumnail = styled.Image({
   width: '100%',
-  height: '100%',
+  height: rem(203),
 });
