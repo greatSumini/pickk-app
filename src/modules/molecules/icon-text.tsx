@@ -7,7 +7,7 @@ import colors from '@src/constants/colors';
 
 type IconTextProps = {
   Icon: any;
-  children: number;
+  children: any;
   style?: any;
   width: number;
   height: number;
@@ -17,6 +17,7 @@ type IconTextProps = {
   fillLeft?: string;
   fillRight?: string;
   textColor?: string;
+  level?: number;
 };
 
 export default function IconText({
@@ -31,11 +32,12 @@ export default function IconText({
   fillLeft,
   fillRight,
   textColor,
+  level = 1,
 }: IconTextProps) {
   return (
     <IconTextWrapper style={style}>
       <Icon
-        style={{width: width, height: height, marginRight: rem(5)}}
+        style={{width: width, height: height, marginRight: rem(4)}}
         fill={fill}
         fillIn={fillIn}
         fillOut={fillOut}
@@ -43,7 +45,7 @@ export default function IconText({
         fillRight={fillRight}
       />
 
-      <Text color={textColor} level={1} ellipsis={true}>
+      <Text color={textColor} level={level} ellipsis={true}>
         {children}
       </Text>
     </IconTextWrapper>
