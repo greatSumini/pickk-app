@@ -1,10 +1,18 @@
 import React from 'react';
-import {SafeAreaView, FlatList, ActivityIndicator} from 'react-native';
+import {
+  SafeAreaView,
+  FlatList,
+  ActivityIndicator,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import Text from '../atoms/text';
 
 import {useQuery} from '@apollo/react-hooks';
+import {BLACK} from '@src/constants/colors';
 
 type IProps = {
+  style?: StyleProp<ViewStyle>;
   category: string;
   // tslint:disable-next-line: no-any
   filter?: any;
@@ -13,25 +21,40 @@ type IProps = {
   // tslint:disable-next-line: no-any
   ListItem: React.FunctionComponent<any>;
   Skeleton?: React.FunctionComponent;
+  numColumns?: number;
 };
 
 const ITEMS_PER_PAGE = 20;
-
-export default function ScrollList(props: IProps) {
-  const {category, filter, query, ListItem, Skeleton} = props;
+    
+export default function ScrollList({
+  style,
+  category,
+  filter,
+  query,
+  ListItem,
+  Skeleton,
+  numColumns = 1,
+}: IProps) {
   const propName = category;
 
-  const {networkStatus, error, data, refetch, fetchMore} = useQuery(query, {
-    variables: {
-      start: 0,
-      first: ITEMS_PER_PAGE,
-      ...filter,
+  const {networkStatus, loading, error, data, refetch, fetchMore} = useQuery(
+    query,
+    {
+      variables: {
+        start: 0,
+        first: ITEMS_PER_PAGE,
+        ...filter,
+      },
+      notifyOnNetworkStatusChange: true,
     },
-    notifyOnNetworkStatusChange: true,
-  });
+  );
 
   if (networkStatus === 1) {
-    return Skeleton ? <Skeleton /> : <ActivityIndicator />;
+    return Skeleton ? (
+      <Skeleton />
+    ) : (
+      <ActivityIndicator size={35} color={BLACK} />
+    );
   }
 
   if (error) {
@@ -39,11 +62,13 @@ export default function ScrollList(props: IProps) {
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex: 1}}>
       <FlatList
         data={data[propName]}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={(_, index) => index.toString()}
         renderItem={({item}) => <ListItem {...item}></ListItem>}
+        numColumns={numColumns}
+        style={style}
         refreshing={networkStatus === 4}
         onRefresh={() => refetch()}
         onEndReachedThreshold={0.5}
@@ -68,6 +93,7 @@ export default function ScrollList(props: IProps) {
           });
         }}
       />
+      {loading && <ActivityIndicator size={35} color={BLACK} />}
     </SafeAreaView>
   );
 }
