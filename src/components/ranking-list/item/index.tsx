@@ -6,17 +6,23 @@ import rem from '@src/constants/rem';
 import ItemDescription from './item-description';
 import SpeechBubble from './speech-bubble';
 import colors from '@src/constants/colors';
+import TouchableCmp from '@src/modules/atoms/touchable-component';
 
 export default function Item(props: ItemProps) {
   const {id} = props;
 
   return (
-    <Wrapper>
-      <ItemDescription {...props} />
-      <SpeechBubble id={id} />
-    </Wrapper>
+    <Touchable>
+      <Wrapper>
+        <ItemDescription {...props} />
+        <SpeechBubble id={id} />
+      </Wrapper>
+    </Touchable>
   );
 }
+const Touchable = styled(TouchableCmp)({
+  width: '100%',
+});
 
 const Wrapper = styled.View({
   width: '100%',

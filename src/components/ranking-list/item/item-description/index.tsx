@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/native';
 
 import Text from '@src/modules/atoms/text';
@@ -29,17 +29,29 @@ export default function ItemDescription({
   itemFinalType,
   name,
 }: ItemDescriptionProps) {
+  const [heartColor, setHeartColor] = useState({
+    fillIn: colors.white,
+    fillOut: colors.primary,
+  });
+  const [like, setLike] = useState(false);
+
   return (
     <Wrapper>
       <ItemImg source={{uri: imageUrl}} />
       <Info>
         <InfoHead>
           <Brand>{brandKor ? brandKor : brandEng}</Brand>
-          <Heart
-            style={{width: rem(16), height: rem(16)}}
-            fillIn={colors.white}
-            fillOut={colors.primary}
-          />
+
+          <HeartButton
+            onPress={() => {
+              setLike(prev => !prev);
+            }}>
+            <Heart
+              style={{width: rem(16), height: rem(16)}}
+              fillIn={like ? colors.primary : colors.white}
+              fillOut={colors.primary}
+            />
+          </HeartButton>
         </InfoHead>
         <Space direction="COL" level={5.25} />
         <InfoMain>
@@ -101,9 +113,15 @@ const PriceWrapper = styled.View({
   alignItems: 'flex-end',
 });
 
-const Brand = styled(Text)({});
+const Brand = styled(Text)({
+  color: colors.secondary,
+});
 const Name = styled(Text)({});
 const Price = styled(Text)({color: colors.primary});
+const HeartButton = styled.TouchableOpacity({});
+const EnableTouch = styled.View({
+  backgroundColor: 'red',
+});
 
 const PriceConatiner = (salePrice: number, originalPrice: number) => {
   if (salePrice) {
@@ -111,11 +129,13 @@ const PriceConatiner = (salePrice: number, originalPrice: number) => {
     return (
       <PriceWrapper>
         <Price level={2}>{priceHandler(salePrice)}</Price>
+        <Space direction="ROW" />
         <Text
           style={{textDecorationLine: 'line-through'}}
           color={colors.secondary}>
           {priceHandler(originalPrice)}
         </Text>
+        <Space direction="ROW" />
         <Text level={2} color={colors.salePercent}>{`${salePercent.toFixed(
           1,
         )}%`}</Text>
