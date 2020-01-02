@@ -25,7 +25,7 @@ type IProps = {
 };
 
 const ITEMS_PER_PAGE = 20;
-    
+
 export default function ScrollList({
   style,
   category,
@@ -67,6 +67,7 @@ export default function ScrollList({
         data={data[propName]}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({item}) => <ListItem {...item}></ListItem>}
+        key={numColumns}
         numColumns={numColumns}
         style={style}
         refreshing={networkStatus === 4}
