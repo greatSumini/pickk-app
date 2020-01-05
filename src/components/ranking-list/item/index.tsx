@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import ItemProps from './props';
-import rem from '@src/constants/rem';
-import ItemDescription from './item-description';
-import SpeechBubble from './speech-bubble';
 import colors from '@src/constants/colors';
+import rem from '@src/constants/rem';
 import TouchableCmp from '@src/modules/atoms/touchable-component';
+import ItemDescription from './item-description';
+import ItemProps from './props';
+import SpeechBubble from './speech-bubble';
 
 export default function Item(props: ItemProps) {
   const {id} = props;

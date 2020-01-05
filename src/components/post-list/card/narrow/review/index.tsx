@@ -13,7 +13,7 @@ import {parseTime} from '@src/lib/utils/time-parser';
 import {imageUriHandler} from '@src/lib/utils/url-parser';
 import postCardNarrowReviewProps from './props';
 
-const IconSize = rem(9);
+const ICON_SIZE = rem(9);
 
 export default function NarrowReviewCard({
   title,
@@ -29,17 +29,17 @@ export default function NarrowReviewCard({
     <Touchable>
       <Wrapper>
         <ItemInfo>
-          <Title lines={2} level={1}>
+          <Title lines={2} level={1} color={colors.primary}>
             {title}
           </Title>
           <SubInfo>
-            <Name>{name}</Name>
-            <Time>{parseTime(time)}</Time>
+            <Name color={colors.secondary}>{name}</Name>
+            <Time color={colors.secondary}>{parseTime(time)}</Time>
             <Space direction="ROW" level={5} />
             <IconText
               Icon={ThumsUp}
-              width={IconSize}
-              height={IconSize}
+              width={ICON_SIZE}
+              height={ICON_SIZE}
               fillOut={colors.secondary}
               fillLeft={colors.white}
               fillRight={colors.secondary}
@@ -48,8 +48,8 @@ export default function NarrowReviewCard({
             </IconText>
             <IconText
               Icon={View}
-              width={IconSize}
-              height={IconSize}
+              width={ICON_SIZE}
+              height={ICON_SIZE}
               fill={colors.secondary}
               fillIn={colors.white}
               textColor={colors.secondary}>
@@ -92,17 +92,16 @@ const ItemImg = styled.Image({
   height: rem(60),
 });
 
-const Title = styled(Text)({color: colors.primary, width: rem(248)});
-
 const SubInfo = styled.View({
   flexDirection: 'row',
   justifyContent: 'space-between',
 });
+const Title = styled(Text)({
+  width: rem(248),
+});
 const Name = styled(Text)({
   width: rem(63),
-  color: colors.secondary,
 });
 const Time = styled(Text)({
   width: rem(47),
-  color: colors.secondary,
 });

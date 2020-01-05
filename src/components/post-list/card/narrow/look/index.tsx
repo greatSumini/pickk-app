@@ -28,14 +28,14 @@ export default function NarrowLookCard({
           }}
         />
         <Info>
-          <Title>{title}</Title>
+          <Title color={colors.primary}>{title}</Title>
           <SubInfo>
             <UserInfo>
               <ProfileImg source={{uri: profileImageUrl}} />
               <Space direction="ROW" />
-              <Name>{name}</Name>
+              <Name color={colors.secondary}>{name}</Name>
             </UserInfo>
-            <Time>{parseTime(time)}</Time>
+            <Time color={colors.secondary}>{parseTime(time)}</Time>
           </SubInfo>
         </Info>
       </Wrapper>
@@ -52,7 +52,7 @@ const Wrapper = styled.View({
   width: rem(166),
   height: rem(232),
   margin: rem(3.5),
-  borderWidth: 0.51,
+  borderWidth: rem(0.5),
   borderColor: 'transparent',
   elevation: 2,
 });
@@ -72,25 +72,21 @@ const Info = styled.View({
   justifyContent: 'space-between',
 });
 
-const Title = styled(Text)({
-  color: colors.primary,
-});
-
 const SubInfo = styled.View({
   flexDirection: 'row',
   justifyContent: 'space-between',
 });
+
 const UserInfo = styled.View({
   flexDirection: 'row',
 });
+
 const ProfileImg = styled.Image({
   width: rem(12),
   height: rem(12),
   borderRadius: rem(6),
 });
-const Name = styled(Text)({
-  color: colors.secondary,
-});
-const Time = styled(Text)({
-  color: colors.secondary,
-});
+
+const Title = styled(Text)({});
+const Name = styled(Text)({});
+const Time = styled(Text)({});

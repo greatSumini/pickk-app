@@ -1,14 +1,15 @@
 import React from 'react';
+import {StyleProp, ViewStyle} from 'react-native';
 import styled from 'styled-components/native';
 
-import Text from '../atoms/text';
-import rem from '@src/constants/rem';
+import Text from '@src/modules/atoms/text';
 import colors from '@src/constants/colors';
+import rem from '@src/constants/rem';
 
 type IconTextProps = {
-  Icon: any;
-  children: any;
-  style?: any;
+  Icon: React.ElementType;
+  children: number | string;
+  style?: StyleProp<ViewStyle>;
   width: number;
   height: number;
   fill?: string;
@@ -18,6 +19,7 @@ type IconTextProps = {
   fillRight?: string;
   textColor?: string;
   level?: number;
+  space?: number;
 };
 
 export default function IconText({
@@ -33,18 +35,18 @@ export default function IconText({
   fillRight,
   textColor,
   level = 1,
+  space = rem(4),
 }: IconTextProps) {
   return (
     <IconTextWrapper style={style}>
       <Icon
-        style={{width: width, height: height, marginRight: rem(4)}}
+        style={{width: width, height: height, marginRight: space}}
         fill={fill}
         fillIn={fillIn}
         fillOut={fillOut}
         fillLeft={fillLeft}
         fillRight={fillRight}
       />
-
       <Text color={textColor} level={level} ellipsis={true}>
         {children}
       </Text>

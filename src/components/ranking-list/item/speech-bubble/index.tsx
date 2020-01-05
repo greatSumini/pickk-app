@@ -3,11 +3,11 @@ import styled from 'styled-components/native';
 import {useQuery} from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-import Text from '@src/modules/atoms/text';
-import SpeechBubbleProps from './props';
-import rem from '@src/constants/rem';
 import colors from '@src/constants/colors';
+import rem from '@src/constants/rem';
+import Text from '@src/modules/atoms/text';
 import Space from '@src/modules/atoms/space';
+import SpeechBubbleProps from './props';
 
 export default function SpeechBubble(props: SpeechBubbleProps) {
   const {id} = props;
@@ -23,7 +23,7 @@ export default function SpeechBubble(props: SpeechBubbleProps) {
 
   return (
     <Wrapper>
-      <Top />
+      <TopTriangle />
       <Content>
         <Text color={colors.white} level={2}>
           {data ? data.allItemReviews[0].shortReview : ''}
@@ -51,7 +51,7 @@ const Wrapper = styled.View({
   flex: 1,
 });
 
-const Top = styled.View({
+const TopTriangle = styled.View({
   position: 'relative',
   top: 0,
   left: rem(26),
@@ -66,7 +66,6 @@ const Top = styled.View({
 
 const Content = styled.View({
   width: '100%',
-
   backgroundColor: colors.backgroundBlack,
   borderRadius: rem(10),
   paddingHorizontal: rem(16),

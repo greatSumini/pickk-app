@@ -1,16 +1,18 @@
 import React, {useState} from 'react';
 import styled from 'styled-components/native';
 
-import Text from '@src/modules/atoms/text';
-import ItemDescriptionProps from './props';
-import rem from '@src/constants/rem';
-import IconText from '@src/modules/molecules/icon-text';
 import Heart from '@src/assets/icons/heart';
-import colors from '@src/constants/colors';
-import Space from '@src/modules/atoms/space';
 import Star from '@src/assets/icons/star';
+import colors from '@src/constants/colors';
+import rem from '@src/constants/rem';
+import {priceHandler} from '@src/lib/utils/price-parser';
+import Text from '@src/modules/atoms/text';
+import Space from '@src/modules/atoms/space';
+import IconText from '@src/modules/molecules/icon-text';
+import ItemDescriptionProps from './props';
+import IconButton from '@src/modules/atoms/buttons/icons/index';
 
-const IconSize = rem(12);
+const ICON_SIZE = rem(12);
 
 export default function ItemDescription({
   brandId,
@@ -29,10 +31,6 @@ export default function ItemDescription({
   itemFinalType,
   name,
 }: ItemDescriptionProps) {
-  const [heartColor, setHeartColor] = useState({
-    fillIn: colors.white,
-    fillOut: colors.primary,
-  });
   const [like, setLike] = useState(false);
 
   return (
@@ -40,18 +38,18 @@ export default function ItemDescription({
       <ItemImg source={{uri: imageUrl}} />
       <Info>
         <InfoHead>
-          <Brand>{brandKor ? brandKor : brandEng}</Brand>
-
-          <HeartButton
+          <Brand color={colors.secondary}>
+            {brandKor ? brandKor : brandEng}
+          </Brand>
+          <IconButton
+            Icon={Heart}
             onPress={() => {
               setLike(prev => !prev);
-            }}>
-            <Heart
-              style={{width: rem(16), height: rem(16)}}
-              fillIn={like ? colors.primary : colors.white}
-              fillOut={colors.primary}
-            />
-          </HeartButton>
+            }}
+            size={rem(16)}
+            fillIn={like ? colors.primary : colors.white}
+            fillOut={colors.primary}
+          />
         </InfoHead>
         <Space direction="COL" level={5.25} />
         <InfoMain>
@@ -62,21 +60,21 @@ export default function ItemDescription({
         <InfoFoot>
           <IconText
             Icon={Star}
-            width={IconSize}
-            height={IconSize}
+            width={ICON_SIZE}
+            height={ICON_SIZE}
             fill={colors.primary}
-            level={0}>
-            {averageScore}
-          </IconText>
+            level={0}
+            children={averageScore}
+          />
           <Space direction="ROW" level={0.5} />
           <IconText
             Icon={Heart}
-            width={IconSize}
-            height={IconSize}
+            width={ICON_SIZE}
+            height={ICON_SIZE}
             fill={colors.primary}
-            level={0}>
-            {pickCount}
-          </IconText>
+            level={0}
+            children={pickCount}
+          />
         </InfoFoot>
       </Info>
     </Wrapper>
@@ -113,22 +111,17 @@ const PriceWrapper = styled.View({
   alignItems: 'flex-end',
 });
 
-const Brand = styled(Text)({
-  color: colors.secondary,
-});
+const Brand = styled(Text)({});
 const Name = styled(Text)({});
-const Price = styled(Text)({color: colors.primary});
-const HeartButton = styled.TouchableOpacity({});
-const EnableTouch = styled.View({
-  backgroundColor: 'red',
-});
 
 const PriceConatiner = (salePrice: number, originalPrice: number) => {
   if (salePrice) {
     const salePercent = 100 - (salePrice / originalPrice) * 100;
     return (
       <PriceWrapper>
-        <Price level={2}>{priceHandler(salePrice)}</Price>
+        <Text level={2} color={colors.primary}>
+          {priceHandler(salePrice)}
+        </Text>
         <Space direction="ROW" />
         <Text
           style={{textDecorationLine: 'line-through'}}
@@ -142,14 +135,10 @@ const PriceConatiner = (salePrice: number, originalPrice: number) => {
       </PriceWrapper>
     );
   } else {
-    return <Price level={2}>{priceHandler(originalPrice)}</Price>;
-  }
-};
-
-const priceHandler = (price: number) => {
-  if (price % 1000 === 0) {
-    return `${(price / 1000).toFixed(0)},000`;
-  } else {
-    return `${(price / 1000).toFixed(0)},${price % 1000}`;
+    return (
+      <Text level={2} color={colors.primary}>
+        {priceHandler(originalPrice)}
+      </Text>
+    );
   }
 };
