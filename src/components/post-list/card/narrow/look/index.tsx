@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import PostCardNarrowLookProps from './props';
 import Text from '@src/modules/atoms/text';
 import TouchableCmp from '@src/modules/atoms/touchable-component';
 import Space from '@src/modules/atoms/space';
@@ -9,6 +8,7 @@ import rem from '@src/constants/rem';
 import colors from '@src/constants/colors';
 import {parseTime} from '@src/lib/utils/time-parser';
 import {imageUriHandler} from '@src/lib/utils/url-parser';
+import PostCardNarrowLookProps from './props';
 
 export default function NarrowLookCard({
   title,

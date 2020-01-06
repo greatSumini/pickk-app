@@ -5,11 +5,14 @@ import {
   ActivityIndicator,
   StyleProp,
   ViewStyle,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
 } from 'react-native';
-import Text from '../atoms/text';
-
 import {useQuery} from '@apollo/react-hooks';
+
 import {BLACK} from '@src/constants/colors';
+import rem from '@src/constants/rem';
+import Text from '../atoms/text';
 
 type IProps = {
   style?: StyleProp<ViewStyle>;
@@ -19,9 +22,11 @@ type IProps = {
   // tslint:disable-next-line: no-any
   query: any;
   // tslint:disable-next-line: no-any
+  onScroll: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
   ListItem: React.FunctionComponent<any>;
   Skeleton?: React.FunctionComponent;
   numColumns?: number;
+  headerMaxHeight?: number;
 };
 
 const ITEMS_PER_PAGE = 20;
@@ -33,7 +38,9 @@ export default function ScrollList({
   query,
   ListItem,
   Skeleton,
+  onScroll,
   numColumns = 1,
+  headerMaxHeight = 0,
 }: IProps) {
   const propName = category;
 
@@ -53,7 +60,11 @@ export default function ScrollList({
     return Skeleton ? (
       <Skeleton />
     ) : (
-      <ActivityIndicator size={35} color={BLACK} />
+      <ActivityIndicator
+        size={35}
+        color={BLACK}
+        style={{paddingTop: headerMaxHeight}}
+      />
     );
   }
 
@@ -64,12 +75,19 @@ export default function ScrollList({
   return (
     <SafeAreaView style={{flex: 1}}>
       <FlatList
+        scrollEventThrottle={16}
+        onScroll={onScroll}
         data={data[propName]}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({item}) => <ListItem {...item}></ListItem>}
         key={numColumns}
         numColumns={numColumns}
-        style={style}
+        contentContainerStyle={{
+          ...(style as object),
+          paddingTop: headerMaxHeight,
+          paddingHorizontal: numColumns === 2 ? rem(6) : 0,
+        }}
+        progressViewOffset={headerMaxHeight}
         refreshing={networkStatus === 4}
         onRefresh={() => refetch()}
         onEndReachedThreshold={0.5}

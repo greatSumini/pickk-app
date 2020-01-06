@@ -12,9 +12,10 @@ export default function IconBoutton({
   fillLeft,
   fillOut,
   fillRight,
+  style,
 }: IconButtonProps) {
   return (
-    <Touchable onPress={onPress}>
+    <Touchable onPress={onPress} style={style}>
       <Icon
         style={{width: size, height: size}}
         fill={fill}

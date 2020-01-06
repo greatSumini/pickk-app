@@ -6,11 +6,11 @@ import Star from '@src/assets/icons/star';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
 import {priceHandler} from '@src/lib/utils/price-parser';
+import IconButton from '@src/modules/atoms/buttons/icons/index';
 import Text from '@src/modules/atoms/text';
 import Space from '@src/modules/atoms/space';
 import IconText from '@src/modules/molecules/icon-text';
 import ItemDescriptionProps from './props';
-import IconButton from '@src/modules/atoms/buttons/icons/index';
 
 const ICON_SIZE = rem(12);
 

@@ -8,8 +8,8 @@ import rem from '@src/constants/rem';
 
 type IconTextProps = {
   Icon: React.ElementType;
-  children: number | string;
   style?: StyleProp<ViewStyle>;
+  children: number | string;
   width: number;
   height: number;
   fill?: string;
@@ -20,6 +20,7 @@ type IconTextProps = {
   textColor?: string;
   level?: number;
   space?: number;
+  order?: 'Icon' | 'Text';
 };
 
 export default function IconText({
@@ -36,22 +37,41 @@ export default function IconText({
   textColor,
   level = 1,
   space = rem(4),
+  order = 'Icon',
 }: IconTextProps) {
-  return (
-    <IconTextWrapper style={style}>
-      <Icon
-        style={{width: width, height: height, marginRight: space}}
-        fill={fill}
-        fillIn={fillIn}
-        fillOut={fillOut}
-        fillLeft={fillLeft}
-        fillRight={fillRight}
-      />
-      <Text color={textColor} level={level} ellipsis={true}>
-        {children}
-      </Text>
-    </IconTextWrapper>
-  );
+  if (order === 'Icon') {
+    return (
+      <IconTextWrapper style={style}>
+        <Icon
+          style={{width: width, height: height, marginRight: space}}
+          fill={fill}
+          fillIn={fillIn}
+          fillOut={fillOut}
+          fillLeft={fillLeft}
+          fillRight={fillRight}
+        />
+        <Text color={textColor} level={level} ellipsis={true}>
+          {children}
+        </Text>
+      </IconTextWrapper>
+    );
+  } else {
+    return (
+      <IconTextWrapper style={style}>
+        <Text color={textColor} level={level} ellipsis={true}>
+          {children}
+        </Text>
+        <Icon
+          style={{width: width, height: height, marginLeft: space}}
+          fill={fill}
+          fillIn={fillIn}
+          fillOut={fillOut}
+          fillLeft={fillLeft}
+          fillRight={fillRight}
+        />
+      </IconTextWrapper>
+    );
+  }
 }
 
 const IconTextWrapper = styled.View({
