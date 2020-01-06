@@ -12,4 +12,6 @@ export default {
   white: '#FFF',
   salePercent: '#d95050',
   backgroundBlack: '#222',
+  notify: '#ea6969',
+  viewFilter: '#d8d8d8',
 };
