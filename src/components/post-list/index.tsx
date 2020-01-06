@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 
 import Search from '@src/assets/icons/search';
+import Write from '@src/assets/icons/write';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
 import Header from '@src/modules/header/index';
@@ -21,7 +22,10 @@ const HEADER_MIN_HEIGHT = rem(111);
 
 const items = [{label: '리뷰'}, {label: 'LOOK'}];
 
-const icons = [{Icon: Search, fill: colors.primary}];
+const icons = [
+  {Icon: Write, fill: colors.primary},
+  {Icon: Search, fill: colors.primary},
+];
 
 export default function PostListScreen() {
   const [scrollY] = useState(new Animated.Value(0));

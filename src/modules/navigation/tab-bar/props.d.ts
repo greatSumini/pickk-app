@@ -1,7 +1,7 @@
-import ButtonProps from './button/props';
+import {NavigationTabProp} from 'react-navigation-tabs';
 
 type TabBarProps = {
-  data: ButtonProps[];
+  navigation: NavigationTabProp;
 };
 
 export default TabBarProps;
