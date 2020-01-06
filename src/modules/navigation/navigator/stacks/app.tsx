@@ -1,23 +1,18 @@
-import {createBottomTabNavigator} from 'react-navigation-tabs';
+import {createDrawerNavigator} from 'react-navigation-drawer';
 
-import HomeStack from './home';
-import PostStack from './post';
-import RankingListStack from './ranking-list';
+import Drawer from '../../drawer/main/index';
+import rem from '@src/constants/rem';
+import BottomTab from './bottom-tab';
 
-const AppStack = createBottomTabNavigator(
+const AppStack = createDrawerNavigator(
   {
     Home: {
-      screen: HomeStack,
-    },
-    Post: {
-      screen: PostStack,
-    },
-    Rank: {
-      screen: RankingListStack,
+      screen: BottomTab,
     },
   },
   {
-    initialRouteName: 'Home',
+    contentComponent: Drawer,
+    drawerWidth: rem(260),
   },
 );
 
