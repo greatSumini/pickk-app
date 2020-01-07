@@ -187,7 +187,7 @@ const UserData = ({userData}: {userData: any}) => {
               height={rem(12)}
               fill={colors.secondary}
               textColor={colors.secondary}
-              children="내 채널가기"
+              content="내 채널가기"
               space={rem(2)}
               order="Text"
             />
@@ -231,7 +231,7 @@ const DrawerItem = ({
           height={ICON_SIZE}
           fillIn={fillIn}
           space={rem(32)}
-          children={label}
+          content={label}
         />
 
         {notifyCount && (

@@ -9,7 +9,7 @@ import rem from '@src/constants/rem';
 type IconTextProps = {
   Icon: React.ElementType;
   style?: StyleProp<ViewStyle>;
-  children: number | string;
+  content: number | string;
   width: number;
   height: number;
   fill?: string;
@@ -25,7 +25,7 @@ type IconTextProps = {
 
 export default function IconText({
   Icon,
-  children,
+  content,
   style,
   width,
   height,
@@ -51,7 +51,7 @@ export default function IconText({
           fillRight={fillRight}
         />
         <Text color={textColor} level={level} ellipsis={true}>
-          {children}
+          {content}
         </Text>
       </IconTextWrapper>
     );
@@ -59,7 +59,7 @@ export default function IconText({
     return (
       <IconTextWrapper style={style}>
         <Text color={textColor} level={level} ellipsis={true}>
-          {children}
+          {content}
         </Text>
         <Icon
           style={{width: width, height: height, marginLeft: space}}

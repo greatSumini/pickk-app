@@ -22,7 +22,7 @@ type IProps = {
   // tslint:disable-next-line: no-any
   query: any;
   // tslint:disable-next-line: no-any
-  onScroll: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
+  onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
   ListItem: React.FunctionComponent<any>;
   Skeleton?: React.FunctionComponent;
   numColumns?: number;
@@ -82,7 +82,7 @@ export default function ScrollList({
         renderItem={({item}) => <ListItem {...item}></ListItem>}
         key={numColumns}
         numColumns={numColumns}
-        contentContainerStyle={{
+        style={{
           ...(style as object),
           paddingTop: headerMaxHeight,
           paddingHorizontal: numColumns === 2 ? rem(6) : 0,

@@ -16,6 +16,7 @@ import Text from '@src/modules/atoms/text';
 import TouchableCmp from '@src/modules/atoms/touchable-component';
 import IconText from '@src/modules/molecules/icon-text';
 import HeaderProps from './props';
+import {HeaderControlType} from './props';
 
 export default function Header({
   title,
@@ -30,13 +31,20 @@ export default function Header({
   filterControl,
   recommendControl,
 }: HeaderProps) {
-  const AnimatedHeader = Animated.createAnimatedComponent(Wrapper);
-  const AnimatedText = Animated.createAnimatedComponent(Title);
-
+  const filterColor = filterControl.value ? colors.white : colors.primary;
+  const filterBackgroundColor = filterControl.value
+    ? colors.primary
+    : colors.white;
+  const recommedIconColor = recommendControl.value
+    ? colors.primary
+    : colors.white;
+  const recommedTextColor = recommendControl.value
+    ? colors.white
+    : colors.primary;
   const ViewFilterIcon =
-    viewControl.view === WIDE
+    viewControl.value === WIDE
       ? WideIcon
-      : postTypeControl.postType === REVIEW
+      : postTypeControl.value === REVIEW
       ? NarrowReviewIcon
       : NarrowLookIcon;
 
@@ -52,57 +60,48 @@ export default function Header({
       <FilterWrapper>
         <FilterItem
           onPress={() => {
-            filterControl.setFilter(prev => !prev);
+            filterControl.setValue(prev => !prev);
           }}
-          style={{backgroundColor: filterControl.filter && colors.primary}}>
+          style={{backgroundColor: filterBackgroundColor}}>
           <IconText
             Icon={FilterIcon}
             width={rem(11)}
             height={rem(9)}
-            children="필터"
-            fill={filterControl.filter ? colors.white : colors.primary}
-            textColor={filterControl.filter ? colors.white : colors.primary}
+            content="필터"
+            fill={filterColor}
+            textColor={filterColor}
             level={0}
           />
         </FilterItem>
         <Space direction="ROW" />
         <FilterItem
           onPress={() => {
-            recommendControl.setRecommend(prev => !prev);
+            recommendControl.setValue(prev => !prev);
           }}
           style={{
-            backgroundColor: recommendControl.recommend && colors.primary,
+            backgroundColor: recommedIconColor,
           }}>
           <IconText
             Icon={ThumsUpIcon}
             width={rem(12)}
             height={rem(12)}
-            children="10추글"
-            fillOut={recommendControl.recommend ? colors.white : colors.primary}
-            fillLeft={
-              recommendControl.recommend ? colors.primary : colors.white
-            }
-            fillRight={
-              recommendControl.recommend ? colors.primary : colors.white
-            }
-            textColor={
-              recommendControl.recommend ? colors.white : colors.primary
-            }
+            content="10추글"
+            fillOut={recommedTextColor}
+            fillLeft={recommedIconColor}
+            fillRight={recommedIconColor}
+            textColor={recommedTextColor}
             level={0}
           />
           <Space direction="ROW" />
-          <Text
-            color={recommendControl.recommend ? colors.white : colors.primary}>
-            {recommendControl.recommend ? 'OFF' : 'ON'}
+          <Text color={recommedTextColor}>
+            {recommendControl.value ? 'OFF' : 'ON'}
           </Text>
         </FilterItem>
         <IconButton
           Icon={ViewFilterIcon}
           size={rem(18)}
           onPress={() => {
-            viewControl.view === WIDE
-              ? viewControl.setView(NARROW)
-              : viewControl.setView(WIDE);
+            viewControl.setValue(viewControl.value === WIDE ? NARROW : WIDE);
           }}
           fill={colors.viewFilter}
           style={{position: 'absolute', right: rem(20)}}
@@ -159,6 +158,9 @@ const Wrapper = styled.View({
   zIndex: 1,
 });
 
+const AnimatedHeader = Animated.createAnimatedComponent(Wrapper);
+const AnimatedText = Animated.createAnimatedComponent(Title);
+
 const NavLabel = styled.View({
   flexDirection: 'row',
   width: '100%',
@@ -184,23 +186,20 @@ const Row = styled.View({
 });
 const LabelItem = (
   items: {label: string}[],
-  postTypeControl: {
-    postType: string;
-    setPostType: React.Dispatch<React.SetStateAction<string>>;
-  },
+  postTypeControl: HeaderControlType<string>,
 ) => {
   return items.map((item, index) => {
     return (
       <TouchableLabel
         key={index}
         onPress={() => {
-          postTypeControl.setPostType(item.label);
+          postTypeControl.setValue(item.label);
         }}>
-        <Label selected={item.label === postTypeControl.postType}>
+        <Label selected={item.label === postTypeControl.value}>
           <Text
             level={2}
             color={
-              item.label === postTypeControl.postType
+              item.label === postTypeControl.value
                 ? colors.primary
                 : colors.secondary
             }>

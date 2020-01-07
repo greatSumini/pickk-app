@@ -68,10 +68,10 @@ export default function PostListScreen() {
         titlePadding={titlePadding}
         items={items}
         icons={icons}
-        viewControl={{view, setView}}
-        postTypeControl={{postType, setPostType}}
-        filterControl={{filter, setFilter}}
-        recommendControl={{recommend, setRecommend}}
+        viewControl={{value: view, setValue: setView}}
+        postTypeControl={{value: postType, setValue: setPostType}}
+        filterControl={{value: filter, setValue: setFilter}}
+        recommendControl={{value: recommend, setValue: setRecommend}}
       />
       <ScrollList
         query={ALL_RECOMMEND_POSTS}

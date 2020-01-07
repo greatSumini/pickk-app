@@ -25,9 +25,9 @@ export default function PostCardWideFooter({
           width={iconSize}
           height={iconSize}
           fill={colors.white}
-          textColor={colors.white}>
-          {viewCount}
-        </IconText>
+          textColor={colors.white}
+          content={viewCount}
+        />
       </ViewContainer>
       <FavComContainer>
         <IconText
@@ -37,9 +37,9 @@ export default function PostCardWideFooter({
           fillOut={colors.white}
           fillLeft={colors.primary}
           fillRight={colors.white}
-          textColor={colors.white}>
-          {pickCount}
-        </IconText>
+          textColor={colors.white}
+          content={pickCount}
+        />
         <Space direction="ROW" level={1} />
         <IconText
           Icon={Comment}
@@ -47,9 +47,9 @@ export default function PostCardWideFooter({
           height={iconSize}
           fillIn={colors.white}
           fillOut={colors.white}
-          textColor={colors.white}>
-          {commentCount}
-        </IconText>
+          textColor={colors.white}
+          content={commentCount}
+        />
       </FavComContainer>
     </Wrapper>
   );

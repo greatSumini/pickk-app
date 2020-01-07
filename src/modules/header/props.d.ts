@@ -1,5 +1,10 @@
 import {StyleProp, Animated, ViewStyle} from 'react-native';
 
+export type HeaderControlType<T> = {
+  value: T;
+  setValue: React.Dispatch<React.SetStateAction<T>>;
+};
+
 type HeaderProps = {
   title: string;
   style?: StyleProp<ViewStyle>;
@@ -8,22 +13,10 @@ type HeaderProps = {
   titlePadding: Animated.AnimatedInterpolation;
   items?: {label: string}[];
   icons?: {Icon: React.ElementType; fill?: string}[];
-  viewControl?: {
-    view: string;
-    setView: React.Dispatch<React.SetStateAction<string>>;
-  };
-  postTypeControl?: {
-    postType: string;
-    setPostType: React.Dispatch<React.SetStateAction<string>>;
-  };
-  filterControl?: {
-    filter: boolean;
-    setFilter: React.Dispatch<React.SetStateAction<boolean>>;
-  };
-  recommendControl?: {
-    recommend: boolean;
-    setRecommend: React.Dispatch<React.SetStateAction<boolean>>;
-  };
+  viewControl?: HeaderControlType<string>;
+  postTypeControl?: HeaderControlType<string>;
+  filterControl?: HeaderControlType<boolean>;
+  recommendControl?: HeaderControlType<boolean>;
 };
 
 export default HeaderProps;
