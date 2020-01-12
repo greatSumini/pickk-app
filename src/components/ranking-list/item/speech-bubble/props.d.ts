@@ -1,4 +1,12 @@
+export type ShortReviewContentType = {
+  shortReview: string;
+  userInfo: {
+    profileImageUrl: string;
+    name: string;
+  };
+};
+
 type SpeechBubbleProps = {
-  id: number;
+  data: ShortReviewContentType;
 };
 export default SpeechBubbleProps;

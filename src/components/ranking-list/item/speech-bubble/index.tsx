@@ -1,46 +1,38 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {useQuery} from '@apollo/react-hooks';
-import gql from 'graphql-tag';
 
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
+import {addSizeToFilename, xsmall} from '@src/lib/utils/url-parser';
+import Img from '@src/modules/atoms/img';
 import Text from '@src/modules/atoms/text';
 import Space from '@src/modules/atoms/space';
 import SpeechBubbleProps from './props';
 
 export default function SpeechBubble(props: SpeechBubbleProps) {
-  const {id} = props;
-
-  const {networkStatus, loading, error, data} = useQuery(GET_SHORT_REVIEW, {
-    variables: {
-      id: id,
-    },
-  });
-  if (error) {
-    return <Text>error</Text>;
-  }
+  const {data} = props;
 
   return (
     <Wrapper>
       <TopTriangle />
       <Content>
         <Text color={colors.white} level={2}>
-          {data ? data.allItemReviews[0].shortReview : ''}
+          {data ? data.shortReview : ''}
         </Text>
         <Space direction="COL" level={1} />
         <UserInfo>
           {data && (
-            <ProfileImg
+            <Img
+              imgWidth={rem(12)}
+              imgHeight={rem(12)}
+              circle
               source={{
-                uri: data.allItemReviews[0].userInfo.profileImageUrl,
+                uri: addSizeToFilename(data.userInfo.profileImageUrl, xsmall),
               }}
             />
           )}
           <Space direction="ROW" />
-          <Text color={colors.white}>
-            {data ? data.allItemReviews[0].userInfo.name : ''}
-          </Text>
+          <Text color={colors.white}>{data ? data.userInfo.name : ''}</Text>
         </UserInfo>
       </Content>
     </Wrapper>
@@ -71,44 +63,9 @@ const Content = styled.View({
   paddingHorizontal: rem(16),
   paddingVertical: rem(8),
   justifyContent: 'space-between',
+  minHeight: rem(53),
 });
 
 const UserInfo = styled.View({
   flexDirection: 'row',
 });
-
-const ProfileImg = styled.Image({
-  width: rem(12),
-  height: rem(12),
-  borderRadius: rem(6),
-});
-
-const GET_SHORT_REVIEW = gql`
-  query allItemReviews($id: Int!) {
-    allItemReviews(
-      reviewOption: {
-        filterGeneral: {start: 0, first: 1}
-        reviewFilter: {itemId: $id}
-      }
-    ) {
-      shortReview
-      id
-      itemId
-      postId
-      review
-      score
-      images {
-        id
-      }
-      userInfo {
-        id
-        email
-        age
-        height
-        weight
-        name
-        profileImageUrl
-      }
-    }
-  }
-`;
