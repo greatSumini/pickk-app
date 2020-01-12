@@ -2,18 +2,21 @@ import React from 'react';
 import RNPickerSelect from 'react-native-picker-select';
 import styled from 'styled-components/native';
 
-import rem from '@src/constants/rem';
-import {useSortContext} from '@src/context/filter';
-import Space from '@src/modules/atoms/space';
-import CategoryButton from './category-button';
-import OptionButton from './option-button';
 import ChevronDown from '@src/assets/icons/chevron/down';
 import colors from '@src/constants/colors';
+import rem from '@src/constants/rem';
+import {useSortContext, useItemFilterContext} from '@src/context/filter';
+import Space from '@src/modules/atoms/space';
+import {itemCate} from '@src/data/item';
+import CategoryButton from './category-button';
+import OptionButton from './option-button';
 
 export default function FinalCateFilter() {
   const sortContext = useSortContext();
+  const itemFilterContext = useItemFilterContext();
   const {sort} = sortContext.state;
   const {setSort} = sortContext.action;
+  const {itemMinorType} = itemFilterContext.state;
 
   const sortItems = [
     {
@@ -27,7 +30,7 @@ export default function FinalCateFilter() {
       <Row>
         <OptionButton />
         <Space direction="ROW" />
-        <CategoryButton />
+        {itemCate[itemMinorType] && <CategoryButton />}
       </Row>
       <RNPickerSelect
         placeholder={{

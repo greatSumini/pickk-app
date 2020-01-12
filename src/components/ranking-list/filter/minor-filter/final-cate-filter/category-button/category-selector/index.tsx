@@ -21,16 +21,20 @@ export default function CategorySelector({setVisible}) {
     setVisible(false);
   };
 
-  return itemCate[minorType].map((v, i) => (
-    <DrawerItem
-      key={i}
-      selected={finalType === v}
-      onPress={() => {
-        handleChange(v);
-      }}>
-      {itemCateEnToKo[v]}
-    </DrawerItem>
-  ));
+  if (itemCate[minorType]) {
+    return itemCate[minorType].map((v, i) => (
+      <DrawerItem
+        key={i}
+        selected={finalType === v}
+        onPress={() => {
+          handleChange(v);
+        }}>
+        {itemCateEnToKo[v]}
+      </DrawerItem>
+    ));
+  } else {
+    return <></>;
+  }
 }
 
 function DrawerItem({children, selected, onPress}) {
