@@ -1,17 +1,17 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/native';
 import {FilterItem} from '@src/components/post-list/filter/option-button';
 import FilterIcon from '@src/assets/icons/filter';
 import IconText from '@src/modules/molecules/icon-text';
 import rem from '@src/constants/rem';
-import {FilterDrawerContext} from '@src/context/filter';
+import {useRankFilterDrawerContext} from '@src/context/filter';
 import colors from '@src/constants/colors';
 import BottomDrawer from '@src/modules/navigation/drawer/bottom';
 
 export default function OptionButton() {
   const [visible, setVisible] = useState(false);
-  const filterDrawerData = useContext(FilterDrawerContext);
-  const {priceOption} = filterDrawerData.state;
+  const rankFilterDrawerContext = useRankFilterDrawerContext();
+  const {priceOption} = rankFilterDrawerContext.state;
 
   const filterColor = priceOption ? colors.white : colors.primary;
   const filterBackColor = priceOption ? colors.primary : colors.white;

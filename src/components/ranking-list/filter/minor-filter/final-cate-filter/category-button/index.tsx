@@ -1,8 +1,8 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 
 import colors from '@src/constants/colors';
 import {FilterItem} from '@src/components/post-list/filter/option-button';
-import {ItemFilterContext} from '@src/context/filter';
+import {useItemFilterContext} from '@src/context/filter';
 import {itemCateEnToKo} from '@src/data/item';
 import Text from '@src/modules/atoms/text';
 import BottomDrawer from '@src/modules/navigation/drawer/bottom';
@@ -10,8 +10,8 @@ import CategorySelector from './category-selector';
 
 export default function CategoryButton() {
   const [visible, setVisible] = useState(false);
-  const itemFilterData = useContext(ItemFilterContext);
-  const {itemFinalType: finalType} = itemFilterData.state;
+  const itemtFilterContext = useItemFilterContext();
+  const {itemFinalType: finalType} = itemtFilterContext.state;
 
   const categoryText =
     finalType === 'ALL' ? '카테고리' : itemCateEnToKo[finalType];

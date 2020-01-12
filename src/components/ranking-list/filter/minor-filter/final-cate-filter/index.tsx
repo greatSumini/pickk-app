@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import RNPickerSelect from 'react-native-picker-select';
 import styled from 'styled-components/native';
 
 import rem from '@src/constants/rem';
-import {SortContext} from '@src/context/filter';
+import {useSortContext} from '@src/context/filter';
 import Space from '@src/modules/atoms/space';
 import CategoryButton from './category-button';
 import OptionButton from './option-button';
@@ -11,9 +11,9 @@ import ChevronDown from '@src/assets/icons/chevron/down';
 import colors from '@src/constants/colors';
 
 export default function FinalCateFilter() {
-  const sortData = useContext(SortContext);
-  const {sort} = sortData.state;
-  const {setSort} = sortData.action;
+  const sortContext = useSortContext();
+  const {sort} = sortContext.state;
+  const {setSort} = sortContext.action;
 
   const sortItems = [
     {

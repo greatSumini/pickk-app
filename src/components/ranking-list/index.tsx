@@ -7,7 +7,7 @@ import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
 import {
   ItemFilterContext,
-  FilterDrawerContext,
+  RankFilterDrawerContext,
   SortContext,
 } from '@src/context/filter';
 import ScrollList from '@src/modules/list/scroll';
@@ -105,7 +105,7 @@ export default function RankingListScreen(props) {
   return (
     <Wrapper>
       <ItemFilterContext.Provider value={itemFilterStore}>
-        <FilterDrawerContext.Provider value={categoryDrawerStore}>
+        <RankFilterDrawerContext.Provider value={categoryDrawerStore}>
           <SortContext.Provider value={sortStore}>
             <Header
               title="랭킹"
@@ -124,7 +124,7 @@ export default function RankingListScreen(props) {
               filter={{...itemFilterStore.state, sort}}
             />
           </SortContext.Provider>
-        </FilterDrawerContext.Provider>
+        </RankFilterDrawerContext.Provider>
       </ItemFilterContext.Provider>
     </Wrapper>
   );

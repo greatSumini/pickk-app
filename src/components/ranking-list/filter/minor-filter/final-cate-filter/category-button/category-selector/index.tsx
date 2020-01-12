@@ -1,20 +1,21 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import styled from 'styled-components/native';
 
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
-import {ItemFilterContext} from '@src/context/filter';
+import {useItemFilterContext} from '@src/context/filter';
 import {itemCate, itemCateEnToKo} from '@src/data/item';
 import Text from '@src/modules/atoms/text';
 import TouchableCmp from '@src/modules/atoms/touchable-component';
 
 export default function CategorySelector({setVisible}) {
-  const itemFilterData = useContext(ItemFilterContext);
+  const itemtFilterContext = useItemFilterContext();
   const {
     itemFinalType: finalType,
     itemMinorType: minorType,
-  } = itemFilterData.state;
-  const {setItemFinalType} = itemFilterData.action;
+  } = itemtFilterContext.state;
+  const {setItemFinalType} = itemtFilterContext.action;
+
   const handleChange = value => {
     setItemFinalType(value);
     setVisible(false);

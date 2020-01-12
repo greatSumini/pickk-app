@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import styled from 'styled-components/native';
 
 import Accessory from '@src/assets/icons/item/category/accessory';
@@ -9,7 +9,7 @@ import Shoes from '@src/assets/icons/item/category/shoes';
 import Top from '@src/assets/icons/item/category/top';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
-import {ItemFilterContext} from '@src/context/filter';
+import {useItemFilterContext} from '@src/context/filter';
 import {itemCateEnToKo, itemCate} from '@src/data/item';
 import Text from '@src/modules/atoms/text';
 
@@ -23,12 +23,12 @@ const MAJOR_CATE = [
 ];
 
 export default function MajorFilter() {
-  const itemFilterData = useContext(ItemFilterContext);
+  const itemtFilterContext = useItemFilterContext();
   const {
     setItemMajorType,
     setItemMinorType,
     setItemFinalType,
-  } = itemFilterData.action;
+  } = itemtFilterContext.action;
 
   const handleChange = major => {
     setItemMajorType(major);

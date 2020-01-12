@@ -20,6 +20,7 @@ const FilterContext = createContext({
     setSortOption: null,
   },
 });
+export const useFilterContext = () => useContext(FilterContext);
 
 export const ItemFilterContext = createContext({
   state: {
@@ -33,8 +34,9 @@ export const ItemFilterContext = createContext({
     setItemFinalType: null,
   },
 });
+export const useItemFilterContext = () => useContext(ItemFilterContext);
 
-export const FilterDrawerContext = createContext({
+export const RankFilterDrawerContext = createContext({
   state: {
     minPrice: null,
     maxPrice: null,
@@ -46,6 +48,8 @@ export const FilterDrawerContext = createContext({
     setPriceOption: null,
   },
 });
+export const useRankFilterDrawerContext = () =>
+  useContext(RankFilterDrawerContext);
 
 export const SortContext = createContext({
   state: {
@@ -55,7 +59,6 @@ export const SortContext = createContext({
     setSort: null,
   },
 });
-
-export const useFilterContext = () => useContext(FilterContext);
+export const useSortContext = () => useContext(SortContext);
 
 export default FilterContext;
