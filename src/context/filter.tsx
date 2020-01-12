@@ -21,4 +21,45 @@ const FilterContext = createContext({
   },
 });
 
+export const ItemFilterContext = createContext({
+  state: {
+    itemMajorType: 'ALL',
+    itemMinorType: 'ALL',
+    itemFinalType: 'ALL',
+  },
+  action: {
+    setItemMajorType: null,
+    setItemMinorType: null,
+    setItemFinalType: null,
+  },
+});
+
+export const FilterDrawerContext = createContext({
+  state: {
+    minPrice: null,
+    maxPrice: null,
+    categories: null,
+    isPriceOpen: null,
+    isCateOpen: null,
+    priceOption: null,
+  },
+  action: {
+    setMinPrice: null,
+    setMaxPrice: null,
+    setCategories: null,
+    setPriceOpen: null,
+    setCateOpen: null,
+    setPriceOption: null,
+  },
+});
+
+export const SortContext = createContext({
+  state: {
+    sort: null,
+  },
+  action: {
+    setSort: null,
+  },
+});
+
 export default FilterContext;
