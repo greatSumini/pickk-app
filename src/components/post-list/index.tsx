@@ -37,6 +37,7 @@ export default function PostListScreen() {
   const [scrollY] = useState(new Animated.Value(0));
   const [view, setView] = useState(WIDE);
   const [postType, setPostType] = useState(REVIEW);
+
   const [tag, setTag] = useState(null);
   const [pick, setPick] = useState(0);
   const [sort, setSort] = useState(null);

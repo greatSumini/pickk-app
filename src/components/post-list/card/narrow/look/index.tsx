@@ -8,6 +8,7 @@ import rem from '@src/constants/rem';
 import colors from '@src/constants/colors';
 import {parseTime} from '@src/lib/utils/time-parser';
 import {imageUriHandler} from '@src/lib/utils/url-parser';
+import {addSizeToImagePath, ImageSize} from '@src/lib/utils/image-size-parser';
 import PostCardNarrowLookProps from './props';
 
 export default function NarrowLookCard({
@@ -24,14 +25,23 @@ export default function NarrowLookCard({
       <Wrapper>
         <ThumnailImg
           source={{
-            uri: imageUriHandler(titleType, titleImageUrl, titleYoutubeUrl),
+            uri: imageUriHandler(
+              titleType,
+              titleImageUrl,
+              titleYoutubeUrl,
+              ImageSize.Medium,
+            ),
           }}
         />
         <Info>
           <Title color={colors.primary}>{title}</Title>
           <SubInfo>
             <UserInfo>
-              <ProfileImg source={{uri: profileImageUrl}} />
+              <ProfileImg
+                source={{
+                  uri: addSizeToImagePath(profileImageUrl, ImageSize.Small),
+                }}
+              />
               <Space direction="ROW" />
               <Name color={colors.secondary}>{name}</Name>
             </UserInfo>

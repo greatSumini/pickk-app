@@ -3,7 +3,9 @@ import React from 'react';
 import ThumsUpIcon from '@src/assets/icons/thums-up';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
+
 import {useFilterContext} from '@src/context/filter';
+
 import Space from '@src/modules/atoms/space';
 import Text from '@src/modules/atoms/text';
 import IconText from '@src/modules/molecules/icon-text';
@@ -19,7 +21,7 @@ export default function MinPickButton() {
   const onOffText = pick === 0 ? 'OFF' : 'ON';
 
   const minPickHandler = () => {
-    setPick(pick === 0 ? 10 : 0);
+    setPick(10 - pick);
   };
 
   return (

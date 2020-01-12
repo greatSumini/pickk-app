@@ -20,7 +20,45 @@ const FilterContext = createContext({
     setSortOption: null,
   },
 });
-
 export const useFilterContext = () => useContext(FilterContext);
+
+export const ItemFilterContext = createContext({
+  state: {
+    itemMajorType: 'ALL',
+    itemMinorType: 'ALL',
+    itemFinalType: 'ALL',
+  },
+  action: {
+    setItemMajorType: null,
+    setItemMinorType: null,
+    setItemFinalType: null,
+  },
+});
+export const useItemFilterContext = () => useContext(ItemFilterContext);
+
+export const RankFilterDrawerContext = createContext({
+  state: {
+    minPrice: null,
+    maxPrice: null,
+    priceOption: null,
+  },
+  action: {
+    setMinPrice: null,
+    setMaxPrice: null,
+    setPriceOption: null,
+  },
+});
+export const useRankFilterDrawerContext = () =>
+  useContext(RankFilterDrawerContext);
+
+export const SortContext = createContext({
+  state: {
+    sort: null,
+  },
+  action: {
+    setSort: null,
+  },
+});
+export const useSortContext = () => useContext(SortContext);
 
 export default FilterContext;

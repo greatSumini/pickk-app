@@ -6,7 +6,9 @@ import Star from '@src/assets/icons/star';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
 import {priceHandler} from '@src/lib/utils/price-parser';
+import {addSizeToImagePath, ImageSize} from '@src/lib/utils/image-size-parser';
 import IconButton from '@src/modules/atoms/buttons/icons/index';
+import Image from '@src/modules/atoms/img';
 import Text from '@src/modules/atoms/text';
 import Space from '@src/modules/atoms/space';
 import IconText from '@src/modules/molecules/icon-text';
@@ -35,7 +37,10 @@ export default function ItemDescription({
 
   return (
     <Wrapper>
-      <ItemImg source={{uri: imageUrl}} />
+      <Image
+        imgWidth={rem(116)}
+        source={{uri: addSizeToImagePath(imageUrl, ImageSize.Medium)}}
+      />
       <Info>
         <InfoHead>
           <Brand color={colors.secondary}>
@@ -85,11 +90,6 @@ const Wrapper = styled.View({
   width: rem(336),
   height: rem(142),
   flexDirection: 'row',
-});
-
-const ItemImg = styled.Image({
-  width: rem(116),
-  height: '100%',
 });
 
 const Info = styled.View({

@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import PostCardWideThumnailProps from './props';
 import rem from '@src/constants/rem';
 import {imageUriHandler} from '@src/lib/utils/url-parser';
+import {ImageSize} from '@src/lib/utils/image-size-parser';
 
 export default function PostCardWideThumnail({
   titleType,
@@ -12,7 +13,14 @@ export default function PostCardWideThumnail({
 }: PostCardWideThumnailProps) {
   return (
     <Thumnail
-      source={{uri: imageUriHandler(titleType, titleImageUrl, titleYoutubeUrl)}}
+      source={{
+        uri: imageUriHandler(
+          titleType,
+          titleImageUrl,
+          titleYoutubeUrl,
+          ImageSize.Raw,
+        ),
+      }}
     />
   );
 }

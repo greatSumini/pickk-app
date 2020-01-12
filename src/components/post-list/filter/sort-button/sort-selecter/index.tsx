@@ -22,9 +22,9 @@ export default function SortSelecter() {
   return (
     <>
       <Wrapper>
-        {SORT_TYPE.map((v, i) => (
-          <React.Fragment key={i}>
-            <SortButton {...{sort, v, setSort}} />
+        {SORT_TYPE.map((item, index) => (
+          <React.Fragment key={index}>
+            <SortButton {...{sort, item, setSort}} />
             <Line />
           </React.Fragment>
         ))}
@@ -34,14 +34,14 @@ export default function SortSelecter() {
   );
 }
 
-function SortButton({sort, v, setSort}) {
+function SortButton({sort, item, setSort}) {
   return (
     <Touchable
       onPress={() => {
-        setSort(sort === v ? null : v);
+        setSort(sort === item ? null : item);
       }}>
-      <SortText selected={v === sort} level={1}>
-        {SORT_TEXT[v]}
+      <SortText selected={item === sort} level={1}>
+        {SORT_TEXT[item]}
       </SortText>
     </Touchable>
   );

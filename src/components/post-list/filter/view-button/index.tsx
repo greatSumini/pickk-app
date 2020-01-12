@@ -5,7 +5,9 @@ import NarrowReviewIcon from '@src/assets/icons/narrow-review';
 import WideIcon from '@src/assets/icons/wide';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
+
 import {useFilterContext} from '@src/context/filter';
+
 import IconButton from '@src/modules/atoms/buttons/icons';
 import {WIDE, NARROW, REVIEW} from '../..';
 

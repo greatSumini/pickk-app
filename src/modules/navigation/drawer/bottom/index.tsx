@@ -1,9 +1,8 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Modal, Animated} from 'react-native';
 import styled from 'styled-components/native';
 import {height} from '@src/constants/dimensions';
 import rem from '@src/constants/rem';
-import filterContext from '@src/context/filter';
 import Text from '@src/modules/atoms/text';
 import Space from '@src/modules/atoms/space';
 import {BottomDrawerProps} from './props';
@@ -12,18 +11,13 @@ export default function BottomDrawer({
   visible,
   setVisible,
   data,
+  style,
 }: BottomDrawerProps) {
   const [position, setPosition] = useState(new Animated.Value(-1 * height));
-  const filterData = useContext(filterContext);
-
-  const initFilterData = () => {
-    filterData.action.setTag(undefined);
-    filterData.action.setSort('time');
-  };
 
   useEffect(() => {
     if (visible) {
-      Animated.timing(position, {toValue: 0, duration: 500}).start();
+      Animated.timing(position, {toValue: 0, duration: 300}).start();
     }
   }, [visible]);
 
@@ -36,7 +30,12 @@ export default function BottomDrawer({
             setPosition(new Animated.Value(-1 * height));
           }}
         />
-        <AnimatedContent style={{position: 'absolute', bottom: position}}>
+        <AnimatedContent
+          style={{
+            position: 'absolute',
+            bottom: position,
+            ...(style as object),
+          }}>
           {data.map((v, i) => (
             <React.Fragment key={i}>
               {v.title && <Text level={2}>{v.title}</Text>}
