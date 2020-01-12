@@ -38,17 +38,11 @@ export const FilterDrawerContext = createContext({
   state: {
     minPrice: null,
     maxPrice: null,
-    categories: null,
-    isPriceOpen: null,
-    isCateOpen: null,
     priceOption: null,
   },
   action: {
     setMinPrice: null,
     setMaxPrice: null,
-    setCategories: null,
-    setPriceOpen: null,
-    setCateOpen: null,
     setPriceOption: null,
   },
 });

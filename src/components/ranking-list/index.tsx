@@ -25,9 +25,6 @@ export default function RankingListScreen(props) {
   const [major, setMajor] = useState('ALL');
   const [minor, setMinor] = useState('ALL');
   const [final, setFinal] = useState('ALL');
-  const [isCateOpen, setCateOpen] = useState(false);
-  const [isPriceOpen, setPriceOpen] = useState(false);
-  const [categories, setCategories] = useState([]);
   const [minPrice, setMinPrice] = useState();
   const [maxPrice, setMaxPrice] = useState();
   const [priceOption, setPriceOption] = useState(false);
@@ -59,17 +56,11 @@ export default function RankingListScreen(props) {
     state: {
       minPrice,
       maxPrice,
-      isPriceOpen,
-      isCateOpen,
-      categories,
       priceOption,
     },
     action: {
       setMinPrice,
       setMaxPrice,
-      setPriceOpen,
-      setCateOpen,
-      setCategories,
       setPriceOption,
     },
   };
