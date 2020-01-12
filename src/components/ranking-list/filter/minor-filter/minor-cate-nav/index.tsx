@@ -45,12 +45,14 @@ export default function MinorCateNav() {
 const getCateNames = (minor, onChange, names: string[]) =>
   names.map((value, i) => (
     <Touchable key={i} onPress={() => onChange(value)}>
-      <CateName
-        level={1}
-        color={value === minor ? '#333' : '#b9b9ba'}
-        fontWeight={500}>
-        {itemCateEnToKo[value]}
-      </CateName>
+      <CateNameWrapper>
+        <CateName
+          level={1}
+          color={value === minor ? '#333' : '#b9b9ba'}
+          fontWeight={500}>
+          {itemCateEnToKo[value]}
+        </CateName>
+      </CateNameWrapper>
     </Touchable>
   ));
 const Touchable = styled.TouchableOpacity({});
@@ -67,7 +69,9 @@ const Wrapper = styled.View({
 
 const CateWrapper = styled.ScrollView({});
 
-const CateName = styled(Text)({
-  width: rem(50),
-  textAlign: 'center',
+const CateName = styled(Text)({});
+const CateNameWrapper = styled.View({
+  paddingHorizontal: rem(14),
+  justifyContent: 'center',
+  alignItems: 'center',
 });
