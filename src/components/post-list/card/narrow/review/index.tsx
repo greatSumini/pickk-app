@@ -11,6 +11,7 @@ import TouchableCmp from '@src/modules/atoms/touchable-component';
 import IconText from '@src/modules/molecules/icon-text';
 import {parseTime} from '@src/lib/utils/time-parser';
 import {imageUriHandler} from '@src/lib/utils/url-parser';
+import {ImageSize} from '@src/lib/utils/image-size-parser';
 import postCardNarrowReviewProps from './props';
 
 const ICON_SIZE = rem(9);
@@ -43,23 +44,28 @@ export default function NarrowReviewCard({
               fillOut={colors.secondary}
               fillLeft={colors.white}
               fillRight={colors.secondary}
-              textColor={colors.secondary}>
-              {pickCount}
-            </IconText>
+              textColor={colors.secondary}
+              content={pickCount}
+            />
             <IconText
               Icon={View}
               width={ICON_SIZE}
               height={ICON_SIZE}
               fill={colors.secondary}
               fillIn={colors.white}
-              textColor={colors.secondary}>
-              {viewCount}
-            </IconText>
+              textColor={colors.secondary}
+              content={viewCount}
+            />
           </SubInfo>
         </ItemInfo>
         <ItemImg
           source={{
-            uri: imageUriHandler(titleType, titleImageUrl, titleYoutubeUrl),
+            uri: imageUriHandler(
+              titleType,
+              titleImageUrl,
+              titleYoutubeUrl,
+              ImageSize.Small,
+            ),
           }}
         />
       </Wrapper>

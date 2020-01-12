@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
-import {addSizeToFilename, xsmall} from '@src/lib/utils/url-parser';
+import {addSizeToImagePath, ImageSize} from '@src/lib/utils/image-size-parser';
 import Img from '@src/modules/atoms/img';
 import Text from '@src/modules/atoms/text';
 import Space from '@src/modules/atoms/space';
@@ -27,7 +27,10 @@ export default function SpeechBubble(props: SpeechBubbleProps) {
               imgHeight={rem(12)}
               circle
               source={{
-                uri: addSizeToFilename(data.userInfo.profileImageUrl, xsmall),
+                uri: addSizeToImagePath(
+                  data.userInfo.profileImageUrl,
+                  ImageSize.Xsmall,
+                ),
               }}
             />
           )}

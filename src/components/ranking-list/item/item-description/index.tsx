@@ -6,7 +6,7 @@ import Star from '@src/assets/icons/star';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
 import {priceHandler} from '@src/lib/utils/price-parser';
-import {addSizeToFilename, medium} from '@src/lib/utils/url-parser';
+import {addSizeToImagePath, ImageSize} from '@src/lib/utils/image-size-parser';
 import IconButton from '@src/modules/atoms/buttons/icons/index';
 import Image from '@src/modules/atoms/img';
 import Text from '@src/modules/atoms/text';
@@ -39,7 +39,7 @@ export default function ItemDescription({
     <Wrapper>
       <Image
         imgWidth={rem(116)}
-        source={{uri: addSizeToFilename(imageUrl, medium)}}
+        source={{uri: addSizeToImagePath(imageUrl, ImageSize.Medium)}}
       />
       <Info>
         <InfoHead>

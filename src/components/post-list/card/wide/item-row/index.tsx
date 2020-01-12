@@ -5,6 +5,7 @@ import PostCardWideItemRowProps from './props';
 import Text from '@src/modules/atoms/text';
 import rem from '@src/constants/rem';
 import colors from '@src/constants/colors';
+import {addSizeToImagePath, ImageSize} from '@src/lib/utils/image-size-parser';
 
 export default function PostCardWideItemRow({
   simpleItemList: itemList,
@@ -28,7 +29,7 @@ export default function PostCardWideItemRow({
 const CardItem = ({brandKor, imageUrl}) => {
   return (
     <ItemInfo>
-      <ItemImg source={{uri: imageUrl}} />
+      <ItemImg source={{uri: addSizeToImagePath(imageUrl, ImageSize.Small)}} />
       <ItemNameWrapper>
         <ItemName level={1} ellipsis>
           {brandKor}
