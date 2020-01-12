@@ -4,24 +4,27 @@ import styled from 'styled-components/native';
 import ChevronLeft from '@src/assets/icons/chevron/left';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
-import {useItemFilterContext} from '@src/context/filter';
+import {useItemFilterContext, useSortContext} from '@src/context/filter';
 import {itemCateEnToKo, itemCate} from '@src/data/item';
 import Text from '@src/modules/atoms/text';
 import IconButton from '@src/modules/atoms/buttons/icons';
 
 export default function MinorCateNav() {
   const itemFilterContext = useItemFilterContext();
+  const sortContext = useSortContext();
   const {
     setItemMinorType,
     setItemMajorType,
     setItemFinalType,
   } = itemFilterContext.action;
   const {itemMinorType, itemMajorType} = itemFilterContext.state;
+  const {setSort} = sortContext.action;
 
   const goBack = () => {
     setItemMajorType('ALL');
     setItemMinorType('ALL');
     setItemFinalType('ALL');
+    setSort('rankScore');
   };
 
   const handleChange = value => {
