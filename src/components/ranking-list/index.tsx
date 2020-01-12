@@ -99,6 +99,7 @@ export default function RankingListScreen(props) {
       setMajor('ALL');
       setMinor('ALL');
       setFinal('ALL');
+      setSort('rankScore');
       return true;
     }
   };

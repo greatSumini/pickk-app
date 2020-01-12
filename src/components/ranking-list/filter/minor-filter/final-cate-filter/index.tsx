@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Picker} from 'react-native';
+import RNPickerSelect from 'react-native-picker-select';
 import styled from 'styled-components/native';
 
 import rem from '@src/constants/rem';
@@ -7,29 +7,62 @@ import {SortContext} from '@src/context/filter';
 import Space from '@src/modules/atoms/space';
 import CategoryButton from './category-button';
 import OptionButton from './option-button';
+import ChevronDown from '@src/assets/icons/chevron/down';
+import colors from '@src/constants/colors';
 
 export default function FinalCateFilter() {
   const sortData = useContext(SortContext);
   const {sort} = sortData.state;
   const {setSort} = sortData.action;
 
+  const sortItems = [
+    {
+      label: '가격순',
+      value: 'price',
+    },
+  ];
+
   return (
     <Wrapper>
-      <OptionButton />
-      <Space direction="ROW" />
-      <CategoryButton />
-      <Space direction="ROW" level={10} />
-
-      <Picker
-        selectedValue={sort}
-        onValueChange={itemValue => {
-          setSort(itemValue);
+      <Row>
+        <OptionButton />
+        <Space direction="ROW" />
+        <CategoryButton />
+      </Row>
+      <RNPickerSelect
+        placeholder={{
+          label: '추천순',
+          value: 'rankScore',
         }}
-        style={{width: rem(80), height: rem(15)}}
-        itemStyle={{height: rem(15)}}>
-        <Picker.Item label="가격순" value="price" />
-        <Picker.Item label="기본" value="rankScore" />
-      </Picker>
+        useNativeAndroidPickerStyle={false}
+        onValueChange={value => setSort(value)}
+        items={sortItems}
+        style={{
+          inputIOS: {
+            fontSize: rem(10),
+            paddingRight: rem(12),
+          },
+          inputAndroid: {
+            fontSize: rem(10),
+            paddingRight: rem(12),
+          },
+          placeholder: {
+            color: 'black',
+          },
+          iconContainer: {
+            top: rem(13),
+          },
+        }}
+        value={sort}
+        Icon={() => {
+          return (
+            <ChevronDown
+              style={{width: rem(10), height: rem(10)}}
+              fill={colors.primary}
+            />
+          );
+        }}
+      />
     </Wrapper>
   );
 }
@@ -39,6 +72,11 @@ const Wrapper = styled.View({
   height: rem(36),
   flexDirection: 'row',
   alignItems: 'center',
+  justifyContent: 'space-between',
   paddingLeft: rem(12),
   paddingRight: rem(16),
+});
+
+const Row = styled.View({
+  flexDirection: 'row',
 });
