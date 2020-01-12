@@ -24,7 +24,7 @@ export default function SortSelecter() {
       <Wrapper>
         {SORT_TYPE.map((v, i) => (
           <React.Fragment key={i}>
-            <SortButton sort={sort} v={v} setSort={setSort} />
+            <SortButton {...{sort, v, setSort}} />
             <Line />
           </React.Fragment>
         ))}

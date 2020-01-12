@@ -18,7 +18,7 @@ export default function TagSelector() {
       <Wrapper>
         {tagList.map((v, i) => (
           <React.Fragment key={i}>
-            <TagButton tag={tag} v={v} setTag={setTag} />
+            <TagButton {...{tag, setTag, v}} />
             <Space direction="ROW" />
           </React.Fragment>
         ))}
