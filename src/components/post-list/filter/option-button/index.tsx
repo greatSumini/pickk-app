@@ -1,17 +1,17 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/native';
 
 import FilterIcon from '@src/assets/icons/filter';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
-import FilterContext from '@src/context/filter';
+import {useFilterContext} from '@src/context/filter';
 import IconText from '@src/modules/molecules/icon-text';
 import BottomDrawer from '@src/modules/navigation/drawer/bottom';
 import TagSelector from '../option-button/tag-selector';
 import ApplyButton from '../apply-button';
 
 export default function OptionButton() {
-  const filterData = useContext(FilterContext);
+  const filterData = useFilterContext();
   const {option} = filterData.state;
   const [visible, setVisible] = useState(false);
 

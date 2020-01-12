@@ -37,9 +37,9 @@ export default function PostListScreen() {
   const [scrollY] = useState(new Animated.Value(0));
   const [view, setView] = useState(WIDE);
   const [postType, setPostType] = useState(REVIEW);
-  const [tag, setTag] = useState();
+  const [tag, setTag] = useState(null);
   const [pick, setPick] = useState(0);
-  const [sort, setSort] = useState('time');
+  const [sort, setSort] = useState(null);
   const [option, setOption] = useState(false);
   const [sortOption, setSortOption] = useState(false);
 
@@ -71,24 +71,12 @@ export default function PostListScreen() {
   const filterValue = {
     state: {tag, pick, sort, view, option, sortOption},
     action: {
-      setTag: tag => {
-        setTag(tag);
-      },
-      setSort: sort => {
-        setSort(sort);
-      },
-      setPick: pick => {
-        setPick(pick);
-      },
-      setView: view => {
-        setView(view);
-      },
-      setOption: option => {
-        setOption(option);
-      },
-      setSortOption: sortOption => {
-        setSortOption(sortOption);
-      },
+      setTag,
+      setSort,
+      setPick,
+      setView,
+      setOption,
+      setSortOption,
     },
   };
 
@@ -117,7 +105,7 @@ export default function PostListScreen() {
         filter={{
           minimumPickCount: pick,
           postType: postType === REVIEW ? 'REVIEW' : postType,
-          recommendReason: option ? tag : undefined,
+          recommendReason: option ? tag : null,
           sortBy: sortOption ? SORT_TYPE[sort] : 'time',
         }}
       />

@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import styled from 'styled-components/native';
 
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
-import filterContext from '@src/context/filter';
+import {useFilterContext} from '@src/context/filter';
 import Text from '@src/modules/atoms/text';
 
 type ApplyButtonProps = {
@@ -15,21 +15,13 @@ export default function ApplyButton({
   buttonText,
   setVisible,
 }: ApplyButtonProps) {
-  const filterData = useContext(filterContext);
+  const filterData = useFilterContext();
   const {tag, sort} = filterData.state;
   const {setOption, setSortOption} = filterData.action;
 
   const applyHandler = () => {
-    if (tag !== undefined) {
-      setOption(true);
-      if (sort !== 'time') {
-        setSortOption(true);
-      } else {
-        setSortOption(false);
-      }
-    } else {
-      setOption(false);
-    }
+    setOption(tag !== null);
+    setSortOption(sort !== null);
     setVisible(false);
   };
 

@@ -6,6 +6,7 @@ import rem from '@src/constants/rem';
 import filterContext from '@src/context/filter';
 import Text from '@src/modules/atoms/text';
 import Space from '@src/modules/atoms/space';
+import {BottomDrawerProps} from './props';
 
 export default function BottomDrawer({
   visible,

@@ -1,10 +1,10 @@
 type ButtonProps<T> = {
   value: T;
-  setValue: (v) => void;
+  setValue: React.Dispatch<React.SetStateAction<T>>;
 };
 
 type FilterProps = {
-  postType: string;
+  postType: '리뷰' | 'LOOK';
 };
 
 export default FilterProps;
