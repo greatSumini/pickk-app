@@ -64,7 +64,7 @@ export default function ItemDescription({
             height={ICON_SIZE}
             fill={colors.primary}
             level={0}
-            children={averageScore}
+            content={averageScore}
           />
           <Space direction="ROW" level={0.5} />
           <IconText
@@ -73,7 +73,7 @@ export default function ItemDescription({
             height={ICON_SIZE}
             fill={colors.primary}
             level={0}
-            children={pickCount}
+            content={pickCount}
           />
         </InfoFoot>
       </Info>

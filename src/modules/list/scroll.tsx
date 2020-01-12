@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Animated,
   SafeAreaView,
   FlatList,
   ActivityIndicator,
@@ -60,11 +61,7 @@ export default function ScrollList({
     return Skeleton ? (
       <Skeleton />
     ) : (
-      <ActivityIndicator
-        size={35}
-        color={BLACK}
-        style={{paddingTop: headerMaxHeight}}
-      />
+      <ActivityIndicator size={35} color={BLACK} />
     );
   }
 
@@ -74,7 +71,7 @@ export default function ScrollList({
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <FlatList
+      <Animated.FlatList
         scrollEventThrottle={16}
         onScroll={onScroll}
         data={data[propName]}
@@ -84,7 +81,6 @@ export default function ScrollList({
         numColumns={numColumns}
         style={{
           ...(style as object),
-          paddingTop: headerMaxHeight,
           paddingHorizontal: numColumns === 2 ? rem(6) : 0,
         }}
         progressViewOffset={headerMaxHeight}

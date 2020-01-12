@@ -13,10 +13,7 @@ type HeaderProps = {
   titlePadding: Animated.AnimatedInterpolation;
   items?: {label: string}[];
   icons?: {Icon: React.ElementType; fill?: string}[];
-  viewControl?: HeaderControlType<string>;
   postTypeControl?: HeaderControlType<string>;
-  filterControl?: HeaderControlType<boolean>;
-  recommendControl?: HeaderControlType<boolean>;
 };
 
 export default HeaderProps;

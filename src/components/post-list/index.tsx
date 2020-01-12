@@ -12,13 +12,14 @@ import ScrollList from '@src/modules/list/scroll';
 import PostCardReviewNarrow from '@src/components/post-list/card/narrow/review/index';
 import PostCardLookNarrow from '@src/components/post-list/card/narrow/look/index';
 import PostCardWide from './card/wide';
+import FilterContext from '@src/context/filter';
 
 export const REVIEW = '리뷰';
 export const LOOK = 'LOOK';
 export const WIDE = 'WIDE';
 export const NARROW = 'NARROW';
 const HEADER_MAX_HEIGHT = rem(126);
-const HEADER_MIN_HEIGHT = rem(111);
+const HEADER_MIN_HEIGHT = rem(108);
 
 const items = [{label: '리뷰'}, {label: 'LOOK'}];
 
@@ -27,12 +28,20 @@ const icons = [
   {Icon: Search, fill: colors.primary},
 ];
 
+const SORT_TYPE = {
+  NEW: 'time',
+  HOT: 'pickCount',
+};
+
 export default function PostListScreen() {
   const [scrollY] = useState(new Animated.Value(0));
   const [view, setView] = useState(WIDE);
   const [postType, setPostType] = useState(REVIEW);
-  const [filter, setFilter] = useState(false);
-  const [recommend, setRecommend] = useState(false);
+  const [tag, setTag] = useState(null);
+  const [pick, setPick] = useState(0);
+  const [sort, setSort] = useState(null);
+  const [option, setOption] = useState(false);
+  const [sortOption, setSortOption] = useState(false);
 
   const PostListItem =
     view === WIDE
@@ -59,20 +68,31 @@ export default function PostListScreen() {
     extrapolate: 'clamp',
   });
 
+  const filterValue = {
+    state: {tag, pick, sort, view, option, sortOption},
+    action: {
+      setTag,
+      setSort,
+      setPick,
+      setView,
+      setOption,
+      setSortOption,
+    },
+  };
+
   return (
     <Wrapper>
-      <Header
-        title="포스트"
-        height={headerHeight}
-        titleSize={titleSize}
-        titlePadding={titlePadding}
-        items={items}
-        icons={icons}
-        viewControl={{value: view, setValue: setView}}
-        postTypeControl={{value: postType, setValue: setPostType}}
-        filterControl={{value: filter, setValue: setFilter}}
-        recommendControl={{value: recommend, setValue: setRecommend}}
-      />
+      <FilterContext.Provider value={filterValue}>
+        <Header
+          title="포스트"
+          height={headerHeight}
+          titleSize={titleSize}
+          titlePadding={titlePadding}
+          items={items}
+          icons={icons}
+          postTypeControl={{value: postType, setValue: setPostType}}
+        />
+      </FilterContext.Provider>
       <ScrollList
         query={ALL_RECOMMEND_POSTS}
         category="allRecommendPosts"
@@ -82,6 +102,12 @@ export default function PostListScreen() {
         onScroll={Animated.event([
           {nativeEvent: {contentOffset: {y: scrollY}}},
         ])}
+        filter={{
+          minimumPickCount: pick,
+          postType: postType === REVIEW ? 'REVIEW' : postType,
+          recommendReason: option ? tag : null,
+          sortBy: sortOption ? SORT_TYPE[sort] : 'time',
+        }}
       />
     </Wrapper>
   );
@@ -93,11 +119,22 @@ const Wrapper = styled.View({
 });
 
 const ALL_RECOMMEND_POSTS = gql`
-  query recPost($start: Int!, $first: Int!) {
+  query recPost(
+    $start: Int!
+    $first: Int!
+    $minimumPickCount: Int!
+    $postType: RecommendPostType!
+    $recommendReason: [RecommendReason]
+    $sortBy: RecPostSortableField
+  ) {
     allRecommendPosts(
       recommendPostOption: {
-        filterGeneral: {start: $start, first: $first}
-        postFilter: {}
+        filterGeneral: {start: $start, first: $first, sortBy: $sortBy}
+        postFilter: {
+          postType: $postType
+          recommendReason: $recommendReason
+          minimumPickCount: $minimumPickCount
+        }
       }
     ) {
       id
