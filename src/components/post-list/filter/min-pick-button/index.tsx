@@ -10,9 +10,9 @@ import IconText from '@src/modules/molecules/icon-text';
 import {FilterItem} from '../option-button';
 
 export default function MinPickButton() {
-  const filterData = useFilterContext();
-  const {pick} = filterData.state;
-  const {setPick} = filterData.action;
+  const filterContext = useFilterContext();
+  const {pick} = filterContext.state;
+  const {setPick} = filterContext.action;
 
   const recommedBackColor = pick === 0 ? colors.white : colors.primary;
   const recommendColor = pick === 0 ? colors.primary : colors.white;

@@ -11,8 +11,8 @@ import ApplyButton from '../apply-button';
 import {FilterItem} from '../option-button';
 
 export default function SortButton() {
-  const filterData = useFilterContext();
-  const {sortOption} = filterData.state;
+  const filterContext = useFilterContext();
+  const {sortOption} = filterContext.state;
   const [visible, setVisible] = useState(false);
 
   const filterColor = sortOption ? colors.white : colors.primary;

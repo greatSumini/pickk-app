@@ -12,8 +12,8 @@ import FilterProps from './props';
 import ViewButton from './view-button/index';
 
 export default function PostListFilter({postType}: FilterProps) {
-  const filterData = useFilterContext();
-  const {option} = filterData.state;
+  const filterContext = useFilterContext();
+  const {option} = filterContext.state;
 
   return (
     <Wrapper>

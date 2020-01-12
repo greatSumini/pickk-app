@@ -14,9 +14,9 @@ type ViewButtonProps = {
 };
 
 export default function ViewButton({postType}: ViewButtonProps) {
-  const filterData = useFilterContext();
-  const {view} = filterData.state;
-  const {setView} = filterData.action;
+  const filterContext = useFilterContext();
+  const {view} = filterContext.state;
+  const {setView} = filterContext.action;
 
   const ViewFilterIcon =
     view === WIDE

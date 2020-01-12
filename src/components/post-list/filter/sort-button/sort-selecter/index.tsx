@@ -15,9 +15,9 @@ const SORT_TEXT = {
 };
 
 export default function SortSelecter() {
-  const filterData = useFilterContext();
-  const {sort} = filterData.state;
-  const {setSort} = filterData.action;
+  const filterContext = useFilterContext();
+  const {sort} = filterContext.state;
+  const {setSort} = filterContext.action;
 
   return (
     <>

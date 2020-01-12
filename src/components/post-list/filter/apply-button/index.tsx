@@ -15,9 +15,9 @@ export default function ApplyButton({
   buttonText,
   setVisible,
 }: ApplyButtonProps) {
-  const filterData = useFilterContext();
-  const {tag, sort} = filterData.state;
-  const {setOption, setSortOption} = filterData.action;
+  const filterContext = useFilterContext();
+  const {tag, sort} = filterContext.state;
+  const {setOption, setSortOption} = filterContext.action;
 
   const applyHandler = () => {
     setOption(tag !== null);

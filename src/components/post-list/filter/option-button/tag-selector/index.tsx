@@ -9,9 +9,9 @@ import Space from '@src/modules/atoms/space';
 import Text from '@src/modules/atoms/text';
 
 export default function TagSelector() {
-  const filterData = useFilterContext();
-  const {tag} = filterData.state;
-  const {setTag} = filterData.action;
+  const filterContext = useFilterContext();
+  const {tag} = filterContext.state;
+  const {setTag} = filterContext.action;
 
   return (
     <>

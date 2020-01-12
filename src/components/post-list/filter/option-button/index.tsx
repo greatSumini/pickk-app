@@ -11,8 +11,8 @@ import TagSelector from '../option-button/tag-selector';
 import ApplyButton from '../apply-button';
 
 export default function OptionButton() {
-  const filterData = useFilterContext();
-  const {option} = filterData.state;
+  const filterContext = useFilterContext();
+  const {option} = filterContext.state;
   const [visible, setVisible] = useState(false);
 
   const filterColor = option ? colors.white : colors.primary;
