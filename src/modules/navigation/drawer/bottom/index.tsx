@@ -1,9 +1,8 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Modal, Animated} from 'react-native';
 import styled from 'styled-components/native';
 import {height} from '@src/constants/dimensions';
 import rem from '@src/constants/rem';
-import filterContext from '@src/context/filter';
 import Text from '@src/modules/atoms/text';
 import Space from '@src/modules/atoms/space';
 import {BottomDrawerProps} from './props';
@@ -62,7 +61,6 @@ const Content = styled.View({
   paddingHorizontal: rem(16),
   borderTopLeftRadius: rem(16),
   borderTopRightRadius: rem(16),
-  zIndex: 100,
 });
 
 const AnimatedContent = Animated.createAnimatedComponent(Content);

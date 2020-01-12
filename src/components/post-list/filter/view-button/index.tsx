@@ -1,22 +1,24 @@
-import React, {useContext} from 'react';
+import React from 'react';
 
 import NarrowLookIcon from '@src/assets/icons/narrow-look';
 import NarrowReviewIcon from '@src/assets/icons/narrow-review';
 import WideIcon from '@src/assets/icons/wide';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
-import FilterContext from '@src/context/filter';
+
+import {useFilterContext} from '@src/context/filter';
+
 import IconButton from '@src/modules/atoms/buttons/icons';
 import {WIDE, NARROW, REVIEW} from '../..';
 
 type ViewButtonProps = {
-  postType: string;
+  postType: '리뷰' | 'LOOK';
 };
 
 export default function ViewButton({postType}: ViewButtonProps) {
-  const filterData = useContext(FilterContext);
-  const {view} = filterData.state;
-  const {setView} = filterData.action;
+  const filterContext = useFilterContext();
+  const {view} = filterContext.state;
+  const {setView} = filterContext.action;
 
   const ViewFilterIcon =
     view === WIDE

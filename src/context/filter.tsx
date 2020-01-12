@@ -1,23 +1,23 @@
-import {createContext} from 'react';
+import {createContext, useContext} from 'react';
 
 import {REVIEW} from '@src/components/post-list/index';
 
 const FilterContext = createContext({
   state: {
-    tag: undefined,
+    tag: null,
     pick: 0,
-    sort: undefined,
+    sort: null,
     view: REVIEW,
     option: false,
     sortOption: false,
   },
   action: {
-    setTag: tag => {},
-    setPick: pick => {},
-    setSort: sort => {},
-    setView: view => {},
-    setOption: options => {},
-    setSortOption: sortOption => {},
+    setTag: null,
+    setPick: null,
+    setSort: null,
+    setView: null,
+    setOption: null,
+    setSortOption: null,
   },
 });
 
@@ -61,5 +61,7 @@ export const SortContext = createContext({
     setSort: null,
   },
 });
+
+export const useFilterContext = () => useContext(FilterContext);
 
 export default FilterContext;

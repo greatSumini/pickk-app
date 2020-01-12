@@ -1,9 +1,12 @@
-import React, {useContext} from 'react';
+import React from 'react';
+
 import styled from 'styled-components/native';
 
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
-import FilterContext from '@src/context/filter';
+
+import {useFilterContext} from '@src/context/filter';
+
 import Space from '@src/modules/atoms/space';
 import SortButton from './sort-button';
 import MinPickButton from './min-pick-button';
@@ -12,8 +15,8 @@ import FilterProps from './props';
 import ViewButton from './view-button/index';
 
 export default function PostListFilter({postType}: FilterProps) {
-  const filterData = useContext(FilterContext);
-  const {option} = filterData.state;
+  const filterContext = useFilterContext();
+  const {option} = filterContext.state;
 
   return (
     <Wrapper>

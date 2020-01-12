@@ -1,9 +1,10 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 
 import SortIcon from '@src/assets/icons/sort';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
-import FilterContext from '@src/context/filter';
+
+import {useFilterContext} from '@src/context/filter';
 import IconText from '@src/modules/molecules/icon-text';
 import BottomDrawer from '@src/modules/navigation/drawer/bottom';
 import SortSelecter from './sort-selecter';
@@ -11,8 +12,8 @@ import ApplyButton from '../apply-button';
 import {FilterItem} from '../option-button';
 
 export default function SortButton() {
-  const filterData = useContext(FilterContext);
-  const {sortOption} = filterData.state;
+  const filterContext = useFilterContext();
+  const {sortOption} = filterContext.state;
   const [visible, setVisible] = useState(false);
 
   const filterColor = sortOption ? colors.white : colors.primary;
