@@ -22,14 +22,14 @@ export default function CategorySelector({setVisible}) {
   };
 
   if (itemCate[minorType]) {
-    return itemCate[minorType].map((v, i) => (
+    return itemCate[minorType].map((item, index) => (
       <DrawerItem
-        key={i}
-        selected={finalType === v}
+        key={index}
+        selected={finalType === item}
         onPress={() => {
-          handleChange(v);
+          handleChange(item);
         }}>
-        {itemCateEnToKo[v]}
+        {itemCateEnToKo[item]}
       </DrawerItem>
     ));
   } else {

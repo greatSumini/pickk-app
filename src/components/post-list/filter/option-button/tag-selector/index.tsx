@@ -16,9 +16,9 @@ export default function TagSelector() {
   return (
     <>
       <Wrapper>
-        {tagList.map((v, i) => (
-          <React.Fragment key={i}>
-            <TagButton {...{tag, setTag, v}} />
+        {tagList.map((item, index) => (
+          <React.Fragment key={index}>
+            <TagButton {...{tag, setTag, item}} />
             <Space direction="ROW" />
           </React.Fragment>
         ))}
@@ -28,15 +28,15 @@ export default function TagSelector() {
   );
 }
 
-function TagButton({tag, v, setTag}) {
+function TagButton({tag, item, setTag}) {
   return (
     <Touchable
-      selected={tag === v}
+      selected={tag === item}
       onPress={() => {
-        setTag(tag === v ? null : v);
+        setTag(tag === item ? null : item);
       }}>
-      <Text color={tag === v ? colors.white : colors.secondary} level={1}>
-        {'#' + tagEnToKo[v]}
+      <Text color={tag === item ? colors.white : colors.secondary} level={1}>
+        {'#' + tagEnToKo[item]}
       </Text>
     </Touchable>
   );

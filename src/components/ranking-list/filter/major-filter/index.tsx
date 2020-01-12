@@ -38,15 +38,15 @@ export default function MajorFilter() {
 
   return (
     <Wrapper>
-      {MAJOR_CATE.map((v, i) => (
+      {MAJOR_CATE.map((item, index) => (
         <MajorCateNode
-          key={i}
-          Icon={v.icon}
-          width={v.iconWidth}
-          height={v.iconHeight}
-          name={v.name}
+          key={index}
+          Icon={item.icon}
+          width={item.iconWidth}
+          height={item.iconHeight}
+          name={item.name}
           onPress={() => {
-            handleChange(v.name);
+            handleChange(item.name);
           }}
         />
       ))}

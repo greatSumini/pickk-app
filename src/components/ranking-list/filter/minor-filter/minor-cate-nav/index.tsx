@@ -43,14 +43,14 @@ export default function MinorCateNav() {
 }
 
 const getCateNames = (minor, onChange, names: string[]) =>
-  names.map((value, i) => (
-    <Touchable key={i} onPress={() => onChange(value)}>
+  names.map((item, index) => (
+    <Touchable key={index} onPress={() => onChange(item)}>
       <CateNameWrapper>
         <CateName
           level={1}
-          color={value === minor ? '#333' : '#b9b9ba'}
+          color={item === minor ? '#333' : '#b9b9ba'}
           fontWeight={500}>
-          {itemCateEnToKo[value]}
+          {itemCateEnToKo[item]}
         </CateName>
       </CateNameWrapper>
     </Touchable>
