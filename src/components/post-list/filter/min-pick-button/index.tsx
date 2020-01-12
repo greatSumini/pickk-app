@@ -21,7 +21,7 @@ export default function MinPickButton() {
   const onOffText = pick === 0 ? 'OFF' : 'ON';
 
   const minPickHandler = () => {
-    setPick(pick === 0 ? 10 : 0);
+    setPick(10 - pick);
   };
 
   return (

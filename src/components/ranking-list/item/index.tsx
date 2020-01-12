@@ -17,7 +17,7 @@ export default function Item(props: ItemProps) {
 
   const {networkStatus, loading, error, data} = useQuery(GET_SHORT_REVIEW, {
     variables: {
-      id: id,
+      id,
     },
   });
   if (error) {
