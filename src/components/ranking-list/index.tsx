@@ -3,6 +3,7 @@ import {Animated, BackHandler} from 'react-native';
 import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 
+import Search from '@src/assets/icons/search';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
 import {
@@ -12,7 +13,6 @@ import {
 } from '@src/context/filter';
 import ScrollList from '@src/modules/list/scroll';
 import Header from '@src/modules/header/ranking-list/';
-import Search from '@src/assets/icons/search';
 import Item from './item/index';
 import {width} from '@src/constants/dimensions';
 
