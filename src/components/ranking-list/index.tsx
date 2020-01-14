@@ -113,6 +113,12 @@ export default function RankingListScreen(props) {
       setFinal('ALL');
       setSortBy('rankScore');
       setSort('DESC');
+      setPriceOption(false);
+      setOption(false);
+      minPrice.setValue(MIN_PRICE);
+      maxPrice.setValue(MAX_PRICE);
+      setMinState(0);
+      setMaxState(SIZE - DIM);
       return true;
     }
   };

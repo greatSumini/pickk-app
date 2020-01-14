@@ -4,32 +4,61 @@ import styled from 'styled-components/native';
 import ChevronLeft from '@src/assets/icons/chevron/left';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
-import {useItemFilterContext, useSortContext} from '@src/context/filter';
+import {
+  useItemFilterContext,
+  useSortContext,
+  useRankFilterDrawerContext,
+} from '@src/context/filter';
 import {itemCateEnToKo, itemCate} from '@src/data/item';
 import Text from '@src/modules/atoms/text';
 import IconButton from '@src/modules/atoms/buttons/icons';
+import {MIN_PRICE, MAX_PRICE, SIZE, DIM} from '@src/components/ranking-list';
 
 export default function MinorCateNav() {
   const itemFilterContext = useItemFilterContext();
   const sortContext = useSortContext();
+  const rankFilterDrawerContext = useRankFilterDrawerContext();
+
   const {
     setItemMinorType,
     setItemMajorType,
     setItemFinalType,
   } = itemFilterContext.action;
   const {itemMinorType, itemMajorType} = itemFilterContext.state;
-  const {setSort} = sortContext.action;
+  const {setSort, setSortBy} = sortContext.action;
+  const {minPrice, maxPrice} = rankFilterDrawerContext.state;
+  const {
+    setOption,
+    setPriceOption,
+    setMaxState,
+    setMinState,
+  } = rankFilterDrawerContext.action;
 
   const goBack = () => {
     setItemMajorType('ALL');
     setItemMinorType('ALL');
     setItemFinalType('ALL');
-    setSort('rankScore');
+    setSortBy('rankScore');
+    setSort('DESC');
+    minPrice.setValue(MIN_PRICE);
+    maxPrice.setValue(MAX_PRICE);
+    setOption(false);
+    setPriceOption(false);
+    setMinState(0);
+    setMaxState(SIZE - DIM);
   };
 
   const handleChange = value => {
     setItemMinorType(value);
     setItemFinalType('ALL');
+    setSortBy('rankScore');
+    setSort('DESC');
+    minPrice.setValue(MIN_PRICE);
+    maxPrice.setValue(MAX_PRICE);
+    setOption(false);
+    setPriceOption(false);
+    setMinState(0);
+    setMaxState(SIZE - DIM);
   };
 
   return (
