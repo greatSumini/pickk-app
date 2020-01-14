@@ -5,7 +5,7 @@ import Heart from '@src/assets/icons/heart';
 import Star from '@src/assets/icons/star';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
-import {priceHandler} from '@src/lib/utils/price-parser';
+import {addCommaToNumber} from '@src/lib/utils/price-parser';
 import {addSizeToImagePath, ImageSize} from '@src/lib/utils/image-size-parser';
 import IconButton from '@src/modules/atoms/buttons/icons/index';
 import Image from '@src/modules/atoms/img';
@@ -120,13 +120,13 @@ const PriceConatiner = (salePrice: number, originalPrice: number) => {
     return (
       <PriceWrapper>
         <Text level={2} color={colors.primary}>
-          {priceHandler(salePrice)}
+          {addCommaToNumber(salePrice)}
         </Text>
         <Space direction="ROW" />
         <Text
           style={{textDecorationLine: 'line-through'}}
           color={colors.secondary}>
-          {priceHandler(originalPrice)}
+          {addCommaToNumber(originalPrice)}
         </Text>
         <Space direction="ROW" />
         <Text level={2} color={colors.salePercent}>{`${salePercent.toFixed(
@@ -137,7 +137,7 @@ const PriceConatiner = (salePrice: number, originalPrice: number) => {
   } else {
     return (
       <Text level={2} color={colors.primary}>
-        {priceHandler(originalPrice)}
+        {addCommaToNumber(originalPrice)}
       </Text>
     );
   }
