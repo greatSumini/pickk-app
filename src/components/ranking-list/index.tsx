@@ -14,6 +14,13 @@ import ScrollList from '@src/modules/list/scroll';
 import Header from '@src/modules/header/ranking-list/';
 import Search from '@src/assets/icons/search';
 import Item from './item/index';
+import {width} from '@src/constants/dimensions';
+
+export const PADDING = rem(16);
+export const SIZE = width - 2 * PADDING;
+export const DIM = rem(20);
+export const MIN_PRICE = 10000;
+export const MAX_PRICE = 1000000;
 
 const HEADER_MAX_HEIGHT = rem(126);
 const HEADER_MIN_HEIGHT = rem(108);
@@ -25,10 +32,17 @@ export default function RankingListScreen(props) {
   const [major, setMajor] = useState('ALL');
   const [minor, setMinor] = useState('ALL');
   const [final, setFinal] = useState('ALL');
-  const [minPrice, setMinPrice] = useState();
-  const [maxPrice, setMaxPrice] = useState();
   const [priceOption, setPriceOption] = useState(false);
   const [sort, setSort] = useState('rankScore');
+  const [minPrice] = useState(new Animated.Value(MIN_PRICE));
+  const [maxPrice] = useState(new Animated.Value(MAX_PRICE));
+  const [minState, setMinState] = useState(0);
+  const [maxState, setMaxState] = useState(SIZE - DIM);
+  const [option, setOption] = useState(false);
+  const minimumPrice =
+    priceOption && option ? (minPrice as any)._value : MIN_PRICE;
+  const maximumPrice =
+    priceOption && option ? (maxPrice as any)._value : MAX_PRICE;
 
   const sortStore = {
     state: {
@@ -56,12 +70,16 @@ export default function RankingListScreen(props) {
     state: {
       minPrice,
       maxPrice,
+      minState,
+      maxState,
       priceOption,
+      option,
     },
     action: {
-      setMinPrice,
-      setMaxPrice,
+      setMinState,
+      setMaxState,
       setPriceOption,
+      setOption,
     },
   };
 
@@ -121,7 +139,12 @@ export default function RankingListScreen(props) {
               onScroll={Animated.event([
                 {nativeEvent: {contentOffset: {y: scrollY}}},
               ])}
-              filter={{...itemFilterStore.state, sort}}
+              filter={{
+                ...itemFilterStore.state,
+                sort,
+                minimumPrice,
+                maximumPrice,
+              }}
             />
           </SortContext.Provider>
         </RankFilterDrawerContext.Provider>
@@ -142,6 +165,8 @@ const GET_ITEM_RANKING = gql`
     $itemMajorType: ItemMajorType!
     $itemMinorType: ItemMinorType!
     $itemFinalType: ItemFinalType!
+    $minimumPrice: Int
+    $maximumPrice: Int
   ) {
     getItemRanking(
       itemRankingOption: {
@@ -149,6 +174,8 @@ const GET_ITEM_RANKING = gql`
         itemMinorType: $itemMinorType
         itemFinalType: $itemFinalType
         filterGeneral: {start: $start, first: $first, sortBy: $sort}
+        minimumPrice: $minimumPrice
+        maximumPrice: $maximumPrice
       }
     ) {
       brandId

@@ -40,12 +40,16 @@ export const RankFilterDrawerContext = createContext({
   state: {
     minPrice: null,
     maxPrice: null,
+    minState: null,
+    maxState: null,
     priceOption: null,
+    option: null,
   },
   action: {
-    setMinPrice: null,
-    setMaxPrice: null,
+    setMinState: null,
+    setMaxState: null,
     setPriceOption: null,
+    setOption: null,
   },
 });
 export const useRankFilterDrawerContext = () =>
