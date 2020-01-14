@@ -33,7 +33,8 @@ export default function RankingListScreen(props) {
   const [minor, setMinor] = useState('ALL');
   const [final, setFinal] = useState('ALL');
   const [priceOption, setPriceOption] = useState(false);
-  const [sort, setSort] = useState('rankScore');
+  const [sortBy, setSortBy] = useState('rankScore');
+  const [sort, setSort] = useState('DESC');
   const [minPrice] = useState(new Animated.Value(MIN_PRICE));
   const [maxPrice] = useState(new Animated.Value(MAX_PRICE));
   const [minState, setMinState] = useState(0);
@@ -47,9 +48,11 @@ export default function RankingListScreen(props) {
   const sortStore = {
     state: {
       sort,
+      sortBy,
     },
     action: {
       setSort,
+      setSortBy,
     },
   };
 
@@ -108,7 +111,8 @@ export default function RankingListScreen(props) {
       setMajor('ALL');
       setMinor('ALL');
       setFinal('ALL');
-      setSort('rankScore');
+      setSortBy('rankScore');
+      setSort('DESC');
       return true;
     }
   };
@@ -141,6 +145,7 @@ export default function RankingListScreen(props) {
               ])}
               filter={{
                 ...itemFilterStore.state,
+                sortBy,
                 sort,
                 minimumPrice,
                 maximumPrice,
@@ -161,7 +166,8 @@ const GET_ITEM_RANKING = gql`
   query getItemRanking(
     $start: Int!
     $first: Int!
-    $sort: ItemRankingSortableField!
+    $sort: SortDirection
+    $sortBy: ItemRankingSortableField!
     $itemMajorType: ItemMajorType!
     $itemMinorType: ItemMinorType!
     $itemFinalType: ItemFinalType!
@@ -173,7 +179,12 @@ const GET_ITEM_RANKING = gql`
         itemMajorType: $itemMajorType
         itemMinorType: $itemMinorType
         itemFinalType: $itemFinalType
-        filterGeneral: {start: $start, first: $first, sortBy: $sort}
+        filterGeneral: {
+          start: $start
+          first: $first
+          sortBy: $sortBy
+          sort: $sort
+        }
         minimumPrice: $minimumPrice
         maximumPrice: $maximumPrice
       }
