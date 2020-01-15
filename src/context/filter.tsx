@@ -38,8 +38,8 @@ export const useItemFilterContext = () => useContext(ItemFilterContext);
 
 export const RankFilterDrawerContext = createContext({
   state: {
-    minPrice: null,
-    maxPrice: null,
+    minimumPrice: null,
+    maximumPrice: null,
     minState: null,
     maxState: null,
     priceOption: null,

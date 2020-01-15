@@ -8,27 +8,27 @@ import {MIN_PRICE} from '@src/components/ranking-list';
 
 export default function PriceData() {
   const rankFilterDrawerContext = useRankFilterDrawerContext();
-  const {minPrice, maxPrice} = rankFilterDrawerContext.state;
+  const {minimumPrice, maximumPrice} = rankFilterDrawerContext.state;
 
-  const minPriceHandler = () => {
-    const result = addCommaToNumber((minPrice as any)._value);
+  const minimumPriceHandler = () => {
+    const result = addCommaToNumber((minimumPrice as any)._value);
     if (result === null) {
       return addCommaToNumber(MIN_PRICE);
     }
     return result;
   };
 
-  const maxPriceHandler = () => {
-    return addCommaToNumber((maxPrice as any)._value);
+  const maximumPriceHandler = () => {
+    return addCommaToNumber((maximumPrice as any)._value);
   };
 
   return (
     <Wrapper>
       <Text level={3} fontWeight="bold">
-        {minPriceHandler() + ' ~ '}
+        {minimumPriceHandler() + ' ~ '}
       </Text>
       <Text level={3} fontWeight="bold">
-        {maxPriceHandler()}
+        {maximumPriceHandler()}
       </Text>
     </Wrapper>
   );

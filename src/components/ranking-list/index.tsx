@@ -39,15 +39,16 @@ export default function RankingListScreen() {
   const [final, setFinal] = useState('ALL');
   const [priceOption, setPriceOption] = useState(false);
   const [sortOptions, setSortOptions] = useState(DEFAULT_SORT_OPTION);
-  const [minPrice] = useState(new Animated.Value(MIN_PRICE));
-  const [maxPrice] = useState(new Animated.Value(MAX_PRICE));
+  const [minimumPrice] = useState(new Animated.Value(MIN_PRICE));
+  const [maximumPrice] = useState(new Animated.Value(MAX_PRICE));
   const [minState, setMinState] = useState(0);
   const [maxState, setMaxState] = useState(SIZE - DIM);
   const [option, setOption] = useState(false);
-  const minimumPrice =
-    priceOption && option ? (minPrice as any)._value : MIN_PRICE;
-  const maximumPrice =
-    priceOption && option ? (maxPrice as any)._value : MAX_PRICE;
+
+  const selectedMinimumPrice =
+    priceOption && option ? (minimumPrice as any)._value : MIN_PRICE;
+  const selectedMaximumPrice =
+    priceOption && option ? (maximumPrice as any)._value : MAX_PRICE;
 
   const sortStore = {
     state: {
@@ -73,8 +74,8 @@ export default function RankingListScreen() {
 
   const categoryDrawerStore = {
     state: {
-      minPrice,
-      maxPrice,
+      minimumPrice,
+      maximumPrice,
       minState,
       maxState,
       priceOption,
@@ -116,8 +117,8 @@ export default function RankingListScreen() {
       setSortOptions(DEFAULT_SORT_OPTION);
       setPriceOption(false);
       setOption(false);
-      minPrice.setValue(MIN_PRICE);
-      maxPrice.setValue(MAX_PRICE);
+      minimumPrice.setValue(MIN_PRICE);
+      maximumPrice.setValue(MAX_PRICE);
       setMinState(0);
       setMaxState(SIZE - DIM);
       return true;
@@ -154,8 +155,8 @@ export default function RankingListScreen() {
                 ...itemFilterStore.state,
                 sortBy: sortOptions.sortBy,
                 sort: sortOptions.sort,
-                minimumPrice,
-                maximumPrice,
+                minimumPrice: selectedMinimumPrice,
+                maximumPrice: selectedMaximumPrice,
               }}
             />
           </SortContext.Provider>

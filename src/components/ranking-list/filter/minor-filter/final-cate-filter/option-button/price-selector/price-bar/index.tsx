@@ -22,8 +22,8 @@ const LENGTH = Math.floor(SIZE - DIM);
 export default function PriceBar() {
   const rankFilterDrawerContext = useRankFilterDrawerContext();
   const {
-    minPrice,
-    maxPrice,
+    minimumPrice,
+    maximumPrice,
     minState,
     maxState,
   } = rankFilterDrawerContext.state;
@@ -39,7 +39,7 @@ export default function PriceBar() {
       maxPosition.setValue(maxState);
       width.setValue(maxState - minState + DIM);
     }
-  }, [minState, maxState, minPrice, maxPrice]);
+  }, [minState, maxState, minimumPrice, maximumPrice]);
 
   const priceHandler = (value: number) => {
     const priceTotal = MAX_PRICE - MIN_PRICE;
@@ -56,7 +56,7 @@ export default function PriceBar() {
       if (value < maxPositionValue) {
         minPosition.setValue(value);
         width.setValue(maxPositionValue - value + DIM);
-        minPrice.setValue(priceHandler(proportion));
+        minimumPrice.setValue(priceHandler(proportion));
       }
     }
   };
@@ -82,7 +82,7 @@ export default function PriceBar() {
       if (minPositionValue < value) {
         maxPosition.setValue(value);
         width.setValue(value - minPositionValue + DIM);
-        maxPrice.setValue(priceHandler(proportion));
+        maximumPrice.setValue(priceHandler(proportion));
       }
     }
   };

@@ -15,7 +15,7 @@ export default function ApplyButton({setVisible}) {
   const itemFilterContext = useItemFilterContext();
   const rankFilterDrawerContext = useRankFilterDrawerContext();
   const {itemFinalType, itemMajorType, itemMinorType} = itemFilterContext.state;
-  const {minPrice, maxPrice} = rankFilterDrawerContext.state;
+  const {minimumPrice, maximumPrice} = rankFilterDrawerContext.state;
   const {setPriceOption, setOption} = rankFilterDrawerContext.action;
 
   const {loading, error, data} = useQuery(GET_ITEMRANK_META, {
@@ -23,8 +23,8 @@ export default function ApplyButton({setVisible}) {
       itemFinalType,
       itemMajorType,
       itemMinorType,
-      minimumPrice: (minPrice as any)._value,
-      maximumPrice: (maxPrice as any)._value,
+      minimumPrice: (minimumPrice as any)._value,
+      maximumPrice: (maximumPrice as any)._value,
     },
   });
   if (error) {

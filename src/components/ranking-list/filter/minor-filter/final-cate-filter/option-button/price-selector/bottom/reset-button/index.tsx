@@ -11,7 +11,7 @@ const ICON_SIZE = rem(12);
 
 export default function ResetButton() {
   const rankFilterDrawerContext = useRankFilterDrawerContext();
-  const {minPrice, maxPrice} = rankFilterDrawerContext.state;
+  const {minimumPrice, maximumPrice} = rankFilterDrawerContext.state;
   const {
     setMaxState,
     setMinState,
@@ -19,8 +19,8 @@ export default function ResetButton() {
   } = rankFilterDrawerContext.action;
 
   const initPriceOption = () => {
-    maxPrice.setValue(MAX_PRICE);
-    minPrice.setValue(MIN_PRICE);
+    maximumPrice.setValue(MAX_PRICE);
+    minimumPrice.setValue(MIN_PRICE);
     setMaxState(SIZE - DIM);
     setMinState(0);
     setPriceOption(false);
