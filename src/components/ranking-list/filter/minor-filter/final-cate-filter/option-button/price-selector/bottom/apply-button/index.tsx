@@ -37,14 +37,16 @@ export default function ApplyButton({setVisible}) {
       </Wrapper>
     );
   }
+
+  const handleDrawerClose = () => {
+    setPriceOption(true);
+    setOption(true);
+    setVisible(false);
+  };
+
   return (
     <Wrapper>
-      <Touchable
-        onPress={() => {
-          setPriceOption(true);
-          setOption(true);
-          setVisible(false);
-        }}>
+      <Touchable onPress={handleDrawerClose}>
         <Text
           color={colors.white}
           level={1}>{`${data._getItemRankingMetadata}개의 상품 보기`}</Text>
