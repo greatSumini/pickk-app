@@ -12,10 +12,7 @@ export default function PriceData() {
 
   const minimumPriceHandler = () => {
     const result = addCommaToNumber((minimumPrice as any)._value);
-    if (result === null) {
-      return addCommaToNumber(MIN_PRICE);
-    }
-    return result;
+    return result || addCommaToNumber(MIN_PRICE);
   };
 
   const maximumPriceHandler = () => {

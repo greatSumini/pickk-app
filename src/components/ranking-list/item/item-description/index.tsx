@@ -115,30 +115,27 @@ const Brand = styled(Text)({});
 const Name = styled(Text)({});
 
 const PriceConatiner = (salePrice: number, originalPrice: number) => {
-  if (salePrice) {
-    const salePercent = 100 - (salePrice / originalPrice) * 100;
-    return (
-      <PriceWrapper>
-        <Text level={2} color={colors.primary}>
-          {addCommaToNumber(salePrice)}
-        </Text>
-        <Space direction="ROW" />
-        <Text
-          style={{textDecorationLine: 'line-through'}}
-          color={colors.secondary}>
-          {addCommaToNumber(originalPrice)}
-        </Text>
-        <Space direction="ROW" />
-        <Text level={2} color={colors.salePercent}>{`${salePercent.toFixed(
-          1,
-        )}%`}</Text>
-      </PriceWrapper>
-    );
-  } else {
-    return (
+  const salePercent = (100 - (salePrice / originalPrice) * 100).toFixed(1);
+
+  return (
+    <PriceWrapper>
       <Text level={2} color={colors.primary}>
-        {addCommaToNumber(originalPrice)}
+        {addCommaToNumber(salePrice ? salePrice : originalPrice)}
       </Text>
-    );
-  }
+      {salePrice && (
+        <>
+          <Space direction="ROW" />
+          <Text
+            style={{textDecorationLine: 'line-through'}}
+            color={colors.secondary}>
+            {addCommaToNumber(originalPrice)}
+          </Text>
+          <Space direction="ROW" />
+          <Text level={2} color={colors.salePercent}>
+            {salePercent + '%'}
+          </Text>
+        </>
+      )}
+    </PriceWrapper>
+  );
 };

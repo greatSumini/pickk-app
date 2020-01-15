@@ -7,8 +7,5 @@ export const addCommaToNumber = (num: number) => {
     if ((numString.length - i - 1) % 3 == 0) result += ',';
   }
   result += numString[i];
-  if (result === '0') {
-    return null;
-  }
-  return result;
+  return result !== '0' && result;
 };
