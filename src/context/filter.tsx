@@ -57,13 +57,13 @@ export const useRankFilterDrawerContext = () =>
 
 export const SortContext = createContext({
   state: {
-    sortOptions: {
+    sortOption: {
       sort: null,
       sortBy: null,
     },
   },
   action: {
-    setSortOptions: null,
+    setSortOption: null,
   },
 });
 export const useSortContext = () => useContext(SortContext);

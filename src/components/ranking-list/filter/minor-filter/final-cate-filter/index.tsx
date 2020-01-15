@@ -14,8 +14,8 @@ import OptionButton from './option-button';
 export default function FinalCateFilter() {
   const sortContext = useSortContext();
   const itemFilterContext = useItemFilterContext();
-  const {sortOptions} = sortContext.state;
-  const {setSortOptions} = sortContext.action;
+  const {sortOption} = sortContext.state;
+  const {setSortOption} = sortContext.action;
   const {itemMinorType} = itemFilterContext.state;
 
   const sortItems = [
@@ -43,7 +43,7 @@ export default function FinalCateFilter() {
         }}
         useNativeAndroidPickerStyle={false}
         onValueChange={value => {
-          setSortOptions(value);
+          setSortOption(value);
         }}
         items={sortItems}
         style={{
@@ -62,7 +62,7 @@ export default function FinalCateFilter() {
             top: rem(13),
           },
         }}
-        value={sortOptions}
+        value={sortOption}
         Icon={() => {
           return (
             <ChevronDown

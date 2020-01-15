@@ -31,7 +31,7 @@ export default function MinorCateNav() {
     setItemFinalType,
   } = itemFilterContext.action;
   const {itemMinorType, itemMajorType} = itemFilterContext.state;
-  const {setSortOptions} = sortContext.action;
+  const {setSortOption} = sortContext.action;
   const {minimumPrice, maximumPrice} = rankFilterDrawerContext.state;
   const {
     setOption,
@@ -42,7 +42,7 @@ export default function MinorCateNav() {
 
   const initializeCommonStates = () => {
     setItemFinalType('ALL');
-    setSortOptions(DEFAULT_SORT_OPTION);
+    setSortOption(DEFAULT_SORT_OPTION);
     minimumPrice.setValue(MIN_PRICE);
     maximumPrice.setValue(MAX_PRICE);
     setOption(false);

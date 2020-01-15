@@ -38,7 +38,7 @@ export default function RankingListScreen() {
   const [minor, setMinor] = useState('ALL');
   const [final, setFinal] = useState('ALL');
   const [priceOption, setPriceOption] = useState(false);
-  const [sortOptions, setSortOptions] = useState(DEFAULT_SORT_OPTION);
+  const [sortOption, setSortOption] = useState(DEFAULT_SORT_OPTION);
   const [minimumPrice] = useState(new Animated.Value(MIN_PRICE));
   const [maximumPrice] = useState(new Animated.Value(MAX_PRICE));
   const [minState, setMinState] = useState(0);
@@ -52,10 +52,10 @@ export default function RankingListScreen() {
 
   const sortStore = {
     state: {
-      sortOptions,
+      sortOption,
     },
     action: {
-      setSortOptions,
+      setSortOption,
     },
   };
 
@@ -111,7 +111,7 @@ export default function RankingListScreen() {
     setMajor('ALL');
     setMinor('ALL');
     setFinal('ALL');
-    setSortOptions(DEFAULT_SORT_OPTION);
+    setSortOption(DEFAULT_SORT_OPTION);
     minimumPrice.setValue(MIN_PRICE);
     maximumPrice.setValue(MAX_PRICE);
     setOption(false);
@@ -157,8 +157,8 @@ export default function RankingListScreen() {
               ])}
               filter={{
                 ...itemFilterStore.state,
-                sortBy: sortOptions.sortBy,
-                sort: sortOptions.sort,
+                sortBy: sortOption.sortBy,
+                sort: sortOption.sort,
                 minimumPrice: selectedMinimumPrice,
                 maximumPrice: selectedMaximumPrice,
               }}
