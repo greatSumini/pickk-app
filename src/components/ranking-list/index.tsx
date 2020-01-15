@@ -22,19 +22,23 @@ export const DIM = rem(20);
 export const MIN_PRICE = 10000;
 export const MAX_PRICE = 1000000;
 
+export const DEFAULT_SORT_OPTION = {
+  sort: 'DESC',
+  sortBy: 'rankScore',
+};
+
 const HEADER_MAX_HEIGHT = rem(126);
 const HEADER_MIN_HEIGHT = rem(108);
 
 const icons = [{Icon: Search, fill: colors.primary}];
 
-export default function RankingListScreen(props) {
+export default function RankingListScreen() {
   const [scrollY] = useState(new Animated.Value(0));
   const [major, setMajor] = useState('ALL');
   const [minor, setMinor] = useState('ALL');
   const [final, setFinal] = useState('ALL');
   const [priceOption, setPriceOption] = useState(false);
-  const [sortBy, setSortBy] = useState('rankScore');
-  const [sort, setSort] = useState('DESC');
+  const [sortOptions, setSortOptions] = useState(DEFAULT_SORT_OPTION);
   const [minPrice] = useState(new Animated.Value(MIN_PRICE));
   const [maxPrice] = useState(new Animated.Value(MAX_PRICE));
   const [minState, setMinState] = useState(0);
@@ -47,12 +51,10 @@ export default function RankingListScreen(props) {
 
   const sortStore = {
     state: {
-      sort,
-      sortBy,
+      sortOptions,
     },
     action: {
-      setSort,
-      setSortBy,
+      setSortOptions,
     },
   };
 
@@ -111,8 +113,7 @@ export default function RankingListScreen(props) {
       setMajor('ALL');
       setMinor('ALL');
       setFinal('ALL');
-      setSortBy('rankScore');
-      setSort('DESC');
+      setSortOptions(DEFAULT_SORT_OPTION);
       setPriceOption(false);
       setOption(false);
       minPrice.setValue(MIN_PRICE);
@@ -151,8 +152,8 @@ export default function RankingListScreen(props) {
               ])}
               filter={{
                 ...itemFilterStore.state,
-                sortBy,
-                sort,
+                sortBy: sortOptions.sortBy,
+                sort: sortOptions.sort,
                 minimumPrice,
                 maximumPrice,
               }}

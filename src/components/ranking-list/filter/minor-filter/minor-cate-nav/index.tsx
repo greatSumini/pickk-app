@@ -12,7 +12,13 @@ import {
 import {itemCateEnToKo, itemCate} from '@src/data/item';
 import Text from '@src/modules/atoms/text';
 import IconButton from '@src/modules/atoms/buttons/icons';
-import {MIN_PRICE, MAX_PRICE, SIZE, DIM} from '@src/components/ranking-list';
+import {
+  MIN_PRICE,
+  MAX_PRICE,
+  SIZE,
+  DIM,
+  DEFAULT_SORT_OPTION,
+} from '@src/components/ranking-list';
 
 export default function MinorCateNav() {
   const itemFilterContext = useItemFilterContext();
@@ -25,7 +31,7 @@ export default function MinorCateNav() {
     setItemFinalType,
   } = itemFilterContext.action;
   const {itemMinorType, itemMajorType} = itemFilterContext.state;
-  const {setSort, setSortBy} = sortContext.action;
+  const {setSortOptions} = sortContext.action;
   const {minPrice, maxPrice} = rankFilterDrawerContext.state;
   const {
     setOption,
@@ -38,8 +44,7 @@ export default function MinorCateNav() {
     setItemMajorType('ALL');
     setItemMinorType('ALL');
     setItemFinalType('ALL');
-    setSortBy('rankScore');
-    setSort('DESC');
+    setSortOptions(DEFAULT_SORT_OPTION);
     minPrice.setValue(MIN_PRICE);
     maxPrice.setValue(MAX_PRICE);
     setOption(false);
@@ -51,8 +56,7 @@ export default function MinorCateNav() {
   const handleChange = value => {
     setItemMinorType(value);
     setItemFinalType('ALL');
-    setSortBy('rankScore');
-    setSort('DESC');
+    setSortOptions(DEFAULT_SORT_OPTION);
     minPrice.setValue(MIN_PRICE);
     maxPrice.setValue(MAX_PRICE);
     setOption(false);
