@@ -6,60 +6,33 @@ import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
 import {
   useItemFilterContext,
-  useSortContext,
-  useRankFilterDrawerContext,
+  useInitailizeCommonStatesContext,
 } from '@src/context/filter';
 import {itemCateEnToKo, itemCate} from '@src/data/item';
 import Text from '@src/modules/atoms/text';
 import IconButton from '@src/modules/atoms/buttons/icons';
-import {
-  MIN_PRICE,
-  MAX_PRICE,
-  SIZE,
-  DIM,
-  DEFAULT_SORT_OPTION,
-} from '@src/components/ranking-list';
 
 export default function MinorCateNav() {
   const itemFilterContext = useItemFilterContext();
-  const sortContext = useSortContext();
-  const rankFilterDrawerContext = useRankFilterDrawerContext();
-
   const {
     setItemMinorType,
     setItemMajorType,
     setItemFinalType,
   } = itemFilterContext.action;
   const {itemMinorType, itemMajorType} = itemFilterContext.state;
-  const {setSortOption} = sortContext.action;
-  const {minimumPrice, maximumPrice} = rankFilterDrawerContext.state;
-  const {
-    setOption,
-    setPriceOption,
-    setMaxState,
-    setMinState,
-  } = rankFilterDrawerContext.action;
-
-  const initializeCommonStates = () => {
-    setItemFinalType('ALL');
-    setSortOption(DEFAULT_SORT_OPTION);
-    minimumPrice.setValue(MIN_PRICE);
-    maximumPrice.setValue(MAX_PRICE);
-    setOption(false);
-    setPriceOption(false);
-    setMinState(0);
-    setMaxState(SIZE - DIM);
-  };
+  const {initailizeCommonStates} = useInitailizeCommonStatesContext();
 
   const goBack = () => {
     setItemMajorType('ALL');
     setItemMinorType('ALL');
-    initializeCommonStates();
+    setItemFinalType('ALL');
+    initailizeCommonStates();
   };
 
   const handleChange = value => {
     setItemMinorType(value);
-    initializeCommonStates();
+    setItemFinalType('ALL');
+    initailizeCommonStates();
   };
 
   return (

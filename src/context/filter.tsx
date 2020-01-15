@@ -68,4 +68,10 @@ export const SortContext = createContext({
 });
 export const useSortContext = () => useContext(SortContext);
 
+export const InitailizeCommonStatesContext = createContext({
+  initailizeCommonStates: () => {},
+});
+export const useInitailizeCommonStatesContext = () =>
+  useContext(InitailizeCommonStatesContext);
+
 export default FilterContext;

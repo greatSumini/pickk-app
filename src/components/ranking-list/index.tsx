@@ -10,6 +10,7 @@ import {
   ItemFilterContext,
   RankFilterDrawerContext,
   SortContext,
+  InitailizeCommonStatesContext,
 } from '@src/context/filter';
 import ScrollList from '@src/modules/list/scroll';
 import Header from '@src/modules/header/ranking-list/';
@@ -89,6 +90,18 @@ export default function RankingListScreen() {
     },
   };
 
+  const initializeCommonStatesStore = {
+    initailizeCommonStates: () => {
+      setSortOption(DEFAULT_SORT_OPTION);
+      minimumPrice.setValue(MIN_PRICE);
+      maximumPrice.setValue(MAX_PRICE);
+      setOption(false);
+      setPriceOption(false);
+      setMinState(0);
+      setMaxState(SIZE - DIM);
+    },
+  };
+
   const headerHeight = scrollY.interpolate({
     inputRange: [0, HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT],
     outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
@@ -107,24 +120,14 @@ export default function RankingListScreen() {
     extrapolate: 'clamp',
   });
 
-  const initializeCommonStates = () => {
-    setMajor('ALL');
-    setMinor('ALL');
-    setFinal('ALL');
-    setSortOption(DEFAULT_SORT_OPTION);
-    minimumPrice.setValue(MIN_PRICE);
-    maximumPrice.setValue(MAX_PRICE);
-    setOption(false);
-    setPriceOption(false);
-    setMinState(0);
-    setMaxState(SIZE - DIM);
-  };
-
   const handleBackPress = () => {
     if (major === 'ALL') {
       return false;
     } else {
-      initializeCommonStates();
+      setMajor('ALL');
+      setMinor('ALL');
+      setFinal('ALL');
+      initializeCommonStatesStore.initailizeCommonStates();
       return true;
     }
   };
@@ -141,28 +144,31 @@ export default function RankingListScreen() {
       <ItemFilterContext.Provider value={itemFilterStore}>
         <RankFilterDrawerContext.Provider value={categoryDrawerStore}>
           <SortContext.Provider value={sortStore}>
-            <Header
-              title="랭킹"
-              icons={icons}
-              height={headerHeight}
-              titlePadding={titlePadding}
-              titleSize={titleSize}
-            />
-            <ScrollList
-              category="getItemRanking"
-              query={GET_ITEM_RANKING}
-              ListItem={Item}
-              onScroll={Animated.event([
-                {nativeEvent: {contentOffset: {y: scrollY}}},
-              ])}
-              filter={{
-                ...itemFilterStore.state,
-                sortBy: sortOption.sortBy,
-                sort: sortOption.sort,
-                minimumPrice: selectedMinimumPrice,
-                maximumPrice: selectedMaximumPrice,
-              }}
-            />
+            <InitailizeCommonStatesContext.Provider
+              value={initializeCommonStatesStore}>
+              <Header
+                title="랭킹"
+                icons={icons}
+                height={headerHeight}
+                titlePadding={titlePadding}
+                titleSize={titleSize}
+              />
+              <ScrollList
+                category="getItemRanking"
+                query={GET_ITEM_RANKING}
+                ListItem={Item}
+                onScroll={Animated.event([
+                  {nativeEvent: {contentOffset: {y: scrollY}}},
+                ])}
+                filter={{
+                  ...itemFilterStore.state,
+                  sortBy: sortOption.sortBy,
+                  sort: sortOption.sort,
+                  minimumPrice: selectedMinimumPrice,
+                  maximumPrice: selectedMaximumPrice,
+                }}
+              />
+            </InitailizeCommonStatesContext.Provider>
           </SortContext.Provider>
         </RankFilterDrawerContext.Provider>
       </ItemFilterContext.Provider>
