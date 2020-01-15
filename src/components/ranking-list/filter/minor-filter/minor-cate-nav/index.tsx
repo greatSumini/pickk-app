@@ -40,9 +40,7 @@ export default function MinorCateNav() {
     setMinState,
   } = rankFilterDrawerContext.action;
 
-  const goBack = () => {
-    setItemMajorType('ALL');
-    setItemMinorType('ALL');
+  const initializeCommonStates = () => {
     setItemFinalType('ALL');
     setSortOptions(DEFAULT_SORT_OPTION);
     minimumPrice.setValue(MIN_PRICE);
@@ -53,16 +51,15 @@ export default function MinorCateNav() {
     setMaxState(SIZE - DIM);
   };
 
+  const goBack = () => {
+    setItemMajorType('ALL');
+    setItemMinorType('ALL');
+    initializeCommonStates();
+  };
+
   const handleChange = value => {
     setItemMinorType(value);
-    setItemFinalType('ALL');
-    setSortOptions(DEFAULT_SORT_OPTION);
-    minimumPrice.setValue(MIN_PRICE);
-    maximumPrice.setValue(MAX_PRICE);
-    setOption(false);
-    setPriceOption(false);
-    setMinState(0);
-    setMaxState(SIZE - DIM);
+    initializeCommonStates();
   };
 
   return (

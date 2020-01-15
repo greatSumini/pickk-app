@@ -107,20 +107,24 @@ export default function RankingListScreen() {
     extrapolate: 'clamp',
   });
 
+  const initializeCommonStates = () => {
+    setMajor('ALL');
+    setMinor('ALL');
+    setFinal('ALL');
+    setSortOptions(DEFAULT_SORT_OPTION);
+    minimumPrice.setValue(MIN_PRICE);
+    maximumPrice.setValue(MAX_PRICE);
+    setOption(false);
+    setPriceOption(false);
+    setMinState(0);
+    setMaxState(SIZE - DIM);
+  };
+
   const handleBackPress = () => {
     if (major === 'ALL') {
       return false;
     } else {
-      setMajor('ALL');
-      setMinor('ALL');
-      setFinal('ALL');
-      setSortOptions(DEFAULT_SORT_OPTION);
-      setPriceOption(false);
-      setOption(false);
-      minimumPrice.setValue(MIN_PRICE);
-      maximumPrice.setValue(MAX_PRICE);
-      setMinState(0);
-      setMaxState(SIZE - DIM);
+      initializeCommonStates();
       return true;
     }
   };
