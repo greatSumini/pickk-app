@@ -7,21 +7,26 @@ import rem from '@src/constants/rem';
 import {useRankFilterDrawerContext} from '@src/context/filter';
 import colors from '@src/constants/colors';
 import BottomDrawer from '@src/modules/navigation/drawer/bottom';
+import PriceSelector from './price-selector';
 
 export default function OptionButton() {
   const [visible, setVisible] = useState(false);
   const rankFilterDrawerContext = useRankFilterDrawerContext();
   const {priceOption} = rankFilterDrawerContext.state;
+  const {setOption} = rankFilterDrawerContext.action;
 
   const filterColor = priceOption ? colors.white : colors.primary;
   const filterBackColor = priceOption ? colors.primary : colors.white;
 
-  const drawerData = [{title: '가격', component: <BottomPrice />}];
+  const drawerData = [
+    {title: '가격', component: <PriceSelector setVisible={setVisible} />},
+  ];
 
   return (
     <FilterItem
       onPress={() => {
         setVisible(true);
+        setOption(false);
       }}
       style={{backgroundColor: filterBackColor}}>
       <IconText
@@ -41,5 +46,3 @@ export default function OptionButton() {
     </FilterItem>
   );
 }
-
-const BottomPrice = styled.View({});

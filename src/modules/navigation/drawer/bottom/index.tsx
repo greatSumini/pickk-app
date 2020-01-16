@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Modal, Animated} from 'react-native';
 import styled from 'styled-components/native';
+
 import {height} from '@src/constants/dimensions';
 import rem from '@src/constants/rem';
 import Text from '@src/modules/atoms/text';
@@ -21,15 +22,19 @@ export default function BottomDrawer({
     }
   }, [visible]);
 
+  const closeModal = () => {
+    setVisible(false);
+    setPosition(new Animated.Value(-1 * height));
+  };
+
   return (
-    <Modal visible={visible} transparent animationType="fade">
+    <Modal
+      visible={visible}
+      transparent
+      animationType="fade"
+      onRequestClose={closeModal}>
       <Wrapper>
-        <Background
-          onPress={() => {
-            setVisible(false);
-            setPosition(new Animated.Value(-1 * height));
-          }}
-        />
+        <Background onPress={closeModal} />
         <AnimatedContent
           style={{
             position: 'absolute',

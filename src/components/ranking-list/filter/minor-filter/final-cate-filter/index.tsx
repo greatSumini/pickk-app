@@ -14,14 +14,18 @@ import OptionButton from './option-button';
 export default function FinalCateFilter() {
   const sortContext = useSortContext();
   const itemFilterContext = useItemFilterContext();
-  const {sort} = sortContext.state;
-  const {setSort} = sortContext.action;
+  const {sortOption} = sortContext.state;
+  const {setSortOption} = sortContext.action;
   const {itemMinorType} = itemFilterContext.state;
 
   const sortItems = [
     {
-      label: '가격순',
-      value: 'price',
+      label: '높은 가격순',
+      value: {sortBy: 'price', sort: 'DESC'},
+    },
+    {
+      label: '낮은 가격순',
+      value: {sortBy: 'price', sort: 'ASC'},
     },
   ];
 
@@ -35,10 +39,12 @@ export default function FinalCateFilter() {
       <RNPickerSelect
         placeholder={{
           label: '추천순',
-          value: 'rankScore',
+          value: {sortBy: 'rankScore', sort: 'DESC'},
         }}
         useNativeAndroidPickerStyle={false}
-        onValueChange={value => setSort(value)}
+        onValueChange={value => {
+          setSortOption(value);
+        }}
         items={sortItems}
         style={{
           inputIOS: {
@@ -56,7 +62,7 @@ export default function FinalCateFilter() {
             top: rem(13),
           },
         }}
-        value={sort}
+        value={sortOption}
         Icon={() => {
           return (
             <ChevronDown

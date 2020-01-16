@@ -5,7 +5,7 @@ import Heart from '@src/assets/icons/heart';
 import Star from '@src/assets/icons/star';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
-import {priceHandler} from '@src/lib/utils/price-parser';
+import {addCommaToNumber} from '@src/lib/utils/price-parser';
 import {addSizeToImagePath, ImageSize} from '@src/lib/utils/image-size-parser';
 import IconButton from '@src/modules/atoms/buttons/icons/index';
 import Image from '@src/modules/atoms/img';
@@ -115,30 +115,27 @@ const Brand = styled(Text)({});
 const Name = styled(Text)({});
 
 const PriceConatiner = (salePrice: number, originalPrice: number) => {
-  if (salePrice) {
-    const salePercent = 100 - (salePrice / originalPrice) * 100;
-    return (
-      <PriceWrapper>
-        <Text level={2} color={colors.primary}>
-          {priceHandler(salePrice)}
-        </Text>
-        <Space direction="ROW" />
-        <Text
-          style={{textDecorationLine: 'line-through'}}
-          color={colors.secondary}>
-          {priceHandler(originalPrice)}
-        </Text>
-        <Space direction="ROW" />
-        <Text level={2} color={colors.salePercent}>{`${salePercent.toFixed(
-          1,
-        )}%`}</Text>
-      </PriceWrapper>
-    );
-  } else {
-    return (
+  const salePercent = (100 - (salePrice / originalPrice) * 100).toFixed(1);
+
+  return (
+    <PriceWrapper>
       <Text level={2} color={colors.primary}>
-        {priceHandler(originalPrice)}
+        {addCommaToNumber(salePrice ? salePrice : originalPrice)}
       </Text>
-    );
-  }
+      {salePrice && (
+        <>
+          <Space direction="ROW" />
+          <Text
+            style={{textDecorationLine: 'line-through'}}
+            color={colors.secondary}>
+            {addCommaToNumber(originalPrice)}
+          </Text>
+          <Space direction="ROW" />
+          <Text level={2} color={colors.salePercent}>
+            {salePercent + '%'}
+          </Text>
+        </>
+      )}
+    </PriceWrapper>
+  );
 };

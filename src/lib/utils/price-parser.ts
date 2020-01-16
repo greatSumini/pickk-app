@@ -1,7 +1,11 @@
-export const priceHandler = (price: number) => {
-  if (price % 1000 === 0) {
-    return `${(price / 1000).toFixed(0)},000`;
-  } else {
-    return `${(price / 1000).toFixed(0)},${price % 1000}`;
+export const addCommaToNumber = (num: number) => {
+  const numString = num.toString();
+  let result = '';
+  let i = 0;
+  for (; i < numString.length - 1; i++) {
+    result += numString[i];
+    if ((numString.length - i - 1) % 3 == 0) result += ',';
   }
+  result += numString[i];
+  return result !== '0' && result;
 };
