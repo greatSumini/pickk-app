@@ -6,11 +6,14 @@ import HomeScreenProps from './props';
 
 export default function HomeScreen(props: HomeScreenProps) {
   return (
-    <Button
-      title="Drawer"
-      onPress={() => {
-        props.navigation.toggleDrawer();
-      }}
-    />
+    <>
+      <Button
+        title="Drawer"
+        onPress={() => {
+          props.navigation.toggleDrawer();
+        }}
+      />
+      <Text>이니셜 커밋</Text>
+    </>
   );
 }
