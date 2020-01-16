@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Animated,
   SafeAreaView,
-  FlatList,
   ActivityIndicator,
   StyleProp,
   ViewStyle,
@@ -75,7 +74,7 @@ export default function ScrollList({
         scrollEventThrottle={16}
         onScroll={onScroll}
         data={data[propName]}
-        keyExtractor={(_, index) => index.toString()}
+        keyExtractor={item => item.id.toString()}
         renderItem={({item}) => <ListItem {...item}></ListItem>}
         key={numColumns}
         numColumns={numColumns}

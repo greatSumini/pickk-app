@@ -20,10 +20,16 @@ type ImageStyleProps = {
 };
 
 export default function Image(props: ImageProps) {
-  const {source, style, children} = props;
+  const {source, style, children, over} = props;
   const styleProps: ImageStyleProps = props;
+
   return (
-    <Img source={source} style={style} {...styleProps}>
+    <Img
+      source={source}
+      style={style}
+      {...styleProps}
+      resizeMode={over ? 'cover' : 'contain'}
+      resizeMethod="resize">
       {children}
     </Img>
   );
@@ -37,9 +43,8 @@ const Img = styled.Image<ImageStyleProps>((props: ImageStyleProps) => ({
       : '50%'
     : 0,
   maxHeight: (props.over && props.imgHeight) || '100%',
-  resizeMode: props.over && 'cover',
   overflow: props.over && 'hidden',
-  height: (!props.over && props.imgHeight) || '100%',
+  height: props.imgHeight || '100%',
   borderWidth: props.border && rem(1),
   borderColor: props.border && colors.lightGrey,
 }));

@@ -34,11 +34,9 @@ export default function PostCardWide(props: PostCardWideProps) {
 
 const Wrapper = styled.View({
   width: '100%',
-  height: rem(390),
   backgroundColor: 'white',
-  marginBottom: rem(4),
   borderBottomWidth: rem(4),
-  borderBottomColor: colors.notify,
+  borderBottomColor: colors.lightGrey,
 });
 
-const Touchable = styled(TouchableCmp)({width: '100%', height: rem(390)});
+const Touchable = styled(TouchableCmp)({flex: 1});
