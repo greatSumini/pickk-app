@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
+import styled from 'styled-components/native';
 import Carousel from 'react-native-snap-carousel';
 
 import HomeCarouselCard, {HomeCarouselCardProps} from './card';
-import {width} from '@src/constants/dimensions';
 import CarouselIndicator from '@src/modules/carousel/indicator';
-import {View} from 'react-native';
-import styled from 'styled-components/native';
+import {width} from '@src/constants/dimensions';
 import rem from '@src/constants/rem';
 
 export default function HomeCarousel() {
@@ -37,7 +36,7 @@ export default function HomeCarousel() {
   );
 }
 
-const entries = [
+const entries: HomeCarouselCardProps[] = [
   {
     source: require('@src/assets/images/homeCarousel/0.jpg'),
     title: `한번 사면 매일입는`,
