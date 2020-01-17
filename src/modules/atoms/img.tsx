@@ -1,12 +1,12 @@
 import React from 'react';
-import {StyleProp, ImageStyle} from 'react-native';
+import {StyleProp, ImageStyle, ImageSourcePropType} from 'react-native';
 import styled from 'styled-components/native';
 
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
 
 type ImageProps = {
-  source: {uri: string};
+  source: ImageSourcePropType;
   style?: StyleProp<ImageStyle>;
   children?: any;
 } & ImageStyleProps;
@@ -37,14 +37,10 @@ export default function Image(props: ImageProps) {
 
 const Img = styled.Image<ImageStyleProps>((props: ImageStyleProps) => ({
   width: props.imgWidth || '100%',
-  borderRadius: props.circle
-    ? typeof props.imgWidth === 'number'
-      ? props.imgWidth / 2
-      : '50%'
-    : 0,
+  borderWidth: props.border && rem(1),
+  borderColor: props.border && colors.lightGrey,
+  borderRadius: props.circle && 9999,
   maxHeight: (props.over && props.imgHeight) || '100%',
   overflow: props.over && 'hidden',
   height: props.imgHeight || '100%',
-  borderWidth: props.border && rem(1),
-  borderColor: props.border && colors.lightGrey,
 }));
