@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import {StyleProp, ViewStyle} from 'react-native';
 
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
 
 type IProps = {
   direction?: 'COL' | 'ROW';
+  length?: number;
   level?: number;
+  style?: StyleProp<ViewStyle>;
 };
 
 const defaultProps = {
@@ -15,20 +18,15 @@ const defaultProps = {
 };
 
 export default function Line(props: IProps) {
+  const length = props.length ? rem(props.length) : '100%';
+  const thickness = rem(1 + 3 * props.level);
+
   const _Line = styled.View`
     background-color: ${colors.lightGrey};
-    ${props.direction === 'COL' &&
-      `
-            width:100%;
-            height:${rem(1 + 3 * props.level)};
-        `}
-    ${props.direction === 'ROW' &&
-      `
-            height:100%;
-            width:${rem(1 + 3 * props.level)};
-        `}
+    width: ${props.direction === 'COL' ? length : thickness};
+    height: ${props.direction === 'COL' ? thickness : length};
   `;
-  return <_Line />;
+  return <_Line style={props.style} />;
 }
 
 Line.defaultProps = defaultProps;

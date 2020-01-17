@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import {StyleProp, TextStyle} from 'react-native';
 
 import Colors from '@src/constants/colors';
 
@@ -7,10 +8,10 @@ type IProps = {
   level?: number;
   color?: string;
   fontWeight?: number | string;
-  style?: any;
-  children?: any;
+  style?: StyleProp<TextStyle>;
+  children?: React.ReactNode | React.ReactNodeArray;
   width?: number;
-  onPress?: any;
+  onPress?: (e) => void;
   textAlign?: 'left' | 'center' | 'right';
   ellipsis?: boolean;
   preWrap?: boolean;
