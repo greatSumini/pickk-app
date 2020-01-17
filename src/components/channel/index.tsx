@@ -6,10 +6,12 @@ import Header from './header';
 import NavigationBar from './navigation-bar';
 import Filter from './filter';
 
-export default function Channel() {
+export default function Channel(props) {
+  const id = 148;
+
   return (
     <Wrapper>
-      <Header />
+      <Header id={id} navigation={props.navigation} />
       <NavigationBar />
       <Filter />
       {/* <ScrollList /> */}
