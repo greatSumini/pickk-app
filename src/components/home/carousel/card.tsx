@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {ImageBackground, ImageSourcePropType} from 'react-native';
+import {ImageSourcePropType} from 'react-native';
 
 import Text from '@src/modules/atoms/text';
 import {width} from '@src/constants/dimensions';
@@ -34,7 +34,7 @@ export default function HomeCarouselCard({
   );
 }
 
-const StyledImageBackground = styled(ImageBackground)({
+const StyledImageBackground = styled.ImageBackground({
   width,
   height: (width / 3) * 2,
   paddingTop: rem(110),

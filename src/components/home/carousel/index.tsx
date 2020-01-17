@@ -60,7 +60,7 @@ const entries = [
   },
 ];
 
-const Wrapper = styled(View)({
+const Wrapper = styled.View({
   width: '100%',
   position: 'relative',
 });

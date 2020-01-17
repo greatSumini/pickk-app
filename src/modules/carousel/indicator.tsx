@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {View, StyleProp, ViewStyle} from 'react-native';
+import {StyleProp, ViewStyle} from 'react-native';
 
 import Text from '@src/modules/atoms/text';
 import colors from '@src/constants/colors';
@@ -23,7 +23,7 @@ export default function CarouselIndicator({
   );
 }
 
-const Wrapper = styled(View)({
+const Wrapper = styled.View({
   alignSelf: 'center',
   paddingVertical: 3,
   paddingHorizontal: 10,
