@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components/native';
 import {ImageBackground, ImageSourcePropType} from 'react-native';
 
 import Text from '@src/modules/atoms/text';
@@ -20,14 +21,7 @@ export default function HomeCarouselCard({
   description,
 }: HomeCarouselCardProps) {
   return (
-    <ImageBackground
-      source={source}
-      style={{
-        width,
-        height: (width / 3) * 2,
-        paddingTop: rem(110),
-        paddingLeft: rem(20),
-      }}>
+    <StyledImageBackground source={source}>
       <Text color={colors.white} level={2}>
         {title}
       </Text>
@@ -36,6 +30,13 @@ export default function HomeCarouselCard({
       </Text>
       <Space />
       <Line length={40} style={{marginLeft: rem(2)}} />
-    </ImageBackground>
+    </StyledImageBackground>
   );
 }
+
+const StyledImageBackground = styled(ImageBackground)({
+  width,
+  height: (width / 3) * 2,
+  paddingTop: rem(110),
+  paddingLeft: rem(20),
+});
