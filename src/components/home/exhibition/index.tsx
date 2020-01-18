@@ -24,4 +24,6 @@ export default function HomeExhibition(props: HomeExhibitionProps) {
 const Wrapper = styled.View({
   paddingTop: rem(20),
   paddingHorizontal: rem(16),
+  flexDirection: 'column',
+  alignItems: 'center',
 });

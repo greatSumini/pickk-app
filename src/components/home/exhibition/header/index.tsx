@@ -42,6 +42,7 @@ const Wrapper = styled.View({
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
+  width: '100%',
 });
 
 const TextWrapper = styled.View({

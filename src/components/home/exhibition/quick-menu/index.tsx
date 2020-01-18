@@ -56,4 +56,5 @@ const Wrapper = styled.View({
   flexDirection: 'row',
   justifyContent: 'space-between',
   paddingHorizontal: 14,
+  width: '100%',
 });
