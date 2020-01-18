@@ -37,7 +37,7 @@ const Wrapper = styled.View({
   position: 'absolute',
   top: 0,
   left: 0,
-  zIndex: 2,
+  zIndex: 100,
   width: '100%',
   paddingVertical: 16,
   paddingHorizontal: 20,
