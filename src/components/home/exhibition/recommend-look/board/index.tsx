@@ -1,10 +1,30 @@
 import React from 'react';
+import styled from 'styled-components/native';
 
-import BoardProps from './props';
+import HomeLookCard, {HomeLookCardProps} from '../../look-card';
 
-import Text from '@src/modules/atoms/text';
+export type BoardProps = {
+  current: number;
+  cards: HomeLookCardProps[];
+};
 
-export default function RecommendLookBoard(props: BoardProps) {
-  // board에 노출될 card는 post에서 작성한 것을 가져와서 쓸 예정
-  return <Text>나는 보드입니다.</Text>;
+const CARDS_PER_PAGE = 4;
+
+export default function RecommendLookBoard({current, cards}: BoardProps) {
+  return (
+    <Wrapper>
+      {cards
+        .slice(current * CARDS_PER_PAGE, (current + 1) * CARDS_PER_PAGE)
+        .map(item => (
+          <HomeLookCard key={item.title + item.name} {...item} />
+        ))}
+    </Wrapper>
+  );
 }
+
+const Wrapper = styled.View({
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  justifyContent: 'space-between',
+});
