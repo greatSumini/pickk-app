@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/native';
+
+import Text from '@src/modules/atoms/text';
 import TouchableCmp from '@src/modules/atoms/touchable-component';
+import Space from '@src/modules/atoms/space';
 import rem from '@src/constants/rem';
 import colors from '@src/constants/colors';
-import Space from '@src/modules/atoms/space';
-import Text from '@src/modules/atoms/text';
 
 export type QuickMenuButtonProps = {
   width: number;

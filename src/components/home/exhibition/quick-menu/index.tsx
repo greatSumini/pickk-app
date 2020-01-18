@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
+import QuickMenuButton from './button';
 import CoatIcon from '@src/assets/icons/item/category/minor/coat';
 import ShortPaddingIcon from '@src/assets/icons/item/category/minor/short-padding';
 import KnitIcon from '@src/assets/icons/item/category/minor/knit';
 import JeansIcon from '@src/assets/icons/item/category/minor/jeans';
 import MyPickkIcon from '@src/assets/icons/my-pickk';
-import QuickMenuButton from './button';
 
 export default function QuickMenu() {
   return (
