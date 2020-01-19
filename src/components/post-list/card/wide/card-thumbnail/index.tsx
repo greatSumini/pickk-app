@@ -2,18 +2,18 @@ import React, {useEffect, useState} from 'react';
 import {Image} from 'react-native';
 import styled from 'styled-components/native';
 
-import PostCardWideThumnailProps from './props';
+import PostCardWideThumbnailProps from './props';
 import {width} from '@src/constants/dimensions';
 import {imageUriHandler} from '@src/lib/utils/url-parser';
 import {ImageSize} from '@src/lib/utils/image-size-parser';
 import CustomImage from '@src/modules/atoms/img';
 
-export default function PostCardWideThumnail({
+export default function PostCardWideThumbnail({
   titleType,
   titleImageUrl,
   titleYoutubeUrl,
-}: PostCardWideThumnailProps) {
-  const [ratio, setRatio] = useState(0);
+}: PostCardWideThumbnailProps) {
+  const [height, setHeight] = useState((width * 9) / 16);
   const imageUrl = imageUriHandler(
     titleType,
     titleImageUrl,
@@ -24,8 +24,10 @@ export default function PostCardWideThumnail({
   useEffect(() => {
     Image.getSize(
       imageUrl,
-      (width, height) => {
-        setRatio(height / width);
+      (imgWidth, imgHeight) => {
+        if (titleType !== 'YOUTUBE') {
+          setHeight((width * imgHeight) / imgWidth);
+        }
       },
       err => {
         console.log(err);
@@ -33,24 +35,16 @@ export default function PostCardWideThumnail({
     );
   }, []);
 
-  const imgHeightHandler = () => {
-    if (titleType === 'YOUTUBE') {
-      return (width * 9) / 16;
-    } else {
-      return ratio === 0 ? width * 0.75 : width * ratio;
-    }
-  };
-
   return (
-    <Thumnail
+    <Thumbnail
       source={{
         uri: imageUrl,
       }}
       imgWidth={width}
-      imgHeight={imgHeightHandler()}
+      imgHeight={height}
       over={titleType === 'YOUTUBE'}
     />
   );
 }
 
-const Thumnail = styled(CustomImage)({});
+const Thumbnail = styled(CustomImage)({});

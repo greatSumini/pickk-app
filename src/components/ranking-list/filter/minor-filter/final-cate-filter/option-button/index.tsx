@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import styled from 'styled-components/native';
-import {FilterItem} from '@src/components/post-list/filter/option-button';
+
+import PriceSelector from './price-selector';
 import FilterIcon from '@src/assets/icons/filter';
-import IconText from '@src/modules/molecules/icon-text';
+import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
 import {useRankFilterDrawerContext} from '@src/context/filter';
-import colors from '@src/constants/colors';
+import IconText from '@src/modules/molecules/icon-text';
+import FilterItem from '@src/modules/atoms/buttons/filter/filter-item';
 import BottomDrawer from '@src/modules/navigation/drawer/bottom';
-import PriceSelector from './price-selector';
 
 export default function OptionButton() {
   const [visible, setVisible] = useState(false);
