@@ -27,6 +27,7 @@ type IProps = {
   Skeleton?: React.FunctionComponent;
   numColumns?: number;
   headerMaxHeight?: number;
+  ListHeader?: React.ComponentType<any> | React.ReactElement | null;
 };
 
 const ITEMS_PER_PAGE = 20;
@@ -41,6 +42,7 @@ export default function ScrollList({
   onScroll,
   numColumns = 1,
   headerMaxHeight = 0,
+  ListHeader,
 }: IProps) {
   const propName = category;
 
@@ -71,17 +73,21 @@ export default function ScrollList({
   return (
     <SafeAreaView style={{flex: 1}}>
       <Animated.FlatList
+        ListHeaderComponent={ListHeader}
         scrollEventThrottle={16}
         onScroll={onScroll}
         data={data[propName]}
-        keyExtractor={item => item.id.toString()}
-        renderItem={({item}) => <ListItem {...item}></ListItem>}
+        keyExtractor={(item, index) => item.id.toString() + index}
+        renderItem={({item}) => {
+          return <ListItem {...item}></ListItem>;
+        }}
         key={numColumns}
         numColumns={numColumns}
-        style={{
-          ...(style as object),
-          paddingHorizontal: numColumns === 2 ? rem(6) : 0,
-        }}
+        columnWrapperStyle={
+          numColumns > 1 && {
+            paddingHorizontal: rem(6),
+          }
+        }
         progressViewOffset={headerMaxHeight}
         refreshing={networkStatus === 4}
         onRefresh={() => refetch()}
