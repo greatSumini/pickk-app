@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 import IconButtonProps from './props';
 
-export default function IconBoutton({
+export default function IconButton({
   onPress,
   size,
   Icon,

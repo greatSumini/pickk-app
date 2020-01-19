@@ -85,7 +85,7 @@ export default function PostListScreen() {
     <Wrapper>
       <FilterContext.Provider value={filterValue}>
         <Header
-          title="포스트"
+          title='포스트'
           height={headerHeight}
           titleSize={titleSize}
           titlePadding={titlePadding}
@@ -96,7 +96,7 @@ export default function PostListScreen() {
       </FilterContext.Provider>
       <ScrollList
         query={ALL_RECOMMEND_POSTS}
-        category="allRecommendPosts"
+        category='allRecommendPosts'
         ListItem={PostListItem}
         numColumns={postType === LOOK && view === NARROW ? 2 : 1}
         headerMaxHeight={HEADER_MAX_HEIGHT}

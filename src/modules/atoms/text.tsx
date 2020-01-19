@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 import {StyleProp, TextStyle} from 'react-native';
 
 import Colors from '@src/constants/colors';
+import rem from '@src/constants/rem';
 
 type IProps = {
   level?: number;
@@ -16,6 +17,7 @@ type IProps = {
   ellipsis?: boolean;
   preWrap?: boolean;
   lines?: number;
+  fontSize?: number;
 };
 
 const FONT_WEIGHT = {
@@ -44,12 +46,13 @@ export default function Text(props: IProps) {
     color,
     fontWeight,
     lines,
+    fontSize,
   } = props;
 
   const _Text = styled.Text({
     padding: 0,
     margin: 0,
-    fontSize: 10 + level * 2,
+    fontSize: fontSize ? rem(fontSize) : rem(10 + level * 2),
     color,
     fontWeight:
       typeof fontWeight === 'number' ? fontWeight : FONT_WEIGHT[fontWeight],
