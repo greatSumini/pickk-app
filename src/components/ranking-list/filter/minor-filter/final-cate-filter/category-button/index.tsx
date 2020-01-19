@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 
+import CategorySelector from './category-selector';
 import colors from '@src/constants/colors';
-import {FilterItem} from '@src/components/post-list/filter/option-button';
 import {useItemFilterContext} from '@src/context/filter';
 import {itemCateEnToKo} from '@src/data/item';
 import Text from '@src/modules/atoms/text';
 import BottomDrawer from '@src/modules/navigation/drawer/bottom';
-import CategorySelector from './category-selector';
+import FilterItem from '@src/modules/atoms/buttons/filter/filter-item';
 
 export default function CategoryButton() {
   const [visible, setVisible] = useState(false);
