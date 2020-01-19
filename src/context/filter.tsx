@@ -74,4 +74,13 @@ export const InitailizeCommonStatesContext = createContext({
 export const useInitailizeCommonStatesContext = () =>
   useContext(InitailizeCommonStatesContext);
 
+export const PostFilterContext = createContext({
+  state: {
+    postType: null,
+  },
+  action: {
+    setPostType: null,
+  },
+});
+export const usePostFilterContext = () => useContext(PostFilterContext);
 export default FilterContext;
