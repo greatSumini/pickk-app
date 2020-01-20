@@ -1,7 +1,7 @@
 import React from 'react';
 import Svg, {Path} from 'react-native-svg';
 
-function Camera({style, fill}) {
+export default function CameraIcon({style, fill}) {
   return (
     <Svg viewBox="0 0 16 14" style={style}>
       <Path
@@ -11,5 +11,3 @@ function Camera({style, fill}) {
     </Svg>
   );
 }
-
-export default Camera;
