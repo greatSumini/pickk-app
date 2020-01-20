@@ -11,8 +11,16 @@ type FilterItemProps = {
   style?: StyleProp<ViewStyle>;
 };
 
-export default function FilterItem({children, onPress}: FilterItemProps) {
-  return <Button onPress={onPress}>{children}</Button>;
+export default function FilterItem({
+  children,
+  onPress,
+  style,
+}: FilterItemProps) {
+  return (
+    <Button onPress={onPress} style={style}>
+      {children}
+    </Button>
+  );
 }
 
 const Button = styled.TouchableOpacity({
