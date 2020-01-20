@@ -16,7 +16,7 @@ const options = [
   },
 ];
 
-export default function PostTypeSwitch() {
+export default function PostTypeSwitchSelector() {
   const postFilterContext = usePostFilterContext();
   const {setPostType} = postFilterContext.action;
 
