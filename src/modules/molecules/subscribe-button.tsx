@@ -7,6 +7,7 @@ import gql from 'graphql-tag';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
 import Text from '../atoms/text';
+import TouchableCmp from '../atoms/touchable-component';
 
 type SubscribeButtonProps = {
   accountId: number;
@@ -79,15 +80,19 @@ export default function SubscribeButton({
   if (loading) return <Text>Loading....</Text>;
 
   return (
-    <Button onPress={handleSubscribe} {...{style, isSubscribing}}>
-      <Text level={1} color={isSubscribing ? colors.white : colors.primary}>
-        {subscribeText}
-      </Text>
+    <Button onPress={handleSubscribe}>
+      <Wrapper {...{style, isSubscribing}}>
+        <Text level={1} color={isSubscribing ? colors.white : colors.primary}>
+          {subscribeText}
+        </Text>
+      </Wrapper>
     </Button>
   );
 }
 
-const Button = styled.TouchableOpacity<{isSubscribing: boolean}>(props => ({
+const Button = styled(TouchableCmp)({});
+
+const Wrapper = styled.View<{isSubscribing: boolean}>(props => ({
   backgroundColor: props.isSubscribing ? colors.primary : colors.white,
   width: rem(125),
   paddingVertical: rem(5),
