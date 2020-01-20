@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 
 import Item from './item/index';
 import ItemFilter from './filter';
+import RankingListScreenProps from './props';
 import Search from '@src/assets/icons/search';
 import colors from '@src/constants/colors';
 import {width} from '@src/constants/dimensions';
@@ -32,9 +33,7 @@ export const DEFAULT_SORT_OPTION = {
 const HEADER_MAX_HEIGHT = rem(126);
 const HEADER_MIN_HEIGHT = rem(108);
 
-const icons = [{Icon: Search, fill: colors.primary, onPress: () => {}}];
-
-export default function RankingListScreen() {
+export default function RankingListScreen(props: RankingListScreenProps) {
   const [scrollY] = useState(new Animated.Value(0));
   const [major, setMajor] = useState('ALL');
   const [minor, setMinor] = useState('ALL');
@@ -139,6 +138,16 @@ export default function RankingListScreen() {
       BackHandler.removeEventListener('hardwareBackPress', handleBackPress);
     };
   }, [major]);
+
+  const icons = [
+    {
+      Icon: Search,
+      fill: colors.primary,
+      onPress: () => {
+        props.navigation.navigate('Search');
+      },
+    },
+  ];
 
   return (
     <Wrapper>

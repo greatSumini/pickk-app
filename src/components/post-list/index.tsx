@@ -3,18 +3,19 @@ import {Animated} from 'react-native';
 import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 
+import PostListFilter from './filter';
+import PostListScreenProps from './props';
+import PostCardWide from './card/wide';
 import Search from '@src/assets/icons/search';
 import Write from '@src/assets/icons/write';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
-import Header from '@src/modules/header/index';
-import ScrollList from '@src/modules/list/scroll';
+import FilterContext from '@src/context/filter';
 import PostCardReviewNarrow from '@src/components/post-list/card/narrow/review/index';
 import PostCardLookNarrow from '@src/components/post-list/card/narrow/look/index';
-import PostCardWide from './card/wide';
-import FilterContext from '@src/context/filter';
+import Header from '@src/modules/header/index';
+import ScrollList from '@src/modules/list/scroll';
 import NavigationBar from '@src/modules/navigation/bar';
-import PostListFilter from './filter';
 
 export const WIDE = 'WIDE';
 export const NARROW = 'NARROW';
@@ -24,17 +25,12 @@ const HEADER_MIN_HEIGHT = rem(108);
 const items = ['리뷰', 'LOOK'];
 const CATEGORY = ['REVIEW', 'LOOK'];
 
-const icons = [
-  {Icon: Write, fill: colors.primary},
-  {Icon: Search, fill: colors.primary},
-];
-
 const SORT_TYPE = {
   NEW: 'time',
   HOT: 'pickCount',
 };
 
-export default function PostListScreen() {
+export default function PostListScreen(props: PostListScreenProps) {
   const [scrollY] = useState(new Animated.Value(0));
   const [view, setView] = useState(WIDE);
   const [postType, setPostType] = useState<'REVIEW' | 'LOOK'>('REVIEW');
@@ -81,6 +77,17 @@ export default function PostListScreen() {
       setSortOption,
     },
   };
+
+  const icons = [
+    {Icon: Write, fill: colors.primary},
+    {
+      Icon: Search,
+      fill: colors.primary,
+      onPress: () => {
+        props.navigation.navigate('Search');
+      },
+    },
+  ];
 
   return (
     <Wrapper>

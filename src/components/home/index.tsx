@@ -17,7 +17,12 @@ export type HomeScreenProps = {
 export default function HomeScreen(props: HomeScreenProps) {
   return (
     <ScrollView>
-      <HomeHeader toggleDrawer={props.navigation.toggleDrawer} />
+      <HomeHeader
+        toggleDrawer={props.navigation.toggleDrawer}
+        routeToSearch={() => {
+          props.navigation.navigate('Search');
+        }}
+      />
       <HomeCarousel />
       <HomeExhibition title='핔 200프로 이용하기' description='핵심만 모았다!'>
         <QuickMenu />
