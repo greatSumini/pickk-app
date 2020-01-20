@@ -1,10 +1,17 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-export default function Filter() {
-  return <Wrapper></Wrapper>;
-}
+import PostFilter from './post';
+import ItemFilter from './item';
+import CommunityFilter from './community';
+import FilterWrapper from '@src/modules/molecules/filter/filter-wrapper';
 
-const Wrapper = styled.View({
-  flex: 1,
-});
+export default function Filter({navType}) {
+  return (
+    <FilterWrapper>
+      {navType === 'POST' && <PostFilter />}
+      {navType === 'ITEM' && <ItemFilter />}
+      {navType === 'COMMUNITY' && <CommunityFilter />}
+    </FilterWrapper>
+  );
+}
