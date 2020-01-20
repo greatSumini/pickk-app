@@ -3,7 +3,6 @@ import {useQuery} from 'react-apollo';
 import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 
-import {FilterWrapper} from '../index';
 import FilterButton from './filter-button';
 import ItemSortSelector from './item-sort-selector';
 import Text from '@src/modules/atoms/text';
@@ -26,14 +25,14 @@ export default function ItemFilter({id}) {
   };
 
   return (
-    <FilterWrapper>
+    <>
       <FilterButton />
       <RightWrapper>
         <Text>{metaDataHandler() + '개'}</Text>
         <Space direction="ROW" size={16} />
         <ItemSortSelector />
       </RightWrapper>
-    </FilterWrapper>
+    </>
   );
 }
 

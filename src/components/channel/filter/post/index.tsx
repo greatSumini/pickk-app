@@ -3,7 +3,6 @@ import {useQuery} from 'react-apollo';
 import gql from 'graphql-tag';
 import styled from 'styled-components/native';
 
-import {FilterWrapper} from '../index';
 import PostTypeSwitchSelector from './post-type-switch';
 import PostSortSelector from './post-sort-selector';
 import Text from '@src/modules/atoms/text';
@@ -26,14 +25,14 @@ export default function PostFilter({id}) {
   };
 
   return (
-    <FilterWrapper>
+    <>
       <PostTypeSwitchSelector />
       <Right>
         <Text>{metaDataHandler() + '개'}</Text>
         <Space direction="ROW" size={16} />
         <PostSortSelector />
       </Right>
-    </FilterWrapper>
+    </>
   );
 }
 
