@@ -77,7 +77,7 @@ export default function ScrollList({
         scrollEventThrottle={16}
         onScroll={onScroll}
         data={data[propName]}
-        keyExtractor={index => index.toString()}
+        keyExtractor={(item, index) => item.toString() + index.toString()}
         renderItem={({item}) => {
           return <ListItem {...item}></ListItem>;
         }}
