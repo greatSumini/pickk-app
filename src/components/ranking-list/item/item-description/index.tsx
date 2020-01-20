@@ -17,21 +17,21 @@ import ItemDescriptionProps from './props';
 const ICON_SIZE = rem(12);
 
 export default function ItemDescription({
-  brandId,
   brandKor,
   brandEng,
-  id,
-  groupId,
   originalPrice,
   salePrice,
   imageUrl,
-  purchaseUrl,
   averageScore,
   pickCount,
+  name,
+  brandId,
+  id,
+  groupId,
+  purchaseUrl,
   itemMinorType,
   itemMajorType,
   itemFinalType,
-  name,
 }: ItemDescriptionProps) {
   const [like, setLike] = useState(false);
 

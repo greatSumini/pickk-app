@@ -23,7 +23,7 @@ export default function NarrowLookCard({
   return (
     <Touchable>
       <Wrapper>
-        <ThumnailImg
+        <ThumbnailImg
           source={{
             uri: imageUriHandler(
               titleType,
@@ -67,7 +67,7 @@ const Wrapper = styled.View({
   elevation: 2,
 });
 
-const ThumnailImg = styled.Image({
+const ThumbnailImg = styled.Image({
   width: rem(162),
   height: rem(162),
   alignSelf: 'center',
