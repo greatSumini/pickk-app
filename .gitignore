@@ -60,3 +60,4 @@ buck-out/
 
 .env*
 android/app/src/main/res/values/strings.xml
+ios/PickkApp/Info.plist

@@ -46,6 +46,7 @@
     "@types/node": "^12.12.16",
     "@types/react": "^16.9.16",
     "@types/react-native": "^0.60.24",
+    "@types/react-native-fbsdk": "^1.0.0",
     "@types/react-native-snap-carousel": "^3.7.4",
     "@types/react-test-renderer": "^16.9.1",
     "@types/styled-components": "^4.4.1",
