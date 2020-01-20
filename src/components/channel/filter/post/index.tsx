@@ -3,11 +3,11 @@ import {useQuery} from 'react-apollo';
 import gql from 'graphql-tag';
 import styled from 'styled-components/native';
 
-import Text from '@src/modules/atoms/text';
-import Space from '@src/modules/atoms/space';
 import {FilterWrapper} from '../index';
 import PostTypeSwitchSelector from './post-type-switch';
 import PostSortSelector from './post-sort-selector';
+import Text from '@src/modules/atoms/text';
+import Space from '@src/modules/atoms/space';
 
 export default function PostFilter({id}) {
   const {loading, data, error} = useQuery(GET_RECOMMENDLIST_META, {
