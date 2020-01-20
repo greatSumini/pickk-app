@@ -25,7 +25,6 @@ export default function PostTypeSwitch() {
       options={options}
       initial={0}
       onPress={value => {
-        console.log('switch selected');
         setPostType(value);
       }}
       style={{
