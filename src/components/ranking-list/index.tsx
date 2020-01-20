@@ -3,8 +3,11 @@ import {Animated, BackHandler} from 'react-native';
 import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 
+import Item from './item/index';
+import ItemFilter from './filter';
 import Search from '@src/assets/icons/search';
 import colors from '@src/constants/colors';
+import {width} from '@src/constants/dimensions';
 import rem from '@src/constants/rem';
 import {
   ItemFilterContext,
@@ -13,9 +16,7 @@ import {
   InitailizeCommonStatesContext,
 } from '@src/context/filter';
 import ScrollList from '@src/modules/list/scroll';
-import Header from '@src/modules/header/ranking-list/';
-import Item from './item/index';
-import {width} from '@src/constants/dimensions';
+import Header from '@src/modules/header';
 
 export const PADDING = rem(16);
 export const SIZE = width - 2 * PADDING;
@@ -31,7 +32,7 @@ export const DEFAULT_SORT_OPTION = {
 const HEADER_MAX_HEIGHT = rem(126);
 const HEADER_MIN_HEIGHT = rem(108);
 
-const icons = [{Icon: Search, fill: colors.primary}];
+const icons = [{Icon: Search, fill: colors.primary, onPress: () => {}}];
 
 export default function RankingListScreen() {
   const [scrollY] = useState(new Animated.Value(0));
@@ -147,14 +148,15 @@ export default function RankingListScreen() {
             <InitailizeCommonStatesContext.Provider
               value={initializeCommonStatesStore}>
               <Header
-                title="랭킹"
+                title='랭킹'
                 icons={icons}
                 height={headerHeight}
                 titlePadding={titlePadding}
-                titleSize={titleSize}
-              />
+                titleSize={titleSize}>
+                <ItemFilter />
+              </Header>
               <ScrollList
-                category="getItemRanking"
+                category='getItemRanking'
                 query={GET_ITEM_RANKING}
                 ListItem={Item}
                 onScroll={Animated.event([
@@ -176,7 +178,7 @@ export default function RankingListScreen() {
   );
 }
 
-const Wrapper = styled.View({
+const Wrapper = styled.SafeAreaView({
   flex: 1,
 });
 

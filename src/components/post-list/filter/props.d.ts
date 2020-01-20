@@ -4,7 +4,7 @@ type ButtonProps<T> = {
 };
 
 type FilterProps = {
-  postType: '리뷰' | 'LOOK';
+  postType: 'REVIEW' | 'LOOK';
 };
 
 export default FilterProps;

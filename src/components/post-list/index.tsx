@@ -13,15 +13,16 @@ import PostCardReviewNarrow from '@src/components/post-list/card/narrow/review/i
 import PostCardLookNarrow from '@src/components/post-list/card/narrow/look/index';
 import PostCardWide from './card/wide';
 import FilterContext from '@src/context/filter';
+import NavigationBar from '@src/modules/navigation/bar';
+import PostListFilter from './filter';
 
-export const REVIEW = '리뷰';
-export const LOOK = 'LOOK';
 export const WIDE = 'WIDE';
 export const NARROW = 'NARROW';
 const HEADER_MAX_HEIGHT = rem(126);
 const HEADER_MIN_HEIGHT = rem(108);
 
-const items = [{label: '리뷰'}, {label: 'LOOK'}];
+const items = ['리뷰', 'LOOK'];
+const CATEGORY = ['REVIEW', 'LOOK'];
 
 const icons = [
   {Icon: Write, fill: colors.primary},
@@ -36,7 +37,7 @@ const SORT_TYPE = {
 export default function PostListScreen() {
   const [scrollY] = useState(new Animated.Value(0));
   const [view, setView] = useState(WIDE);
-  const [postType, setPostType] = useState(REVIEW);
+  const [postType, setPostType] = useState<'REVIEW' | 'LOOK'>('REVIEW');
 
   const [tag, setTag] = useState(null);
   const [pick, setPick] = useState(0);
@@ -47,7 +48,7 @@ export default function PostListScreen() {
   const PostListItem =
     view === WIDE
       ? PostCardWide
-      : postType === REVIEW
+      : postType === 'REVIEW'
       ? PostCardReviewNarrow
       : PostCardLookNarrow;
 
@@ -89,23 +90,27 @@ export default function PostListScreen() {
           height={headerHeight}
           titleSize={titleSize}
           titlePadding={titlePadding}
-          items={items}
-          icons={icons}
-          postTypeControl={{value: postType, setValue: setPostType}}
-        />
+          icons={icons}>
+          <NavigationBar
+            items={items}
+            navControl={{value: postType, setValue: setPostType}}
+            category={CATEGORY}
+          />
+          <PostListFilter postType={postType} />
+        </Header>
       </FilterContext.Provider>
       <ScrollList
         query={ALL_RECOMMEND_POSTS}
         category='allRecommendPosts'
         ListItem={PostListItem}
-        numColumns={postType === LOOK && view === NARROW ? 2 : 1}
+        numColumns={postType === 'LOOK' && view === NARROW ? 2 : 1}
         headerMaxHeight={HEADER_MAX_HEIGHT}
         onScroll={Animated.event([
           {nativeEvent: {contentOffset: {y: scrollY}}},
         ])}
         filter={{
           minimumPickCount: pick,
-          postType: postType === REVIEW ? 'REVIEW' : postType,
+          postType,
           recommendReason: option ? tag : null,
           sortBy: sortOption ? SORT_TYPE[sort] : 'time',
         }}
@@ -114,7 +119,7 @@ export default function PostListScreen() {
   );
 }
 
-const Wrapper = styled.View({
+const Wrapper = styled.SafeAreaView({
   flex: 1,
   backgroundColor: colors.white,
 });
