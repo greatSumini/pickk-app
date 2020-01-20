@@ -11,13 +11,10 @@ type FilterWrapperProps = {
 };
 
 export default function Filter({navType, id}) {
-  return navType === 'POST' ? (
+  return (
     <FilterWrapper>
-      <PostFilter id={id} />
-    </FilterWrapper>
-  ) : (
-    <FilterWrapper>
-      <ItemFilter id={id} />
+      {navType === 'POST' && <PostFilter id={id} />}
+      {navType === 'ITEM' && <ItemFilter id={id} />}
     </FilterWrapper>
   );
 }
