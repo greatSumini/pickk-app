@@ -4,9 +4,9 @@ import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 
 import FilterButton from '@src/modules/molecules/filter/default-filter-button';
+import SortSelector from '@src/modules/molecules/filter/sort-selector';
 import Text from '@src/modules/atoms/text';
 import Space from '@src/modules/atoms/space';
-import SortSelector from '@src/modules/molecules/filter/sort-selector';
 
 const sortItems = [
   {
