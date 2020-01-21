@@ -35,6 +35,7 @@ export default function SortSelector({sortItems}: SortSelectorProps) {
           paddingRight: rem(12),
         },
         inputAndroid: {
+          backgroundColor: 'red',
           fontSize: rem(10),
           paddingRight: rem(12),
         },

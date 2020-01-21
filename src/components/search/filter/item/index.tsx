@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SortSelector from '@src/modules/molecules/filter/sort-selector';
+import FilterButton from '@src/modules/molecules/filter/default-filter-button';
 
 const sortItems = [
   {
@@ -16,7 +17,7 @@ const sortItems = [
 export default function ItemFilter() {
   return (
     <>
-      {/* <FilterButton /> */}
+      <FilterButton />
       <SortSelector sortItems={sortItems} />
     </>
   );

@@ -3,7 +3,7 @@ import {useQuery} from 'react-apollo';
 import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 
-import FilterButton from './filter-button';
+import FilterButton from '@src/modules/molecules/filter/default-filter-button';
 import Text from '@src/modules/atoms/text';
 import Space from '@src/modules/atoms/space';
 import SortSelector from '@src/modules/molecules/filter/sort-selector';

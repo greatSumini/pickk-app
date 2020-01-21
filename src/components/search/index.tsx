@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {TouchableWithoutFeedback, Keyboard, Animated} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {TouchableWithoutFeedback, Keyboard} from 'react-native';
 import styled from 'styled-components/native';
 
 import SearchScreenProps from './props';
@@ -8,12 +8,6 @@ import SearchBar from './search-bar';
 import Filter from './filter';
 import NavigationBar from '@src/modules/navigation/bar';
 import {PostFilterContext, SortContext} from '@src/context/filter';
-import {
-  MIN_PRICE,
-  SIZE,
-  DIM,
-  MAX_PRICE,
-} from '@src/modules/molecules/filter/price-selector';
 
 const items = ['포스트', '아이템', '커뮤니티'];
 const CATEGORY = ['POST', 'ITEM', 'COMMUNITY'];
@@ -27,12 +21,11 @@ export default function Search(props: SearchScreenProps) {
   const [navType, setNavType] = useState('POST');
   const [postType, setPostType] = useState('REVIEW');
   const [sortOption, setSortOption] = useState(DEFAULT_SORT_OPTION);
-  const [priceOption, setPriceOption] = useState(false);
-  const [minimumPrice] = useState(new Animated.Value(MIN_PRICE));
-  const [maximumPrice] = useState(new Animated.Value(MAX_PRICE));
-  const [minState, setMinState] = useState(0);
-  const [maxState, setMaxState] = useState(SIZE - DIM);
-  const [option, setOption] = useState(false);
+
+  useEffect(() => {
+    setPostType('REVIEW');
+    setSortOption(DEFAULT_SORT_OPTION);
+  }, [navType]);
 
   const postFilterStore = {
     state: {postType},

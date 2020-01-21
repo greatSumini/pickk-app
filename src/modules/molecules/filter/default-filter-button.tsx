@@ -16,7 +16,7 @@ export default function FilterButton() {
         Icon={FilterIcon}
         width={rem(11)}
         height={rem(9)}
-        content="필터"
+        content='필터'
         fill={filterColor}
         textColor={filterColor}
         level={0}
