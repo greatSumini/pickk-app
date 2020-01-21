@@ -5,18 +5,15 @@ import gql from 'graphql-tag';
 
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
-import {
-  useItemFilterContext,
-  useRankFilterDrawerContext,
-} from '@src/context/filter';
+import {useItemFilterContext, usePriceFilterContext} from '@src/context/filter';
 import Text from '@src/modules/atoms/text';
 
 export default function ApplyButton({setVisible}) {
   const itemFilterContext = useItemFilterContext();
-  const rankFilterDrawerContext = useRankFilterDrawerContext();
+  const priceFilterContext = usePriceFilterContext();
   const {itemFinalType, itemMajorType, itemMinorType} = itemFilterContext.state;
-  const {minimumPrice, maximumPrice} = rankFilterDrawerContext.state;
-  const {setPriceOption, setOption} = rankFilterDrawerContext.action;
+  const {minimumPrice, maximumPrice} = priceFilterContext.state;
+  const {setPriceOption, setOption} = priceFilterContext.action;
 
   const {loading, error, data} = useQuery(GET_ITEMRANK_META, {
     variables: {

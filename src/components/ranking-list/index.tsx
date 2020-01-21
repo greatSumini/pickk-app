@@ -12,7 +12,7 @@ import {width} from '@src/constants/dimensions';
 import rem from '@src/constants/rem';
 import {
   ItemFilterContext,
-  RankFilterDrawerContext,
+  PriceFilterContext,
   SortContext,
   InitailizeCommonStatesContext,
 } from '@src/context/filter';
@@ -73,7 +73,7 @@ export default function RankingListScreen(props: RankingListScreenProps) {
     },
   };
 
-  const categoryDrawerStore = {
+  const priceFilterStore = {
     state: {
       minimumPrice,
       maximumPrice,
@@ -152,7 +152,7 @@ export default function RankingListScreen(props: RankingListScreenProps) {
   return (
     <Wrapper>
       <ItemFilterContext.Provider value={itemFilterStore}>
-        <RankFilterDrawerContext.Provider value={categoryDrawerStore}>
+        <PriceFilterContext.Provider value={priceFilterStore}>
           <SortContext.Provider value={sortStore}>
             <InitailizeCommonStatesContext.Provider
               value={initializeCommonStatesStore}>
@@ -181,7 +181,7 @@ export default function RankingListScreen(props: RankingListScreenProps) {
               />
             </InitailizeCommonStatesContext.Provider>
           </SortContext.Provider>
-        </RankFilterDrawerContext.Provider>
+        </PriceFilterContext.Provider>
       </ItemFilterContext.Provider>
     </Wrapper>
   );
