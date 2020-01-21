@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import PriceSelector from './price-selector';
+import PriceSelector from '@src/modules/molecules/filter/price-selector';
 import FilterIcon from '@src/assets/icons/filter';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
@@ -33,7 +33,7 @@ export default function OptionButton() {
         Icon={FilterIcon}
         width={rem(11)}
         height={rem(9)}
-        content="필터"
+        content='필터'
         fill={filterColor}
         textColor={filterColor}
         level={0}
