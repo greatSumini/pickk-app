@@ -18,8 +18,8 @@ const DEFAULT_SORT_OPTION = {
 
 export default function Search(props: SearchScreenProps) {
   const [text, setText] = useState('');
-  const [navType, setNavType] = useState('POST');
-  const [postType, setPostType] = useState('REVIEW');
+  const [navType, setNavType] = useState<'POST' | 'ITEM' | 'COMMUNITY'>('POST');
+  const [postType, setPostType] = useState<'REVIEW' | 'LOOK'>('REVIEW');
   const [sortOption, setSortOption] = useState(DEFAULT_SORT_OPTION);
 
   useEffect(() => {

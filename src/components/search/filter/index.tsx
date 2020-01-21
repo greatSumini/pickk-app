@@ -5,7 +5,11 @@ import ItemFilter from './item';
 import CommunityFilter from './community';
 import FilterWrapper from '@src/modules/molecules/filter/wrapper';
 
-export default function Filter({navType}) {
+type FilterProps = {
+  navType: 'POST' | 'ITEM' | 'COMMUNITY';
+};
+
+export default function Filter({navType}: FilterProps) {
   return (
     <FilterWrapper>
       {navType === 'POST' && <PostFilter />}
