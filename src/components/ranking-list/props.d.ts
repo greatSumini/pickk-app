@@ -1,8 +1,5 @@
-import {NavigationTabProp} from 'react-navigation-tabs';
-import {NavigationDrawerProp} from 'react-navigation-drawer';
+import ScreenNavigationProps from '@src/modules/types/screen-navigation-props';
 
-type RankingListScreenProps = {
-  navigation: NavigationTabProp & NavigationDrawerProp;
-};
+type RankingListScreenProps = ScreenNavigationProps;
 
 export default RankingListScreenProps;

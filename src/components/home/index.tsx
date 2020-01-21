@@ -1,18 +1,13 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
-import {NavigationDrawerProp} from 'react-navigation-drawer';
-import {NavigationTabProp} from 'react-navigation-tabs';
 
 import HomeHeader from './header';
 import HomeCarousel from './carousel';
 import HomeExhibition from './exhibition';
 import QuickMenu from './exhibition/quick-menu';
 import RecommendLook from './exhibition/recommend-look';
+import HomeScreenProps from './props';
 import Space from '@src/modules/atoms/space';
-
-export type HomeScreenProps = {
-  navigation: NavigationDrawerProp & NavigationTabProp;
-};
 
 export default function HomeScreen(props: HomeScreenProps) {
   return (
