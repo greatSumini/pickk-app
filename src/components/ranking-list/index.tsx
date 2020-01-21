@@ -8,7 +8,6 @@ import ItemFilter from './filter';
 import RankingListScreenProps from './props';
 import Search from '@src/assets/icons/search';
 import colors from '@src/constants/colors';
-import {width} from '@src/constants/dimensions';
 import rem from '@src/constants/rem';
 import {
   ItemFilterContext,
@@ -18,12 +17,12 @@ import {
 } from '@src/context/filter';
 import ScrollList from '@src/modules/list/scroll';
 import Header from '@src/modules/header';
-
-export const PADDING = rem(16);
-export const SIZE = width - 2 * PADDING;
-export const DIM = rem(20);
-export const MIN_PRICE = 10000;
-export const MAX_PRICE = 1000000;
+import {
+  MIN_PRICE,
+  SIZE,
+  DIM,
+  MAX_PRICE,
+} from '@src/modules/molecules/filter/price-selector';
 
 export const DEFAULT_SORT_OPTION = {
   sort: 'DESC',
@@ -38,8 +37,8 @@ export default function RankingListScreen(props: RankingListScreenProps) {
   const [major, setMajor] = useState('ALL');
   const [minor, setMinor] = useState('ALL');
   const [final, setFinal] = useState('ALL');
-  const [priceOption, setPriceOption] = useState(false);
   const [sortOption, setSortOption] = useState(DEFAULT_SORT_OPTION);
+  const [priceOption, setPriceOption] = useState(false);
   const [minimumPrice] = useState(new Animated.Value(MIN_PRICE));
   const [maximumPrice] = useState(new Animated.Value(MAX_PRICE));
   const [minState, setMinState] = useState(0);

@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import {usePriceFilterContext} from '@src/context/filter';
 import Text from '@src/modules/atoms/text';
 import {addCommaToNumber} from '@src/lib/utils/price-parser';
-import {MIN_PRICE} from '@src/components/ranking-list';
+import {MIN_PRICE} from '..';
 
 export default function PriceData() {
   const priceFilterContext = usePriceFilterContext();

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 import RotateIcon from '@src/assets/icons/rotate';
-import {SIZE, DIM, MAX_PRICE, MIN_PRICE} from '@src/components/ranking-list';
+import {SIZE, DIM, MAX_PRICE, MIN_PRICE} from '../..';
 import rem from '@src/constants/rem';
 import {usePriceFilterContext} from '@src/context/filter';
 import IconText from '@src/modules/molecules/icon-text';
