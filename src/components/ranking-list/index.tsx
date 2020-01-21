@@ -156,11 +156,13 @@ export default function RankingListScreen(props: RankingListScreenProps) {
             <InitailizeCommonStatesContext.Provider
               value={initializeCommonStatesStore}>
               <Header
-                title='랭킹'
-                icons={icons}
-                height={headerHeight}
-                titlePadding={titlePadding}
-                titleSize={titleSize}>
+                {...{
+                  icons,
+                  titlePadding,
+                  titleSize,
+                  height: headerHeight,
+                  title: '랭킹',
+                }}>
                 <ItemFilter />
               </Header>
               <ScrollList

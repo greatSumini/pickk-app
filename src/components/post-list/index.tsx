@@ -93,11 +93,13 @@ export default function PostListScreen(props: PostListScreenProps) {
     <Wrapper>
       <FilterContext.Provider value={filterValue}>
         <Header
-          title='포스트'
-          height={headerHeight}
-          titleSize={titleSize}
-          titlePadding={titlePadding}
-          icons={icons}>
+          {...{
+            title: '포스트',
+            height: headerHeight,
+            titleSize,
+            titlePadding,
+            icons,
+          }}>
           <NavigationBar
             items={items}
             navControl={{value: postType, setValue: setPostType}}
