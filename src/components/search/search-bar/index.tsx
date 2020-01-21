@@ -25,7 +25,7 @@ export default function SearchBar({setText}: SearchBarProp) {
       <TextInputWrapper>
         <TextInput
           value={value}
-          onChangeText={text => setValue(text)}
+          onChangeText={setValue}
           onSubmitEditing={handleSubmit}
           style={{width: rem(270)}}
         />
