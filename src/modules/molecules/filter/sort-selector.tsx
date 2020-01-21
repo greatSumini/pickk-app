@@ -6,35 +6,36 @@ import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
 import {useSortContext} from '@src/context/filter';
 
-export default function PostSortSelector() {
+type SortSelectorProps = {
+  sortItems: {
+    label: string;
+    value: {
+      sort: string;
+      sortBy: string;
+    };
+  }[];
+};
+
+export default function SortSelector({sortItems}: SortSelectorProps) {
   const sortContext = useSortContext();
   const {sortOption} = sortContext.state;
   const {setSortOption} = sortContext.action;
 
-  const sortItems = [
-    {
-      label: '추천순',
-      value: {sortBy: 'pickCount', sort: 'DESC'},
-    },
-  ];
-
   return (
     <RNPickerSelect
-      placeholder={{
-        label: '최신순',
-        value: {sortBy: 'time', sort: 'DESC'},
-      }}
+      placeholder={sortItems[0]}
       useNativeAndroidPickerStyle={false}
       onValueChange={value => {
         setSortOption(value);
       }}
-      items={sortItems}
+      items={sortItems.slice(1, sortItems.length)}
       style={{
         inputIOS: {
           fontSize: rem(10),
           paddingRight: rem(12),
         },
         inputAndroid: {
+          width: rem(100),
           fontSize: rem(10),
           paddingRight: rem(12),
         },
