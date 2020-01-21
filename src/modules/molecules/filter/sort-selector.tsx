@@ -31,11 +31,15 @@ export default function SortSelector({sortItems}: SortSelectorProps) {
       items={sortItems.slice(1, sortItems.length)}
       style={{
         inputIOS: {
+          width: rem(70),
           fontSize: rem(10),
+          textAlign: 'right',
           paddingRight: rem(12),
         },
         inputAndroid: {
+          width: rem(70),
           fontSize: rem(10),
+          textAlign: 'right',
           paddingRight: rem(12),
         },
         placeholder: {
