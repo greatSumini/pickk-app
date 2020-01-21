@@ -1,13 +1,11 @@
 import {createContext, useContext} from 'react';
 
-import {REVIEW} from '@src/components/post-list/index';
-
 const FilterContext = createContext({
   state: {
     tag: null,
     pick: 0,
     sort: null,
-    view: REVIEW,
+    view: null,
     option: false,
     sortOption: false,
   },
