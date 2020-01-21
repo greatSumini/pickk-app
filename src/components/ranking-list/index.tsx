@@ -3,25 +3,26 @@ import {Animated, BackHandler} from 'react-native';
 import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 
+import Item from './item/index';
+import ItemFilter from './filter';
+import RankingListScreenProps from './props';
 import Search from '@src/assets/icons/search';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
 import {
   ItemFilterContext,
-  RankFilterDrawerContext,
+  PriceFilterContext,
   SortContext,
   InitailizeCommonStatesContext,
 } from '@src/context/filter';
 import ScrollList from '@src/modules/list/scroll';
-import Header from '@src/modules/header/ranking-list/';
-import Item from './item/index';
-import {width} from '@src/constants/dimensions';
-
-export const PADDING = rem(16);
-export const SIZE = width - 2 * PADDING;
-export const DIM = rem(20);
-export const MIN_PRICE = 10000;
-export const MAX_PRICE = 1000000;
+import Header from '@src/modules/header';
+import {
+  MIN_PRICE,
+  SIZE,
+  DIM,
+  MAX_PRICE,
+} from '@src/modules/molecules/filter/price-selector';
 
 export const DEFAULT_SORT_OPTION = {
   sort: 'DESC',
@@ -31,15 +32,13 @@ export const DEFAULT_SORT_OPTION = {
 const HEADER_MAX_HEIGHT = rem(126);
 const HEADER_MIN_HEIGHT = rem(108);
 
-const icons = [{Icon: Search, fill: colors.primary}];
-
-export default function RankingListScreen() {
+export default function RankingListScreen(props: RankingListScreenProps) {
   const [scrollY] = useState(new Animated.Value(0));
   const [major, setMajor] = useState('ALL');
   const [minor, setMinor] = useState('ALL');
   const [final, setFinal] = useState('ALL');
-  const [priceOption, setPriceOption] = useState(false);
   const [sortOption, setSortOption] = useState(DEFAULT_SORT_OPTION);
+  const [priceOption, setPriceOption] = useState(false);
   const [minimumPrice] = useState(new Animated.Value(MIN_PRICE));
   const [maximumPrice] = useState(new Animated.Value(MAX_PRICE));
   const [minState, setMinState] = useState(0);
@@ -73,7 +72,7 @@ export default function RankingListScreen() {
     },
   };
 
-  const categoryDrawerStore = {
+  const priceFilterStore = {
     state: {
       minimumPrice,
       maximumPrice,
@@ -139,22 +138,35 @@ export default function RankingListScreen() {
     };
   }, [major]);
 
+  const icons = [
+    {
+      Icon: Search,
+      fill: colors.primary,
+      onPress: () => {
+        props.navigation.navigate('Search');
+      },
+    },
+  ];
+
   return (
     <Wrapper>
       <ItemFilterContext.Provider value={itemFilterStore}>
-        <RankFilterDrawerContext.Provider value={categoryDrawerStore}>
+        <PriceFilterContext.Provider value={priceFilterStore}>
           <SortContext.Provider value={sortStore}>
             <InitailizeCommonStatesContext.Provider
               value={initializeCommonStatesStore}>
               <Header
-                title="랭킹"
-                icons={icons}
-                height={headerHeight}
-                titlePadding={titlePadding}
-                titleSize={titleSize}
-              />
+                {...{
+                  icons,
+                  titlePadding,
+                  titleSize,
+                  height: headerHeight,
+                  title: '랭킹',
+                }}>
+                <ItemFilter />
+              </Header>
               <ScrollList
-                category="getItemRanking"
+                category='getItemRanking'
                 query={GET_ITEM_RANKING}
                 ListItem={Item}
                 onScroll={Animated.event([
@@ -170,13 +182,13 @@ export default function RankingListScreen() {
               />
             </InitailizeCommonStatesContext.Provider>
           </SortContext.Provider>
-        </RankFilterDrawerContext.Provider>
+        </PriceFilterContext.Provider>
       </ItemFilterContext.Provider>
     </Wrapper>
   );
 }
 
-const Wrapper = styled.View({
+const Wrapper = styled.SafeAreaView({
   flex: 1,
 });
 

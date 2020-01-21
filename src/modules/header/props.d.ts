@@ -1,5 +1,7 @@
 import {StyleProp, Animated, ViewStyle} from 'react-native';
 
+import HeaderIconProps from './header-icons/props';
+
 export type HeaderControlType<T> = {
   value: T;
   setValue: React.Dispatch<React.SetStateAction<T>>;
@@ -11,9 +13,8 @@ type HeaderProps = {
   height: Animated.AnimatedInterpolation;
   titleSize: Animated.AnimatedInterpolation;
   titlePadding: Animated.AnimatedInterpolation;
-  items?: {label: string}[];
-  icons?: {Icon: React.ElementType; fill?: string}[];
-  postTypeControl?: HeaderControlType<string>;
+  icons?: HeaderIconProps[];
+  children?: React.ReactNode;
 };
 
 export default HeaderProps;

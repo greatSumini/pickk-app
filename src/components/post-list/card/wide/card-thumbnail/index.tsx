@@ -21,19 +21,17 @@ export default function PostCardWideThumbnail({
     ImageSize.Raw,
   );
 
-  useEffect(() => {
-    Image.getSize(
-      imageUrl,
-      (imgWidth, imgHeight) => {
-        if (titleType !== 'YOUTUBE') {
-          setHeight((width * imgHeight) / imgWidth);
-        }
-      },
-      err => {
-        console.log(err);
-      },
-    );
-  }, []);
+  Image.getSize(
+    imageUrl,
+    (imgWidth, imgHeight) => {
+      if (titleType !== 'YOUTUBE') {
+        setHeight((width * imgHeight) / imgWidth);
+      }
+    },
+    err => {
+      console.log(err);
+    },
+  );
 
   return (
     <Thumbnail

@@ -16,7 +16,7 @@ const options = [
   },
 ];
 
-export default function PostTypeSwitch() {
+export default function PostTypeSwitchSelector() {
   const postFilterContext = usePostFilterContext();
   const {setPostType} = postFilterContext.action;
 
@@ -25,7 +25,6 @@ export default function PostTypeSwitch() {
       options={options}
       initial={0}
       onPress={value => {
-        console.log('switch selected');
         setPostType(value);
       }}
       style={{

@@ -7,7 +7,7 @@ import {
   GestureResponderEvent,
 } from 'react-native';
 
-import {useRankFilterDrawerContext} from '@src/context/filter';
+import {usePriceFilterContext} from '@src/context/filter';
 import rem from '@src/constants/rem';
 import {width} from '@src/constants/dimensions';
 import colors from '@src/constants/colors';
@@ -20,14 +20,14 @@ const MAX_PRICE = 1000000;
 const LENGTH = Math.floor(SIZE - DIM);
 
 export default function PriceBar() {
-  const rankFilterDrawerContext = useRankFilterDrawerContext();
+  const priceFilterContext = usePriceFilterContext();
   const {
     minimumPrice,
     maximumPrice,
     minState,
     maxState,
-  } = rankFilterDrawerContext.state;
-  const {setMinState, setMaxState} = rankFilterDrawerContext.action;
+  } = priceFilterContext.state;
+  const {setMinState, setMaxState} = priceFilterContext.action;
 
   const [minPosition] = useState(new Animated.Value(minState));
   const [maxPosition] = useState(new Animated.Value(maxState));

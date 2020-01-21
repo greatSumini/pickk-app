@@ -1,77 +1,41 @@
 import React from 'react';
-import RNPickerSelect from 'react-native-picker-select';
 import styled from 'styled-components/native';
 
-import ChevronDown from '@src/assets/icons/chevron/down';
-import colors from '@src/constants/colors';
-import rem from '@src/constants/rem';
-import {useSortContext, useItemFilterContext} from '@src/context/filter';
-import Space from '@src/modules/atoms/space';
-import {itemCate} from '@src/data/item';
-import CategoryButton from './category-button';
 import OptionButton from './option-button';
+import CategoryButton from './category-button';
+import SortSelector from '@src/modules/molecules/filter/sort-selector';
+import rem from '@src/constants/rem';
+import {useItemFilterContext} from '@src/context/filter';
+import {itemCate} from '@src/data/item';
+import Space from '@src/modules/atoms/space';
+
+const sortItems = [
+  {
+    label: '추천순',
+    value: {sortBy: 'rankScore', sort: 'DESC'},
+  },
+  {
+    label: '높은 가격순',
+    value: {sortBy: 'price', sort: 'DESC'},
+  },
+  {
+    label: '낮은 가격순',
+    value: {sortBy: 'price', sort: 'ASC'},
+  },
+];
 
 export default function FinalCateFilter() {
-  const sortContext = useSortContext();
   const itemFilterContext = useItemFilterContext();
-  const {sortOption} = sortContext.state;
-  const {setSortOption} = sortContext.action;
   const {itemMinorType} = itemFilterContext.state;
-
-  const sortItems = [
-    {
-      label: '높은 가격순',
-      value: {sortBy: 'price', sort: 'DESC'},
-    },
-    {
-      label: '낮은 가격순',
-      value: {sortBy: 'price', sort: 'ASC'},
-    },
-  ];
 
   return (
     <Wrapper>
       <Row>
         <OptionButton />
-        <Space direction="ROW" />
+        <Space direction='ROW' />
         {itemCate[itemMinorType] && <CategoryButton />}
       </Row>
-      <RNPickerSelect
-        placeholder={{
-          label: '추천순',
-          value: {sortBy: 'rankScore', sort: 'DESC'},
-        }}
-        useNativeAndroidPickerStyle={false}
-        onValueChange={value => {
-          setSortOption(value);
-        }}
-        items={sortItems}
-        style={{
-          inputIOS: {
-            fontSize: rem(10),
-            paddingRight: rem(12),
-          },
-          inputAndroid: {
-            fontSize: rem(10),
-            paddingRight: rem(12),
-          },
-          placeholder: {
-            color: 'black',
-          },
-          iconContainer: {
-            top: rem(13),
-          },
-        }}
-        value={sortOption}
-        Icon={() => {
-          return (
-            <ChevronDown
-              style={{width: rem(10), height: rem(10)}}
-              fill={colors.primary}
-            />
-          );
-        }}
-      />
+      <SortSelector sortItems={sortItems} />
     </Wrapper>
   );
 }

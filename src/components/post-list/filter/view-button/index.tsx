@@ -9,10 +9,10 @@ import rem from '@src/constants/rem';
 import {useFilterContext} from '@src/context/filter';
 
 import IconButton from '@src/modules/atoms/buttons/icons';
-import {WIDE, NARROW, REVIEW} from '../..';
+import {WIDE, NARROW} from '../..';
 
 type ViewButtonProps = {
-  postType: '리뷰' | 'LOOK';
+  postType: 'REVIEW' | 'LOOK';
 };
 
 export default function ViewButton({postType}: ViewButtonProps) {
@@ -23,7 +23,7 @@ export default function ViewButton({postType}: ViewButtonProps) {
   const ViewFilterIcon =
     view === WIDE
       ? WideIcon
-      : postType === REVIEW
+      : postType === 'REVIEW'
       ? NarrowReviewIcon
       : NarrowLookIcon;
 

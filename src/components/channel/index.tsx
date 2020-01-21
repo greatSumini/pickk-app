@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 import Header from './header';
 import Filter from './filter';
 import Item from './item';
+import ChannelScreenProps from './props';
 import {PostFilterContext, SortContext} from '@src/context/filter';
 import PostListCardWide from '@src/components/post-list/card/wide';
 import PostListCardNarrowLook from '@src/components/post-list/card/narrow/look';
@@ -20,7 +21,7 @@ const DEFAULT_SORT_OPTION = {
 
 const CATEGORY = ['POST', 'ITEM'];
 
-export default function Channel(props) {
+export default function Channel(props: ChannelScreenProps) {
   const id = 148;
   const [navType, setNavType] = useState<'POST' | 'ITEM'>('POST');
   const [postType, setPostType] = useState<'REVIEW' | 'LOOK'>('REVIEW');

@@ -8,9 +8,13 @@ import colors from '@src/constants/colors';
 
 export type HomeHeaderProps = {
   toggleDrawer: () => void;
+  routeToSearch: () => void;
 };
 
-export default function HomeHeader({toggleDrawer}: HomeHeaderProps) {
+export default function HomeHeader({
+  toggleDrawer,
+  routeToSearch,
+}: HomeHeaderProps) {
   return (
     <Wrapper>
       <IconButton
@@ -20,7 +24,7 @@ export default function HomeHeader({toggleDrawer}: HomeHeaderProps) {
         fill={colors.white}
       />
       <IconButton
-        onPress={toggleDrawer}
+        onPress={routeToSearch}
         Icon={SearchIcon}
         size={24}
         fill={colors.white}
