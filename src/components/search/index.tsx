@@ -50,7 +50,7 @@ export default function Search(props: SearchScreenProps) {
         />
         <PostFilterContext.Provider value={postFilterStore}>
           <SortContext.Provider value={sortStore}>
-            <Filter {...{text, navType}} />
+            <Filter navType={navType} />
           </SortContext.Provider>
         </PostFilterContext.Provider>
       </Wrapper>

@@ -1,10 +1,23 @@
 import React from 'react';
-import styled from 'styled-components/native';
+
+import SortSelector from '@src/modules/molecules/filter/sort-selector';
+
+const sortItems = [
+  {
+    label: '최신순',
+    value: {sortBy: 'time', sort: 'DESC'},
+  },
+  {
+    label: '별점순',
+    value: {sortBy: 'score', sort: 'DESC'},
+  },
+];
 
 export default function ItemFilter() {
-  return <Wrapper />;
+  return (
+    <>
+      {/* <FilterButton /> */}
+      <SortSelector sortItems={sortItems} />
+    </>
+  );
 }
-
-const Wrapper = styled.View({
-  flex: 1,
-});
