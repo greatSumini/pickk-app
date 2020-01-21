@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 
-import PriceSelector from '@src/modules/molecules/filter/price-selector';
 import FilterIcon from '@src/assets/icons/filter';
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
 import {usePriceFilterContext} from '@src/context/filter';
-import IconText from '@src/modules/molecules/icon-text';
 import FilterItem from '@src/modules/atoms/buttons/filter/filter-item';
 import BottomDrawer from '@src/modules/navigation/drawer/bottom';
+import IconText from '@src/modules/molecules/icon-text';
+import PriceSelector from '@src/modules/molecules/filter/price-selector';
 
 export default function OptionButton() {
   const [visible, setVisible] = useState(false);
