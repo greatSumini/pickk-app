@@ -16,7 +16,6 @@ export default function SearchBar({setText}: SearchBarProp) {
 
   const handleSubmit = () => {
     setText(value);
-    setValue('');
     Keyboard.dismiss();
   };
 
@@ -27,6 +26,7 @@ export default function SearchBar({setText}: SearchBarProp) {
           value={value}
           onChangeText={setValue}
           onSubmitEditing={handleSubmit}
+          placeholder='검색어를 입력하세요'
           style={{width: rem(270)}}
         />
         <IconButton
