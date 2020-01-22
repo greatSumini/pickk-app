@@ -28,6 +28,7 @@ type IProps = {
   numColumns?: number;
   headerMaxHeight?: number;
   ListHeader?: React.ComponentType<any> | React.ReactElement | null;
+  NoResult?: React.FunctionComponent;
 };
 
 const ITEMS_PER_PAGE = 20;
@@ -43,6 +44,7 @@ export default function ScrollList({
   numColumns = 1,
   headerMaxHeight = 0,
   ListHeader,
+  NoResult,
 }: IProps) {
   const propName = category;
 
@@ -68,6 +70,10 @@ export default function ScrollList({
 
   if (error) {
     return <Text>Error:{error.message}</Text>;
+  }
+
+  if (data && data[propName].length === 0) {
+    return NoResult ? <NoResult /> : <Text>결과가 없습니다.</Text>;
   }
 
   return (

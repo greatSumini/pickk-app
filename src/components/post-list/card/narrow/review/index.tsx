@@ -34,28 +34,33 @@ export default function NarrowReviewCard({
             {title}
           </Title>
           <SubInfo>
-            <Name color={colors.secondary}>{name}</Name>
-            <Time color={colors.secondary}>{parseTime(time)}</Time>
-            <Space direction="ROW" level={5} />
-            <IconText
-              Icon={ThumsUp}
-              width={ICON_SIZE}
-              height={ICON_SIZE}
-              fillOut={colors.secondary}
-              fillLeft={colors.white}
-              fillRight={colors.secondary}
-              textColor={colors.secondary}
-              content={pickCount}
-            />
-            <IconText
-              Icon={View}
-              width={ICON_SIZE}
-              height={ICON_SIZE}
-              fill={colors.secondary}
-              fillIn={colors.white}
-              textColor={colors.secondary}
-              content={viewCount}
-            />
+            <Row>
+              <Name color={colors.secondary}>{name}</Name>
+              <Space direction='ROW' size={8} />
+              <Time color={colors.secondary}>{parseTime(time)}</Time>
+            </Row>
+            <Row>
+              <IconText
+                Icon={ThumsUp}
+                width={ICON_SIZE}
+                height={ICON_SIZE}
+                fillOut={colors.secondary}
+                fillLeft={colors.white}
+                fillRight={colors.secondary}
+                textColor={colors.secondary}
+                content={pickCount}
+              />
+              <Space direction='ROW' size={7} />
+              <IconText
+                Icon={View}
+                width={ICON_SIZE}
+                height={ICON_SIZE}
+                fill={colors.secondary}
+                fillIn={colors.white}
+                textColor={colors.secondary}
+                content={viewCount}
+              />
+            </Row>
           </SubInfo>
         </ItemInfo>
         <ItemImg
@@ -102,12 +107,16 @@ const SubInfo = styled.View({
   flexDirection: 'row',
   justifyContent: 'space-between',
 });
+
+const Row = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+});
+
 const Title = styled(Text)({
   width: rem(248),
 });
 const Name = styled(Text)({
   width: rem(63),
 });
-const Time = styled(Text)({
-  width: rem(47),
-});
+const Time = styled(Text)({});

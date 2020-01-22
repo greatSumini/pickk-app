@@ -90,6 +90,7 @@ const DarkOverlay = styled(LinearGradient).attrs({
   left: 0,
   right: 0,
   bottom: 0,
+  borderRadius: rem(8),
 });
 
 const UserInfo = styled.View({
