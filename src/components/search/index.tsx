@@ -70,11 +70,7 @@ export default function Search(props: SearchScreenProps) {
   };
 
   const listItemSelector = () => {
-    if (navType === 'POST') {
-      return LIST_ITEM.POST[postType];
-    } else {
-      return LIST_ITEM[navType];
-    }
+    return navType === 'POST' ? LIST_ITEM.POST[postType] : LIST_ITEM[navType];
   };
 
   return (
@@ -155,10 +151,21 @@ const GET_RECOMMEND_POST_LIST = gql`
 `;
 
 export const ALL_ITEM_REVIEWS = gql`
-  query allItemReviews($start: Int!, $first: Int!, $searchText: String!) {
+  query allItemReviews(
+    $start: Int!
+    $first: Int!
+    $searchText: String!
+    $sort: SortDirection
+    $sortBy: ReviewSortableField
+  ) {
     allItemReviews(
       reviewOption: {
-        filterGeneral: {start: $start, first: $first}
+        filterGeneral: {
+          start: $start
+          first: $first
+          sort: $sort
+          sortBy: $sortBy
+        }
         reviewFilter: {searchText: $searchText}
       }
     ) {
@@ -186,10 +193,21 @@ export const ALL_ITEM_REVIEWS = gql`
 `;
 
 export const GET_COMMUNITY_POST_LIST = gql`
-  query allCommunityPosts($start: Int!, $first: Int!, $searchText: String!) {
+  query allCommunityPosts(
+    $start: Int!
+    $first: Int!
+    $searchText: String!
+    $sort: SortDirection
+    $sortBy: ComPostSortableField
+  ) {
     allCommunityPosts(
       communityPostOption: {
-        filterGeneral: {start: $start, first: $first}
+        filterGeneral: {
+          start: $start
+          first: $first
+          sort: $sort
+          sortBy: $sortBy
+        }
         postFilter: {searchText: $searchText}
       }
     ) {
