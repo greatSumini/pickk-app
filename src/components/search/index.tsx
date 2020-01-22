@@ -69,9 +69,8 @@ export default function Search(props: SearchScreenProps) {
     },
   };
 
-  const listItemSelector = () => {
-    return navType === 'POST' ? LIST_ITEM.POST[postType] : LIST_ITEM[navType];
-  };
+  const listItemSelector = () =>
+    navType === 'POST' ? LIST_ITEM.POST[postType] : LIST_ITEM[navType];
 
   return (
     <TouchableWithoutFeedback
