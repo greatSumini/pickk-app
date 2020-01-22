@@ -73,7 +73,7 @@ export default function ScrollList({
   }
 
   if (data && data[propName].length === 0) {
-    return <NoResult />;
+    return NoResult ? <NoResult /> : <Text>결과가 없습니다.</Text>;
   }
 
   return (
