@@ -4,7 +4,8 @@ import Drawer from '../../drawer/main/index';
 import BottomTab from './bottom-tab';
 import rem from '@src/constants/rem';
 
-import SearchScreen from '@src/components/search/index';
+import SearchScreen from '@src/components/search';
+import ChannelScreen from '@src/components/channel';
 
 const AppStack = createDrawerNavigator(
   {
@@ -13,6 +14,9 @@ const AppStack = createDrawerNavigator(
     },
     Search: {
       screen: SearchScreen,
+    },
+    Channel: {
+      screen: ChannelScreen,
     },
   },
   {
