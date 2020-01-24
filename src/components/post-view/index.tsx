@@ -5,6 +5,8 @@ import PostViewHeader from './header';
 import PostViewScreenProps from './props';
 
 export default function PostView(props: PostViewScreenProps) {
+  const postId = props.navigation.getParam('id');
+
   return (
     <Wrapper>
       <PostViewHeader />

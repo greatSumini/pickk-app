@@ -1,4 +1,5 @@
 import React from 'react';
+import {withNavigation} from 'react-navigation';
 import styled from 'styled-components/native';
 
 import ThumsUp from '@src/assets/icons/thums-up';
@@ -16,7 +17,8 @@ import postCardNarrowReviewProps from './props';
 
 const ICON_SIZE = rem(9);
 
-export default function NarrowReviewCard({
+function NarrowReviewCard({
+  id,
   title,
   name,
   time,
@@ -25,9 +27,14 @@ export default function NarrowReviewCard({
   titleType,
   titleImageUrl,
   titleYoutubeUrl,
+  navigation,
 }: postCardNarrowReviewProps) {
+  const routeToPostView = () => {
+    navigation.navigate('PostView', {id: id});
+  };
+
   return (
-    <Touchable>
+    <Touchable onPress={routeToPostView}>
       <Wrapper>
         <ItemInfo>
           <Title lines={2} level={1} color={colors.primary}>
@@ -77,6 +84,8 @@ export default function NarrowReviewCard({
     </Touchable>
   );
 }
+
+export default withNavigation(NarrowReviewCard);
 
 const Touchable = styled(TouchableCmp)({
   width: '100%',

@@ -1,4 +1,7 @@
+import {NavigationStackProp} from 'react-navigation-stack';
+
 type postCardNarrowReviewProps = {
+  id: number;
   title: string;
   name: string;
   time: number;
@@ -7,6 +10,7 @@ type postCardNarrowReviewProps = {
   titleType: string;
   titleImageUrl: string;
   titleYoutubeUrl: string;
+  navigation: NavigationStackProp;
 };
 
 export default postCardNarrowReviewProps;

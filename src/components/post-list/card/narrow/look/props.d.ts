@@ -1,4 +1,7 @@
+import {NavigationStackProp} from 'react-navigation-stack';
+
 type PostCardNarrowLookProps = {
+  id: number;
   title: string;
   name: string;
   time: number;
@@ -6,6 +9,7 @@ type PostCardNarrowLookProps = {
   titleImageUrl: string;
   titleYoutubeUrl: string;
   profileImageUrl: string;
+  navigation: NavigationStackProp;
 };
 
 export default PostCardNarrowLookProps;

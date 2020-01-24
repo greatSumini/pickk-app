@@ -1,4 +1,5 @@
 import React from 'react';
+import {withNavigation} from 'react-navigation';
 import styled from 'styled-components/native';
 
 import colors from '@src/constants/colors';
@@ -14,14 +15,18 @@ import PostCardWideThumbnailProps from './card-thumbnail/props';
 import PostCardWideItemRowProps from './item-row/props';
 import PostCardWideFooterProps from './footer/props';
 
-export default function PostCardWide(props: PostCardWideProps) {
+function PostCardWide(props: PostCardWideProps) {
   const headerProps: PostCardWideHeaderProps = props;
   const thumbnailProps: PostCardWideThumbnailProps = props;
   const itemRowProps: PostCardWideItemRowProps = props;
   const footerProps: PostCardWideFooterProps = props;
 
+  const routeToPostView = () => {
+    props.navigation.navigate('PostView', {id: props.id});
+  };
+
   return (
-    <Touchable>
+    <Touchable onPress={routeToPostView}>
       <Wrapper>
         <PostCardWideHeader {...headerProps} />
         <PostCardWideThumbnail {...thumbnailProps} />
@@ -31,6 +36,8 @@ export default function PostCardWide(props: PostCardWideProps) {
     </Touchable>
   );
 }
+
+export default withNavigation(PostCardWide);
 
 const Wrapper = styled.View({
   width: '100%',

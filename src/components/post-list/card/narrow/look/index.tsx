@@ -1,4 +1,5 @@
 import React from 'react';
+import {withNavigation} from 'react-navigation';
 import styled from 'styled-components/native';
 
 import Text from '@src/modules/atoms/text';
@@ -11,7 +12,8 @@ import {imageUriHandler} from '@src/lib/utils/url-parser';
 import {addSizeToImagePath, ImageSize} from '@src/lib/utils/image-size-parser';
 import PostCardNarrowLookProps from './props';
 
-export default function NarrowLookCard({
+function NarrowLookCard({
+  id,
   title,
   name,
   titleType,
@@ -19,9 +21,14 @@ export default function NarrowLookCard({
   titleYoutubeUrl,
   time,
   profileImageUrl,
+  navigation,
 }: PostCardNarrowLookProps) {
+  const routeToPostView = () => {
+    navigation.navigate('PostView', {id: id});
+  };
+
   return (
-    <Touchable>
+    <Touchable onPress={routeToPostView}>
       <Wrapper>
         <ThumbnailImg
           source={{
@@ -42,7 +49,7 @@ export default function NarrowLookCard({
                   uri: addSizeToImagePath(profileImageUrl, ImageSize.Small),
                 }}
               />
-              <Space direction="ROW" />
+              <Space direction='ROW' />
               <Name color={colors.secondary}>{name}</Name>
             </UserInfo>
             <Time color={colors.secondary}>{parseTime(time)}</Time>
@@ -52,6 +59,8 @@ export default function NarrowLookCard({
     </Touchable>
   );
 }
+
+export default withNavigation(NarrowLookCard);
 
 const Touchable = styled(TouchableCmp)({
   width: rem(162),
