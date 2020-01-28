@@ -1,4 +1,5 @@
 import React from 'react';
+import {ScrollView} from 'react-native';
 import {useQuery} from 'react-apollo';
 import styled from 'styled-components/native';
 import gql from 'graphql-tag';
@@ -28,7 +29,6 @@ export default function PostView(props: PostViewScreenProps) {
   }
 
   if (data && data.allRecommendPosts && data.allRecommendPosts[0]) {
-    console.log(data.allRecommendPosts[0]);
     const {
       titleType,
       accountId,
@@ -45,13 +45,15 @@ export default function PostView(props: PostViewScreenProps) {
       reviews,
     } = data.allRecommendPosts[0];
 
-    const ogImgUrl = titleImageUrl
-      ? titleImageUrl
-      : `https://img.youtube.com/vi/${titleYoutubeUrl}/maxresdefault.jpg`;
-
     return (
       <Wrapper>
-        <PostViewHeader />
+        <ScrollView style={{flex: 1}}>
+          <PostViewHeader
+            type={titleType}
+            src={titleImageUrl}
+            videoId={titleYoutubeUrl}
+          />
+        </ScrollView>
       </Wrapper>
     );
   }
