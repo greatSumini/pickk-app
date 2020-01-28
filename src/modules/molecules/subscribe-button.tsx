@@ -12,18 +12,22 @@ import TouchableCmp from '../atoms/touchable-component';
 type SubscribeButtonProps = {
   accountId: number;
   style?: StyleProp<ViewStyle>;
+  text?: string[];
+  darkMode?: boolean;
 };
 
 export default function SubscribeButton({
   accountId,
   style,
+  text = ['구독 됨', '구독하기'],
+  darkMode = false,
 }: SubscribeButtonProps) {
   const userId = 509; // 테스트용 userId 로그인 기능 구현 후 수정해야함
   const [isSubscribing, setSubscribing] = useState(false);
 
   const [followTarget /*{ error, data }*/] = useMutation(FOLLOW_TARGET);
 
-  const subscribeText = isSubscribing ? '구독 됨' : '구독하기';
+  const subscribeText = isSubscribing ? text[0] : text[1];
 
   const handleSubscribe = () => {
     // 로그인 되었는지 확인과정 추가해야함
@@ -81,8 +85,18 @@ export default function SubscribeButton({
 
   return (
     <Button onPress={handleSubscribe}>
-      <Wrapper {...{style, isSubscribing}}>
-        <Text level={1} color={isSubscribing ? colors.white : colors.primary}>
+      <Wrapper {...{style, isSubscribing, darkMode}}>
+        <Text
+          level={1}
+          color={
+            darkMode
+              ? isSubscribing
+                ? colors.primary
+                : colors.white
+              : isSubscribing
+              ? colors.white
+              : colors.primary
+          }>
           {subscribeText}
         </Text>
       </Wrapper>
@@ -92,12 +106,21 @@ export default function SubscribeButton({
 
 const Button = styled(TouchableCmp)({});
 
-const Wrapper = styled.View<{isSubscribing: boolean}>(props => ({
-  backgroundColor: props.isSubscribing ? colors.primary : colors.white,
-  width: rem(125),
-  paddingVertical: rem(5),
-  alignItems: 'center',
-}));
+const Wrapper = styled.View<{isSubscribing: boolean; darkMode: boolean}>(
+  props => ({
+    backgroundColor: props.darkMode
+      ? props.isSubscribing
+        ? colors.white
+        : colors.primary
+      : props.isSubscribing
+      ? colors.primary
+      : colors.white,
+    width: rem(125),
+    paddingVertical: rem(5),
+    justifyContent: 'center',
+    alignItems: 'center',
+  }),
+);
 
 const IS_FOLLOWING_TARGET = gql`
   query isSubscribing($accountId: Int!, $targetId: Int!) {
