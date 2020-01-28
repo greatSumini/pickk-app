@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-
+import {withNavigation} from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
 
 import Text from '@src/modules/atoms/text';
@@ -10,56 +10,70 @@ import rem from '@src/constants/rem';
 import colors from '@src/constants/colors';
 import {imageUriHandler} from '@src/lib/utils/url-parser';
 import {addSizeToImagePath, ImageSize} from '@src/lib/utils/image-size-parser';
+import {NavigationStackProp} from 'react-navigation-stack';
 
 export type HomeLookCardProps = {
+  id: number;
   title: string;
   name: string;
   titleType: string;
   titleImageUrl: string;
   titleYoutubeUrl: string;
   profileImageUrl: string;
+  navigation?: NavigationStackProp;
 };
 
-export default function HomeLookCard({
+function HomeLookCard({
+  id,
   title,
   name,
   titleType,
   titleImageUrl,
   titleYoutubeUrl,
   profileImageUrl,
+  navigation,
 }: HomeLookCardProps) {
   return (
-    <Touchable>
-      <Wrapper>
-        <ThumnailImg
-          source={{
-            uri: imageUriHandler(
-              titleType,
-              titleImageUrl,
-              titleYoutubeUrl,
-              ImageSize.Medium,
-            ),
-          }}>
-          <DarkOverlay />
-          <UserInfo>
-            <ProfileImg
-              source={{
-                uri: addSizeToImagePath(profileImageUrl, ImageSize.Small),
-              }}
-            />
-            <Space direction='ROW' />
-            <Name color={colors.white} fontSize={8}>
-              {name}
-            </Name>
-          </UserInfo>
-        </ThumnailImg>
-        <Title color={colors.primary} fontWeight='medium' lines={2} ellipsis>
-          {title}
-        </Title>
-      </Wrapper>
-    </Touchable>
+    <TouchableWrapper>
+      <Touchable
+        onPress={() => {
+          navigation.navigate('PostView', {id});
+        }}>
+        <Wrapper>
+          <ThumnailImg
+            source={{
+              uri: imageUriHandler(
+                titleType,
+                titleImageUrl,
+                titleYoutubeUrl,
+                ImageSize.Medium,
+              ),
+            }}>
+            <DarkOverlay />
+            <UserInfo>
+              <ProfileImg
+                source={{
+                  uri: addSizeToImagePath(profileImageUrl, ImageSize.Small),
+                }}
+              />
+              <Space direction='ROW' />
+              <Name color={colors.white} fontSize={8}>
+                {name}
+              </Name>
+            </UserInfo>
+          </ThumnailImg>
+          <Title color={colors.primary} fontWeight='medium' lines={2} ellipsis>
+            {title}
+          </Title>
+        </Wrapper>
+      </Touchable>
+    </TouchableWrapper>
   );
 }
+const TouchableWrapper = styled.View({
+  borderRadius: rem(8),
+  overflow: 'hidden',
+});
 
 const Touchable = styled(TouchableCmp)({});
 
@@ -116,3 +130,5 @@ const Title = styled(Text)({
   height: rem(30),
 });
 const Name = styled(Text)({});
+
+export default withNavigation(HomeLookCard);
