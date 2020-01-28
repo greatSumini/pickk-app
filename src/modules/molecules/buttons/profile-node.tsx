@@ -63,7 +63,7 @@ function ProfileNode({accountId, navigation}: ProfileNodeProps) {
               darkMode
               style={{
                 width: rem(66),
-                height: rem(22),
+                height: rem(24),
                 borderRadius: 999,
                 paddingVertical: 0,
               }}
