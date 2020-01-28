@@ -52,6 +52,7 @@ export default function PostView(props: PostViewScreenProps) {
             type={titleType}
             src={titleImageUrl}
             videoId={titleYoutubeUrl}
+            {...{title, content, viewCount, time}}
           />
         </ScrollView>
       </Wrapper>
