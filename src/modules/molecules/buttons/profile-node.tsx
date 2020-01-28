@@ -3,20 +3,20 @@ import {useQuery} from 'react-apollo';
 import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 import {withNavigation} from 'react-navigation';
+import {NavigationStackProp} from 'react-navigation-stack';
 
-import Text from '@src/modules/atoms/text';
+import SubscribeButton from '../subscribe-button';
 import rem from '@src/constants/rem';
 import colors from '@src/constants/colors';
+import Text from '@src/modules/atoms/text';
 import TouchableCmp from '@src/modules/atoms/touchable-component';
 import Image from '@src/modules/atoms/img';
-import {ImageSize, addSizeToImagePath} from '@src/lib/utils/image-size-parser';
-import {NavigationDrawerProp} from 'react-navigation-drawer';
-import SubscribeButton from '../subscribe-button';
 import Space from '@src/modules/atoms/space';
+import {ImageSize, addSizeToImagePath} from '@src/lib/utils/image-size-parser';
 
 export type ProfileNodeProps = {
   accountId: number;
-  navigation?: NavigationDrawerProp;
+  navigation?: NavigationStackProp;
 };
 
 const SUB_TEXT = ['구독 중', '구독'];

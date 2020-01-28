@@ -2,6 +2,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 
 import PostScreen from '@src/components/post-list';
 import PostViewScreen from '@src/components/post-view';
+import ChannelScreen from '@src/components/channel';
 
 const PostStack = createStackNavigator(
   {
@@ -11,6 +12,9 @@ const PostStack = createStackNavigator(
     PostView: {
       screen: PostViewScreen,
     },
+    Channel: {
+      screen: ChannelScreen,
+    },
   },
   {
     initialRouteName: 'Post',
@@ -19,7 +23,7 @@ const PostStack = createStackNavigator(
 );
 
 PostStack.navigationOptions = navigation => {
-  if (navigation.navigation.state.index === 1) {
+  if (navigation.navigation.state.index !== 0) {
     return {tabBarVisible: false};
   }
 };
