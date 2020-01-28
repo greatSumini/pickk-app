@@ -22,7 +22,7 @@ export default function HeaderTitle({
     <Wrapper>
       <Row style={{marginBottom: rem(2), justifyContent: 'space-between'}}>
         <Text level={2}>{title}</Text>
-        {content !== '' && (
+        {content.length > 1 && (
           <IconButton
             Icon={ChevronDown}
             size={rem(16)}
@@ -48,7 +48,6 @@ export default function HeaderTitle({
     </Wrapper>
   );
 }
-
 const Wrapper = styled.View({
   width: '100%',
   minHeight: rem(56),

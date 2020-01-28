@@ -22,7 +22,7 @@ const DEFAULT_SORT_OPTION = {
 const CATEGORY = ['POST', 'ITEM'];
 
 export default function Channel(props: ChannelScreenProps) {
-  const id = 148;
+  const id = props.navigation.getParam('id');
   const [navType, setNavType] = useState<'POST' | 'ITEM'>('POST');
   const [postType, setPostType] = useState<'REVIEW' | 'LOOK'>('REVIEW');
   const [sortOption, setSortOption] = useState(DEFAULT_SORT_OPTION);
