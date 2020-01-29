@@ -3,7 +3,9 @@ import styled from 'styled-components/native';
 
 import HeaderTitleProps from './props';
 import ChevronDown from '@src/assets/icons/chevron/down';
+import ChevronUp from '@src/assets/icons/chevron/up';
 import colors from '@src/constants/colors';
+import {width} from '@src/constants/dimensions';
 import rem from '@src/constants/rem';
 import Text from '@src/modules/atoms/text';
 import Space from '@src/modules/atoms/space';
@@ -21,10 +23,12 @@ export default function HeaderTitle({
   return (
     <Wrapper>
       <Row style={{marginBottom: rem(2), justifyContent: 'space-between'}}>
-        <Text level={2}>{title}</Text>
+        <Text level={2} width={width - rem(48)} lines={2}>
+          {title}
+        </Text>
         {content.length > 1 && (
           <IconButton
-            Icon={ChevronDown}
+            Icon={visible ? ChevronUp : ChevronDown}
             size={rem(16)}
             fill={colors.primary}
             onPress={() => {
@@ -33,6 +37,12 @@ export default function HeaderTitle({
           />
         )}
       </Row>
+      <Row>
+        <Space direction='ROW' size={1} />
+        <Text color={colors.secondary}>{`조회수 ${viewCount}회`}</Text>
+        <Space direction='ROW' size={7} />
+        <Text color={colors.secondary}>{`${stringifyPassedTime(time)}`}</Text>
+      </Row>
       {visible && (
         <DescWrapper>
           <Text lines={10} level={1} color={colors.secondary}>
@@ -40,11 +50,6 @@ export default function HeaderTitle({
           </Text>
         </DescWrapper>
       )}
-      <Row>
-        <Text color={colors.secondary}>{`조회수 ${viewCount}회`}</Text>
-        <Space direction='ROW' size={7} />
-        <Text color={colors.secondary}>{`${stringifyPassedTime(time)}`}</Text>
-      </Row>
     </Wrapper>
   );
 }
@@ -62,5 +67,6 @@ const Row = styled.View({
 });
 
 const DescWrapper = styled.View({
-  marginVertical: rem(10),
+  paddingHorizontal: rem(8),
+  paddingVertical: rem(12),
 });
