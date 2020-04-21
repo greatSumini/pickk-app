@@ -1,10 +1,10 @@
 export const stringifyPassedTime = input => {
-  const howmuch = [
-    [60, '초'],
-    [60, '분'],
-    [24, '시간'],
-    [31, '일'],
-    [12, '개월'],
+  const timeUnits = [
+    {amount: 60, name: '초'},
+    {amount: 60, name: '분'},
+    {amount: 24, name: '시간'},
+    {amount: 31, name: '일'},
+    {amount: 12, name: '개월'},
   ];
 
   const nowTime: number = Date.now();
@@ -12,11 +12,12 @@ export const stringifyPassedTime = input => {
   let passedSecond: number = (nowTime - inputTime) / 1000;
   passedSecond.toFixed(0);
 
-  for (let i = 0; i < howmuch.length; ++i) {
-    if (passedSecond < Number(howmuch[i][0])) {
-      return passedSecond.toFixed(0) + howmuch[i][1] + ' 전';
+  for (const timeUnit of timeUnits) {
+    const {amount, name} = timeUnit;
+    if (passedSecond < amount) {
+      return passedSecond.toFixed(0) + name + ' 전';
     }
-    passedSecond /= Number(howmuch[i][0]);
+    passedSecond /= amount;
   }
   return passedSecond.toFixed(0) + '년 전';
 };
@@ -31,12 +32,12 @@ export const isToday = (inputDate: Date) => {
   );
 };
 
-export const addLeadingZeros = (num, length) => {
-  let result = num.toString();
-  if (result.length >= length) {
-    return result;
+export const addLeadingZeros = (num: number, length: number) => {
+  const numString = num.toString();
+  if (numString.length >= length) {
+    return numString;
   }
-  return new Array(length - result.length).fill('0').toString() + result;
+  return new Array(length - numString.length).fill('0').toString() + numString;
 };
 
 export const parseTime = input => {

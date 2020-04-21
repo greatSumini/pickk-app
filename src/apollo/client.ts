@@ -1,15 +1,19 @@
 import ApolloClient from 'apollo-client';
 
 import {InMemoryCache} from 'apollo-cache-inmemory';
+import resolvers from './state/resolvers';
+
 import {ApolloLink} from 'apollo-link';
 import {setContext} from 'apollo-link-context';
 import {onError} from 'apollo-link-error';
 import {createUploadLink} from 'apollo-upload-client';
+import {withClientState} from 'apollo-link-state';
 import 'isomorphic-fetch';
 
 import Config from 'react-native-config';
 
-const cache = new InMemoryCache();
+export const cache = new InMemoryCache();
+
 const serverUri = Config.API_HOST;
 
 const uploadLink = createUploadLink({
@@ -35,7 +39,16 @@ const authLink = setContext((_, {headers}) => {
   };
 });
 
+const stateLink = withClientState({
+  cache,
+  resolvers,
+});
+
 export const client = new ApolloClient({
   cache,
-  link: ApolloLink.from([ApolloLink.from([errorLink, authLink]), uploadLink]),
+  link: ApolloLink.from([
+    stateLink,
+    ApolloLink.from([ApolloLink.from([errorLink, authLink]), uploadLink]),
+  ]),
+  resolvers,
 });

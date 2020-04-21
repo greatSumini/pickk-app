@@ -6,6 +6,10 @@ import HamburgetIcon from '@src/assets/icons/hamburger';
 import SearchIcon from '@src/assets/icons/search';
 import colors from '@src/constants/colors';
 
+import {useQuery} from '@apollo/react-hooks';
+import {GET_USER_INFO} from '@src/apollo/state/queries/User';
+import {logout} from '@src/controllers/User';
+
 export type HomeHeaderProps = {
   toggleDrawer: () => void;
   routeToSearch: () => void;
@@ -18,7 +22,7 @@ export default function HomeHeader({
   return (
     <Wrapper>
       <IconButton
-        onPress={toggleDrawer}
+        onPress={logout}
         Icon={HamburgetIcon}
         size={24}
         fill={colors.white}

@@ -6,6 +6,7 @@ import TouchableCmp from '@src/modules/atoms/touchable-component';
 import Space from '@src/modules/atoms/space';
 import rem from '@src/constants/rem';
 import colors from '@src/constants/colors';
+import {loginWithFacebook} from '@src/controllers/User';
 
 export type QuickMenuButtonProps = {
   width: number;
@@ -22,7 +23,7 @@ export default function QuickMenuButton({
   label,
 }: QuickMenuButtonProps) {
   return (
-    <Touchable>
+    <Touchable onPress={loginWithFacebook}>
       <Wrapper>
         <IconWrapper>
           <Icon
