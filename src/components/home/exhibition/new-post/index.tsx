@@ -1,11 +1,11 @@
 import React from 'react';
 
-import withExhibition from '../with-exhibition';
-
 import Text from '@src/modules/atoms/text';
 
-function NewPost() {
+export type NewPostProps = {
+  haewon: number;
+};
+
+export default function NewPost(props: NewPostProps) {
   return <Text>나는 최신글 리스트 입니다.</Text>;
 }
-
-export default withExhibition(NewPost);

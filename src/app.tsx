@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 import {ApolloProvider} from 'react-apollo';
-import {client} from './lib/apollo/client';
+import {client} from './apollo/client';
 
 import Navigator from './modules/navigation/navigator';
 
