@@ -9,7 +9,7 @@ import {useFilterContext} from '@src/context/filter';
 import Space from '@src/modules/atoms/space';
 import Text from '@src/modules/atoms/text';
 import IconText from '@src/modules/molecules/icon-text';
-import {FilterItem} from '../option-button';
+import FilterItem from '@src/modules/atoms/buttons/filter/filter-item';
 
 export default function MinPickButton() {
   const filterContext = useFilterContext();

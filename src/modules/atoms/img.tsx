@@ -1,12 +1,12 @@
 import React from 'react';
-import {StyleProp, ImageStyle} from 'react-native';
+import {StyleProp, ImageStyle, ImageSourcePropType} from 'react-native';
 import styled from 'styled-components/native';
 
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
 
 type ImageProps = {
-  source: {uri: string};
+  source: ImageSourcePropType;
   style?: StyleProp<ImageStyle>;
   children?: any;
 } & ImageStyleProps;
@@ -20,10 +20,16 @@ type ImageStyleProps = {
 };
 
 export default function Image(props: ImageProps) {
-  const {source, style, children} = props;
+  const {source, style, children, over} = props;
   const styleProps: ImageStyleProps = props;
+
   return (
-    <Img source={source} style={style} {...styleProps}>
+    <Img
+      source={source}
+      style={style}
+      {...styleProps}
+      resizeMode={over ? 'cover' : 'contain'}
+      resizeMethod="resize">
       {children}
     </Img>
   );
@@ -31,15 +37,10 @@ export default function Image(props: ImageProps) {
 
 const Img = styled.Image<ImageStyleProps>((props: ImageStyleProps) => ({
   width: props.imgWidth || '100%',
-  borderRadius: props.circle
-    ? typeof props.imgWidth === 'number'
-      ? props.imgWidth / 2
-      : '50%'
-    : 0,
-  maxHeight: (props.over && props.imgHeight) || '100%',
-  resizeMode: props.over && 'cover',
-  overflow: props.over && 'hidden',
-  height: (!props.over && props.imgHeight) || '100%',
   borderWidth: props.border && rem(1),
   borderColor: props.border && colors.lightGrey,
+  borderRadius: props.circle && 9999,
+  maxHeight: (props.over && props.imgHeight) || '100%',
+  overflow: props.over && 'hidden',
+  height: props.imgHeight || '100%',
 }));

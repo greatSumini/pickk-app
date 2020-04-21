@@ -9,7 +9,7 @@ import IconText from '@src/modules/molecules/icon-text';
 import BottomDrawer from '@src/modules/navigation/drawer/bottom';
 import SortSelecter from './sort-selecter';
 import ApplyButton from '../apply-button';
-import {FilterItem} from '../option-button';
+import FilterItem from '@src/modules/atoms/buttons/filter/filter-item';
 
 export default function SortButton() {
   const filterContext = useFilterContext();

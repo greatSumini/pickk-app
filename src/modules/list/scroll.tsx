@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Animated,
   SafeAreaView,
-  FlatList,
   ActivityIndicator,
   StyleProp,
   ViewStyle,
@@ -28,6 +27,8 @@ type IProps = {
   Skeleton?: React.FunctionComponent;
   numColumns?: number;
   headerMaxHeight?: number;
+  ListHeader?: React.ComponentType<any> | React.ReactElement | null;
+  NoResult?: React.FunctionComponent;
 };
 
 const ITEMS_PER_PAGE = 20;
@@ -42,6 +43,8 @@ export default function ScrollList({
   onScroll,
   numColumns = 1,
   headerMaxHeight = 0,
+  ListHeader,
+  NoResult,
 }: IProps) {
   const propName = category;
 
@@ -69,20 +72,28 @@ export default function ScrollList({
     return <Text>Error:{error.message}</Text>;
   }
 
+  if (data && data[propName].length === 0) {
+    return NoResult ? <NoResult /> : <Text>결과가 없습니다.</Text>;
+  }
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <Animated.FlatList
+        ListHeaderComponent={ListHeader}
         scrollEventThrottle={16}
         onScroll={onScroll}
         data={data[propName]}
-        keyExtractor={(_, index) => index.toString()}
-        renderItem={({item}) => <ListItem {...item}></ListItem>}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({item}) => {
+          return <ListItem {...item}></ListItem>;
+        }}
         key={numColumns}
         numColumns={numColumns}
-        style={{
-          ...(style as object),
-          paddingHorizontal: numColumns === 2 ? rem(6) : 0,
-        }}
+        columnWrapperStyle={
+          numColumns > 1 && {
+            paddingHorizontal: rem(6),
+          }
+        }
         progressViewOffset={headerMaxHeight}
         refreshing={networkStatus === 4}
         onRefresh={() => refetch()}

@@ -99,7 +99,7 @@ export default function Drawer(props) {
       {userData && (
         <DrawerItem
           Icon={LogoutIcon}
-          label="로그아웃"
+          label='로그아웃'
           onPress={() => {}}
           style={{position: 'absolute', bottom: 0}}
         />
@@ -175,21 +175,21 @@ const UserData = ({userData}: {userData: any}) => {
       <UserDataTouchable>
         <UserDataWrapper>
           <ProfileImg source={{uri: userData.profileImageUrl}} />
-          <Space direction="ROW" level={1} />
+          <Space direction='ROW' level={1} />
           <UserDataText>
             <Name color={colors.primary} level={1}>
               {userData.name}
             </Name>
-            <Space direction="COL" size={rem(1)} />
+            <Space direction='COL' size={rem(1)} />
             <IconText
               Icon={ChevronRight}
               width={rem(12)}
               height={rem(12)}
               fill={colors.secondary}
               textColor={colors.secondary}
-              content="내 채널가기"
+              content='내 채널가기'
               space={rem(2)}
-              order="Text"
+              order='Text'
             />
           </UserDataText>
         </UserDataWrapper>
@@ -200,7 +200,7 @@ const UserData = ({userData}: {userData: any}) => {
       <UserDataTouchable>
         <UserDataWrapper>
           <ProfileNone />
-          <Space direction="ROW" level={1} />
+          <Space direction='ROW' level={1} />
           <Text
             color={colors.secondary}
             style={{alignSelf: 'center'}}

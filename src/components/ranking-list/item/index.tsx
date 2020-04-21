@@ -45,7 +45,7 @@ const Wrapper = styled.View({
   paddingVertical: rem(6),
   borderBottomWidth: 1,
   borderBottomColor: colors.lightGrey,
-  minHeight: rem(215),
+  minHeight: rem(230),
 });
 
 const GET_SHORT_REVIEW = gql`

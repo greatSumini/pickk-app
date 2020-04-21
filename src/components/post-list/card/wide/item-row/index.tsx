@@ -12,7 +12,7 @@ export default function PostCardWideItemRow({
 }: PostCardWideItemRowProps) {
   return (
     <Wrapper onStartShouldSetResponder={() => true}>
-      <ItemRow horizontal>
+      <ItemRow horizontal showsHorizontalScrollIndicator={false}>
         {itemList &&
           itemList.map((item, index) => (
             <CardItem

@@ -12,6 +12,7 @@ import IconText from '@src/modules/molecules/icon-text';
 import BottomDrawer from '@src/modules/navigation/drawer/bottom';
 import TagSelector from '../option-button/tag-selector';
 import ApplyButton from '../apply-button';
+import FilterItem from '@src/modules/atoms/buttons/filter/filter-item';
 
 export default function OptionButton() {
   const filterContext = useFilterContext();
@@ -56,13 +57,3 @@ export default function OptionButton() {
     </FilterItem>
   );
 }
-
-export const FilterItem = styled.TouchableOpacity({
-  paddingVertical: rem(4),
-  paddingHorizontal: rem(8),
-  borderRadius: rem(20),
-  borderWidth: rem(1),
-  borderColor: colors.lightGrey,
-  flexDirection: 'row',
-  alignItems: 'center',
-});

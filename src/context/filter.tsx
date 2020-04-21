@@ -1,13 +1,11 @@
 import {createContext, useContext} from 'react';
 
-import {REVIEW} from '@src/components/post-list/index';
-
 const FilterContext = createContext({
   state: {
     tag: null,
     pick: 0,
     sort: null,
-    view: REVIEW,
+    view: null,
     option: false,
     sortOption: false,
   },
@@ -36,7 +34,7 @@ export const ItemFilterContext = createContext({
 });
 export const useItemFilterContext = () => useContext(ItemFilterContext);
 
-export const RankFilterDrawerContext = createContext({
+export const PriceFilterContext = createContext({
   state: {
     minimumPrice: null,
     maximumPrice: null,
@@ -52,8 +50,7 @@ export const RankFilterDrawerContext = createContext({
     setOption: null,
   },
 });
-export const useRankFilterDrawerContext = () =>
-  useContext(RankFilterDrawerContext);
+export const usePriceFilterContext = () => useContext(PriceFilterContext);
 
 export const SortContext = createContext({
   state: {
@@ -74,4 +71,13 @@ export const InitailizeCommonStatesContext = createContext({
 export const useInitailizeCommonStatesContext = () =>
   useContext(InitailizeCommonStatesContext);
 
+export const PostFilterContext = createContext({
+  state: {
+    postType: null,
+  },
+  action: {
+    setPostType: null,
+  },
+});
+export const usePostFilterContext = () => useContext(PostFilterContext);
 export default FilterContext;

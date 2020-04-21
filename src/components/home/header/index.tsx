@@ -12,12 +12,13 @@ import {logout} from '@src/controllers/User';
 
 export type HomeHeaderProps = {
   toggleDrawer: () => void;
+  routeToSearch: () => void;
 };
 
-export default function HomeHeader({toggleDrawer}: HomeHeaderProps) {
-  const {data} = useQuery(GET_USER_INFO);
-  console.log(data);
-
+export default function HomeHeader({
+  toggleDrawer,
+  routeToSearch,
+}: HomeHeaderProps) {
   return (
     <Wrapper>
       <IconButton
@@ -27,7 +28,7 @@ export default function HomeHeader({toggleDrawer}: HomeHeaderProps) {
         fill={colors.white}
       />
       <IconButton
-        onPress={toggleDrawer}
+        onPress={routeToSearch}
         Icon={SearchIcon}
         size={24}
         fill={colors.white}
