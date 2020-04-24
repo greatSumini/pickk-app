@@ -12,7 +12,7 @@ import ItemProps from './props';
 import SpeechBubble from './speech-bubble';
 import {ShortReviewContentType} from './speech-bubble/props';
 
-export default function Item(props: ItemProps) {
+function Item(props: ItemProps) {
   const {id} = props;
 
   const {networkStatus, loading, error, data} = useQuery(GET_SHORT_REVIEW, {
@@ -23,18 +23,24 @@ export default function Item(props: ItemProps) {
   if (error) {
     return <Text>error</Text>;
   }
-  const shortReviewData: ShortReviewContentType =
-    data && data.allItemReviews[0];
 
-  return (
-    <Touchable>
-      <Wrapper>
-        <ItemDescription {...props} />
-        <SpeechBubble data={shortReviewData} />
-      </Wrapper>
-    </Touchable>
-  );
+  if (data) {
+    return (
+      <Touchable>
+        <Wrapper>
+          <ItemDescription {...props} />
+          <SpeechBubble
+            data={data.allItemReviews[0] as ShortReviewContentType}
+          />
+        </Wrapper>
+      </Touchable>
+    );
+  }
+  return null;
 }
+
+export default React.memo(Item, (prev, next) => prev.id === next.id);
+
 const Touchable = styled(TouchableCmp)({
   width: '100%',
 });
@@ -45,7 +51,6 @@ const Wrapper = styled.View({
   paddingVertical: rem(6),
   borderBottomWidth: 1,
   borderBottomColor: colors.lightGrey,
-  minHeight: rem(230),
 });
 
 const GET_SHORT_REVIEW = gql`
@@ -57,6 +62,7 @@ const GET_SHORT_REVIEW = gql`
       }
     ) {
       shortReview
+      recommendReason
       id
       postId
       review

@@ -29,7 +29,7 @@ export default function Image(props: ImageProps) {
       style={style}
       {...styleProps}
       resizeMode={over ? 'cover' : 'contain'}
-      resizeMethod="resize">
+      resizeMethod='resize'>
       {children}
     </Img>
   );

@@ -1,4 +1,5 @@
 export type ShortReviewContentType = {
+  recommendReason: string;
   shortReview: string;
   userInfo: {
     profileImageUrl: string;

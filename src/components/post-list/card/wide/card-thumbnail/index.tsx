@@ -13,12 +13,25 @@ export default function PostCardWideThumbnail({
   titleImageUrl,
   titleYoutubeUrl,
 }: PostCardWideThumbnailProps) {
+  const [imageHeight, setImageHeight] = useState((width * 9) / 16);
   const imageUrl = imageUriHandler(
     titleType,
     titleImageUrl,
     titleYoutubeUrl,
     ImageSize.Medium,
   );
+
+  useEffect(() => {
+    Image.getSize(
+      imageUrl,
+      (_width, _height) => {
+        if (titleType !== 'YOUTUBE') {
+          setImageHeight(Math.min(width, _height));
+        }
+      },
+      () => {},
+    );
+  }, []);
 
   return (
     <Thumbnail
@@ -27,7 +40,7 @@ export default function PostCardWideThumbnail({
       }}
       imgWidth={width}
       style={{
-        height: titleType === 'YOUTUBE' ? (width * 9) / 16 : null,
+        height: imageHeight,
         maxHeight: width,
       }}
       over={titleType === 'YOUTUBE'}
