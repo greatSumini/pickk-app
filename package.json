@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "android": "ENVFILE=.env.dev react-native run-android",
-    "ios": " react-native run-ios",
+    "ios": "ENVFILE=.env.dev react-native run-ios",
     "start": "lsof -nti:8081 | xargs kill -9 && react-native start",
     "test": "npm run tslint && npm run tsc-test && npm run jest",
     "tslint": "tslint --project .",
