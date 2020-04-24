@@ -21,17 +21,18 @@ export type ScrollListProps = {
   filter?: any;
   // tslint:disable-next-line: no-any
   query: any;
-  // tslint:disable-next-line: no-any
   onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
+  // tslint:disable-next-line: no-any
   ListItem: React.FunctionComponent<any>;
   Skeleton?: React.FunctionComponent;
   numColumns?: number;
   headerMaxHeight?: number;
+  // tslint:disable-next-line: no-any
   ListHeader?: React.ComponentType<any> | React.ReactElement | null;
   NoResult?: React.FunctionComponent;
 };
 
-const ITEMS_PER_PAGE = 20;
+const ITEMS_PER_PAGE = 10;
 
 function ScrollList({
   style,
@@ -60,13 +61,14 @@ function ScrollList({
     },
   );
 
-  if (networkStatus === 1) {
+  if (networkStatus === 1 || !data || !data[propName]) {
     return Skeleton ? (
       <Skeleton />
     ) : (
       <ActivityIndicator size={35} color={BLACK} />
     );
   }
+  console.log(data[propName]);
 
   if (error) {
     return <Text>Error:{error.message}</Text>;
@@ -77,17 +79,14 @@ function ScrollList({
   }
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <>
       <Animated.FlatList
         ListHeaderComponent={ListHeader}
         scrollEventThrottle={16}
         onScroll={onScroll}
         data={data[propName]}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({item}) => {
-          return <ListItem {...item}></ListItem>;
-        }}
-        key={numColumns}
+        keyExtractor={(item, index) => item.id.toString()}
+        renderItem={({item}) => <ListItem {...item}></ListItem>}
         numColumns={numColumns}
         columnWrapperStyle={
           numColumns > 1 && {
@@ -95,7 +94,7 @@ function ScrollList({
           }
         }
         progressViewOffset={headerMaxHeight}
-        refreshing={networkStatus === 4}
+        refreshing={data.networkStatus === 4}
         onRefresh={() => refetch()}
         onEndReachedThreshold={0.5}
         onEndReached={() => {
@@ -120,7 +119,7 @@ function ScrollList({
         }}
       />
       {loading && <ActivityIndicator size={35} color={BLACK} />}
-    </SafeAreaView>
+    </>
   );
 }
 export default React.memo(ScrollList);

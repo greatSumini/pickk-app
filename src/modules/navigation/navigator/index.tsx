@@ -1,19 +1,19 @@
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 
 import AppStack from './stacks/app';
+import SplashScreen from '@src/components/splash';
 
 const AppNavigator = createSwitchNavigator(
   {
-    /*
-    Loading: {
-      screen: LoadingScreen,
-    },*/
+    Splash: {
+      screen: SplashScreen,
+    },
     App: {
       screen: AppStack,
     },
   },
   {
-    initialRouteName: 'App',
+    initialRouteName: 'Splash',
   },
 );
 

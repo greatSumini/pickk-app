@@ -32,7 +32,7 @@ function PostCardWide(props: PostCardWideProps) {
   );
 }
 
-export default React.memo(PostCardWide);
+export default React.memo(PostCardWide, (prev, next) => prev.id === next.id);
 
 const Wrapper = styled.View({
   width: '100%',

@@ -6,6 +6,8 @@ import ThumbnailProps from './card-thumbnail/props';
 type PostCardWideProps = FooterProps &
   HeaderProps &
   ItemRowProps &
-  ThumbnailProps;
+  ThumbnailProps & {
+    id: number;
+  };
 
 export default PostCardWideProps;
