@@ -14,7 +14,7 @@ import PostCardWideThumbnailProps from './card-thumbnail/props';
 import PostCardWideItemRowProps from './item-row/props';
 import PostCardWideFooterProps from './footer/props';
 
-export default function PostCardWide(props: PostCardWideProps) {
+function PostCardWide(props: PostCardWideProps) {
   const headerProps: PostCardWideHeaderProps = props;
   const thumbnailProps: PostCardWideThumbnailProps = props;
   const itemRowProps: PostCardWideItemRowProps = props;
@@ -31,6 +31,8 @@ export default function PostCardWide(props: PostCardWideProps) {
     </Touchable>
   );
 }
+
+export default React.memo(PostCardWide);
 
 const Wrapper = styled.View({
   width: '100%',

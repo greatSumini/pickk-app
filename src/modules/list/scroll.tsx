@@ -14,7 +14,7 @@ import {BLACK} from '@src/constants/colors';
 import rem from '@src/constants/rem';
 import Text from '../atoms/text';
 
-type IProps = {
+export type ScrollListProps = {
   style?: StyleProp<ViewStyle>;
   category: string;
   // tslint:disable-next-line: no-any
@@ -33,7 +33,7 @@ type IProps = {
 
 const ITEMS_PER_PAGE = 20;
 
-export default function ScrollList({
+function ScrollList({
   style,
   category,
   filter,
@@ -45,7 +45,7 @@ export default function ScrollList({
   headerMaxHeight = 0,
   ListHeader,
   NoResult,
-}: IProps) {
+}: ScrollListProps) {
   const propName = category;
 
   const {networkStatus, loading, error, data, refetch, fetchMore} = useQuery(
@@ -123,3 +123,4 @@ export default function ScrollList({
     </SafeAreaView>
   );
 }
+export default React.memo(ScrollList);
