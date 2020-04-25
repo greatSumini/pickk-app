@@ -41,21 +41,25 @@ const entries: HomeCarouselCardProps[] = [
     source: require('@src/assets/images/homeCarousel/0.jpg'),
     title: `한번 사면 매일입는`,
     description: `진진호의 인생팬츠는?`,
+    postId: 659,
   },
   {
     source: require('@src/assets/images/homeCarousel/1.jpg'),
     title: `롱패딩은 이제 그만`,
     description: `숏패딩 전격비교`,
+    postId: 243,
   },
   {
     source: require('@src/assets/images/homeCarousel/2.jpg'),
     title: `옷 잘입는 애들은 다 있는`,
     description: `나만의 포인트 바지 고르기`,
+    postId: 366,
   },
   {
     source: require('@src/assets/images/homeCarousel/3.jpg'),
     title: `아직도 인생니트를 못찾은 너,`,
     description: `헤비니트 끝판왕`,
+    postId: 336,
   },
 ];
 
