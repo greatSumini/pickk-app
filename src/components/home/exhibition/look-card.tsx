@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-
+import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import Text from '@src/modules/atoms/text';
@@ -12,6 +12,7 @@ import {imageUriHandler} from '@src/lib/utils/url-parser';
 import {addSizeToImagePath, ImageSize} from '@src/lib/utils/image-size-parser';
 
 export type HomeLookCardProps = {
+  id: number;
   title: string;
   name: string;
   titleType: string;
@@ -21,6 +22,7 @@ export type HomeLookCardProps = {
 };
 
 export default function HomeLookCard({
+  id,
   title,
   name,
   titleType,
@@ -28,8 +30,15 @@ export default function HomeLookCard({
   titleYoutubeUrl,
   profileImageUrl,
 }: HomeLookCardProps) {
+  const navigation = useNavigation();
+
   return (
-    <Touchable>
+    <Touchable
+      onPress={() => {
+        navigation.navigate('PostView', {
+          id,
+        });
+      }}>
       <Wrapper>
         <ThumnailImg
           source={{

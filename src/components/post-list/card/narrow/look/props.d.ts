@@ -1,4 +1,5 @@
 type PostCardNarrowLookProps = {
+  id: Number;
   title: string;
   name: string;
   time: number;
