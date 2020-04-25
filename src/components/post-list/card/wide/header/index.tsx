@@ -40,7 +40,7 @@ const Wrapper = styled.View({
   justifyContent: 'space-between',
 });
 
-const ProfileImg = styled.Image({
+export const ProfileImg = styled.Image({
   width: rem(36),
   height: rem(36),
   borderRadius: rem(18),
