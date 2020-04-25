@@ -32,21 +32,20 @@ const PADDING_TO_BOTTOM = 500;
 const ScrollList = (props: IProps) => {
   const scrollViewRef = useRef<ScrollView>(null);
   const [areMoreItems, setAreMoreItems] = useState(true);
-  const [initialFetching, setInitialFetching] = useState(false);
+  const [initialFetching, setInitialFetching] = useState(true);
   const [querying, setQuerying] = useState(false);
   const propName = props.category;
   const {listFilter} = props;
 
   useEffect(() => {
+    refetch();
+    setInitialFetching(true);
     if (scrollViewRef.current) {
       scrollViewRef.current.scrollTo();
     }
-    if (!initialFetching) {
-      setInitialFetching(true);
-    }
-  }, [props.filter]);
+  }, [props.filter, props.query]);
 
-  const {loading, error, data, fetchMore} = useQuery(props.query, {
+  const {loading, error, data, fetchMore, refetch} = useQuery(props.query, {
     variables: {
       start: 0,
       first: ITEMS_PER_PAGE,
@@ -97,6 +96,8 @@ const ScrollList = (props: IProps) => {
       },
     });
   };
+
+  console.log(loading, initialFetching, !!data);
 
   if (!loading && initialFetching) {
     setInitialFetching(false);
