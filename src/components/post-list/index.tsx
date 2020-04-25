@@ -79,7 +79,7 @@ export default function PostListScreen(props: PostListScreenProps) {
   };
 
   const icons = [
-    {Icon: Write, fill: colors.primary},
+    // {Icon: Write, fill: colors.primary},
     {
       Icon: Search,
       fill: colors.primary,

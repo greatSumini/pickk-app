@@ -21,7 +21,7 @@ export default function HomeHeader({
         onPress={toggleDrawer}
         Icon={HamburgetIcon}
         size={24}
-        fill={colors.white}
+        fill={'transparent'}
       />
       <IconButton
         onPress={routeToSearch}
