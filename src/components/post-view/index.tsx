@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import {useRoute, RouteProp} from '@react-navigation/native';
 
 import {useQuery} from 'react-apollo';
 import gql from 'graphql-tag';
 
 import {NavigationDrawerProp} from 'react-navigation-drawer';
-import PostViewHeader from './header';
-import {useNavigation, useRoute, RouteProp} from '@react-navigation/native';
+import PostViewHeader, {PostViewHeaderProps} from './header';
 import {AppStackParams} from '@src/modules/navigation/navigator/stacks/app.d.ts';
+import {RecommendPost} from '@src/modules/types/RecommendPost';
 
 export type PostViewScreenProps = {
   navigation: NavigationDrawerProp;
@@ -15,24 +16,30 @@ export type PostViewScreenProps = {
 
 export default function PostView(props: PostViewScreenProps) {
   const route = useRoute<RouteProp<AppStackParams, 'PostView'>>();
-  const {loading, error, data} = useQuery(GET_POST, {
+  const {data} = useQuery<{allRecommendPosts: RecommendPost[]}>(GET_POST, {
     variables: {
       id: route.params.id,
     },
     notifyOnNetworkStatusChange: true,
     fetchPolicy: 'cache-first',
-    ssr: true,
   });
 
-  console.log(data);
-  return (
-    <Wrapper>
-      <PostViewHeader />
-    </Wrapper>
-  );
+  if (data?.allRecommendPosts[0]) {
+    const recommendPost = data.allRecommendPosts[0];
+    return (
+      <Wrapper>
+        <PostViewHeader {...(recommendPost as PostViewHeaderProps)} />
+      </Wrapper>
+    );
+  }
+  return null;
 }
 
-const Wrapper = styled.SafeAreaView({
+const Wrapper = styled.View({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'flex-start',
+  alignItems: 'center',
   flex: 1,
 });
 

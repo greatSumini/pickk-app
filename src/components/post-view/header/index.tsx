@@ -1,15 +1,17 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import HeaderThumbnail from './thumbnail';
-import HeaderTitle from './title';
+import HeaderThumbnail, {PostViewThumbnailProps} from './thumbnail';
+import HeaderTitle, {PostViewTitleProps} from './title';
 import ProfileNode from '@src/modules/molecules/button/profile-node';
 
-export default function PostViewHeader() {
+export type PostViewHeaderProps = PostViewThumbnailProps & PostViewTitleProps;
+
+export default function PostViewHeader(props: PostViewHeaderProps) {
   return (
     <Wrapper>
-      <HeaderThumbnail />
-      <HeaderTitle />
+      <HeaderThumbnail {...(props as PostViewThumbnailProps)} />
+      <HeaderTitle {...(props as PostViewTitleProps)} />
       <ProfileNode />
     </Wrapper>
   );
