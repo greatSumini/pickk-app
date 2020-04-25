@@ -49,4 +49,7 @@ const Wrapper = styled.View({
   borderBottomColor: colors.lightGrey,
 });
 
-const Touchable = styled(TouchableCmp)({flex: 1, minHeight: rem(200)});
+const Touchable = styled(TouchableCmp)({
+  width: '100%',
+  minHeight: rem(200),
+});

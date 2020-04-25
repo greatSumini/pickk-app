@@ -112,8 +112,6 @@ export default function PostListScreen(props: PostListScreenProps) {
         query={ALL_RECOMMEND_POSTS}
         category='allRecommendPosts'
         ListItem={PostListItem}
-        numColumns={postType === 'LOOK' && view === NARROW ? 2 : 1}
-        headerMaxHeight={HEADER_MAX_HEIGHT}
         onScroll={Animated.event([
           {nativeEvent: {contentOffset: {y: scrollY}}},
         ])}

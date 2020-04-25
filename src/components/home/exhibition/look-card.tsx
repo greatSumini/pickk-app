@@ -8,6 +8,7 @@ import TouchableCmp from '@src/modules/atoms/touchable-component';
 import Space from '@src/modules/atoms/space';
 import rem from '@src/constants/rem';
 import colors from '@src/constants/colors';
+
 import {imageUriHandler} from '@src/lib/utils/url-parser';
 import {addSizeToImagePath, ImageSize} from '@src/lib/utils/image-size-parser';
 

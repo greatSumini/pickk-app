@@ -26,12 +26,11 @@ export default function NarrowLookCard({
 
   return (
     <Touchable
-      onPress={() => {
-        console.log(id);
+      onPress={() =>
         navigation.navigate('PostView', {
           id,
-        });
-      }}>
+        })
+      }>
       <Wrapper>
         <ThumbnailImg
           source={{
@@ -64,14 +63,13 @@ export default function NarrowLookCard({
 }
 
 const Touchable = styled(TouchableCmp)({
-  width: rem(162),
+  width: '50%',
   height: rem(232),
 });
 
 const Wrapper = styled.View({
-  width: rem(166),
+  width: '100%',
   height: rem(232),
-  margin: rem(3.5),
   borderWidth: rem(0.5),
   borderColor: 'transparent',
   elevation: 2,
