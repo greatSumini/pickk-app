@@ -59,6 +59,7 @@ export default function Text(props: IProps) {
     width,
     textAlign,
     letterSpacing: -0.56,
+    alignItems: 'center',
   });
 
   return (

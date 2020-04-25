@@ -1,5 +1,10 @@
 import React from 'react';
-import {StyleProp, ImageStyle, ImageSourcePropType} from 'react-native';
+import {
+  StyleProp,
+  ImageStyle,
+  ImageSourcePropType,
+  ImageResizeMode,
+} from 'react-native';
 import styled from 'styled-components/native';
 
 import colors from '@src/constants/colors';
@@ -17,10 +22,11 @@ type ImageStyleProps = {
   circle?: boolean;
   over?: boolean;
   border?: boolean;
+  resizeMode?: ImageResizeMode;
 };
 
 export default function Image(props: ImageProps) {
-  const {source, style, children, over} = props;
+  const {source, style, children, over, resizeMode} = props;
   const styleProps: ImageStyleProps = props;
 
   return (
@@ -28,7 +34,7 @@ export default function Image(props: ImageProps) {
       source={source}
       style={style}
       {...styleProps}
-      resizeMode={over ? 'cover' : 'contain'}
+      resizeMode={resizeMode || over ? 'cover' : 'contain'}
       resizeMethod='resize'>
       {children}
     </Img>

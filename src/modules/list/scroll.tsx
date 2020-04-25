@@ -97,8 +97,6 @@ const ScrollList = (props: IProps) => {
     });
   };
 
-  console.log(loading, initialFetching, !!data);
-
   if (!loading && initialFetching) {
     setInitialFetching(false);
   }

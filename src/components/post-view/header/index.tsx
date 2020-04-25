@@ -24,7 +24,11 @@ export default function PostViewHeader(props: PostViewHeaderProps) {
 }
 
 const Wrapper = styled.View({
+  flexDirection: 'column',
+  justifyContent: 'flex-start',
+  alignItems: 'center',
   width: '100%',
+  height: 'auto',
   paddingBottom: rem(12),
   borderBottomWidth: rem(4),
   borderBottomColor: '#E7E7E7',

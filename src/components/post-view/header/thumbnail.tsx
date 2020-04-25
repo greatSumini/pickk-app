@@ -23,8 +23,9 @@ export default function PostViewThumbnail({
         <Image
           source={{uri: addSizeToImagePath(titleImageUrl, ImageSize.Medium)}}
           style={{
-            maxHeight: width,
+            height: width,
           }}
+          over
         />
       )}
       {titleType === 'YOUTUBE' && (

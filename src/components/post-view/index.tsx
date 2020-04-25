@@ -6,12 +6,12 @@ import {useQuery} from 'react-apollo';
 import gql from 'graphql-tag';
 
 import {NavigationDrawerProp} from 'react-navigation-drawer';
-import PostViewHeader, {PostViewHeaderProps} from './header';
+import Header, {PostViewHeaderProps} from './header';
+import Item, {PostViewItemProps} from './item';
 import {AppStackParams} from '@src/modules/navigation/navigator/stacks/app.d.ts';
 import {RecommendPost} from '@src/modules/types/RecommendPost';
-import Space from '@src/modules/atoms/space';
-import Line from '@src/modules/atoms/line';
 import Text from '@src/modules/atoms/text';
+import {WHITE} from '@src/constants/colors';
 
 export type PostViewScreenProps = {
   navigation: NavigationDrawerProp;
@@ -31,20 +31,18 @@ export default function PostView(props: PostViewScreenProps) {
     const recommendPost = data.allRecommendPosts[0];
     return (
       <Wrapper>
-        <PostViewHeader {...(recommendPost as PostViewHeaderProps)} />
-        <Text>ㅎㅇㅋㅋ</Text>
+        <Header {...(recommendPost as PostViewHeaderProps)} />
+        <Item {...(recommendPost as PostViewItemProps)} />
       </Wrapper>
     );
   }
   return null;
 }
 
-const Wrapper = styled.View({
+const Wrapper = styled.ScrollView({
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'flex-start',
-  alignItems: 'center',
-  flex: 1,
+  backgroundColor: WHITE,
 });
 
 const GET_POST = gql`
@@ -77,6 +75,11 @@ const GET_POST = gql`
         score
         images {
           imageUrl
+        }
+        userInfo {
+          id
+          name
+          profileImageUrl
         }
         itemInfo {
           id

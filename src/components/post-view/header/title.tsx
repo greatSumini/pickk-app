@@ -35,6 +35,7 @@ export default function PostViewTitle({
 const Wrapper = styled.View({
   paddingVertical: rem(8),
   paddingHorizontal: rem(16),
+  width: '100%',
 });
 
 const Row = styled.View({
