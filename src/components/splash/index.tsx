@@ -7,13 +7,15 @@ import ScreenNavigationProps from '@src/modules/types/screen-navigation-props';
 import {WHITE} from '@src/constants/colors';
 
 import rem from '@src/constants/rem';
+import {useNavigation} from '@react-navigation/native';
 
 export type SplashScreenProps = ScreenNavigationProps;
 
 export default function SplashScreen(props: SplashScreenProps) {
+  const navigation = useNavigation();
   useEffect(() => {
     setTimeout(() => {
-      props.navigation.navigate('App');
+      navigation.navigate('App', {screen: 'Home'});
     }, 3000);
   }, []);
   return (

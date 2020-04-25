@@ -9,6 +9,7 @@ import rem from '@src/constants/rem';
 import colors from '@src/constants/colors';
 import TabBarButton from './button';
 import TabBarProps from './props';
+import {useNavigation} from '@react-navigation/native';
 
 type ButtonProps = {
   title: string;
@@ -26,8 +27,10 @@ const data: ButtonProps[] = [
   {title: '랭킹', route: 'Rank', Icon: ItemIcon},
 ];
 
-export default function TabBar(props: TabBarProps) {
-  const curIndex = props.navigation.state.index;
+export default function TabBar(props: any) {
+  const navigation = useNavigation();
+  console.log(props.navigation);
+  const curIndex = props.state.index;
   return (
     <Wrapper>
       {data.map((v, i) => (
