@@ -6,7 +6,7 @@ import PostIcon from '@src/assets/icons/bottom-tab/post';
 import ItemIcon from '@src/assets/icons/bottom-tab/item';
 import CommunityIcon from '@src/assets/icons/bottom-tab/community';
 import rem from '@src/constants/rem';
-import colors from '@src/constants/colors';
+import colors, {WHITE} from '@src/constants/colors';
 import TabBarButton from './button';
 import TabBarProps from './props';
 import {useNavigation} from '@react-navigation/native';
@@ -27,9 +27,8 @@ const data: ButtonProps[] = [
   {title: '랭킹', route: 'Rank', Icon: ItemIcon},
 ];
 
+// tslint:disable-next-line: no-any
 export default function TabBar(props: any) {
-  const navigation = useNavigation();
-  console.log(props.navigation);
   const curIndex = props.state.index;
   return (
     <Wrapper>
@@ -54,4 +53,5 @@ const Wrapper = styled.View({
   paddingHorizontal: rem(8),
   borderTopWidth: rem(1),
   borderTopColor: colors.lightGrey,
+  backgroundColor: WHITE,
 });

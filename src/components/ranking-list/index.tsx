@@ -149,48 +149,42 @@ export default function RankingListScreen(props: RankingListScreenProps) {
   ];
 
   return (
-    <Wrapper>
-      <ItemFilterContext.Provider value={itemFilterStore}>
-        <PriceFilterContext.Provider value={priceFilterStore}>
-          <SortContext.Provider value={sortStore}>
-            <InitailizeCommonStatesContext.Provider
-              value={initializeCommonStatesStore}>
-              <Header
-                {...{
-                  icons,
-                  titlePadding,
-                  titleSize,
-                  height: headerHeight,
-                  title: '랭킹',
-                }}>
-                <ItemFilter />
-              </Header>
-              <ScrollList
-                category='getItemRanking'
-                query={GET_ITEM_RANKING}
-                ListItem={Item}
-                onScroll={Animated.event([
-                  {nativeEvent: {contentOffset: {y: scrollY}}},
-                ])}
-                filter={{
-                  ...itemFilterStore.state,
-                  sortBy: sortOption.sortBy,
-                  sort: sortOption.sort,
-                  minimumPrice: selectedMinimumPrice,
-                  maximumPrice: selectedMaximumPrice,
-                }}
-              />
-            </InitailizeCommonStatesContext.Provider>
-          </SortContext.Provider>
-        </PriceFilterContext.Provider>
-      </ItemFilterContext.Provider>
-    </Wrapper>
+    <ItemFilterContext.Provider value={itemFilterStore}>
+      <PriceFilterContext.Provider value={priceFilterStore}>
+        <SortContext.Provider value={sortStore}>
+          <InitailizeCommonStatesContext.Provider
+            value={initializeCommonStatesStore}>
+            <Header
+              {...{
+                icons,
+                titlePadding,
+                titleSize,
+                height: headerHeight,
+                title: '랭킹',
+              }}>
+              <ItemFilter />
+            </Header>
+            <ScrollList
+              category='getItemRanking'
+              query={GET_ITEM_RANKING}
+              ListItem={Item}
+              onScroll={Animated.event([
+                {nativeEvent: {contentOffset: {y: scrollY}}},
+              ])}
+              filter={{
+                ...itemFilterStore.state,
+                sortBy: sortOption.sortBy,
+                sort: sortOption.sort,
+                minimumPrice: selectedMinimumPrice,
+                maximumPrice: selectedMaximumPrice,
+              }}
+            />
+          </InitailizeCommonStatesContext.Provider>
+        </SortContext.Provider>
+      </PriceFilterContext.Provider>
+    </ItemFilterContext.Provider>
   );
 }
-
-const Wrapper = styled.SafeAreaView({
-  flex: 1,
-});
 
 const GET_ITEM_RANKING = gql`
   query getItemRanking(

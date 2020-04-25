@@ -17,7 +17,7 @@ const defaultProps = {
   direction: 'COL',
 };
 
-export default function Line(props: IProps) {
+function Line(props: IProps) {
   const length = props.length ? rem(props.length) : '100%';
   const thickness = rem(1 + 3 * props.level);
 
@@ -28,5 +28,7 @@ export default function Line(props: IProps) {
   `;
   return <_Line style={props.style} />;
 }
+
+export default React.memo(Line, () => true);
 
 Line.defaultProps = defaultProps;

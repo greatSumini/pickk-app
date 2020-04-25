@@ -1,5 +1,5 @@
 export const WHITE = '#FFF';
-export const LIGHT_GREY = '#F0F0F0';
+export const LIGHT_GREY = '#E7E7E7';
 export const REGULAR_GREY = '#d8d8d8';
 export const MIDDLE_GREY = '#999999';
 export const BLACK = '#333';

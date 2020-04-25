@@ -9,6 +9,9 @@ import {NavigationDrawerProp} from 'react-navigation-drawer';
 import PostViewHeader, {PostViewHeaderProps} from './header';
 import {AppStackParams} from '@src/modules/navigation/navigator/stacks/app.d.ts';
 import {RecommendPost} from '@src/modules/types/RecommendPost';
+import Space from '@src/modules/atoms/space';
+import Line from '@src/modules/atoms/line';
+import Text from '@src/modules/atoms/text';
 
 export type PostViewScreenProps = {
   navigation: NavigationDrawerProp;
@@ -29,6 +32,7 @@ export default function PostView(props: PostViewScreenProps) {
     return (
       <Wrapper>
         <PostViewHeader {...(recommendPost as PostViewHeaderProps)} />
+        <Text>ㅎㅇㅋㅋ</Text>
       </Wrapper>
     );
   }

@@ -10,7 +10,7 @@ import {useQuery} from '@apollo/react-hooks';
 import {DocumentNode} from 'graphql';
 
 import Text from '../atoms/text';
-import {BLACK} from '@src/constants/colors';
+import {BLACK, WHITE} from '@src/constants/colors';
 
 type IProps = {
   category: string;
@@ -103,7 +103,7 @@ const ScrollList = (props: IProps) => {
     setInitialFetching(false);
   }
 
-  if (loading || initialFetching) {
+  if (loading && initialFetching) {
     return props.Skeleton ? (
       <props.Skeleton />
     ) : (
@@ -128,6 +128,7 @@ const ScrollList = (props: IProps) => {
           style={{
             display: 'flex',
             width: '100%',
+            backgroundColor: WHITE,
           }}>
           <View
             style={{
