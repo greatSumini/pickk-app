@@ -19,9 +19,9 @@ export default function HomeScreen(props: HomeScreenProps) {
         }}
       />
       <HomeCarousel />
-      <HomeExhibition title='핔 200프로 이용하기' description='핵심만 모았다!'>
+      {/*<HomeExhibition title='핔 200프로 이용하기' description='핵심만 모았다!'>
         <QuickMenu />
-      </HomeExhibition>
+      </HomeExhibition>*/}
       <HomeExhibition
         title='오늘의 추천 LOOK'
         description='코디 꿀팁 대방출!'
