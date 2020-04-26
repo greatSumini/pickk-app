@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import rem from '@src/constants/rem';
-import {ProfileImg} from '@src/components/post-list/card/wide/header';
-import Text from '@src/modules/atoms/text';
+import {Text} from '@src/modules/atoms';
 import {REGULAR_GREY} from '@src/constants/colors';
-import Space from '@src/modules/atoms/space';
-import {width} from '@src/constants/dimensions';
+
+import {width, rem} from '@src/constants';
 import {ItemReview} from '@src/modules/types/ItemReview';
 
 export type ShortReviewProps = Pick<ItemReview, 'shortReview'>;

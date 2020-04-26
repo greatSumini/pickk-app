@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 import Header, {ExhibitionHeaderProps} from './header';
-import Space from '@src/modules/atoms/space';
-import rem from '@src/constants/rem';
+import {Space} from '@src/modules/atoms';
+
+import {rem} from '@src/constants';
 
 export type HomeExhibitionProps = ExhibitionHeaderProps & {
   children: React.ReactNode;

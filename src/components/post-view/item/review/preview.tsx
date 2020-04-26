@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {ItemReview} from '@src/modules/types/ItemReview';
-import rem from '@src/constants/rem';
-import Text from '@src/modules/atoms/text';
-import Image from '@src/modules/atoms/img';
-import {MIDDLE_GREY, BLACK} from '@src/constants/colors';
-import {tagEnToKo} from '@src/data/post/tag';
+
 import StarIcon from '@src/assets/icons/star';
+import {Text, Image} from '@src/modules/atoms';
+import {MIDDLE_GREY, BLACK} from '@src/constants/colors';
+
+import rem from '@src/constants/rem';
+import {ItemReview} from '@src/modules/types/ItemReview';
+import {tagEnToKo} from '@src/data/post/tag';
 
 export type ReviewPreviewProps = Pick<
   ItemReview,

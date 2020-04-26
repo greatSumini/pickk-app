@@ -3,14 +3,9 @@ import styled from 'styled-components/native';
 import {ImageSourcePropType} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import Text from '@src/modules/atoms/text';
-import colors from '@src/constants/colors';
-import Space from '@src/modules/atoms/space';
-import Line from '@src/modules/atoms/line';
-import TouchableCmp from '@src/modules/atoms/touchable-component';
+import {Text, Line, Space, TouchableCmp} from '@src/modules/atoms';
 
-import {width} from '@src/constants/dimensions';
-import rem from '@src/constants/rem';
+import {width, colors, rem} from '@src/constants';
 
 export type HomeCarouselCardProps = {
   source: ImageSourcePropType;

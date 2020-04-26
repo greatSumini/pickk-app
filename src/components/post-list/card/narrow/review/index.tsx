@@ -1,18 +1,16 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import ThumsUp from '@src/assets/icons/thums-up';
-import View from '@src/assets/icons/view';
-import rem from '@src/constants/rem';
-import colors from '@src/constants/colors';
-import Text from '@src/modules/atoms/text';
-import Space from '@src/modules/atoms/space';
-import TouchableCmp from '@src/modules/atoms/touchable-component';
+import postCardNarrowReviewProps from './props';
 import IconText from '@src/modules/molecules/icon-text';
+import ThumbUpIcon from '@src/assets/icons/thums-up';
+import ViewIcon from '@src/assets/icons/view';
+import {Text, Space, TouchableCmp} from '@src/modules/atoms';
+
+import {rem, colors} from '@src/constants';
 import {parseTime} from '@src/lib/utils/time-parser';
 import {imageUriHandler} from '@src/lib/utils/url-parser';
 import {ImageSize} from '@src/lib/utils/image-size-parser';
-import postCardNarrowReviewProps from './props';
 
 const ICON_SIZE = rem(9);
 
@@ -41,7 +39,7 @@ export default function NarrowReviewCard({
             </Row>
             <Row>
               <IconText
-                Icon={ThumsUp}
+                Icon={ThumbUpIcon}
                 width={ICON_SIZE}
                 height={ICON_SIZE}
                 fillOut={colors.secondary}
@@ -52,7 +50,7 @@ export default function NarrowReviewCard({
               />
               <Space direction='ROW' size={7} />
               <IconText
-                Icon={View}
+                Icon={ViewIcon}
                 width={ICON_SIZE}
                 height={ICON_SIZE}
                 fill={colors.secondary}

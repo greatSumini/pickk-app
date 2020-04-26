@@ -4,8 +4,8 @@ import Carousel from 'react-native-snap-carousel';
 
 import HomeCarouselCard, {HomeCarouselCardProps} from './card';
 import CarouselIndicator from '@src/modules/carousel/indicator';
-import {width} from '@src/constants/dimensions';
-import rem from '@src/constants/rem';
+
+import {width, rem} from '@src/constants';
 
 export default function HomeCarousel() {
   const [current, setCurrent] = useState(0);

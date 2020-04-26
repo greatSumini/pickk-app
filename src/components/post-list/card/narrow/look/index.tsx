@@ -2,15 +2,13 @@ import React from 'react';
 import styled from 'styled-components/native';
 import {useNavigation} from '@react-navigation/native';
 
-import Text from '@src/modules/atoms/text';
-import TouchableCmp from '@src/modules/atoms/touchable-component';
-import Space from '@src/modules/atoms/space';
-import rem from '@src/constants/rem';
-import colors from '@src/constants/colors';
+import PostCardNarrowLookProps from './props';
+import {Text, TouchableCmp, Space} from '@src/modules/atoms';
+
+import {rem, colors} from '@src/constants';
 import {parseTime} from '@src/lib/utils/time-parser';
 import {imageUriHandler} from '@src/lib/utils/url-parser';
 import {addSizeToImagePath, ImageSize} from '@src/lib/utils/image-size-parser';
-import PostCardNarrowLookProps from './props';
 
 export default function NarrowLookCard({
   id,

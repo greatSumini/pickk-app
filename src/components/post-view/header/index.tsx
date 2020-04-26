@@ -7,7 +7,7 @@ import ProfileNode, {
   ProfileNodeProps,
 } from '@src/modules/molecules/button/profile-node';
 
-import rem from '@src/constants/rem';
+import {rem} from '@src/constants';
 
 export type PostViewHeaderProps = PostViewThumbnailProps &
   PostViewTitleProps &

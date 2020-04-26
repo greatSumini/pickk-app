@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import TouchableCmp from '@src/modules/atoms/touchable-component';
-import Image from '@src/modules/atoms/img';
-import {ItemInfo} from '@src/modules/types/ItemInfo';
-import Text from '@src/modules/atoms/text';
-import rem from '@src/constants/rem';
+
+import {TouchableCmp, Image, Text, Space} from '@src/modules/atoms';
 import {WHITE, BLACK} from '@src/constants/colors';
-import Space from '@src/modules/atoms/space';
+
+import rem from '@src/constants/rem';
+import {ItemInfo} from '@src/modules/types/ItemInfo';
 
 export type ItemNavButtonProps = Pick<
   ItemInfo,

@@ -1,10 +1,10 @@
 import React from 'react';
-
-import Text from '@src/modules/atoms/text';
-import colors from '@src/constants/colors';
 import styled from 'styled-components/native';
+
 import ChevronRightIcon from '@src/assets/icons/chevron/right';
-import rem from '@src/constants/rem';
+import {Text} from '@src/modules/atoms';
+
+import {colors, rem} from '@src/constants';
 
 export type ExhibitionHeaderProps = {
   title: string;

@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import IconButton from '@src/modules/atoms/buttons/icons';
 import HamburgetIcon from '@src/assets/icons/hamburger';
 import SearchIcon from '@src/assets/icons/search';
-import colors from '@src/constants/colors';
+import {colors} from '@src/constants';
 
 export type HomeHeaderProps = {
   toggleDrawer: () => void;

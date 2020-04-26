@@ -1,15 +1,14 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import rem from '@src/constants/rem';
-import {ItemInfo as ItemInfoType} from '@src/modules/types/ItemInfo';
-import Image from '@src/modules/atoms/img';
-import Text from '@src/modules/atoms/text';
-import Space from '@src/modules/atoms/space';
-import {MIDDLE_GREY, BLACK, WHITE} from '@src/constants/colors';
+import URLButton from '@src/modules/molecules/button/url';
 import StarIcon from '@src/assets/icons/star';
 import HeartIcon from '@src/assets/icons/heart';
-import URLButton from '@src/modules/molecules/button/url';
+import {Image, Text, Space} from '@src/modules/atoms';
+import {MIDDLE_GREY, BLACK, WHITE} from '@src/constants/colors';
+
+import rem from '@src/constants/rem';
+import {ItemInfo as ItemInfoType} from '@src/modules/types/ItemInfo';
 
 export type ItemInfoProps = Pick<
   ItemInfoType,

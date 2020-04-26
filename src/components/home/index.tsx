@@ -4,10 +4,9 @@ import {ScrollView} from 'react-native';
 import HomeHeader from './header';
 import HomeCarousel from './carousel';
 import HomeExhibition from './exhibition';
-import QuickMenu from './exhibition/quick-menu';
 import RecommendLook from './exhibition/recommend-look';
 import HomeScreenProps from './props';
-import Space from '@src/modules/atoms/space';
+import {Space} from '@src/modules/atoms';
 
 export default function HomeScreen(props: HomeScreenProps) {
   return (

@@ -40,7 +40,7 @@ export default function PostCardWideFooter({
           textColor={colors.white}
           content={pickCount}
         />
-        <Space direction="ROW" level={1} />
+        <Space direction='ROW' level={1} />
         <IconText
           Icon={Comment}
           width={iconSize}

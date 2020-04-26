@@ -3,19 +3,19 @@ import {Animated} from 'react-native';
 import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 
+import NavigationBar from '@src/modules/navigation/bar';
+import ScrollList from '@src/modules/list/scroll';
 import PostListFilter from './filter';
 import PostListScreenProps from './props';
 import PostCardWide from './card/wide';
-import Search from '@src/assets/icons/search';
-import Write from '@src/assets/icons/write';
-import colors from '@src/constants/colors';
-import rem from '@src/constants/rem';
-import FilterContext from '@src/context/filter';
 import PostCardReviewNarrow from '@src/components/post-list/card/narrow/review/index';
 import PostCardLookNarrow from '@src/components/post-list/card/narrow/look/index';
 import Header from '@src/modules/header/index';
-import ScrollList from '@src/modules/list/scroll';
-import NavigationBar from '@src/modules/navigation/bar';
+import SearchIcon from '@src/assets/icons/search';
+
+import {colors, rem} from '@src/constants';
+
+import FilterContext from '@src/context/filter';
 
 export const WIDE = 'WIDE';
 export const NARROW = 'NARROW';
@@ -81,7 +81,7 @@ export default function PostListScreen(props: PostListScreenProps) {
   const icons = [
     // {Icon: Write, fill: colors.primary},
     {
-      Icon: Search,
+      Icon: SearchIcon,
       fill: colors.primary,
       onPress: () => {
         props.navigation.navigate('Search');

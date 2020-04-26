@@ -1,11 +1,12 @@
 import React from 'react';
+import {PixelRatio} from 'react-native';
 import YouTube from 'react-native-youtube';
 
-import {RecommendPost} from '@src/modules/types/RecommendPost';
-import Image from '@src/modules/atoms/img';
+import {Image} from '@src/modules/atoms';
+
+import {width} from '@src/constants';
 import {addSizeToImagePath, ImageSize} from '@src/lib/utils/image-size-parser';
-import {PixelRatio} from 'react-native';
-import {width} from '@src/constants/dimensions';
+import {RecommendPost} from '@src/modules/types/RecommendPost';
 
 export type PostViewThumbnailProps = Pick<
   RecommendPost,

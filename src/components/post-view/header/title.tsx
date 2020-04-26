@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {RecommendPost} from '@src/modules/types/RecommendPost';
-import Text from '@src/modules/atoms/text';
-import rem from '@src/constants/rem';
-import {View} from 'react-native';
-import Space from '@src/modules/atoms/space';
+
+import {Text, Space} from '@src/modules/atoms';
 import {MIDDLE_GREY} from '@src/constants/colors';
+
+import {rem} from '@src/constants';
 import {stringifyPassedTime} from '@src/lib/utils/time-parser';
+import {RecommendPost} from '@src/modules/types/RecommendPost';
 
 export type PostViewTitleProps = Pick<
   RecommendPost,

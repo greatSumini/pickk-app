@@ -1,13 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {ScrollView} from 'react-native';
 
 import ItemNavButton from './button';
-import Text from '@src/modules/atoms/text';
+import {Text, Space} from '@src/modules/atoms';
 
+import {rem} from '@src/constants';
 import {ItemInfo} from '@src/modules/types/ItemInfo';
-import rem from '@src/constants/rem';
-import Space from '@src/modules/atoms/space';
 
 export type PostViewItemNavProps = {
   items: Array<

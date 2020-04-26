@@ -1,14 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import Text from '@src/modules/atoms/text';
-
-import rem from '@src/constants/rem';
-import {ItemReview} from '@src/modules/types/ItemReview';
 import ShortReview from './short-review';
-import Space from '@src/modules/atoms/space';
-import Image from '@src/modules/atoms/img';
-import {width} from '@src/constants/dimensions';
+import {Text, Space, Image} from '@src/modules/atoms';
+
+import {width, rem} from '@src/constants';
+import {ItemReview} from '@src/modules/types/ItemReview';
 
 export type PostViewReviewProps = Pick<
   ItemReview,
@@ -21,7 +18,6 @@ function PostViewReview({
   review,
   images,
 }: PostViewReviewProps) {
-  console.log(review);
   const {name} = userInfo;
   return (
     <Wrapper>

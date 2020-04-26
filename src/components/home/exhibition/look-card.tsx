@@ -3,12 +3,9 @@ import styled from 'styled-components/native';
 import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import Text from '@src/modules/atoms/text';
-import TouchableCmp from '@src/modules/atoms/touchable-component';
-import Space from '@src/modules/atoms/space';
-import rem from '@src/constants/rem';
-import colors from '@src/constants/colors';
+import {Text, TouchableCmp, Space} from '@src/modules/atoms';
 
+import {rem, colors} from '@src/constants';
 import {imageUriHandler} from '@src/lib/utils/url-parser';
 import {addSizeToImagePath, ImageSize} from '@src/lib/utils/image-size-parser';
 

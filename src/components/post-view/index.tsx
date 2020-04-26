@@ -5,19 +5,14 @@ import {useRoute, RouteProp} from '@react-navigation/native';
 import {useQuery} from 'react-apollo';
 import gql from 'graphql-tag';
 
-import {NavigationDrawerProp} from 'react-navigation-drawer';
 import Header, {PostViewHeaderProps} from './header';
 import Item, {PostViewItemProps} from './item';
-import {AppStackParams} from '@src/modules/navigation/navigator/stacks/app.d.ts';
-import {RecommendPost} from '@src/modules/types/RecommendPost';
-import Text from '@src/modules/atoms/text';
 import {WHITE} from '@src/constants/colors';
 
-export type PostViewScreenProps = {
-  navigation: NavigationDrawerProp;
-};
+import {AppStackParams} from '@src/modules/navigation/navigator/stacks/app.d.ts';
+import {RecommendPost} from '@src/modules/types/RecommendPost';
 
-export default function PostView(props: PostViewScreenProps) {
+export default function PostView() {
   const route = useRoute<RouteProp<AppStackParams, 'PostView'>>();
   const {data} = useQuery<{allRecommendPosts: RecommendPost[]}>(GET_POST, {
     variables: {

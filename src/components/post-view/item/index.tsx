@@ -4,12 +4,9 @@ import ItemNav from './nav';
 import ReviewPreview, {ReviewPreviewProps} from './review/preview';
 import ItemInfo, {ItemInfoProps} from './info';
 import Review, {PostViewReviewProps} from './review';
-import Text from '@src/modules/atoms/text';
+import {Space} from '@src/modules/atoms';
 
 import {RecommendPost} from '@src/modules/types/RecommendPost';
-import {View} from 'react-native';
-import Space from '@src/modules/atoms/space';
-import {Line} from 'react-native-svg';
 
 export type PostViewItemProps = Pick<RecommendPost, 'reviews'>;
 
