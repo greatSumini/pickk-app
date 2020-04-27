@@ -11,11 +11,14 @@ import {useNavigation} from '@react-navigation/native';
 
 export type SplashScreenProps = ScreenNavigationProps;
 
-export default function SplashScreen(props: SplashScreenProps) {
+export default function SplashScreen() {
   const navigation = useNavigation();
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('App', {screen: 'Home'});
+      navigation.reset({
+        index: 0,
+        routes: [{name: 'App'}],
+      });
     }, 3000);
   }, []);
   return (
