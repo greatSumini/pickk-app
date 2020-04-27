@@ -2,21 +2,33 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 import {ProfileImg} from '@src/components/post-list/card/wide/header';
-import Text from '@src/modules/atoms/text';
-import Space from '@src/modules/atoms/space';
+import {Text, Space} from '@src/modules/atoms';
 import {REGULAR_GREY} from '@src/constants/colors';
 
 import {width} from '@src/constants/dimensions';
 import rem from '@src/constants/rem';
+import {TouchableCmp} from '@src/modules/atoms';
+import {useNavigation} from '@react-navigation/native';
 
 export type ProfileNodeProps = {
+  accountId: number;
   profileImageUrl: string;
   name: string;
 };
 
-export default function ProfileNode({profileImageUrl, name}: ProfileNodeProps) {
+export default function ProfileNode({
+  profileImageUrl,
+  name,
+  accountId,
+}: ProfileNodeProps) {
+  const navigation = useNavigation();
   return (
-    <Wrapper>
+    <Wrapper
+      onPress={() =>
+        navigation.navigate('Channel', {
+          id: accountId,
+        })
+      }>
       <ProfileImg source={{uri: profileImageUrl}} />
       <Space direction='ROW' size={8} />
       <Text level={1} fontWeight='medium'>
@@ -26,7 +38,7 @@ export default function ProfileNode({profileImageUrl, name}: ProfileNodeProps) {
   );
 }
 
-const Wrapper = styled.View({
+const Wrapper = styled(TouchableCmp)({
   marginHorizontal: rem(16),
   paddingVertical: rem(8),
   paddingHorizontal: rem(12),

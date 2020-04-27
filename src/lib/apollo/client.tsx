@@ -6,11 +6,10 @@ import {setContext} from 'apollo-link-context';
 import {onError} from 'apollo-link-error';
 import {createUploadLink} from 'apollo-upload-client';
 import 'isomorphic-fetch';
-
-import Config from 'react-native-config';
+import config from '../../../config';
 
 const cache = new InMemoryCache();
-const serverUri = Config.API_HOST;
+const serverUri = config['api-host'];
 
 const uploadLink = createUploadLink({
   uri: serverUri,

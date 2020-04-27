@@ -24,7 +24,7 @@ export default function Header({id, navigation}: ChannelHeaderProps) {
 
   const {loading, error, data} = useQuery(GET_USER_INFO, {
     variables: {
-      id: id,
+      id,
     },
     notifyOnNetworkStatusChange: true,
   });
@@ -51,7 +51,7 @@ export default function Header({id, navigation}: ChannelHeaderProps) {
             <ButtonText
               content={editButtonText}
               onPress={() => {
-                setEdit(prev => !prev);
+                setEdit((prev) => !prev);
               }}
               color={colors.white}
               level={2}

@@ -18,6 +18,8 @@ type IProps = {
   filter?: any;
   query: DocumentNode;
   // tslint:disable-next-line: no-any
+  ListHeader?: React.ReactElement;
+  // tslint:disable-next-line: no-any
   ListItem: React.FunctionComponent<any>;
   Skeleton?: React.FunctionComponent<{style?: React.CSSProperties}>;
   NoResult?: React.FunctionComponent;
@@ -128,6 +130,7 @@ const ScrollList = (props: IProps) => {
             width: '100%',
             backgroundColor: WHITE,
           }}>
+          {props.ListHeader}
           <View
             style={{
               display: 'flex',

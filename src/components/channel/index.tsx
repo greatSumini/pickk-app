@@ -11,6 +11,8 @@ import PostListCardWide from '@src/components/post-list/card/wide';
 import PostListCardNarrowLook from '@src/components/post-list/card/narrow/look';
 import ScrollList from '@src/modules/list/scroll';
 import NavigationBar from '@src/modules/navigation/bar';
+import {useRoute, RouteProp} from '@react-navigation/native';
+import {AppStackParams} from '@src/modules/navigation/navigator/stacks/app.d.ts';
 
 const items = ['포스트', '아이템'];
 
@@ -22,10 +24,12 @@ const DEFAULT_SORT_OPTION = {
 const CATEGORY = ['POST', 'ITEM'];
 
 export default function Channel(props: ChannelScreenProps) {
-  const id = 148;
+  const route = useRoute<RouteProp<AppStackParams, 'Channel'>>();
   const [navType, setNavType] = useState<'POST' | 'ITEM'>('POST');
   const [postType, setPostType] = useState<'REVIEW' | 'LOOK'>('REVIEW');
   const [sortOption, setSortOption] = useState(DEFAULT_SORT_OPTION);
+
+  const {id} = route.params;
 
   useEffect(() => {
     setSortOption(DEFAULT_SORT_OPTION);
@@ -98,7 +102,6 @@ export default function Channel(props: ChannelScreenProps) {
             query={querySelector()}
             category={categorySelector()}
             ListItem={listItemSelector()}
-            numColumns={postType === 'LOOK' ? 2 : 1}
             filter={{
               id,
               sort: sortOption.sort,
