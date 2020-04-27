@@ -18,6 +18,7 @@ export default function InfluencerInfo({data, edit}: InfluenceInfoProps) {
     profileImageUrl,
     channel_pickCount,
     channel_totalViewCount,
+    channel_description,
   } = data;
 
   const profileImgUrl = addSizeToImagePath(profileImageUrl, ImageSize.Xsmall);
@@ -32,10 +33,10 @@ export default function InfluencerInfo({data, edit}: InfluenceInfoProps) {
       />
       <Name {...{name, edit}} />
       <InfoRow>
-        <InfoNode title="구독자" num={channel_pickCount} unit="명" />
-        <InfoNode title="조회수" num={channel_totalViewCount} unit="회" />
+        <InfoNode title='구독자' num={channel_pickCount} unit='명' />
+        <InfoNode title='조회수' num={channel_totalViewCount} unit='회' />
       </InfoRow>
-      <BriefIntroduce edit={edit} content="안녕하세요 깡스타일리스트입니다!" />
+      <BriefIntroduce edit={edit} content={channel_description} />
     </Wrapper>
   );
 }
@@ -58,7 +59,7 @@ const InfoNodeWrapper = styled.View({
 });
 
 function InfoNode(props: {title: string; num: number; unit: string}) {
-  const convertCount = num => {
+  const convertCount = (num) => {
     if (num < 10000) {
       return num;
     }
@@ -74,7 +75,7 @@ function InfoNode(props: {title: string; num: number; unit: string}) {
         style={{textAlign: 'center'}}
         level={1}
         color={colors.white}
-        fontWeight="bold">
+        fontWeight='bold'>
         {`${convertCount(props.num)} ${props.unit}`}
       </Text>
     </InfoNodeWrapper>

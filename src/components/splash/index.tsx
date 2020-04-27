@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components/native';
+import {useNavigation} from '@react-navigation/native';
 
 import Text from '@src/modules/atoms/text';
 import LogoIcon from '@src/assets/icons/logo';
@@ -7,7 +8,6 @@ import ScreenNavigationProps from '@src/modules/types/screen-navigation-props';
 import {WHITE} from '@src/constants/colors';
 
 import rem from '@src/constants/rem';
-import {useNavigation} from '@react-navigation/native';
 
 export type SplashScreenProps = ScreenNavigationProps;
 

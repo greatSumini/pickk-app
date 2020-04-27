@@ -1,14 +1,13 @@
 import React from 'react';
+import {View} from 'react-native';
 import styled from 'styled-components/native';
+import {useNavigation} from '@react-navigation/native';
 
 import {ProfileImg} from '@src/components/post-list/card/wide/header';
-import {Text, Space} from '@src/modules/atoms';
-import {REGULAR_GREY} from '@src/constants/colors';
+import {Text, Space, TouchableCmp} from '@src/modules/atoms';
+import {REGULAR_GREY, BLACK, WHITE} from '@src/constants/colors';
 
-import {width} from '@src/constants/dimensions';
-import rem from '@src/constants/rem';
-import {TouchableCmp} from '@src/modules/atoms';
-import {useNavigation} from '@react-navigation/native';
+import {width, rem} from '@src/constants';
 
 export type ProfileNodeProps = {
   accountId: number;
@@ -34,6 +33,20 @@ export default function ProfileNode({
       <Text level={1} fontWeight='medium'>
         {name}
       </Text>
+      <View
+        style={{
+          marginLeft: 'auto',
+          paddingVertical: rem(3),
+          paddingHorizontal: rem(12),
+          justifyContent: 'center',
+          alignItems: 'center',
+          borderRadius: 9999,
+          backgroundColor: BLACK,
+        }}>
+        <Text level={1} fontWeight='medium' color={WHITE}>
+          다른 리뷰 더보기
+        </Text>
+      </View>
     </Wrapper>
   );
 }

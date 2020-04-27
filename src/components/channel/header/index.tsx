@@ -59,7 +59,7 @@ export default function Header({id, navigation}: ChannelHeaderProps) {
           )}
         </IconRow>
         <InfluencerInfo data={data.getUserInfo} edit={edit} />
-        <SubscribeButton accountId={id} />
+        {/*<SubscribeButton accountId={id} />*/}
       </Container>
     );
   } else {
@@ -107,6 +107,7 @@ const GET_USER_INFO = gql`
       channel_pickCount
       channel_titleImageUrl
       channel_totalViewCount
+      channel_description
     }
   }
 `;

@@ -37,7 +37,6 @@ export default function PostViewThumbnail({
             height: PixelRatio.roundToNearestPixel(width / (16 / 9)),
             alignSelf: 'stretch',
           }}
-          play
         />
       )}
     </>
