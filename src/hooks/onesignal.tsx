@@ -1,9 +1,15 @@
 import {useEffect} from 'react';
 import OneSignal, {OpenResult} from 'react-native-onesignal';
+import config from '../../config';
 
 export const useOnesignalNotification = () => {
   useEffect(() => {
-    OneSignal.init(process.env.ONESIGNAL_APP_KEY);
+    OneSignal.setLogLevel(6, 0);
+    OneSignal.init(config['onesignal-app-key'], {
+      kOSSettingsKeyAutoPrompt: true,
+    });
+    OneSignal.setLogLevel(6, 0);
+    OneSignal.setSubscription(true);
 
     OneSignal.addEventListener('received', onReceived);
     OneSignal.addEventListener('opened', onOpened);
