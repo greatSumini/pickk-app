@@ -12,7 +12,9 @@ export type ShortReviewProps = Pick<ItemReview, 'shortReview'>;
 export default function ShortReview({shortReview}: ShortReviewProps) {
   return (
     <Wrapper>
-      <Text level={2}>{shortReview}</Text>
+      <Text level={2} lines={3000} textAlign='center'>
+        {shortReview}
+      </Text>
     </Wrapper>
   );
 }
