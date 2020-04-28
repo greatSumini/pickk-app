@@ -4,11 +4,9 @@ import config from '../../config';
 
 export const useOnesignalNotification = () => {
   useEffect(() => {
-    OneSignal.setLogLevel(6, 0);
     OneSignal.init(config['onesignal-app-key'], {
       kOSSettingsKeyAutoPrompt: true,
     });
-    OneSignal.setLogLevel(6, 0);
     OneSignal.setSubscription(true);
 
     OneSignal.addEventListener('received', onReceived);

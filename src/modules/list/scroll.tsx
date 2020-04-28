@@ -9,7 +9,7 @@ import {
 import {useQuery} from '@apollo/react-hooks';
 import {DocumentNode} from 'graphql';
 
-import Text from '../atoms/text';
+import {Text} from '../atoms';
 import {BLACK, WHITE} from '@src/constants/colors';
 
 type IProps = {
@@ -103,34 +103,25 @@ const ScrollList = (props: IProps) => {
     setInitialFetching(false);
   }
 
-  if (loading && initialFetching) {
-    return props.Skeleton ? (
-      <props.Skeleton />
-    ) : (
-      <ActivityIndicator size={35} color={BLACK} />
-    );
+  if (data && data[propName]?.length < ITEMS_PER_PAGE && areMoreItems) {
+    setAreMoreItems(false);
   }
 
-  if (data && data[propName]) {
-    if (data[propName].length < ITEMS_PER_PAGE && areMoreItems) {
-      setAreMoreItems(false);
-    }
-    if (data[propName].length === 0 && props.NoResult) {
-      return <props.NoResult />;
-    }
-    return (
-      <>
-        <ScrollView
-          ref={scrollViewRef}
-          scrollsToTop
-          onScroll={handleScroll}
-          scrollEventThrottle={16}
-          style={{
-            display: 'flex',
-            width: '100%',
-            backgroundColor: WHITE,
-          }}>
-          {props.ListHeader}
+  return (
+    <>
+      <ScrollView
+        ref={scrollViewRef}
+        scrollsToTop
+        onScroll={handleScroll}
+        scrollEventThrottle={16}
+        style={{
+          display: 'flex',
+          width: '100%',
+          backgroundColor: WHITE,
+        }}>
+        {props.ListHeader}
+
+        {data && data[propName] && (
           <View
             style={{
               display: 'flex',
@@ -138,20 +129,31 @@ const ScrollList = (props: IProps) => {
               flexDirection: 'row',
               flexWrap: 'wrap',
             }}>
-            {data[propName]
-              .filter(listFilter ? listFilter : () => true)
-              .map((item, index) => (
-                <props.ListItem {...item} key={index}></props.ListItem>
-              ))}
+            {loading && initialFetching ? (
+              props.Skeleton ? (
+                <props.Skeleton />
+              ) : (
+                <ActivityIndicator size={35} color={BLACK} />
+              )
+            ) : (
+              <>
+                {data[propName].length === 0 && props.NoResult && (
+                  <props.NoResult />
+                )}
+                {data[propName].length !== 0 &&
+                  data[propName]
+                    .filter(listFilter ? listFilter : () => true)
+                    .map((item, index) => (
+                      <props.ListItem {...item} key={index}></props.ListItem>
+                    ))}
+              </>
+            )}
           </View>
-        </ScrollView>
-        {loading && <ActivityIndicator size={35} color={BLACK} />}
-      </>
-    );
-  }
-  if (error) {
-    return <Text>Error!</Text>;
-  }
+        )}
+      </ScrollView>
+      {loading && <ActivityIndicator size={35} color={BLACK} />}
+    </>
+  );
   return props.Skeleton ? <props.Skeleton /> : <Text>loading...</Text>;
 };
 
