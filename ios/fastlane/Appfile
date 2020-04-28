@@ -1,0 +1,8 @@
+app_identifier("org.reactjs.native.example.PickkApp") # The bundle identifier of your app
+apple_id("a44094472@gmail.com") # Your Apple email address
+
+itc_team_id("121438569") # App Store Connect Team ID
+team_id("X86VQY3D26") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
