@@ -7,8 +7,9 @@ import HeartIcon from '@src/assets/icons/heart';
 import {Image, Text, Space} from '@src/modules/atoms';
 import {MIDDLE_GREY, BLACK, WHITE} from '@src/constants/colors';
 
-import rem from '@src/constants/rem';
+import {rem} from '@src/constants';
 import {ItemInfo as ItemInfoType} from '@src/modules/types/ItemInfo';
+import {ImageSize} from '@src/lib/utils/image-size-parser';
 
 export type ItemInfoProps = Pick<
   ItemInfoType,
@@ -39,7 +40,8 @@ function ItemInfo({
       <Wrapper>
         <Image
           style={{width: rem(112), height: '100%', marginRight: rem(12)}}
-          source={{uri: imageUrl}}
+          src={imageUrl}
+          size={ImageSize.Medium}
         />
         <Col>
           <Text level={1} fontWeight='medium'>

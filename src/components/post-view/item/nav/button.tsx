@@ -4,8 +4,9 @@ import styled from 'styled-components/native';
 import {TouchableCmp, Image, Text, Space} from '@src/modules/atoms';
 import {WHITE, BLACK} from '@src/constants/colors';
 
-import rem from '@src/constants/rem';
+import {rem} from '@src/constants';
 import {ItemInfo} from '@src/modules/types/ItemInfo';
+import {ImageSize} from '@src/lib/utils/image-size-parser';
 
 export type ItemNavButtonProps = Pick<
   ItemInfo,
@@ -27,7 +28,8 @@ function ItemNavButton({
     <Touchable selected={selected} onPress={onClick}>
       <ImageWrapper selected={selected}>
         <Image
-          source={{uri: imageUrl}}
+          src={imageUrl}
+          size={ImageSize.Small}
           style={{
             width: rem(56),
             height: rem(56),

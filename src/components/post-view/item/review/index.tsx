@@ -6,6 +6,7 @@ import {Text, Space, Image} from '@src/modules/atoms';
 
 import {width, rem} from '@src/constants';
 import {ItemReview} from '@src/modules/types/ItemReview';
+import {ImageSize} from '@src/lib/utils/image-size-parser';
 
 export type PostViewReviewProps = Pick<
   ItemReview,
@@ -31,7 +32,8 @@ function PostViewReview({
       <ShortReview shortReview={shortReview} />
       <Space level={1} />
       <Image
-        source={{uri: images[0].imageUrl}}
+        src={images[0].imageUrl}
+        size={ImageSize.Medium}
         style={{width: width - rem(32), height: width - rem(32)}}
         resizeMode='center'
       />

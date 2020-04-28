@@ -46,7 +46,7 @@ export default function NarrowLookCard({
             <UserInfo>
               <ProfileImg
                 source={{
-                  uri: addSizeToImagePath(profileImageUrl, ImageSize.Small),
+                  uri: addSizeToImagePath(profileImageUrl, ImageSize.Xsmall),
                 }}
               />
               <Space direction='ROW' />

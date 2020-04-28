@@ -7,11 +7,13 @@ import {
 } from 'react-native';
 import styled from 'styled-components/native';
 
-import colors from '@src/constants/colors';
-import rem from '@src/constants/rem';
+import {colors, rem} from '@src/constants';
+import {ImageSize, addSizeToImagePath} from '@src/lib/utils/image-size-parser';
 
 type ImageProps = {
-  source: ImageSourcePropType;
+  size?: ImageSize;
+  src?: string;
+  source?: ImageSourcePropType;
   style?: StyleProp<ImageStyle>;
   children?: any;
 } & ImageStyleProps;
@@ -26,15 +28,23 @@ type ImageStyleProps = {
 };
 
 export default function Image(props: ImageProps) {
-  const {source, style, children, over, resizeMode} = props;
-  const styleProps: ImageStyleProps = props;
+  const {
+    source,
+    style,
+    children,
+    size = ImageSize.Raw,
+    src,
+    ...styleProps
+  } = props;
 
   return (
     <Img
-      source={source}
+      source={source || {uri: addSizeToImagePath(src, size)}}
       style={style}
       {...styleProps}
-      resizeMode={resizeMode || over ? 'cover' : 'contain'}
+      resizeMode={
+        styleProps.resizeMode || styleProps.over ? 'cover' : 'contain'
+      }
       resizeMethod='resize'>
       {children}
     </Img>

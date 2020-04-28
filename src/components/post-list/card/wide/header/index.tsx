@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 import PostCardWideHeaderProps from './props';
-import Text from '@src/modules/atoms/text';
-import rem from '@src/constants/rem';
-import colors from '@src/constants/colors';
+import {Text, Image} from '@src/modules/atoms';
+
+import {rem, colors} from '@src/constants';
 import {stringifyPassedTime} from '@src/lib/utils/time-parser';
 
 export default function PostCardWideHeader({
@@ -40,7 +40,7 @@ const Wrapper = styled.View({
   justifyContent: 'space-between',
 });
 
-export const ProfileImg = styled.Image({
+export const ProfileImg = styled(Image)({
   width: rem(36),
   height: rem(36),
   borderRadius: rem(18),

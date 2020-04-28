@@ -3,20 +3,20 @@ import styled from 'styled-components/native';
 import gql from 'graphql-tag';
 import {useQuery} from 'react-apollo';
 
-import ArrowLeft from '@src/assets/icons/arrow/left';
-import colors from '@src/constants/colors';
-import rem from '@src/constants/rem';
-import Text from '@src/modules/atoms/text';
-import IconButton from '@src/modules/atoms/buttons/icons';
-import ButtonText from '@src/modules/atoms/buttons/text';
-import SubscribeButton from '@src/modules/molecules/subscribe-button';
 import ChannelHeaderProps from './props';
 import InfluencerInfo from './influencerInfo';
 import EditCoverImage from './influencerInfo/edit-cover-image';
+import ArrowLeftIcon from '@src/assets/icons/arrow/left';
+import IconButton from '@src/modules/atoms/buttons/icons';
+import ButtonText from '@src/modules/atoms/buttons/text';
+import Text from '@src/modules/atoms/text';
+
+import {colors, rem} from '@src/constants';
+import {ImageSize, addSizeToImagePath} from '@src/lib/utils/image-size-parser';
 
 const ICON_SIZE = rem(20);
 
-export default function Header({id, navigation}: ChannelHeaderProps) {
+function Header({id, navigation}: ChannelHeaderProps) {
   const userId = 509;
   const [edit, setEdit] = useState(false);
 
@@ -29,9 +29,13 @@ export default function Header({id, navigation}: ChannelHeaderProps) {
     notifyOnNetworkStatusChange: true,
   });
 
-  if (loading) return <Text>Loading....</Text>;
+  if (loading) {
+    return null;
+  }
 
-  if (error) return <Text>error!</Text>;
+  if (error) {
+    return <Text>error!</Text>;
+  }
 
   if (data && data.getUserInfo) {
     const {channel_titleImageUrl} = data.getUserInfo;
@@ -42,7 +46,7 @@ export default function Header({id, navigation}: ChannelHeaderProps) {
             onPress={() => {
               navigation.goBack();
             }}
-            Icon={ArrowLeft}
+            Icon={ArrowLeftIcon}
             size={ICON_SIZE}
             fill={colors.white}
           />
@@ -67,6 +71,8 @@ export default function Header({id, navigation}: ChannelHeaderProps) {
   }
 }
 
+export default React.memo(Header);
+
 const BackgroundImg = styled.ImageBackground({
   width: '100%',
   height: rem(291),
@@ -86,7 +92,11 @@ const Background = styled.View({
 
 function Container({img, children}) {
   if (img) {
-    return <BackgroundImg source={{uri: img}}>{children}</BackgroundImg>;
+    return (
+      <BackgroundImg source={{uri: addSizeToImagePath(img, ImageSize.Medium)}}>
+        {children}
+      </BackgroundImg>
+    );
   } else {
     return <Background>{children}</Background>;
   }
