@@ -113,7 +113,7 @@ const PriceConatiner = (salePrice: number, originalPrice: number) => {
       <Text level={2} color={colors.primary}>
         {addCommaToNumber(salePrice ? salePrice : originalPrice)}
       </Text>
-      {salePrice && (
+      {salePrice ? (
         <>
           <Space direction='ROW' />
           <Text
@@ -126,7 +126,7 @@ const PriceConatiner = (salePrice: number, originalPrice: number) => {
             {salePercent + '%'}
           </Text>
         </>
-      )}
+      ) : null}
     </PriceWrapper>
   );
 };
