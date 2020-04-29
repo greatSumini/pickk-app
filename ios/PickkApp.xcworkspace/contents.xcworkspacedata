@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:PickkApp.xcodeproj">
+      location = "group:/Users/sumin/Desktop/dev/work/pickk-app/ios/&#x1103;&#x1161;&#x11bc;&#x1109;&#x1175;&#x11ab;&#x110b;&#x1174; &#x1111;&#x1162;&#x1109;&#x1167;&#x11ab; &#x1109;&#x1165;&#x11ab;&#x1110;&#x1162;&#x11a8;&#x110c;&#x1175;.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

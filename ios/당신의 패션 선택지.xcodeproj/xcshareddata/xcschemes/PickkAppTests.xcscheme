@@ -17,9 +17,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "PickkAppTests.xctest"
-               BlueprintName = "PickkAppTests"
-               ReferencedContainer = "container:PickkApp.xcodeproj">
+               BuildableName = "&#x1103;&#x1161;&#x11bc;&#x1109;&#x1175;&#x11ab;&#x110b;&#x1174; &#x1111;&#x1162;&#x1109;&#x1167;&#x11ab; &#x1109;&#x1165;&#x11ab;&#x1110;&#x1162;&#x11a8;&#x110c;&#x1175;Tests.xctest"
+               BlueprintName = "&#x1103;&#x1161;&#x11bc;&#x1109;&#x1175;&#x11ab;&#x110b;&#x1174; &#x1111;&#x1162;&#x1109;&#x1167;&#x11ab; &#x1109;&#x1165;&#x11ab;&#x1110;&#x1162;&#x11a8;&#x110c;&#x1175;Tests"
+               ReferencedContainer = "container:&#x1103;&#x1161;&#x11bc;&#x1109;&#x1175;&#x11ab;&#x110b;&#x1174; &#x1111;&#x1162;&#x1109;&#x1167;&#x11ab; &#x1109;&#x1165;&#x11ab;&#x1110;&#x1162;&#x11a8;&#x110c;&#x1175;.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
