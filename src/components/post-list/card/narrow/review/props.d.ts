@@ -1,4 +1,5 @@
 type postCardNarrowReviewProps = {
+  id: number;
   title: string;
   name: string;
   time: number;

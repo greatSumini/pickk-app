@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import {useNavigation} from '@react-navigation/native';
 
 import postCardNarrowReviewProps from './props';
 import IconText from '@src/modules/molecules/icon-text';
@@ -15,6 +16,7 @@ import {ImageSize} from '@src/lib/utils/image-size-parser';
 const ICON_SIZE = rem(9);
 
 export default function NarrowReviewCard({
+  id,
   title,
   name,
   time,
@@ -24,8 +26,15 @@ export default function NarrowReviewCard({
   titleImageUrl,
   titleYoutubeUrl,
 }: postCardNarrowReviewProps) {
+  const navigation = useNavigation();
+
   return (
-    <Touchable>
+    <Touchable
+      onPress={() =>
+        navigation.navigate('PostView', {
+          id,
+        })
+      }>
       <Wrapper>
         <ItemInfo>
           <Title lines={2} level={1} color={colors.primary}>
