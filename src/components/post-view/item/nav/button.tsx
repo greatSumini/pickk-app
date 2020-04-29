@@ -7,6 +7,7 @@ import {WHITE, BLACK} from '@src/constants/colors';
 import {rem} from '@src/constants';
 import {ItemInfo} from '@src/modules/types/ItemInfo';
 import {ImageSize} from '@src/lib/utils/image-size-parser';
+import {getDiscountRate} from '@src/lib/utils';
 
 export type ItemNavButtonProps = Pick<
   ItemInfo,
@@ -43,9 +44,11 @@ function ItemNavButton({
         {brandKor}
       </Text>
       <Text fontWeight='bold' style={{alignItems: 'flex-end'}}>
-        <Text level={-1} color={'#d95050'}>
-          {((1 - Number(salePrice) / Number(originalPrice)) * 100).toFixed(0)}%
-        </Text>
+        {getDiscountRate(originalPrice, salePrice) && (
+          <Text level={-1} color={'#d95050'}>
+            {getDiscountRate(originalPrice, salePrice)}%
+          </Text>
+        )}
         <Space direction='ROW' size={2} />
         {originalPrice}
       </Text>

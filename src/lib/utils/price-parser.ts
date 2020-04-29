@@ -9,3 +9,14 @@ export const addCommaToNumber = (num: number) => {
   result += numString[i];
   return result !== '0' && result;
 };
+
+export const getDiscountRate = (
+  originalPrice: number | string,
+  salePrice: number | string,
+) => {
+  const result = (
+    (1 - Number(salePrice) / Number(originalPrice)) *
+    100
+  ).toFixed(0);
+  return result !== '0' ? result : null;
+};

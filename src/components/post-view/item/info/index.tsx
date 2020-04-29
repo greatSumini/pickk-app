@@ -10,6 +10,7 @@ import {MIDDLE_GREY, BLACK, WHITE} from '@src/constants/colors';
 import {rem} from '@src/constants';
 import {ItemInfo as ItemInfoType} from '@src/modules/types/ItemInfo';
 import {ImageSize} from '@src/lib/utils/image-size-parser';
+import {getDiscountRate} from '@src/lib/utils';
 
 export type ItemInfoProps = Pick<
   ItemInfoType,
@@ -54,15 +55,16 @@ function ItemInfo({
           <Space size={8} />
           <Text level={3} fontWeight='bold' style={{alignItems: 'flex-end'}}>
             {originalPrice}{' '}
-            <Text level={1} fontWeight='medium' color={MIDDLE_GREY}>
-              {salePrice}
-            </Text>{' '}
-            <Text level={3} fontWeight='bold' color='#d95050'>
-              {((1 - Number(salePrice) / Number(originalPrice)) * 100).toFixed(
-                0,
-              )}
-              %
-            </Text>
+            {getDiscountRate(originalPrice, salePrice) && (
+              <>
+                <Text level={1} fontWeight='medium' color={MIDDLE_GREY}>
+                  {salePrice}
+                </Text>{' '}
+                <Text level={3} fontWeight='bold' color='#d95050'>
+                  {getDiscountRate(originalPrice, salePrice)}%
+                </Text>
+              </>
+            )}
           </Text>
           <Space level={2} />
           <Text fontWeight='medium'>
