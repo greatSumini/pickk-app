@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {Animated, BackHandler} from 'react-native';
-import styled from 'styled-components/native';
-import gql from 'graphql-tag';
 
 import Item from './item/index';
 import ItemFilter from './filter';
@@ -166,7 +164,7 @@ export default function RankingListScreen(props: RankingListScreenProps) {
             </Header>
             <ScrollList
               category='getItemRanking'
-              query={GET_ITEM_RANKING}
+              query={null}
               ListItem={Item}
               onScroll={Animated.event([
                 {nativeEvent: {contentOffset: {y: scrollY}}},
@@ -185,49 +183,3 @@ export default function RankingListScreen(props: RankingListScreenProps) {
     </ItemFilterContext.Provider>
   );
 }
-
-const GET_ITEM_RANKING = gql`
-  query getItemRanking(
-    $start: Int!
-    $first: Int!
-    $sort: SortDirection
-    $sortBy: ItemRankingSortableField!
-    $itemMajorType: ItemMajorType!
-    $itemMinorType: ItemMinorType!
-    $itemFinalType: ItemFinalType!
-    $minimumPrice: Int
-    $maximumPrice: Int
-  ) {
-    getItemRanking(
-      itemRankingOption: {
-        itemMajorType: $itemMajorType
-        itemMinorType: $itemMinorType
-        itemFinalType: $itemFinalType
-        filterGeneral: {
-          start: $start
-          first: $first
-          sortBy: $sortBy
-          sort: $sort
-        }
-        minimumPrice: $minimumPrice
-        maximumPrice: $maximumPrice
-      }
-    ) {
-      brandId
-      brandKor
-      brandEng
-      id
-      groupId
-      name
-      originalPrice
-      salePrice
-      imageUrl
-      purchaseUrl
-      averageScore
-      pickCount
-      itemMinorType
-      itemMajorType
-      itemFinalType
-    }
-  }
-`;

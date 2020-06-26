@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {TouchableWithoutFeedback, Keyboard} from 'react-native';
 import styled from 'styled-components/native';
-import gql from 'graphql-tag';
 
 import SearchScreenProps from './props';
 import Header from './header';
@@ -92,14 +91,13 @@ export default function Search(props: SearchScreenProps) {
         </PostFilterContext.Provider>
         <ScrollList
           category={SCROLL_CATEGORY[navType]}
-          query={QUERY[navType]}
+          query={null}
           filter={{
             ...{sortOption},
             searchText: text,
           }}
           ListItem={listItemSelector()}
           NoResult={NoResult}
-          numColumns={postType === 'LOOK' ? 2 : 1}
         />
       </Wrapper>
     </TouchableWithoutFeedback>
@@ -109,129 +107,3 @@ export default function Search(props: SearchScreenProps) {
 const Wrapper = styled.SafeAreaView({
   flex: 1,
 });
-
-const GET_RECOMMEND_POST_LIST = gql`
-  query allRecommendPosts(
-    $start: Int!
-    $first: Int!
-    $searchText: String!
-    $sort: SortDirection
-    $sortBy: RecPostSortableField
-  ) {
-    allRecommendPosts(
-      recommendPostOption: {
-        filterGeneral: {
-          start: $start
-          first: $first
-          sort: $sort
-          sortBy: $sortBy
-        }
-        postFilter: {searchText: $searchText}
-      }
-    ) {
-      id
-      accountId
-      name
-      profileImageUrl
-      title
-      titleType
-      titleImageUrl
-      titleYoutubeUrl
-      time
-      pickCount
-      viewCount
-      commentCount
-      simpleItemList {
-        brandKor
-        imageUrl
-      }
-    }
-  }
-`;
-
-export const ALL_ITEM_REVIEWS = gql`
-  query allItemReviews(
-    $start: Int!
-    $first: Int!
-    $searchText: String!
-    $sort: SortDirection
-    $sortBy: ReviewSortableField
-  ) {
-    allItemReviews(
-      reviewOption: {
-        filterGeneral: {
-          start: $start
-          first: $first
-          sort: $sort
-          sortBy: $sortBy
-        }
-        reviewFilter: {searchText: $searchText}
-      }
-    ) {
-      id
-      recommendReason
-      shortReview
-      score
-      itemInfo {
-        id
-        brandKor
-        name
-        originalPrice
-        salePrice
-        imageUrl
-        averageScore
-        pickCount
-      }
-      userInfo {
-        name
-        profileImageUrl
-        id
-      }
-    }
-  }
-`;
-
-export const GET_COMMUNITY_POST_LIST = gql`
-  query allCommunityPosts(
-    $start: Int!
-    $first: Int!
-    $searchText: String!
-    $sort: SortDirection
-    $sortBy: ComPostSortableField
-  ) {
-    allCommunityPosts(
-      communityPostOption: {
-        filterGeneral: {
-          start: $start
-          first: $first
-          sort: $sort
-          sortBy: $sortBy
-        }
-        postFilter: {searchText: $searchText}
-      }
-    ) {
-      accountId
-      name
-      profileImgUrl
-      commentCount
-      id
-      title
-      contents {
-        id
-        text
-        imageUrl
-        contentType
-      }
-      time
-      viewCount
-      pickCount
-      postType
-    }
-  }
-`;
-
-const QUERY = {
-  POST: GET_RECOMMEND_POST_LIST,
-  ITEM: ALL_ITEM_REVIEWS,
-  COMMUNITY: GET_COMMUNITY_POST_LIST,
-};

@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 import styled from 'styled-components/native';
-import gql from 'graphql-tag';
-import {useQuery} from 'react-apollo';
 
 import ChannelHeaderProps from './props';
 import InfluencerInfo from './influencerInfo';
@@ -22,12 +20,16 @@ function Header({id, navigation}: ChannelHeaderProps) {
 
   const editButtonText = edit ? '적용' : '수정';
 
-  const {loading, error, data} = useQuery(GET_USER_INFO, {
+  const {loading, error, data} = {
+    loading: false,
+    data: null,
+    error: true,
+  }; /*useQuery(GET_USER_INFO, {
     variables: {
       id,
     },
     notifyOnNetworkStatusChange: true,
-  });
+  });*/
 
   if (loading) {
     return null;
@@ -108,16 +110,3 @@ const IconRow = styled.View({
   width: '100%',
   height: rem(28),
 });
-
-const GET_USER_INFO = gql`
-  query getUserInfo($id: Int!) {
-    getUserInfo(userOption: {id: $id}) {
-      name
-      profileImageUrl
-      channel_pickCount
-      channel_titleImageUrl
-      channel_totalViewCount
-      channel_description
-    }
-  }
-`;

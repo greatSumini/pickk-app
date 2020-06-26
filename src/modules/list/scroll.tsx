@@ -6,8 +6,6 @@ import {
   ActivityIndicator,
   View,
 } from 'react-native';
-import {useQuery} from '@apollo/react-hooks';
-import {DocumentNode} from 'graphql';
 
 import {Text} from '../atoms';
 import {BLACK, WHITE} from '@src/constants/colors';
@@ -16,7 +14,7 @@ type IProps = {
   category: string;
   // tslint:disable-next-line: no-any
   filter?: any;
-  query: DocumentNode;
+  query: any;
   // tslint:disable-next-line: no-any
   ListHeader?: React.ReactElement;
   // tslint:disable-next-line: no-any
@@ -47,7 +45,13 @@ const ScrollList = (props: IProps) => {
     }
   }, [props.filter, props.query]);
 
-  const {loading, error, data, fetchMore, refetch} = useQuery(props.query, {
+  const {loading, error, data, fetchMore, refetch} = {
+    loading: false,
+    error: true,
+    data: null,
+    fetchMore: () => {},
+    refetch: () => {},
+  }; /*useQuery(props.query, {
     variables: {
       start: 0,
       first: ITEMS_PER_PAGE,
@@ -55,7 +59,7 @@ const ScrollList = (props: IProps) => {
     },
     notifyOnNetworkStatusChange: true,
     onCompleted: () => setInitialFetching(false),
-  });
+  });*/
 
   const handleScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     const {layoutMeasurement, contentOffset, contentSize} = e.nativeEvent;

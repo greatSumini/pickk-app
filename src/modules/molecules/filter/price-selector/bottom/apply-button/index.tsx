@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {useQuery} from 'react-apollo';
-import gql from 'graphql-tag';
 
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
@@ -15,7 +13,11 @@ export default function ApplyButton({setVisible}) {
   const {minimumPrice, maximumPrice} = priceFilterContext.state;
   const {setPriceOption, setOption} = priceFilterContext.action;
 
-  const {loading, error, data} = useQuery(GET_ITEMRANK_META, {
+  const {loading, error, data} = {
+    loading: false,
+    error: true,
+    data: null,
+  }; /*useQuery(GET_ITEMRANK_META, {
     variables: {
       itemFinalType,
       itemMajorType,
@@ -23,7 +25,7 @@ export default function ApplyButton({setVisible}) {
       minimumPrice: (minimumPrice as any)._value,
       maximumPrice: (maximumPrice as any)._value,
     },
-  });
+  });*/
   if (error) {
     return <Text>error</Text>;
   }
@@ -61,23 +63,3 @@ const Wrapper = styled.View({
 const Touchable = styled.TouchableOpacity({
   flex: 1,
 });
-
-const GET_ITEMRANK_META = gql`
-  query recPostMeta(
-    $itemMajorType: ItemMajorType!
-    $itemMinorType: ItemMinorType!
-    $itemFinalType: ItemFinalType!
-    $minimumPrice: Int
-    $maximumPrice: Int
-  ) {
-    _getItemRankingMetadata(
-      itemRankingOption: {
-        itemMajorType: $itemMajorType
-        itemMinorType: $itemMinorType
-        itemFinalType: $itemFinalType
-        minimumPrice: $minimumPrice
-        maximumPrice: $maximumPrice
-      }
-    )
-  }
-`;

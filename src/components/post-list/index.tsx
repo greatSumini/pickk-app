@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Animated} from 'react-native';
 import styled from 'styled-components/native';
-import gql from 'graphql-tag';
 
 import NavigationBar from '@src/modules/navigation/bar';
 import ScrollList from '@src/modules/list/scroll';
@@ -109,7 +108,7 @@ export default function PostListScreen(props: PostListScreenProps) {
         </Header>
       </FilterContext.Provider>
       <ScrollList
-        query={ALL_RECOMMEND_POSTS}
+        query={null}
         category='allRecommendPosts'
         ListItem={PostListItem}
         onScroll={Animated.event([
@@ -130,42 +129,3 @@ const Wrapper = styled.SafeAreaView({
   flex: 1,
   backgroundColor: colors.white,
 });
-
-const ALL_RECOMMEND_POSTS = gql`
-  query recPost(
-    $start: Int!
-    $first: Int!
-    $minimumPickCount: Int!
-    $postType: RecommendPostType!
-    $recommendReason: [RecommendReason]
-    $sortBy: RecPostSortableField
-  ) {
-    allRecommendPosts(
-      recommendPostOption: {
-        filterGeneral: {start: $start, first: $first, sortBy: $sortBy}
-        postFilter: {
-          postType: $postType
-          recommendReason: $recommendReason
-          minimumPickCount: $minimumPickCount
-        }
-      }
-    ) {
-      id
-      accountId
-      name
-      profileImageUrl
-      title
-      titleType
-      titleImageUrl
-      titleYoutubeUrl
-      time
-      pickCount
-      viewCount
-      commentCount
-      simpleItemList {
-        brandKor
-        imageUrl
-      }
-    }
-  }
-`;

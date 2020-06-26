@@ -1,6 +1,4 @@
 import React from 'react';
-import {useQuery} from 'react-apollo';
-import gql from 'graphql-tag';
 import styled from 'styled-components/native';
 
 import PostTypeSwitchSelector from '@src/modules/molecules/filter/post/post-type-switch';
@@ -20,11 +18,15 @@ const sortItems = [
 ];
 
 export default function PostFilter({id}) {
-  const {loading, data, error} = useQuery(GET_RECOMMENDLIST_META, {
+  const {loading, data, error} = {
+    loading: false,
+    data: null,
+    error: true,
+  }; /*useQuery(GET_RECOMMENDLIST_META, {
     variables: {
       id,
     },
-  });
+  });*/
 
   const metaDataHandler = () => {
     if (loading) {
@@ -51,11 +53,3 @@ const Right = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
 });
-
-const GET_RECOMMENDLIST_META = gql`
-  query recPostMeta($id: Int!) {
-    _allRecommendPostsMetadata(
-      recommendPostOption: {postFilter: {accountId: $id, minimumPickCount: 0}}
-    )
-  }
-`;

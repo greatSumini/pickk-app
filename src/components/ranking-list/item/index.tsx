@@ -1,7 +1,5 @@
 import React from 'react';
-import {useQuery} from 'react-apollo';
 import styled from 'styled-components/native';
-import gql from 'graphql-tag';
 
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
@@ -15,11 +13,16 @@ import {ShortReviewContentType} from './speech-bubble/props';
 function Item(props: ItemProps) {
   const {id} = props;
 
-  const {networkStatus, loading, error, data} = useQuery(GET_SHORT_REVIEW, {
+  const {loading, error, data} = {
+    loading: false,
+    data: null,
+    error: true,
+  }; /*useQuery(GET_SHORT_REVIEW, {
     variables: {
       id,
     },
-  });
+  });*/
+
   if (error) {
     return <Text>error</Text>;
   }
@@ -53,33 +56,3 @@ const Wrapper = styled.View({
   borderBottomColor: colors.lightGrey,
   height: rem(175),
 });
-
-const GET_SHORT_REVIEW = gql`
-  query allItemReviews($id: Int!) {
-    allItemReviews(
-      reviewOption: {
-        filterGeneral: {start: 0, first: 1}
-        reviewFilter: {itemId: $id}
-      }
-    ) {
-      shortReview
-      recommendReason
-      id
-      postId
-      review
-      score
-      images {
-        id
-      }
-      userInfo {
-        id
-        email
-        age
-        height
-        weight
-        name
-        profileImageUrl
-      }
-    }
-  }
-`;

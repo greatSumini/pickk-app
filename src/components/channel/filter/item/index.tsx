@@ -1,7 +1,5 @@
 import React from 'react';
-import {useQuery} from 'react-apollo';
 import styled from 'styled-components/native';
-import gql from 'graphql-tag';
 
 import FilterButton from '@src/modules/molecules/filter/default-filter-button';
 import SortSelector from '@src/modules/molecules/filter/sort-selector';
@@ -20,11 +18,15 @@ const sortItems = [
 ];
 
 export default function ItemFilter({id}) {
-  const {loading, data, error} = useQuery(GET_REVIEWLIST_META, {
+  const {loading, data, error} = {
+    loading: false,
+    data: null,
+    error: true,
+  }; /*useQuery(GET_REVIEWLIST_META, {
     variables: {
       id,
     },
-  });
+  });*/
 
   const metaDataHandler = () => {
     if (loading) {
@@ -51,9 +53,3 @@ const RightWrapper = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
 });
-
-const GET_REVIEWLIST_META = gql`
-  query reviewListMeta($id: Int!) {
-    _allItemReviewsMetadata(reviewOption: {reviewFilter: {userId: $id}})
-  }
-`;

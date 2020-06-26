@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components/native';
-import gql from 'graphql-tag';
 
 import Header from './header';
 import Filter from './filter';
@@ -51,11 +50,7 @@ export default function Channel(props: ChannelScreenProps) {
   };
 
   const querySelector = () => {
-    if (navType === 'POST') {
-      return GET_RECOMMENDLIST;
-    } else {
-      return GET_REVIEWLIST;
-    }
+    return null;
   };
 
   const categorySelector = () => {
@@ -130,73 +125,3 @@ function ListHeader({id, navigation, navType, setNavType}) {
 }
 
 const Wrapper = styled.SafeAreaView({flex: 1});
-
-export const GET_RECOMMENDLIST = gql`
-  query recPost(
-    $start: Int!
-    $first: Int!
-    $id: Int!
-    $postType: RecommendPostType!
-    $sortBy: RecPostSortableField
-  ) {
-    allRecommendPosts(
-      recommendPostOption: {
-        filterGeneral: {start: $start, first: $first, sortBy: $sortBy}
-        postFilter: {accountId: $id, minimumPickCount: 0, postType: $postType}
-      }
-    ) {
-      id
-      accountId
-      name
-      profileImageUrl
-      title
-      titleType
-      titleImageUrl
-      titleYoutubeUrl
-      time
-      pickCount
-      viewCount
-      commentCount
-      simpleItemList {
-        brandKor
-        imageUrl
-      }
-    }
-  }
-`;
-
-export const GET_REVIEWLIST = gql`
-  query getReview(
-    $start: Int!
-    $first: Int!
-    $id: Int!
-    $sortBy: ReviewSortableField
-  ) {
-    allItemReviews(
-      reviewOption: {
-        filterGeneral: {start: $start, first: $first, sortBy: $sortBy}
-        reviewFilter: {userId: $id}
-      }
-    ) {
-      id
-      recommendReason
-      shortReview
-      score
-      itemInfo {
-        id
-        brandKor
-        name
-        originalPrice
-        salePrice
-        imageUrl
-        averageScore
-        pickCount
-      }
-      userInfo {
-        name
-        profileImageUrl
-        id
-      }
-    }
-  }
-`;

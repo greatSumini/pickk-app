@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import {useMutation, useQuery} from 'react-apollo';
 import {StyleProp, ViewStyle, Alert} from 'react-native';
 import styled from 'styled-components/native';
-import gql from 'graphql-tag';
 
 import colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
@@ -21,29 +19,15 @@ export default function SubscribeButton({
   const userId = 509; // 테스트용 userId 로그인 기능 구현 후 수정해야함
   const [isSubscribing, setSubscribing] = useState(false);
 
-  const [followTarget /*{ error, data }*/] = useMutation(FOLLOW_TARGET);
+  const [followTarget /*{ error, data }*/] = [() => {}];
 
   const subscribeText = isSubscribing ? '구독 됨' : '구독하기';
 
   const handleSubscribe = () => {
     // 로그인 되었는지 확인과정 추가해야함
 
-    followTarget({
-      variables: {
-        accountId: userId,
-        targetId: accountId,
-      },
-      refetchQueries: [
-        {
-          query: IS_FOLLOWING_TARGET,
-          variables: {
-            accountId: userId,
-            targetId: accountId,
-          },
-        },
-      ],
-    })
-      .then(res => {
+    followTarget();
+    /*.then((res) => {
         if (res) {
           if (isSubscribing) {
             Alert.alert('구독', '구독이 취소됐습니다.', [
@@ -57,16 +41,19 @@ export default function SubscribeButton({
           setSubscribing(!isSubscribing);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         Alert.alert('구독', '실패했습니다', [{text: 'ok', onPress: () => {}}]);
         console.error(
           'TEST ERR =>',
-          error.graphQLErrors.map(x => x.message),
+          error.graphQLErrors.map((x) => x.message),
         );
-      });
+      });*/
   };
 
-  const {loading, data} = useQuery(IS_FOLLOWING_TARGET, {
+  const {loading, data} = {
+    loading: false,
+    data: null,
+  }; /*useQuery(IS_FOLLOWING_TARGET, {
     variables: {
       accountId: userId,
       targetId: accountId,
@@ -75,7 +62,7 @@ export default function SubscribeButton({
     onCompleted: () => {
       setSubscribing(data.isFollowingTarget);
     },
-  });
+  });*/
 
   if (loading) return <Text>Loading....</Text>;
 
@@ -92,33 +79,9 @@ export default function SubscribeButton({
 
 const Button = styled(TouchableCmp)({});
 
-const Wrapper = styled.View<{isSubscribing: boolean}>(props => ({
+const Wrapper = styled.View<{isSubscribing: boolean}>((props) => ({
   backgroundColor: props.isSubscribing ? colors.primary : colors.white,
   width: rem(125),
   paddingVertical: rem(5),
   alignItems: 'center',
 }));
-
-const IS_FOLLOWING_TARGET = gql`
-  query isSubscribing($accountId: Int!, $targetId: Int!) {
-    isFollowingTarget(
-      followInfo: {
-        accountId: $accountId
-        targetType: CHANNEL
-        targetId: $targetId
-      }
-    )
-  }
-`;
-
-const FOLLOW_TARGET = gql`
-  mutation followTarget($accountId: Int!, $targetId: Int!) {
-    FollowTarget(
-      followInfo: {
-        accountId: $accountId
-        targetType: CHANNEL
-        targetId: $targetId
-      }
-    )
-  }
-`;
