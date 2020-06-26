@@ -18,7 +18,7 @@
                BlueprintIdentifier = "74BB3A7A2456DA80004EFF53"
                BuildableName = "OneSignalNotificationServiceExtension.appex"
                BlueprintName = "OneSignalNotificationServiceExtension"
-               ReferencedContainer = "container:&#x1103;&#x1161;&#x11bc;&#x1109;&#x1175;&#x11ab;&#x110b;&#x1174; &#x1111;&#x1162;&#x1109;&#x1167;&#x11ab; &#x1109;&#x1165;&#x11ab;&#x1110;&#x1162;&#x11a8;&#x110c;&#x1175;.xcodeproj">
+               ReferencedContainer = "container:PickkApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -30,9 +30,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "PickkApp.app"
-               BlueprintName = "&#x1103;&#x1161;&#x11bc;&#x1109;&#x1175;&#x11ab;&#x110b;&#x1174; &#x1111;&#x1162;&#x1109;&#x1167;&#x11ab; &#x1109;&#x1165;&#x11ab;&#x1110;&#x1162;&#x11a8;&#x110c;&#x1175;"
-               ReferencedContainer = "container:&#x1103;&#x1161;&#x11bc;&#x1109;&#x1175;&#x11ab;&#x110b;&#x1174; &#x1111;&#x1162;&#x1109;&#x1167;&#x11ab; &#x1109;&#x1165;&#x11ab;&#x1110;&#x1162;&#x11a8;&#x110c;&#x1175;.xcodeproj">
+               BuildableName = "&#x1111;&#x1175;&#x11bf;.app"
+               BlueprintName = "PickkApp"
+               ReferencedContainer = "container:PickkApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "PickkApp.app"
-            BlueprintName = "&#x1103;&#x1161;&#x11bc;&#x1109;&#x1175;&#x11ab;&#x110b;&#x1174; &#x1111;&#x1162;&#x1109;&#x1167;&#x11ab; &#x1109;&#x1165;&#x11ab;&#x1110;&#x1162;&#x11a8;&#x110c;&#x1175;"
-            ReferencedContainer = "container:&#x1103;&#x1161;&#x11bc;&#x1109;&#x1175;&#x11ab;&#x110b;&#x1174; &#x1111;&#x1162;&#x1109;&#x1167;&#x11ab; &#x1109;&#x1165;&#x11ab;&#x1110;&#x1162;&#x11a8;&#x110c;&#x1175;.xcodeproj">
+            BuildableName = "&#x1111;&#x1175;&#x11bf;.app"
+            BlueprintName = "PickkApp"
+            ReferencedContainer = "container:PickkApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "PickkApp.app"
-            BlueprintName = "&#x1103;&#x1161;&#x11bc;&#x1109;&#x1175;&#x11ab;&#x110b;&#x1174; &#x1111;&#x1162;&#x1109;&#x1167;&#x11ab; &#x1109;&#x1165;&#x11ab;&#x1110;&#x1162;&#x11a8;&#x110c;&#x1175;"
-            ReferencedContainer = "container:&#x1103;&#x1161;&#x11bc;&#x1109;&#x1175;&#x11ab;&#x110b;&#x1174; &#x1111;&#x1162;&#x1109;&#x1167;&#x11ab; &#x1109;&#x1165;&#x11ab;&#x1110;&#x1162;&#x11a8;&#x110c;&#x1175;.xcodeproj">
+            BuildableName = "&#x1111;&#x1175;&#x11bf;.app"
+            BlueprintName = "PickkApp"
+            ReferencedContainer = "container:PickkApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

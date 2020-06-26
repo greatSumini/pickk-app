@@ -4,12 +4,9 @@ import styled from 'styled-components/native';
 import HomeIcon from '@src/assets/icons/bottom-tab/home';
 import PostIcon from '@src/assets/icons/bottom-tab/post';
 import ItemIcon from '@src/assets/icons/bottom-tab/item';
-import CommunityIcon from '@src/assets/icons/bottom-tab/community';
 import rem from '@src/constants/rem';
 import colors, {WHITE} from '@src/constants/colors';
 import TabBarButton from './button';
-import TabBarProps from './props';
-import {useNavigation} from '@react-navigation/native';
 
 type ButtonProps = {
   title: string;
@@ -25,6 +22,7 @@ const data: ButtonProps[] = [
   },
   {title: '포스트', route: 'Post', Icon: PostIcon},
   {title: '랭킹', route: 'Rank', Icon: ItemIcon},
+  {title: 'MY', route: 'My', Icon: ItemIcon},
 ];
 
 // tslint:disable-next-line: no-any
