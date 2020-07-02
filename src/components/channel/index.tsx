@@ -11,7 +11,7 @@ import PostListCardNarrowLook from '@src/components/post-list/card/narrow/look';
 import ScrollList from '@src/modules/list/scroll';
 import NavigationBar from '@src/modules/navigation/bar';
 import {useRoute, RouteProp} from '@react-navigation/native';
-import {AppStackParams} from '@src/modules/navigation/navigator/stacks/app.d.ts';
+import {AppStackParams} from '@src/modules/navigation/navigator/stacks/app';
 
 const items = ['포스트', '아이템'];
 

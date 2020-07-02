@@ -6,7 +6,7 @@ import Header, {PostViewHeaderProps} from './header';
 import Item, {PostViewItemProps} from './item';
 import {WHITE} from '@src/constants/colors';
 
-import {AppStackParams} from '@src/modules/navigation/navigator/stacks/app.d.ts';
+import {AppStackParams} from '@src/modules/navigation/navigator/stacks/app';
 import {RecommendPost} from '@src/modules/types/RecommendPost';
 
 export default function PostView() {
