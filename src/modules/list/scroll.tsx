@@ -1,164 +1,125 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {
-  NativeSyntheticEvent,
-  NativeScrollEvent,
-  ScrollView,
-  ActivityIndicator,
-  View,
-} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {FlatList} from 'react-native-gesture-handler';
+import styled from 'styled-components/native';
+import axios from 'axios';
+
+import {ListProps} from './list-props';
 
 import {Text} from '../atoms';
-import {BLACK, WHITE} from '@src/constants/colors';
-
-type IProps = {
-  category: string;
-  // tslint:disable-next-line: no-any
-  filter?: any;
-  query: any;
-  // tslint:disable-next-line: no-any
-  ListHeader?: React.ReactElement;
-  // tslint:disable-next-line: no-any
-  ListItem: React.FunctionComponent<any>;
-  Skeleton?: React.FunctionComponent<{style?: React.CSSProperties}>;
-  NoResult?: React.FunctionComponent;
-  // tslint:disable-next-line: no-any
-  listFilter?: (data: any) => boolean;
-  onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
-};
+import {MIDDLE_GREY} from '@src/constants/colors';
+import {View, RefreshControl} from 'react-native';
 
 const ITEMS_PER_PAGE = 20;
-const PADDING_TO_BOTTOM = 500;
 
-const ScrollList = (props: IProps) => {
-  const scrollViewRef = useRef<ScrollView>(null);
-  const [areMoreItems, setAreMoreItems] = useState(true);
-  const [initialFetching, setInitialFetching] = useState(true);
-  const [querying, setQuerying] = useState(false);
-  const propName = props.category;
-  const {listFilter} = props;
+export type ScrollListProps = ListProps & {deps?: any[]};
 
-  useEffect(() => {
-    refetch();
-    setInitialFetching(true);
-    if (scrollViewRef.current) {
-      scrollViewRef.current.scrollTo();
-    }
-  }, [props.filter, props.query]);
+const ScrollList = ({
+  requestConfig,
+  ListItem,
+  filter,
+  initialData,
+  Skeleton,
+  NoResult,
+  listFilter,
+  deps = [],
+  listItemProp,
+  loading = false,
+  setLoading = () => {},
+  style,
+  onScroll,
+}: ScrollListProps) => {
+  const [page, setPage] = useState(0);
+  const [fetching, setFetching] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+  const [data, setData] = useState(initialData || []);
 
-  const {loading, error, data, fetchMore, refetch} = {
-    loading: false,
-    error: true,
-    data: null,
-    fetchMore: () => {},
-    refetch: () => {},
-  }; /*useQuery(props.query, {
-    variables: {
-      start: 0,
-      first: ITEMS_PER_PAGE,
-      ...props.filter,
-    },
-    notifyOnNetworkStatusChange: true,
-    onCompleted: () => setInitialFetching(false),
-  });*/
-
-  const handleScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const {layoutMeasurement, contentOffset, contentSize} = e.nativeEvent;
-    if (
-      layoutMeasurement.height + contentOffset.y >=
-      contentSize.height - PADDING_TO_BOTTOM
-    ) {
-      loadMoreItems();
-    }
-    if (props.onScroll) {
-      props.onScroll(e);
-    }
+  const getData = async () => {
+    setFetching(true);
+    const {data: fetchedData} = await axios(
+      requestConfig({
+        offset: page * ITEMS_PER_PAGE,
+        limit: ITEMS_PER_PAGE,
+        ...filter,
+      }),
+    );
+    const results = fetchedData?.results?.filter(
+      listFilter ? listFilter : () => true,
+    );
+    setData(page === 0 ? results : [...data, ...results]);
+    setFetching(false);
+    setRefreshing(false);
+    setLoading(false);
   };
 
-  const loadMoreItems = () => {
-    if (!areMoreItems || querying) {
+  const loadMore = () => {
+    if (fetching) {
       return;
     }
-    setQuerying(true);
-    return fetchMore({
-      variables: {
-        start: data[propName].length,
-        first: ITEMS_PER_PAGE,
-      },
-      updateQuery: (previousResult, {fetchMoreResult}) => {
-        if (!fetchMoreResult) {
-          return previousResult;
-        }
-        if (fetchMoreResult.length < ITEMS_PER_PAGE) {
-          setAreMoreItems(false);
-        }
-        setQuerying(false);
-        return Object.assign({}, previousResult, {
-          // Append the new posts results to the old one
-          [propName]: [
-            ...previousResult[propName],
-            ...fetchMoreResult[propName],
-          ],
-        });
-      },
-    });
+    setPage(page + 1);
   };
 
-  if (!loading && initialFetching) {
-    setInitialFetching(false);
-  }
+  const refresh = async () => {
+    setRefreshing(true);
+    setPage(0);
+    if (page === 0) {
+      getData();
+    }
+  };
 
-  if (data && data[propName]?.length < ITEMS_PER_PAGE && areMoreItems) {
-    setAreMoreItems(false);
-  }
+  useEffect(() => {
+    getData();
+  }, [page]);
+
+  useEffect(() => {
+    refresh();
+  }, deps);
+
+  const LoadingComponent = Skeleton || (() => <Text>loading...</Text>);
+  const EmptyComponent = NoResult || (() => <></>);
 
   return (
-    <>
-      <ScrollView
-        ref={scrollViewRef}
-        scrollsToTop
-        onScroll={handleScroll}
-        scrollEventThrottle={16}
-        style={{
-          display: 'flex',
-          width: '100%',
-          backgroundColor: WHITE,
-        }}>
-        {props.ListHeader}
-
-        {data && data[propName] && (
-          <View
-            style={{
-              display: 'flex',
-              width: '100%',
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-            }}>
-            {loading && initialFetching ? (
-              props.Skeleton ? (
-                <props.Skeleton />
-              ) : (
-                <ActivityIndicator size={35} color={BLACK} />
-              )
-            ) : (
-              <>
-                {data[propName].length === 0 && props.NoResult && (
-                  <props.NoResult />
-                )}
-                {data[propName].length !== 0 &&
-                  data[propName]
-                    .filter(listFilter ? listFilter : () => true)
-                    .map((item, index) => (
-                      <props.ListItem {...item} key={index}></props.ListItem>
-                    ))}
-              </>
-            )}
-          </View>
-        )}
-      </ScrollView>
-      {loading && <ActivityIndicator size={35} color={BLACK} />}
-    </>
+    <Wrapper style={style}>
+      <View style={{flex: 1}}>
+        <FlatList
+          keyExtractor={(item) => JSON.stringify(item)}
+          data={data}
+          onScroll={onScroll}
+          renderItem={({item}) => <ListItem {...item} {...listItemProp} />}
+          onEndReached={loadMore}
+          onEndReachedThreshold={1}
+          ListEmptyComponent={
+            loading || fetching ? LoadingComponent : EmptyComponent
+          }
+          ListFooterComponent={fetching ? LoadingComponent : null}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={refresh} />
+          }
+        />
+      </View>
+    </Wrapper>
   );
-  return props.Skeleton ? <props.Skeleton /> : <Text>loading...</Text>;
 };
+
+const Wrapper = styled.View`
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+`;
+
+export const LoadMoreButton = styled.TouchableNativeFeedback`
+  width: fit-content;
+  padding: 0.04rem 0.08rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid ${MIDDLE_GREY};
+  border-radius: 9999px;
+  margin-top: 0.08rem;
+`;
 
 export default ScrollList;
