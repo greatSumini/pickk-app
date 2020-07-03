@@ -2,25 +2,34 @@ import React, {useEffect} from 'react';
 import styled from 'styled-components/native';
 import {useNavigation} from '@react-navigation/native';
 
-import Text from '@src/modules/atoms/text';
 import LogoIcon from '@src/assets/icons/logo';
 import ScreenNavigationProps from '@src/modules/types/screen-navigation-props';
+import Text from '@src/modules/atoms/text';
 import {WHITE} from '@src/constants/colors';
-
 import rem from '@src/constants/rem';
+
+import {useAppContext} from '@src/context/app';
 
 export type SplashScreenProps = ScreenNavigationProps;
 
 export default function SplashScreen() {
+  const {getMe} = useAppContext().action;
   const navigation = useNavigation();
-  useEffect(() => {
+
+  const signIn = async () => {
+    await getMe();
     setTimeout(() => {
       navigation.reset({
         index: 0,
         routes: [{name: 'App'}],
       });
-    }, 3000);
+    }, 100);
+  };
+
+  useEffect(() => {
+    signIn();
   }, []);
+
   return (
     <Wrapper>
       <LogoIcon style={{width: rem(89), height: rem(52)}} fill={WHITE} />

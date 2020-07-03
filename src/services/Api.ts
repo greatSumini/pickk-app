@@ -3,7 +3,7 @@ import axios, {AxiosRequestConfig, Method} from 'axios';
 import {IncomingMessage} from 'http';
 import config from '../../config';
 
-class RequestConfig {
+export class RequestConfig implements AxiosRequestConfig {
   public baseURL: string;
   public headers?: any;
   public method?: Method;
@@ -63,17 +63,11 @@ class RequestConfig {
 
 export const baseConfig = (auth?: boolean, req?: IncomingMessage) => {
   const requestConfig = new RequestConfig(config['django-api-host']);
-  if (auth) {
-    requestConfig.setToken('sumintest');
-  }
   return requestConfig;
 };
 
 const base = (auth?: boolean) => {
   const requestConfig = new RequestConfig(config['django-api-host']);
-  if (auth) {
-    requestConfig.setToken('sumintest');
-  }
   return axios.create(requestConfig);
 };
 
