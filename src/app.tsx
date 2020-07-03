@@ -3,8 +3,9 @@ import styled from 'styled-components/native';
 
 import Navigator from './modules/navigation/navigator';
 import {useOnesignalNotification} from './hooks';
+import {withAppContext} from './context/app';
 
-export default function App() {
+function App() {
   useOnesignalNotification();
 
   return (
@@ -13,6 +14,8 @@ export default function App() {
     </Container>
   );
 }
+
+export default withAppContext(App);
 
 const Container = styled.SafeAreaView`
   flex: 1;
