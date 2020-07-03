@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Animated} from 'react-native';
+import {Animated, View} from 'react-native';
 import styled from 'styled-components/native';
 
 import NavigationBar from '@src/modules/navigation/bar';
@@ -11,10 +11,12 @@ import PostCardReviewNarrow from '@src/components/post-list/card/narrow/review/i
 import PostCardLookNarrow from '@src/components/post-list/card/narrow/look/index';
 import Header from '@src/modules/header/index';
 import SearchIcon from '@src/assets/icons/search';
+import {Text} from '@src/modules/atoms';
 
 import {colors, rem} from '@src/constants';
 
 import FilterContext from '@src/context/filter';
+import {listConfig} from '@src/services/Review/config';
 
 export const WIDE = 'WIDE';
 export const NARROW = 'NARROW';
@@ -108,9 +110,12 @@ export default function PostListScreen(props: PostListScreenProps) {
         </Header>
       </FilterContext.Provider>
       <ScrollList
-        query={null}
-        category='allRecommendPosts'
-        ListItem={PostListItem}
+        requestConfig={listConfig}
+        ListItem={(props) => (
+          <View key={props.id} style={{height: 150, flex: 1}}>
+            <Text>{props.title}</Text>
+          </View>
+        )}
         onScroll={Animated.event([
           {nativeEvent: {contentOffset: {y: scrollY}}},
         ])}
