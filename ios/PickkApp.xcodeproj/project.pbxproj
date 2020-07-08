@@ -12,13 +12,13 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		241AC3D8760000676E7EE05F /* libPods-PickkApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4927968BF9A4770FC5B5D520 /* libPods-PickkApp.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* PickkAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PickkAppTests.m */; };
 		43BD536ECAB659CE53CF262F /* libPods-PickkAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B2DBD9E7AF6E566B333117 /* libPods-PickkAppTests.a */; };
 		49FBDFD6B86FB7A084CCED72 /* libPods-PickkApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F418AD0A2F70E825F8BAD21 /* libPods-PickkApp-tvOS.a */; };
-		70106BC9CA16F5F35434DF19 /* libPods-PickkApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4927968BF9A4770FC5B5D520 /* libPods-PickkApp.a */; };
 		73805518E0244552510CFDBD /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC00EF1CD5780CAAEAAE3786 /* libPods-OneSignalNotificationServiceExtension.a */; };
 		74BB3A7D2456DA80004EFF53 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74BB3A7C2456DA80004EFF53 /* UserNotifications.framework */; };
 		74BB3A7F2456DA80004EFF53 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74BB3A7E2456DA80004EFF53 /* UserNotificationsUI.framework */; };
@@ -120,7 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70106BC9CA16F5F35434DF19 /* libPods-PickkApp.a in Frameworks */,
+				241AC3D8760000676E7EE05F /* libPods-PickkApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
