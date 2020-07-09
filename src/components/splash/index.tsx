@@ -17,7 +17,9 @@ export default function SplashScreen() {
   const navigation = useNavigation();
 
   const signIn = async () => {
-    await getMe();
+    try {
+      await getMe();
+    } catch {}
     setTimeout(() => {
       navigation.reset({
         index: 0,
