@@ -1,20 +1,14 @@
-export const addSizeToImagePath = (path: string, size: ImageSize) => {
-  if (!path) {
-    return path;
+export const addSizeToImagePath = (url: string, size: ImageSize): string => {
+  if (!url || !size) {
+    return url;
   }
-  const _fileLen = path.length;
-  const _lastDot = path.lastIndexOf('.');
+  const _urlLen = url.length;
+  const _lastSlash = url.lastIndexOf('/');
 
-  const _path = path.substring(0, _lastDot);
-  const _fileExt = path.substring(_lastDot, _fileLen);
+  const _path = url.substring(0, _lastSlash);
+  const _filename = url.substring(_lastSlash + 1, _urlLen);
 
-  return `${_path}${size}${_fileExt}`;
+  return `${_path}/${size}/${_filename}`;
 };
 
-export enum ImageSize {
-  Xsmall = '_xsmall',
-  Small = '_small',
-  Medium = '_medium',
-  Large = '_large',
-  Raw = '',
-}
+export type ImageSize = 'avatar' | 50 | 128 | 160 | 256 | 512 | 1024 | 1600;
