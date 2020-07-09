@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
-import {Animated, View} from 'react-native';
+import {Animated} from 'react-native';
 import styled from 'styled-components/native';
+
+import ScreenNavigationProps from '@src/modules/types/screen-navigation-props';
 
 import NavigationBar from '@src/modules/navigation/bar';
 import ScrollList from '@src/modules/list/scroll';
 import PostListFilter from './filter';
-import PostListScreenProps from './props';
-import PostCardWide from './card/wide';
+import PostCardWideReview from './card/wide/review';
 import PostCardReviewNarrow from '@src/components/post-list/card/narrow/review/index';
 import PostCardLookNarrow from '@src/components/post-list/card/narrow/look/index';
 import Header from '@src/modules/header/index';
 import SearchIcon from '@src/assets/icons/search';
-import {Text} from '@src/modules/atoms';
 
 import {colors, rem} from '@src/constants';
 
@@ -31,6 +31,8 @@ const SORT_TYPE = {
   HOT: 'pickCount',
 };
 
+export type PostListScreenProps = ScreenNavigationProps;
+
 export default function PostListScreen(props: PostListScreenProps) {
   const [scrollY] = useState(new Animated.Value(0));
   const [view, setView] = useState(WIDE);
@@ -44,7 +46,7 @@ export default function PostListScreen(props: PostListScreenProps) {
 
   const PostListItem =
     view === WIDE
-      ? PostCardWide
+      ? PostCardWideReview
       : postType === 'REVIEW'
       ? PostCardReviewNarrow
       : PostCardLookNarrow;
@@ -111,11 +113,7 @@ export default function PostListScreen(props: PostListScreenProps) {
       </FilterContext.Provider>
       <ScrollList
         requestConfig={listConfig}
-        ListItem={(props) => (
-          <View key={props.id} style={{height: 150, flex: 1}}>
-            <Text>{props.title}</Text>
-          </View>
-        )}
+        ListItem={PostCardWideReview}
         onScroll={Animated.event([
           {nativeEvent: {contentOffset: {y: scrollY}}},
         ])}

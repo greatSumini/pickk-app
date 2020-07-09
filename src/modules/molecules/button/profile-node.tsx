@@ -3,12 +3,11 @@ import {View} from 'react-native';
 import styled from 'styled-components/native';
 import {useNavigation} from '@react-navigation/native';
 
-import {ProfileImg} from '@src/components/post-list/card/wide/header';
+import {ProfileImg} from '@src/components/post-list/card/wide/review/header';
 import {Text, Space, TouchableCmp} from '@src/modules/atoms';
 import {REGULAR_GREY, BLACK, WHITE} from '@src/constants/colors';
 
 import {width, rem} from '@src/constants';
-import {ImageSize} from '@src/lib/utils/image-size-parser';
 
 export type ProfileNodeProps = {
   accountId: number;
@@ -29,7 +28,7 @@ export default function ProfileNode({
           id: accountId,
         })
       }>
-      <ProfileImg src={profileImageUrl} size={ImageSize.Small} />
+      <ProfileImg src={profileImageUrl} size={128} />
       <Space direction='ROW' size={8} />
       <Text level={1} fontWeight='medium'>
         {name}

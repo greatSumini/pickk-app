@@ -28,23 +28,13 @@ type ImageStyleProps = {
 };
 
 export default function Image(props: ImageProps) {
-  const {
-    source,
-    style,
-    children,
-    size = ImageSize.Raw,
-    src,
-    ...styleProps
-  } = props;
+  const {source, style, children, size = 256, src, ...styleProps} = props;
 
   return (
     <Img
       source={source || {uri: addSizeToImagePath(src, size)}}
       style={style}
       {...styleProps}
-      resizeMode={
-        styleProps.resizeMode || styleProps.over ? 'cover' : 'contain'
-      }
       resizeMethod='resize'>
       {children}
     </Img>

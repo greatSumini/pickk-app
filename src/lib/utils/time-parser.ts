@@ -1,4 +1,4 @@
-export const stringifyPassedTime = input => {
+export const stringifyPassedTime = (input) => {
   const howmuch = [
     [60, '초'],
     [60, '분'],
@@ -8,10 +8,11 @@ export const stringifyPassedTime = input => {
   ];
 
   const nowTime: number = Date.now();
-  const inputTime = new Date(Number(input)).getTime();
+  const inputTime = new Date(input).getTime();
   let passedSecond: number = (nowTime - inputTime) / 1000;
   passedSecond.toFixed(0);
 
+  // tslint:disable-next-line: prefer-for-of
   for (let i = 0; i < howmuch.length; ++i) {
     if (passedSecond < Number(howmuch[i][0])) {
       return passedSecond.toFixed(0) + howmuch[i][1] + ' 전';
@@ -39,7 +40,7 @@ export const addLeadingZeros = (num, length) => {
   return new Array(length - result.length).fill('0').toString() + result;
 };
 
-export const parseTime = input => {
+export const parseTime = (input) => {
   const inputDate = new Date(Number(input));
 
   const year = inputDate.getFullYear();

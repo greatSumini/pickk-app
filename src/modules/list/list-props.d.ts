@@ -1,4 +1,4 @@
-import {SetStateAction} from 'react';
+import {SetStateAction, ReactElement} from 'react';
 import {ViewStyle, NativeSyntheticEvent, NativeScrollEvent} from 'react-native';
 
 export type ListProps = {
@@ -14,4 +14,5 @@ export type ListProps = {
   setLoading?: React.Dispatch<SetStateAction<boolean>>;
   style?: ViewStyle;
   onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
+  ListHeaderComponent?: ReactElement;
 };
