@@ -27,6 +27,7 @@ const ScrollList = ({
   setLoading = () => {},
   style,
   onScroll,
+  ListHeaderComponent,
 }: ScrollListProps) => {
   const [page, setPage] = useState(0);
   const [fetching, setFetching] = useState(false);
@@ -90,6 +91,7 @@ const ScrollList = ({
           ListEmptyComponent={
             loading || fetching ? LoadingComponent : EmptyComponent
           }
+          ListHeaderComponent={ListHeaderComponent}
           ListFooterComponent={fetching ? LoadingComponent : null}
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={refresh} />

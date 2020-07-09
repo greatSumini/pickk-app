@@ -6,7 +6,7 @@ import Filter from './filter';
 import Item from './item';
 import ChannelScreenProps from './props';
 import {PostFilterContext, SortContext} from '@src/context/filter';
-import PostListCardWide from '@src/components/post-list/card/wide';
+import PostListCardWide from '@src/components/post-list/card/wide/review/thumbnail';
 import PostListCardNarrowLook from '@src/components/post-list/card/narrow/look';
 import ScrollList from '@src/modules/list/scroll';
 import NavigationBar from '@src/modules/navigation/bar';
@@ -86,7 +86,7 @@ export default function Channel(props: ChannelScreenProps) {
       <PostFilterContext.Provider value={postTypeStore}>
         <SortContext.Provider value={sortStore}>
           <ScrollList
-            ListHeader={
+            ListHeaderComponent={
               <ListHeader
                 id={id}
                 navType={navType}
@@ -94,8 +94,7 @@ export default function Channel(props: ChannelScreenProps) {
                 navigation={props.navigation}
               />
             }
-            query={querySelector()}
-            category={categorySelector()}
+            requestConfig={null}
             ListItem={listItemSelector()}
             filter={{
               id,
