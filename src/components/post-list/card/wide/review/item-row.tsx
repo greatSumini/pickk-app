@@ -1,14 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import FastImage from 'react-native-fast-image';
 
-import Text from '@src/modules/atoms/text';
-import rem from '@src/constants/rem';
-import colors from '@src/constants/colors';
-import {addSizeToImagePath, ImageSize} from '@src/lib/utils/image-size-parser';
-import {IReview, IReviewItem} from '@src/interfaces';
-import {Image} from '@src/modules/atoms';
 import ItemPartnerIcon from '@src/assets/icons/item/Partner';
+import {Text, Image} from '@src/modules/atoms';
+import {rem, colors} from '@src/constants';
+
+import {IReview, IReviewItem} from '@src/interfaces';
 
 export type PostCardWideItemRowProps = Pick<IReview, 'reviewItems'>;
 
@@ -41,7 +38,6 @@ const CardItem = ({isPurchasable, item}: CardItemProps) => {
           borderColor: isPurchasable ? colors.primary : colors.lightGrey,
           overflow: 'hidden',
         }}
-        resizeMode={FastImage.resizeMode.cover}
       />
       <ItemNameWrapper>
         <ItemName level={1} ellipsis>
