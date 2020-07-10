@@ -8,6 +8,7 @@ import NavigationBar from '@src/modules/navigation/bar';
 import ScrollList from '@src/modules/list/scroll';
 import PostListFilter from './filter';
 import PostCardWideReview from './card/wide/review';
+import PostCardWideReivewSkeleton from '@src/modules/skeletons/post/post-card';
 import PostCardReviewNarrow from '@src/components/post-list/card/narrow/review/index';
 import PostCardLookNarrow from '@src/components/post-list/card/narrow/look/index';
 import Header from '@src/modules/header/index';
@@ -123,6 +124,7 @@ export default function PostListScreen(props: PostListScreenProps) {
           recommendReason: option ? tag : null,
           sortBy: sortOption ? SORT_TYPE[sort] : 'time',
         }}
+        Skeleton={PostCardWideReivewSkeleton}
       />
     </Wrapper>
   );
