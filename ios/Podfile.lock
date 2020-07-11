@@ -193,7 +193,7 @@ PODS:
   - react-native-onesignal (3.7.2):
     - OneSignal (= 2.13.1)
     - React (< 1.0.0, >= 0.13.0)
-  - react-native-safe-area-context (0.7.3):
+  - react-native-safe-area-context (3.0.7):
     - React
   - React-RCTActionSheet (0.62.2):
     - React-Core/RCTActionSheetHeaders (= 0.62.2)
@@ -412,7 +412,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 512e560d0e985d0e8c479a54a4e5c147a9c83493
   react-native-config: f2c2ae45625a068c35681a16b9bfb1ca58b0adc7
   react-native-onesignal: f171f1847f91ee8a2d38c1e66b35a8e437c54416
-  react-native-safe-area-context: 8260e5157617df4b72865f44006797f895b2ada7
+  react-native-safe-area-context: c39fc20a20cd66ebf1d56c6f8b8711142fbfee98
   React-RCTActionSheet: f41ea8a811aac770e0cc6e0ad6b270c644ea8b7c
   React-RCTAnimation: 49ab98b1c1ff4445148b72a3d61554138565bad0
   React-RCTBlob: a332773f0ebc413a0ce85942a55b064471587a71
