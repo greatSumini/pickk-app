@@ -4,6 +4,7 @@ import {StyleProp, TextStyle} from 'react-native';
 
 import Colors from '@src/constants/colors';
 import rem from '@src/constants/rem';
+import {capitalize} from '@src/lib/utils/string';
 
 type IProps = {
   level?: number;
@@ -21,17 +22,11 @@ type IProps = {
 };
 
 const FONT_WEIGHT = {
+  light: 300,
   regular: 400,
   medium: 500,
+  semibold: 600,
   bold: 700,
-};
-
-const defaultProps = {
-  level: 0,
-  fontWeight: 'regular',
-  color: Colors.primary,
-  textAlign: 'left',
-  lines: 1,
 };
 
 export default function Text(props: IProps) {
@@ -40,26 +35,31 @@ export default function Text(props: IProps) {
     style,
     children,
     onPress,
-    textAlign,
+    textAlign = 'left',
     ellipsis,
-    level,
-    color,
-    fontWeight,
-    lines,
+    level = 0,
+    color = Colors.primary,
+    fontWeight = 'regular',
+    lines = 1,
     fontSize,
   } = props;
+
+  const fontWeightPostfix = capitalize(
+    typeof fontWeight === 'string'
+      ? fontWeight
+      : Object.keys(FONT_WEIGHT).find((key) => FONT_WEIGHT[key] === fontWeight),
+  );
 
   const _Text = styled.Text({
     padding: 0,
     margin: 0,
     fontSize: fontSize ? rem(fontSize) : rem(10 + level * 2),
     color,
-    fontWeight:
-      typeof fontWeight === 'number' ? fontWeight : FONT_WEIGHT[fontWeight],
     width,
     textAlign,
     letterSpacing: -0.56,
     alignItems: 'center',
+    fontFamily: `Montserrat-${fontWeightPostfix}`,
   });
 
   return (
@@ -72,5 +72,3 @@ export default function Text(props: IProps) {
     </_Text>
   );
 }
-
-Text.defaultProps = defaultProps;

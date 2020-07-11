@@ -26,6 +26,7 @@
 		74BB3A852456DA80004EFF53 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74BB3A832456DA80004EFF53 /* MainInterface.storyboard */; };
 		74BB3A892456DA80004EFF53 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 74BB3A7B2456DA80004EFF53 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C407EA86F760A4B953E87A84 /* libPods-PickkApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98795A7ACBC1ABC53968EB45 /* libPods-PickkApp-tvOSTests.a */; };
+		E705D70624B9623D001F39BC /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = E705D70524B9623D001F39BC /* Fonts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		C1C036313D679295013A8B5E /* Pods-PickkAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickkAppTests.release.xcconfig"; path = "Target Support Files/Pods-PickkAppTests/Pods-PickkAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		D13EC40FCFCD1B60B979BE0E /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		DE45E3000E5E023492361DA8 /* Pods-PickkApp-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickkApp-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-PickkApp-tvOSTests/Pods-PickkApp-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		E705D70524B9623D001F39BC /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		EC00EF1CD5780CAAEAAE3786 /* libPods-OneSignalNotificationServiceExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneSignalNotificationServiceExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -239,6 +241,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				E705D70524B9623D001F39BC /* Fonts */,
 				13B07FAE1A68108700A75B9A /* PickkApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* PickkAppTests */,
@@ -434,6 +437,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E705D70624B9623D001F39BC /* Fonts in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
