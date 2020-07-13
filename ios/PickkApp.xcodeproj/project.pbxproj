@@ -17,7 +17,9 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* PickkAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PickkAppTests.m */; };
+		43BD536ECAB659CE53CF262F /* libPods-PickkAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B2DBD9E7AF6E566B333117 /* libPods-PickkAppTests.a */; };
 		49FBDFD6B86FB7A084CCED72 /* libPods-PickkApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F418AD0A2F70E825F8BAD21 /* libPods-PickkApp-tvOS.a */; };
+		73805518E0244552510CFDBD /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC00EF1CD5780CAAEAAE3786 /* libPods-OneSignalNotificationServiceExtension.a */; };
 		74BB3A7D2456DA80004EFF53 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74BB3A7C2456DA80004EFF53 /* UserNotifications.framework */; };
 		74BB3A7F2456DA80004EFF53 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74BB3A7E2456DA80004EFF53 /* UserNotificationsUI.framework */; };
 		74BB3A822456DA80004EFF53 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB3A812456DA80004EFF53 /* NotificationViewController.swift */; };
@@ -25,7 +27,6 @@
 		74BB3A892456DA80004EFF53 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 74BB3A7B2456DA80004EFF53 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C407EA86F760A4B953E87A84 /* libPods-PickkApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98795A7ACBC1ABC53968EB45 /* libPods-PickkApp-tvOSTests.a */; };
 		E705D70624B9623D001F39BC /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = E705D70524B9623D001F39BC /* Fonts */; };
-		FA21049E4B3DDA9523E82423 /* libPods-PickkApp-PickkAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65003F19CB0371854B4A6095 /* libPods-PickkApp-PickkAppTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,13 +82,14 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PickkApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PickkApp/main.m; sourceTree = "<group>"; };
 		22B9EED2BAA294AFDCF6C4AB /* Pods-PickkApp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickkApp-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-PickkApp-tvOS/Pods-PickkApp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		25B2DBD9E7AF6E566B333117 /* libPods-PickkAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PickkAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E4969AA5F1286791D0B964 /* Pods-PickkApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickkApp.release.xcconfig"; path = "Target Support Files/Pods-PickkApp/Pods-PickkApp.release.xcconfig"; sourceTree = "<group>"; };
 		27104DD169150F85B0877B80 /* Pods-PickkApp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickkApp-tvOS.release.xcconfig"; path = "Target Support Files/Pods-PickkApp-tvOS/Pods-PickkApp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* PickkApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PickkApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* PickkApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PickkApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		39B59ED275E064B0DFBBB303 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		46B2D770B7E09FABD82F91C5 /* Pods-PickkApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickkApp.debug.xcconfig"; path = "Target Support Files/Pods-PickkApp/Pods-PickkApp.debug.xcconfig"; sourceTree = "<group>"; };
 		4927968BF9A4770FC5B5D520 /* libPods-PickkApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PickkApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		65003F19CB0371854B4A6095 /* libPods-PickkApp-PickkAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PickkApp-PickkAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7405EBCB245555EC004B5DDA /* PickkApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PickkApp.entitlements; path = PickkApp/PickkApp.entitlements; sourceTree = "<group>"; };
 		74BB3A7B2456DA80004EFF53 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		74BB3A7C2456DA80004EFF53 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -98,11 +100,11 @@
 		74BB3A8E2456EAD2004EFF53 /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		92CC31ED1C4F6487A32D96AA /* Pods-PickkAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickkAppTests.debug.xcconfig"; path = "Target Support Files/Pods-PickkAppTests/Pods-PickkAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		98795A7ACBC1ABC53968EB45 /* libPods-PickkApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PickkApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C003020AC5FE263221FAFEB3 /* Pods-PickkApp-PickkAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickkApp-PickkAppTests.debug.xcconfig"; path = "Target Support Files/Pods-PickkApp-PickkAppTests/Pods-PickkApp-PickkAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C1C036313D679295013A8B5E /* Pods-PickkAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickkAppTests.release.xcconfig"; path = "Target Support Files/Pods-PickkAppTests/Pods-PickkAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		D9F97EC508ED2089C93F0FB6 /* Pods-PickkApp-PickkAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickkApp-PickkAppTests.release.xcconfig"; path = "Target Support Files/Pods-PickkApp-PickkAppTests/Pods-PickkApp-PickkAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		D13EC40FCFCD1B60B979BE0E /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		DE45E3000E5E023492361DA8 /* Pods-PickkApp-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickkApp-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-PickkApp-tvOSTests/Pods-PickkApp-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		E705D70524B9623D001F39BC /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
+		EC00EF1CD5780CAAEAAE3786 /* libPods-OneSignalNotificationServiceExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OneSignalNotificationServiceExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -112,7 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA21049E4B3DDA9523E82423 /* libPods-PickkApp-PickkAppTests.a in Frameworks */,
+				43BD536ECAB659CE53CF262F /* libPods-PickkAppTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +148,7 @@
 			files = (
 				74BB3A7F2456DA80004EFF53 /* UserNotificationsUI.framework in Frameworks */,
 				74BB3A7D2456DA80004EFF53 /* UserNotifications.framework in Frameworks */,
+				73805518E0244552510CFDBD /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,9 +195,10 @@
 				4927968BF9A4770FC5B5D520 /* libPods-PickkApp.a */,
 				0F418AD0A2F70E825F8BAD21 /* libPods-PickkApp-tvOS.a */,
 				98795A7ACBC1ABC53968EB45 /* libPods-PickkApp-tvOSTests.a */,
+				25B2DBD9E7AF6E566B333117 /* libPods-PickkAppTests.a */,
 				74BB3A7C2456DA80004EFF53 /* UserNotifications.framework */,
 				74BB3A7E2456DA80004EFF53 /* UserNotificationsUI.framework */,
-				65003F19CB0371854B4A6095 /* libPods-PickkApp-PickkAppTests.a */,
+				EC00EF1CD5780CAAEAAE3786 /* libPods-OneSignalNotificationServiceExtension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -210,8 +214,8 @@
 				DE45E3000E5E023492361DA8 /* Pods-PickkApp-tvOSTests.release.xcconfig */,
 				92CC31ED1C4F6487A32D96AA /* Pods-PickkAppTests.debug.xcconfig */,
 				C1C036313D679295013A8B5E /* Pods-PickkAppTests.release.xcconfig */,
-				C003020AC5FE263221FAFEB3 /* Pods-PickkApp-PickkAppTests.debug.xcconfig */,
-				D9F97EC508ED2089C93F0FB6 /* Pods-PickkApp-PickkAppTests.release.xcconfig */,
+				39B59ED275E064B0DFBBB303 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				D13EC40FCFCD1B60B979BE0E /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -274,7 +278,6 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				7ABE19CFCA1E793536E3615E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -352,6 +355,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 74BB3A8D2456DA80004EFF53 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
 			buildPhases = (
+				E4A0455C9ABCCE28853A75DE /* [CP] Check Pods Manifest.lock */,
 				74BB3A772456DA80004EFF53 /* Sources */,
 				74BB3A782456DA80004EFF53 /* Frameworks */,
 				74BB3A792456DA80004EFF53 /* Resources */,
@@ -486,12 +490,10 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PickkApp/Pods-PickkApp-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 				"${PODS_ROOT}/YoutubePlayer-in-WKWebView/WKYTPlayerView/WKYTPlayerView.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WKYTPlayerView.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,26 +537,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7ABE19CFCA1E793536E3615E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PickkApp-PickkAppTests/Pods-PickkApp-PickkAppTests-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
-				"${PODS_ROOT}/YoutubePlayer-in-WKWebView/WKYTPlayerView/WKYTPlayerView.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WKYTPlayerView.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PickkApp-PickkAppTests/Pods-PickkApp-PickkAppTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B3CE9832DF88FFF96B74BBD2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -592,7 +574,29 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PickkApp-PickkAppTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-PickkAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4A0455C9ABCCE28853A75DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -747,7 +751,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C003020AC5FE263221FAFEB3 /* Pods-PickkApp-PickkAppTests.debug.xcconfig */;
+			baseConfigurationReference = 92CC31ED1C4F6487A32D96AA /* Pods-PickkAppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -770,7 +774,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D9F97EC508ED2089C93F0FB6 /* Pods-PickkApp-PickkAppTests.release.xcconfig */;
+			baseConfigurationReference = C1C036313D679295013A8B5E /* Pods-PickkAppTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -947,6 +951,7 @@
 		};
 		74BB3A8B2456DA80004EFF53 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39B59ED275E064B0DFBBB303 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -976,6 +981,7 @@
 		};
 		74BB3A8C2456DA80004EFF53 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D13EC40FCFCD1B60B979BE0E /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
