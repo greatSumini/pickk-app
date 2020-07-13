@@ -1,7 +1,8 @@
 import React from 'react';
 import Svg, {G, Path} from 'react-native-svg';
+import {BLACK} from '@src/constants';
 
-export default function LogoIcon({style, fill}) {
+export default function LogoIcon({style, fill = BLACK}) {
   return (
     <Svg viewBox='0 0 32 19' style={style}>
       <G fill={fill}>
