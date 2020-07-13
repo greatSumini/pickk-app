@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import {ImageSourcePropType} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import {Text, Line, Space, TouchableCmp} from '@src/modules/atoms';
+import {Text, Line, Space, Touchable} from '@src/modules/atoms';
 
 import {width, colors, rem} from '@src/constants';
 
@@ -37,8 +37,6 @@ export default function HomeCarouselCard({
     </Touchable>
   );
 }
-
-const Touchable = styled(TouchableCmp)({});
 
 const StyledImageBackground = styled.ImageBackground({
   width,
