@@ -5,6 +5,7 @@ import MainTab from './main';
 import PostViewScreen from '@src/components/post-view';
 import ChannelScreen from '@src/components/channel';
 import SearchScreen from '@src/components/search/index';
+import LoginScreen from '@src/components/login';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 export type AppStackParams = {
@@ -23,5 +24,6 @@ export default () => (
     <AppStack.Screen name='PostView' component={PostViewScreen} />
     <AppStack.Screen name='Channel' component={ChannelScreen} />
     <AppStack.Screen name='Search' component={SearchScreen} />
+    <AppStack.Screen name='Login' component={LoginScreen} />
   </AppStack.Navigator>
 );
