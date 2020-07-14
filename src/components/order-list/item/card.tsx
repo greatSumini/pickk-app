@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 import {OrderState, ClaimStatus} from '@src/types/Order';
-import OrderItemDescription, {OrderItemDescriptionProps} from './description';
+import OrderItemDescription, {
+  OrderListItemDescriptionProps,
+} from './description';
 import {Image, Space, Row, Col} from '@src/modules/atoms';
 import {rem, LIGHT_GREY} from '@src/constants';
 
@@ -35,7 +37,7 @@ function OrderListItemCard(props: OrderListItemCardProps) {
           imgHeight={rem(80)}
         />
         <Space direction='ROW' size={8} />
-        <OrderItemDescription {...(props as OrderItemDescriptionProps)} />
+        <OrderItemDescription {...(props as OrderListItemDescriptionProps)} />
       </StyledRow>
     </Wrapper>
   );
