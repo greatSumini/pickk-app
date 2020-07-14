@@ -1,4 +1,4 @@
-import { OrderState, ClaimStatus } from './Order';
+import {OrderState, ClaimStatus} from './Order';
 
 export type OrderItemType = {
   id: number;
@@ -22,7 +22,6 @@ export type OrderItemType = {
   shippedAt: string;
   deliveredAt: string;
   cancelledAt: string;
-
   salePrice: number;
   discountAmount: number;
   isSubsDiscountable: boolean;
@@ -56,5 +55,5 @@ export enum OrderItemAction {
   Delivery = '배송 조회',
   Confirm = '구매 확정',
   Refund = '반품 신청',
-  Exchange = '교환 신청'
+  Exchange = '교환 신청',
 }

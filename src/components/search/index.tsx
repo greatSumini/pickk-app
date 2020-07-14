@@ -6,7 +6,6 @@ import SearchScreenProps from './props';
 import Header from './header';
 import SearchBar from './search-bar';
 import Filter from './filter';
-import NoResult from './no-result';
 import PostCardReviewNarrow from '@src/components/post-list/card/narrow/review/index';
 import PostCardLookNarrow from '@src/components/post-list/card/narrow/look/index';
 import Item from '@src/components/channel/item/index';
@@ -89,16 +88,6 @@ export default function Search(props: SearchScreenProps) {
             <Filter navType={navType} />
           </SortContext.Provider>
         </PostFilterContext.Provider>
-        <ScrollList
-          category={SCROLL_CATEGORY[navType]}
-          query={null}
-          filter={{
-            ...{sortOption},
-            searchText: text,
-          }}
-          ListItem={listItemSelector()}
-          NoResult={NoResult}
-        />
       </Wrapper>
     </TouchableWithoutFeedback>
   );

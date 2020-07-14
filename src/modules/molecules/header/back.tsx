@@ -1,61 +1,67 @@
-import * as React from 'react';
-import styled from 'styled-components';
+import React from 'react';
+import styled from 'styled-components/native';
 
-import ArrowLeftIcon from '@src/assets/icons/arrow/left';
 import {useNavigation} from '@react-navigation/native';
 import {View} from 'react-native';
-
+import ArrowLeftIcon from '@src/assets/icons/arrow/left';
 import LogoIcon from '@src/assets/icons/logo';
-import {Text} from '@src/modules/atoms';
+import rem from '@src/constants/rem';
+import {Text, Touchable} from '@src/modules/atoms';
 import {BLACK} from '@src/constants';
 
-type IProps = {
+export type BackHeaderProps = {
   title?: string;
   cartVisible?: boolean;
   backIconColor?: string;
 };
 
-export const BackHeader: React.FunctionComponent<IProps> = ({
+export default function BackHeader({
   title,
   cartVisible,
   backIconColor = BLACK,
-}: IProps) => {
+}: BackHeaderProps) {
   const navigation = useNavigation();
   return (
     <Wrapper>
-      <View
+      <Touchable
         style={{
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-        }}>
+        }}
+        onPress={() => navigation.goBack()}>
         <ArrowLeftIcon
-          style={{width: '0.2rem', height: '0.2rem'}}
+          style={{width: rem(20), height: rem(20)}}
           fill={backIconColor}
         />
-      </View>
+      </Touchable>
       {title && (
         <Text level={3} color={BLACK} fontWeight='medium'>
           {title}
         </Text>
       )}
       {!title && (
-        <View>
-          <LogoIcon style={{width: '0.32rem', height: '0.2rem'}} />
-        </View>
+        <Touchable
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          onPress={() => navigation.navigate('Main')}>
+          <LogoIcon style={{width: rem(32), height: rem(20)}} />
+        </Touchable>
       )}
-
-      <View style={{width: '0.2rem', height: '0.2rem'}}></View>
+      <View style={{width: rem(20), height: rem(20)}}></View>
     </Wrapper>
   );
-};
+}
 
-const Wrapper = styled.header`
-  width: 100%;
-  height: 0.44rem;
-  padding: 0 0.16rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-`;
+const Wrapper = styled.View({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  width: '100%',
+  height: rem(44),
+  paddingHorizontal: rem(16),
+});
