@@ -8,6 +8,7 @@ import {ListProps} from './list-props';
 import {Text} from '../atoms';
 import {MIDDLE_GREY} from '@src/constants/colors';
 import {View, RefreshControl} from 'react-native';
+import {useAppContext} from '@src/context/app';
 
 const ITEMS_PER_PAGE = 20;
 
@@ -28,24 +29,32 @@ const ScrollList = ({
   style,
   onScroll,
   ListHeaderComponent,
+  auth = false,
 }: ScrollListProps) => {
+  const {generateConfig} = useAppContext().action;
+
   const [page, setPage] = useState(0);
   const [fetching, setFetching] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [data, setData] = useState(initialData || []);
+  const [isReachingEnd, setReachingEnd] = useState(false);
 
   const getData = async () => {
     setFetching(true);
     const {data: fetchedData} = await axios(
-      requestConfig({
-        offset: page * ITEMS_PER_PAGE,
-        limit: ITEMS_PER_PAGE,
-        ...filter,
-      }),
+      generateConfig(
+        requestConfig({
+          offset: page * ITEMS_PER_PAGE,
+          limit: ITEMS_PER_PAGE,
+          ...filter,
+        }),
+        auth,
+      ),
     );
     const results = fetchedData?.results?.filter(
       listFilter ? listFilter : () => true,
     );
+    setReachingEnd(fetchedData?.results?.length < ITEMS_PER_PAGE);
     setData(page === 0 ? results : [...data, ...results]);
     setFetching(false);
     setRefreshing(false);
@@ -53,7 +62,7 @@ const ScrollList = ({
   };
 
   const loadMore = () => {
-    if (fetching) {
+    if (fetching || isReachingEnd) {
       return;
     }
     setPage(page + 1);
