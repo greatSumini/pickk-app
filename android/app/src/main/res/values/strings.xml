@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">PickkApp</string>
+    <string name="app_name">핔</string>
++    <string name="kakao_app_key">ffcdffaed7beadb49498235fb6c4e142</string>
 </resources>

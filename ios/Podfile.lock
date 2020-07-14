@@ -260,6 +260,8 @@ PODS:
     - React
   - RNGestureHandler (1.6.1):
     - React
+  - RNKakaoLogin (2.2.1):
+    - React-Core
   - RNReanimated (1.8.0):
     - React
   - RNScreens (2.7.0):
@@ -306,6 +308,7 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNKakaoLogin (from `../node_modules/rn-kakao-login`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -382,6 +385,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/masked-view"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNKakaoLogin:
+    :path: "../node_modules/rn-kakao-login"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -426,6 +431,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: db711e29e5e0500d9bd21aa0c2e397efa45302b1
   RNCMaskedView: f5c7d14d6847b7b44853f7acb6284c1da30a3459
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
+  RNKakaoLogin: 41e12b9d2743e1ba56c4aea43a5d2b4b935fdf5e
   RNReanimated: 955cf4068714003d2f1a6e2bae3fb1118f359aff
   RNScreens: cf198f915f8a2bf163de94ca9f5bfc8d326c3706
   RNSVG: 8ba35cbeb385a52fd960fd28db9d7d18b4c2974f

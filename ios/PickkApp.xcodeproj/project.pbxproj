@@ -809,6 +809,7 @@
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
+					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.PickkApp;
 				PRODUCT_NAME = PickkApp;
@@ -832,6 +833,7 @@
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
+					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.PickkApp;
 				PRODUCT_NAME = PickkApp;
