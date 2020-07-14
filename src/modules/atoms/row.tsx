@@ -1,47 +1,15 @@
 import React from 'react';
+import {ViewProps} from 'react-native';
 import styled from 'styled-components/native';
 
-export type RowProps = {
-  className?: string;
-  style?: any;
-  onClick?: any;
-  children: any;
-  onMouseDown?: any;
-  onMouseMove?: any;
-  onMouseUp?: any;
-  onTouchStart?: any;
-  onTouchMove?: any;
-  onTouchEnd?: any;
+export type RowProps = ViewProps & {
+  children: React.ReactNode;
 };
 
 export default function Row(props: RowProps) {
-  const {
-    className,
-    style,
-    onClick,
-    children,
-    onMouseDown,
-    onMouseMove,
-    onMouseUp,
-    onTouchStart,
-    onTouchMove,
-    onTouchEnd,
-  } = props;
+  const {style, children} = props;
 
-  return (
-    <Wrapper
-      className={className}
-      style={style}
-      onClick={onClick}
-      onMouseDown={onMouseDown}
-      onMouseMove={onMouseMove}
-      onMouseUp={onMouseUp}
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}>
-      {children}
-    </Wrapper>
-  );
+  return <Wrapper style={style}>{children}</Wrapper>;
 }
 
 const Wrapper = styled.View({
