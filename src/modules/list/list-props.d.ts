@@ -15,4 +15,5 @@ export type ListProps = {
   style?: ViewStyle;
   onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
   ListHeaderComponent?: ReactElement;
+  auth?: boolean;
 };
