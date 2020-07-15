@@ -1,8 +1,9 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, Platform} from 'react-native';
 
 import ScreenNavigationProps from '@src/modules/types/screen-navigation-props';
-import KakaoLoginButton from './kakao-login';
+import KakaoLoginButton from './kakao-login-button';
+import AppleLoginButton from './apple-login-button';
 import {Space, Text} from '@src/modules/atoms';
 
 export type MyScreenProps = ScreenNavigationProps;
@@ -13,6 +14,7 @@ export default function LoginScreen(props: MyScreenProps) {
       <Text>로그인을 하자</Text>
       <Space level={2} />
       <KakaoLoginButton />
+      {Platform.OS === 'ios' && <AppleLoginButton />}
     </ScrollView>
   );
 }
