@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">핔</string>
-+    <string name="kakao_app_key">ffcdffaed7beadb49498235fb6c4e142</string>
+    <string name="kakao_app_key">ffcdffaed7beadb49498235fb6c4e142</string>
+    <string name="facebook_app_id">2363450737249976</string>
 </resources>
