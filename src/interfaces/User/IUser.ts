@@ -21,6 +21,7 @@ export interface IUser {
   createdAt: string;
   updatedAt: string;
   isLoggedIn: boolean;
+  point: number;
 }
 
 export type IUserInputDTO = Pick<
