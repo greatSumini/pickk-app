@@ -14,6 +14,7 @@
     "jest-watch": "jest --watchAll"
   },
   "dependencies": {
+    "@invertase/react-native-apple-authentication": "^1.1.2",
     "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/bottom-tabs": "^5.2.7",

@@ -20,5 +20,16 @@ export type NodeUserInfo = {
 
 export enum ProviderType {
   Facebook = 'FB',
-  Kakao = 'KK'
+  Kakao = 'KK',
+  Apple = 'AP',
+}
+
+export enum PointSign {
+  Plus = 'PLUS',
+  Minus = 'MINUS',
+}
+
+export enum PointType {
+  General = 'GENERAL',
+  Reward = 'REWARD',
 }
