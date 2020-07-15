@@ -12,6 +12,7 @@
 #import <React/RCTRootView.h>
 
 #import <KakaoOpenSDK/KakaoOpenSDK.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @implementation AppDelegate
 
@@ -22,7 +23,10 @@
         return [KOSession handleOpenURL:url];
     }
 
-    return NO;
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                         openURL:url
+                                               sourceApplication:sourceApplication
+                                                      annotation:annotation];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
@@ -37,6 +41,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [KOSession handleDidBecomeActive];
+    [FBSDKAppEvents activateApp];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -55,6 +60,8 @@
   [self.window makeKeyAndVisible];
 
   [KOSession sharedSession].automaticPeriodicRefresh = YES;
+  [[FBSDKApplicationDelegate sharedInstance] application:application
+                           didFinishLaunchingWithOptions:launchOptions];
   return YES;
 }
 
