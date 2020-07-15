@@ -20,6 +20,7 @@
 		43BD536ECAB659CE53CF262F /* libPods-PickkAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B2DBD9E7AF6E566B333117 /* libPods-PickkAppTests.a */; };
 		49FBDFD6B86FB7A084CCED72 /* libPods-PickkApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F418AD0A2F70E825F8BAD21 /* libPods-PickkApp-tvOS.a */; };
 		73805518E0244552510CFDBD /* libPods-OneSignalNotificationServiceExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC00EF1CD5780CAAEAAE3786 /* libPods-OneSignalNotificationServiceExtension.a */; };
+		745A299924BE932B00BC6145 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745A299824BE932B00BC6145 /* Dummy.swift */; };
 		74BB3A7D2456DA80004EFF53 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74BB3A7C2456DA80004EFF53 /* UserNotifications.framework */; };
 		74BB3A7F2456DA80004EFF53 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74BB3A7E2456DA80004EFF53 /* UserNotificationsUI.framework */; };
 		74BB3A822456DA80004EFF53 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BB3A812456DA80004EFF53 /* NotificationViewController.swift */; };
@@ -91,6 +92,8 @@
 		46B2D770B7E09FABD82F91C5 /* Pods-PickkApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickkApp.debug.xcconfig"; path = "Target Support Files/Pods-PickkApp/Pods-PickkApp.debug.xcconfig"; sourceTree = "<group>"; };
 		4927968BF9A4770FC5B5D520 /* libPods-PickkApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PickkApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7405EBCB245555EC004B5DDA /* PickkApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PickkApp.entitlements; path = PickkApp/PickkApp.entitlements; sourceTree = "<group>"; };
+		745A299724BE932A00BC6145 /* PickkApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PickkApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		745A299824BE932B00BC6145 /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		74BB3A7B2456DA80004EFF53 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		74BB3A7C2456DA80004EFF53 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		74BB3A7E2456DA80004EFF53 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
@@ -179,10 +182,12 @@
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				745A299824BE932B00BC6145 /* Dummy.swift */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				745A299724BE932A00BC6145 /* PickkApp-Bridging-Header.h */,
 			);
 			name = PickkApp;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = X86VQY3D26;
+						LastSwiftMigration = 1150;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -681,6 +687,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				745A299924BE932B00BC6145 /* Dummy.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -755,6 +762,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 92CC31ED1C4F6487A32D96AA /* Pods-PickkAppTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -778,6 +786,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C1C036313D679295013A8B5E /* Pods-PickkAppTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = PickkAppTests/Info.plist;
@@ -800,6 +809,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PickkApp/PickkApp.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
@@ -815,6 +825,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.PickkApp;
 				PRODUCT_NAME = PickkApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "PickkApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -825,6 +838,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PickkApp/PickkApp.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X86VQY3D26;
@@ -839,6 +853,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.PickkApp;
 				PRODUCT_NAME = PickkApp;
+				SWIFT_OBJC_BRIDGING_HEADER = "PickkApp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
