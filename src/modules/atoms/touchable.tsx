@@ -1,11 +1,12 @@
+import {ComponentType} from 'react';
+import {Platform} from 'react-native';
 import {
-  Platform,
   TouchableOpacity,
   TouchableNativeFeedback,
-} from 'react-native';
-import styled from 'styled-components/native';
+} from 'react-native-gesture-handler';
 
-const Touchable =
+// tslint:disable-next-line: no-any
+const Touchable: ComponentType<any> =
   Platform.OS === 'ios' ? TouchableOpacity : TouchableNativeFeedback;
 
-export default styled(Touchable)({});
+export default Touchable;
