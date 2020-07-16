@@ -1,45 +1,38 @@
 import React from 'react';
 import styled from 'styled-components/native';
+
 import {Text, Space, Row, Col} from '@src/modules/atoms';
 import {MIDDLE_GREY, SALE_RED, DELIVERY_BLUE, rem} from '@src/constants';
 
 import {addCommaToNumber} from '@src/lib/utils';
-import {OrderState, ClaimStatus} from '@src/types/Order';
+import {OrderItemType, OrderState} from '@src/types';
 
-export type OrderListItemDescriptionProps = {
-  name: string;
-  brandName: string;
+export type OrderListItemDescriptionProps = Pick<
+  OrderItemType,
+  'name' | 'brand' | 'quantity' | 'status' | 'claimStatus' | 'productName'
+> & {
   originalPrice: number;
   salePrice?: number;
-  color?: string;
-  size?: string;
-  quantity: number;
-  status?: OrderState;
-  claimStatus?: ClaimStatus;
-  productName?: string;
-  orderStateDate?: any;
 };
 
 function OrderListItemDescription({
   name,
-  brandName,
+  brand,
   originalPrice,
   salePrice,
-  color,
-  size,
   quantity,
   status,
   claimStatus,
   productName,
 }: OrderListItemDescriptionProps) {
+  const {nameKor} = brand;
   const isSale: boolean = !!(
     salePrice &&
     salePrice !== 0 &&
     salePrice !== originalPrice
   );
-  const price = isSale ? salePrice * quantity : originalPrice * quantity;
+  const price = (isSale ? salePrice : originalPrice) * quantity;
   const nameWidth = status ? rem(175) : rem(230);
-  const options = productName ? productName : `${color}/${size}`;
 
   const statusColor =
     !!claimStatus ||
@@ -52,7 +45,7 @@ function OrderListItemDescription({
     <Wrapper>
       <StyledRow style={{marginBottom: 'auto'}}>
         <Text level={1} width={nameWidth} lines={2} ellipsis>
-          [{brandName}] {name}
+          [{nameKor}] {name}
         </Text>
         {status && (
           <Text
@@ -60,12 +53,12 @@ function OrderListItemDescription({
             fontWeight='bold'
             color={statusColor}
             style={{textDecorationLine: 'underline'}}>
-            {claimStatus ? claimStatus : status}
+            {claimStatus || status}
           </Text>
         )}
       </StyledRow>
       <Text level={1} fontWeight='medium' color={MIDDLE_GREY} ellipsis>
-        {options}
+        {productName}
       </Text>
       <Space size={2} />
       <StyledRow>
