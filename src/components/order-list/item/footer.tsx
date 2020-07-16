@@ -69,7 +69,7 @@ function OrderListItemFooter({
     try {
       await OrderItemService.confirm(id);
       Alert.alert('구매가 확정되었습니다.');
-      //refresh
+      // refresh
     } catch {
       Alert.alert('구매 확정을 할 수 없습니다.');
     }
@@ -100,11 +100,11 @@ function OrderListItemFooter({
     [RefundFinished]: [Inquire],
   };
 
-  const button_data = BUTTON_DATA[claimStatus ? claimStatus : status];
+  const buttonData = BUTTON_DATA[claimStatus || status];
 
   return (
     <Wrapper>
-      {button_data.map((text, index) => {
+      {buttonData.map((text, index) => {
         const disabled =
           (!isRefundable && text === Refund) ||
           (!isExchangeable && text === Exchange);
@@ -116,9 +116,9 @@ function OrderListItemFooter({
             <ActionButton
               key={index}
               style={{
-                width: button_data.length === 1 ? '100%' : '47.5%',
+                width: buttonData.length === 1 ? '100%' : '47.5%',
                 marginBottom:
-                  button_data.length !== 1 && index < 2 ? rem(12) : 0,
+                  buttonData.length !== 1 && index < 2 ? rem(12) : 0,
               }}>
               <Text
                 level={2}
@@ -127,10 +127,9 @@ function OrderListItemFooter({
                 {text}
               </Text>
             </ActionButton>
-            {(index === 0 || index === 2) &&
-              BUTTON_DATA[claimStatus ? claimStatus : status].length !== 1 && (
-                <Space direction='ROW' size={16} />
-              )}
+            {(index === 0 || index === 2) && buttonData.length !== 1 && (
+              <Space direction='ROW' size={16} />
+            )}
           </React.Fragment>
         );
       })}
