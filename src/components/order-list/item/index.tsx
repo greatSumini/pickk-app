@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import {useNavigation} from '@react-navigation/native';
 
-import {parseISODate} from '@src/lib/utils/date-parser';
-import {OrderItemType} from '@src/types';
 import OrderListItemHeader, {
   OrderListItemHeaderProps,
 } from '@src/components/order-list/item/header';
@@ -12,14 +11,21 @@ import OrderListItemCard, {
 import OrderListItemFooter, {
   OrderListItemFooterProps,
 } from '@src/components/order-list/item/footer';
+import {Space, Line, Touchable} from '@src/modules/atoms';
 import {rem} from '@src/constants';
-import {Space, Line, Col} from '@src/modules/atoms';
 
-export type OrderListItemProps = OrderItemType;
+import {parseISODate} from '@src/lib/utils/date-parser';
+import {OrderItemType} from '@src/types';
+
+export type OrderListItemProps = OrderItemType & {
+  hasHeader?: boolean;
+};
 
 export default function OrderListItem(props: OrderListItemProps) {
+  const navigation = useNavigation();
   const {
     itemId,
+    orderId,
     name,
     imageUrl,
     brandName,
@@ -33,6 +39,7 @@ export default function OrderListItem(props: OrderListItemProps) {
     deliveredAt,
     cancelledAt,
     paidAmount,
+    hasHeader = false,
   } = props;
 
   const orderStateDate = {
@@ -44,8 +51,13 @@ export default function OrderListItem(props: OrderListItemProps) {
   };
 
   return (
-    <Wrapper>
-      <OrderListItemHeader {...(props as OrderListItemHeaderProps)} />
+    <Wrapper
+      onPress={
+        hasHeader ? () => navigation.navigate('Order', {id: orderId}) : null
+      }>
+      {hasHeader && (
+        <OrderListItemHeader {...(props as OrderListItemHeaderProps)} />
+      )}
       <OrderListItemCard
         {...({
           id: itemId,
@@ -68,6 +80,7 @@ export default function OrderListItem(props: OrderListItemProps) {
   );
 }
 
-const Wrapper = styled(Col)({
+const Wrapper = styled(Touchable)({
   paddingHorizontal: rem(16),
+  width: '100%',
 });

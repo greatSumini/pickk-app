@@ -1,19 +1,17 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import ScreenNavigationProps from '@src/modules/types/screen-navigation-props';
-import ScrollList from '@src/modules/list/scroll';
-import {listConfig} from '@src/services/OrderItem/config';
 import OrderListItem from './item';
-import NoResult from '@src/modules/molecules/no-result';
 import OrderListFooter from './footer';
+import ScrollList from '@src/modules/list/scroll';
 import BackHeader from '@src/modules/molecules/header/back';
-import {WHITE, rem} from '@src/constants';
+import NoResult from '@src/modules/molecules/no-result';
 import {Line} from '@src/modules/atoms';
+import {WHITE} from '@src/constants';
 
-export type PostListScreenProps = ScreenNavigationProps;
+import {listConfig} from '@src/services/OrderItem/config';
 
-export default function OrderListScreen(props: PostListScreenProps) {
+export default function OrderListScreen() {
   return (
     <Wrapper>
       <BackHeader title='주문/배송조회' />
@@ -26,6 +24,9 @@ export default function OrderListScreen(props: PostListScreenProps) {
             button={{text: '쇼핑하러 가기', screen: 'Main'}}
           />
         )}
+        listItemProp={{
+          hasHeader: true,
+        }}
         auth
       />
       <Line level={1} />
@@ -34,8 +35,7 @@ export default function OrderListScreen(props: PostListScreenProps) {
   );
 }
 
-const Wrapper = styled.SafeAreaView({
-  flex: 1,
+const Wrapper = styled.View({
   backgroundColor: WHITE,
-  paddingBottom: rem(12),
+  flex: 1,
 });
