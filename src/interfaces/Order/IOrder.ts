@@ -1,9 +1,11 @@
+import {IBrand} from '..';
 import {
   ShippingPolicy,
   Address,
   OrderState as OrderStatus,
   Vbank,
-  OrderPayment
+  OrderPayment,
+  OrderItemType,
 } from '@src/types';
 
 export interface IOrder {
@@ -13,8 +15,10 @@ export interface IOrder {
   order: Array<{
     brandName: string;
     brandImageUrl: string;
+    brand: Pick<IBrand, 'nameKor' | 'profileImageUrl'>;
     shippingFee: number;
     shippingPolicy: ShippingPolicy;
+    orderItems: OrderItemType[];
   }>;
   address: Address;
   payment: OrderPayment;
