@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import {Text, Space, Row, Col} from '@src/modules/atoms';
+import {MIDDLE_GREY, SALE_RED, DELIVERY_BLUE, rem} from '@src/constants';
 
 import {addCommaToNumber} from '@src/lib/utils';
 import {OrderState, ClaimStatus} from '@src/types/Order';
-import {View} from 'react-native';
-import {Text, Space, Row, Col} from '@src/modules/atoms';
-import {MIDDLE_GREY, SALE_RED, DELIVERY_BLUE, rem} from '@src/constants';
 
 export type OrderListItemDescriptionProps = {
   name: string;
@@ -32,7 +31,6 @@ function OrderListItemDescription({
   status,
   claimStatus,
   productName,
-  orderStateDate,
 }: OrderListItemDescriptionProps) {
   const isSale: boolean = !!(
     salePrice &&
@@ -52,7 +50,7 @@ function OrderListItemDescription({
 
   return (
     <Wrapper>
-      <StyledRow>
+      <StyledRow style={{marginBottom: 'auto'}}>
         <Text level={1} width={nameWidth} lines={2} ellipsis>
           [{brandName}] {name}
         </Text>
@@ -66,7 +64,6 @@ function OrderListItemDescription({
           </Text>
         )}
       </StyledRow>
-      <View style={{flex: 1}} />
       <Text level={1} fontWeight='medium' color={MIDDLE_GREY} ellipsis>
         {options}
       </Text>
