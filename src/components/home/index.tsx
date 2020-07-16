@@ -3,10 +3,10 @@ import {ScrollView} from 'react-native';
 
 import HomeHeader from './header';
 import HomeCarousel from './carousel';
-import HomeExhibition from './exhibition';
 import RecommendLook from './exhibition/recommend-look';
 import HomeScreenProps from './props';
 import {Space} from '@src/modules/atoms';
+import Section from '@src/modules/molecules/section';
 
 export default function HomeScreen(props: HomeScreenProps) {
   return (
@@ -21,12 +21,9 @@ export default function HomeScreen(props: HomeScreenProps) {
       {/*<HomeExhibition title='핔 200프로 이용하기' description='핵심만 모았다!'>
         <QuickMenu />
       </HomeExhibition>*/}
-      <HomeExhibition
-        title='오늘의 추천 LOOK'
-        description='코디 꿀팁 대방출!'
-        route={'sumin'}>
+      <Section title='오늘의 추천 LOOK' route={'OrderList'}>
         <RecommendLook />
-      </HomeExhibition>
+      </Section>
       <Space level={2} />
     </ScrollView>
   );
