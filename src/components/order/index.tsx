@@ -65,10 +65,7 @@ export default function OrderScreen() {
       <Section title='배송지 정보' size={SectionSize.Small} noLine={false}>
         <Labeled label='수령인' text={name} />
         <Labeled label='휴대폰' text={addDashToPhoneNumber(phone)} />
-        <Labeled
-          label='주소지'
-          text={`${baseAddress} ${detailAddress} fdsafsafdsfsdsfdsfs`}
-        />
+        <Labeled label='주소지' text={`${baseAddress} ${detailAddress}`} />
         <Labeled label='배송 메세지' text={message} />
       </Section>
       <Line level={1} />
