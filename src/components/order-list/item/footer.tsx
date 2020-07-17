@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import moment from 'moment';
 
 import {
   OrderItemType,
@@ -8,8 +7,8 @@ import {
   OrderItemAction,
   OrderState,
 } from '@src/types';
-import {Text, Space, Row, Touchable} from '@src/modules/atoms';
-import {rem, LIGHT_GREY, MIDDLE_GREY, BLACK} from '@src/constants';
+import {Space, Row, Button} from '@src/modules/atoms';
+import {rem, LIGHT_GREY} from '@src/constants';
 import OrderItemService from '@src/services/OrderItem';
 import {Alert} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
@@ -76,7 +75,7 @@ function OrderListItemFooter({
   };
 
   const handlePressList = {
-    [Cancel]: () => navigation.navigate('Main'),
+    [Cancel]: () => navigation.navigate('OrderCancel', {id: orderId}),
     [Inquire]: () => navigation.navigate('Main'),
     [Delivery]: () => navigation.navigate('Main'),
     [Confirm]: () => navigation.navigate('Main'),
@@ -113,23 +112,11 @@ function OrderListItemFooter({
           : handlePressList[text];
         return (
           <React.Fragment key={index}>
-            <ActionButton
-              key={index}
-              style={{
-                width: buttonData.length === 1 ? '100%' : '47.5%',
-                marginBottom:
-                  buttonData.length !== 1 && index < 2 ? rem(12) : 0,
-              }}>
-              <Text
-                level={2}
-                fontWeight='medium'
-                color={disabled ? MIDDLE_GREY : BLACK}>
-                {text}
-              </Text>
-            </ActionButton>
-            {(index === 0 || index === 2) && buttonData.length !== 1 && (
-              <Space direction='ROW' size={16} />
-            )}
+            <Button key={index} title={text} onPress={onPress} />
+            {(index === 0 || index === 2) &&
+              BUTTON_DATA[claimStatus ? claimStatus : status].length !== 1 && (
+                <Space direction='ROW' size={16} />
+              )}
           </React.Fragment>
         );
       })}

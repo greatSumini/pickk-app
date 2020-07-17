@@ -63,8 +63,8 @@ export default function Section({
             </RouteWrapper>
           )}
         </TitleWrapper>
+        <Space level={1} size={space} />
       </Wrapper>
-      <Space level={1} size={space} />
       {children}
       <Space size={8} />
       {!noLine && <Line level={1} />}
