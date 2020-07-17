@@ -29,6 +29,7 @@ export default function OrderListItem(props: OrderListItemProps) {
     name,
     imageUrl,
     brandName,
+    brand,
     productName,
     quantity,
     status,
@@ -52,9 +53,8 @@ export default function OrderListItem(props: OrderListItemProps) {
 
   return (
     <Wrapper
-      onPress={
-        hasHeader ? () => navigation.navigate('Order', {id: orderId}) : null
-      }>
+      disabled={!hasHeader}
+      onPress={() => navigation.navigate('Order', {id: orderId})}>
       {hasHeader && (
         <OrderListItemHeader {...(props as OrderListItemHeaderProps)} />
       )}
@@ -62,7 +62,7 @@ export default function OrderListItem(props: OrderListItemProps) {
         {...({
           id: itemId,
           name,
-          brandName,
+          brand,
           imageUrl,
           originalPrice: paidAmount / quantity,
           productName,

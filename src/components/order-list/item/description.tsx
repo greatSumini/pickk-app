@@ -25,7 +25,7 @@ function OrderListItemDescription({
   claimStatus,
   productName,
 }: OrderListItemDescriptionProps) {
-  const {nameKor} = brand;
+  const nameKor = brand?.nameKor;
   const isSale: boolean = !!(
     salePrice &&
     salePrice !== 0 &&
