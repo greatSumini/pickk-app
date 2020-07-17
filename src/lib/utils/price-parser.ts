@@ -7,7 +7,7 @@ export const addCommaToNumber = (num: number) => {
     if ((numString.length - i - 1) % 3 == 0) result += ',';
   }
   result += numString[i];
-  return result !== '0' && result;
+  return result;
 };
 
 export const getDiscountRate = (
