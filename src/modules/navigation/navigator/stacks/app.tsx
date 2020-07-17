@@ -7,6 +7,7 @@ import ChannelScreen from '@src/components/channel';
 import SearchScreen from '@src/components/search/index';
 import LoginScreen from '@src/components/login';
 import OrderListScreen from '@src/components/order-list';
+import OrderScreen from '@src/components/order';
 
 import {StackNavigationProp} from '@react-navigation/stack';
 
@@ -14,6 +15,7 @@ export type AppStackParams = {
   Search: undefined;
   PostView: {id: number};
   Channel: {id: number};
+  Order: {id: number};
 };
 
 export type AppStackNavigationProps = StackNavigationProp<AppStackParams>;
@@ -28,5 +30,6 @@ export default () => (
     <AppStack.Screen name='Search' component={SearchScreen} />
     <AppStack.Screen name='Login' component={LoginScreen} />
     <AppStack.Screen name='OrderList' component={OrderListScreen} />
+    <AppStack.Screen name='Order' component={OrderScreen} />
   </AppStack.Navigator>
 );
