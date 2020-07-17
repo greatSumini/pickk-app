@@ -55,7 +55,7 @@ export default function OrderScreen() {
       <Labeled label='주문번호' text={order.merchantUid}>
         <Text level={1} color={MIDDLE_GREY}>
           {' '}
-          {moment(order.createdAt).format('(YY.MM.DD)')}
+          {moment(order.createdAt).format('(YY.MM.DD hh:mm:ss)')}
         </Text>
       </Labeled>
       <Space />
