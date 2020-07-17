@@ -1,3 +1,4 @@
+import {IBrand} from '@src/interfaces';
 import {OrderState, ClaimStatus} from './Order';
 
 export type OrderItemType = {
@@ -8,6 +9,7 @@ export type OrderItemType = {
   imageUrl: string;
   name: string;
   merchantUid: string;
+  brand: Pick<IBrand, 'nameKor' | 'profileImageUrl'>;
   brandName: string;
   brandImageUrl: string;
   productId: number;

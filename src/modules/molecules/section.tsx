@@ -10,8 +10,15 @@ import {MIDDLE_GREY, rem} from '@src/constants';
 
 export enum SectionSize {
   Small = 'SMALL',
+  Medium = 'MEDIUM',
   Large = 'LARGE',
 }
+
+const TITLE_LEVEL = {
+  [SectionSize.Small]: 2,
+  [SectionSize.Medium]: 4,
+  [SectionSize.Large]: 6,
+};
 
 export type SectionProps = {
   children: any;
@@ -33,7 +40,8 @@ export default function Section({
   size = SectionSize.Large,
 }: SectionProps) {
   const navigation = useNavigation();
-  const titleLevel = size === SectionSize.Large ? 6 : 4;
+  const titleLevel = TITLE_LEVEL[size];
+
   return (
     <>
       <Wrapper style={style}>

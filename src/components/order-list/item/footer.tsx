@@ -68,7 +68,7 @@ function OrderListItemFooter({
     try {
       await OrderItemService.confirm(id);
       Alert.alert('구매가 확정되었습니다.');
-      //refresh
+      // refresh
     } catch {
       Alert.alert('구매 확정을 할 수 없습니다.');
     }
@@ -99,11 +99,11 @@ function OrderListItemFooter({
     [RefundFinished]: [Inquire],
   };
 
-  const button_data = BUTTON_DATA[claimStatus ? claimStatus : status];
+  const buttonData = BUTTON_DATA[claimStatus || status];
 
   return (
     <Wrapper>
-      {button_data.map((text, index) => {
+      {buttonData.map((text, index) => {
         const disabled =
           (!isRefundable && text === Refund) ||
           (!isExchangeable && text === Exchange);

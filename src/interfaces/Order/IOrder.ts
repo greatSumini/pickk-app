@@ -1,3 +1,4 @@
+import {IBrand} from '..';
 import {
   ShippingPolicy,
   Address,
@@ -14,6 +15,7 @@ export interface IOrder {
   order: Array<{
     brandName: string;
     brandImageUrl: string;
+    brand: Pick<IBrand, 'nameKor' | 'profileImageUrl'>;
     shippingFee: number;
     shippingPolicy: ShippingPolicy;
     orderItems: OrderItemType[];

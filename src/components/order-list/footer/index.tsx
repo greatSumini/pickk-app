@@ -60,4 +60,5 @@ export default function OrderListFooter() {
 
 const Wrapper = styled(Col)({
   paddingHorizontal: rem(16),
+  paddingVertical: rem(12),
 });
