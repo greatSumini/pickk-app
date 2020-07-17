@@ -56,8 +56,9 @@ export default function Section({
           )}
         </TitleWrapper>
         <Space level={1} size={space} />
-        {children}
       </Wrapper>
+      {children}
+      <Space size={8} />
       {!noLine && <Line level={1} />}
     </>
   );
