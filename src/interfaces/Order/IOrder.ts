@@ -3,7 +3,8 @@ import {
   Address,
   OrderState as OrderStatus,
   Vbank,
-  OrderPayment
+  OrderPayment,
+  OrderItemType,
 } from '@src/types';
 
 export interface IOrder {
@@ -15,6 +16,7 @@ export interface IOrder {
     brandImageUrl: string;
     shippingFee: number;
     shippingPolicy: ShippingPolicy;
+    orderItems: OrderItemType[];
   }>;
   address: Address;
   payment: OrderPayment;
