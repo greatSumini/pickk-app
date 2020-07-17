@@ -1,11 +1,11 @@
-import { IBrand } from './IBrand';
+import {IBrand} from './IBrand';
 import {
   ItemImage,
   ItemMajorType,
   ItemMinorType,
   ItemFinalType,
   ListRequestParams,
-  Digest
+  Digest,
 } from '@src/types';
 
 export interface IItem {

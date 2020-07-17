@@ -5,9 +5,8 @@ import {useNavigation} from '@react-navigation/native';
 import PostCardWideHeader, {PostCardWideHeaderProps} from './header';
 import PostCardWideThumbnail, {PostCardWideThumbnailProps} from './thumbnail';
 import PostCardWideItemRow, {PostCardWideItemRowProps} from './item-row';
-import TouchableCmp from '@src/modules/atoms/touchable-component';
-import colors from '@src/constants/colors';
-import rem from '@src/constants/rem';
+import {Touchable} from '@src/modules/atoms';
+import {colors, rem} from '@src/constants';
 
 import {IReview} from '@src/interfaces';
 
@@ -42,8 +41,4 @@ const Wrapper = styled.View({
   backgroundColor: 'white',
   borderBottomWidth: rem(4),
   borderBottomColor: colors.lightGrey,
-});
-
-const Touchable = styled(TouchableCmp)({
-  width: '100%',
 });

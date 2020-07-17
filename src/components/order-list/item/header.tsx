@@ -2,23 +2,21 @@ import React from 'react';
 import styled from 'styled-components/native';
 import moment from 'moment';
 
-import {OrderItemType} from '@src/types';
-import {Text, Space, Touchable} from '@src/modules/atoms';
-import {rem, BLACK} from '@src/constants';
 import ChevronRightIcon from '@src/assets/icons/chevron/right';
-import {useNavigation} from '@react-navigation/native';
+import {Text, Space, Row} from '@src/modules/atoms';
+import {rem, BLACK} from '@src/constants';
+
+import {OrderItemType} from '@src/types';
 
 export type OrderListItemHeaderProps = Pick<
   OrderItemType,
-  'merchantUid' | 'orderId' | 'createdAt'
+  'merchantUid' | 'createdAt'
 >;
 
 function OrderListItemHeader({
   merchantUid,
-  orderId,
   createdAt,
 }: OrderListItemHeaderProps) {
-  const navigation = useNavigation();
   return (
     <Wrapper>
       <InfoWrapper>
@@ -27,19 +25,17 @@ function OrderListItemHeader({
         <Text level={-1}>{moment(createdAt).format('YYYY.MM.DD')}</Text>
         <Space />
       </InfoWrapper>
-      <Touchable onPress={() => navigation.navigate('Main')}>
-        <ChevronRightIcon
-          style={{width: rem(17), height: rem(17)}}
-          fill={BLACK}
-        />
-      </Touchable>
+      <ChevronRightIcon
+        style={{width: rem(17), height: rem(17)}}
+        fill={BLACK}
+      />
     </Wrapper>
   );
 }
 
 export default React.memo(OrderListItemHeader);
 
-const Wrapper = styled.View({
+const Wrapper = styled(Row)({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
