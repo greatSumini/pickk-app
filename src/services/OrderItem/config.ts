@@ -1,6 +1,6 @@
 import {IncomingMessage} from 'http';
 import {baseConfig} from '../Api';
-import {Shipment, OrderItemType} from '@src/types';
+import {Shipment} from '@src/types';
 
 export const listConfig = (req?: IncomingMessage) =>
   baseConfig(true, req).get('/order_items/');

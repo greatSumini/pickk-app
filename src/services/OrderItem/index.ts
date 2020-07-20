@@ -32,9 +32,12 @@ const exchange = async (
   changeTo: number,
   shipment: Shipment,
   reason: string,
+  generateConfig?: any,
   req?: IncomingMessage,
 ): Promise<void> =>
-  axios(exchangeConfig(id, changeTo, shipment, reason, req)).then(() => {});
+  axios(
+    generateConfig(exchangeConfig(id, changeTo, shipment, reason, req), true),
+  ).then(() => {});
 
 const read = async (
   id: number,
