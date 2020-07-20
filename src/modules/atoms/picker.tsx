@@ -1,35 +1,44 @@
 import React from 'react';
-import {StyleProp, TextStyle} from 'react-native';
-import {Picker as _Picker} from '@react-native-community/picker';
+import RNPPickerSelect, {PickerSelectProps} from 'react-native-picker-select';
+import {TextStyle} from 'react-native';
 
-const {Item} = _Picker;
-
-export type PickerProps = {
-  value: any;
-  onChange: (value: any, index?: number) => void;
-  style?: StyleProp<TextStyle>;
-  itemStyle?: StyleProp<TextStyle>;
-  enabled?: boolean;
-  mode?: 'dialog' | 'dropdown';
-  prompt?: string;
+export type PickerProps = Omit<
+  PickerSelectProps,
+  'onValueChange' | 'style' | 'pickerProps'
+> & {
+  onChange: (value: any) => void;
+  style: TextStyle;
+  pickerProps?: any;
 };
 
 export default function Picker({
   value,
   onChange,
+  items,
+  placeholder,
+  disabled,
   style,
-  itemStyle,
-  enabled,
-  mode,
-  prompt,
+  children,
+  pickerProps,
 }: PickerProps) {
+  const pickerSelectStyle = {
+    inputIOS: style,
+    inputAndroid: style,
+  };
+
   return (
-    <_Picker
-      selectedValue={value}
+    <RNPPickerSelect
       onValueChange={onChange}
-      {...{style, itemStyle, enabled, mode, prompt}}
-    />
+      {...{
+        value,
+        items,
+        placeholder,
+        disabled,
+        style: pickerSelectStyle,
+        children,
+        pickerProps,
+      }}>
+      {children}
+    </RNPPickerSelect>
   );
 }
-
-export const PickerItem = Item;
