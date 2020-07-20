@@ -38,7 +38,7 @@ export default function OrderClaimHeader({
       </Text>
       <StyledTouchable onPress={handleExit}>
         <XIcon
-          style={{width: '0.12rem', height: '0.12rem'}}
+          style={{width: rem(12), height: rem(12)}}
           fill={isFirstPhase ? WHITE : BLACK}
         />
       </StyledTouchable>
