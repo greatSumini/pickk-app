@@ -9,7 +9,7 @@ import {OrderItemType, OrderState} from '@src/types';
 
 export type OrderListItemDescriptionProps = Pick<
   OrderItemType,
-  'name' | 'brand' | 'quantity' | 'status' | 'claimStatus' | 'productName'
+  'name' | 'brandName' | 'quantity' | 'status' | 'claimStatus' | 'productName'
 > & {
   originalPrice: number;
   salePrice?: number;
@@ -17,7 +17,7 @@ export type OrderListItemDescriptionProps = Pick<
 
 function OrderListItemDescription({
   name,
-  brand,
+  brandName,
   originalPrice,
   salePrice,
   quantity,
@@ -25,12 +25,12 @@ function OrderListItemDescription({
   claimStatus,
   productName,
 }: OrderListItemDescriptionProps) {
-  const nameKor = brand?.nameKor;
   const isSale: boolean = !!(
     salePrice &&
     salePrice !== 0 &&
     salePrice !== originalPrice
   );
+
   const price = (isSale ? salePrice : originalPrice) * quantity;
   const nameWidth = status ? rem(175) : rem(230);
 
@@ -45,7 +45,7 @@ function OrderListItemDescription({
     <Wrapper>
       <StyledRow style={{marginBottom: 'auto'}}>
         <Text level={1} width={nameWidth} lines={2} ellipsis>
-          [{nameKor}] {name}
+          [{brandName}] {name}
         </Text>
         {status && (
           <Text

@@ -20,7 +20,7 @@ export default function MyScreen(props: MyScreenProps) {
           navigation.navigate('Login');
         }}
       />
-      <OrderListScreen navigation={props.navigation} />
+      <OrderListScreen />
     </ScrollView>
   );
 }

@@ -160,11 +160,6 @@ export const withCancelContext = (
       return totalPrice + selectedPaidAmount + shippingFee;
     }, 0);
 
-    /*const claimedAmount = [...selected].reduce(
-      (price, item) => price + item.paidAmount,
-      0
-    );*/
-
     return {
       shippingFee,
       totalPaidAmount,
@@ -181,8 +176,9 @@ export const withCancelContext = (
       await OrderService.cancel(
         [...selected].map((item) => item.id),
         reason,
+        generateConfig,
       );
-      navigation.navigate('ClaimComplete', {type: 'cancel'});
+      navigation.navigate('OrderClaimComplete', {type: 'cancel'});
     } catch (err) {
       console.log(err.response);
       Alert.alert(

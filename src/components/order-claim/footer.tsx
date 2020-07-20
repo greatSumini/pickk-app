@@ -1,12 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 import {Alert} from 'react-native';
 import {addCommaToNumber} from '@src/lib/utils';
 import {SALE_RED, BLACK, WHITE, rem} from '@src/constants';
 import {Text, Button, Row} from '@src/modules/atoms';
 
-export type ClaimFooterProps = {
+export type OrderClaimFooterProps = {
   phase: number;
   setPhase: React.Dispatch<React.SetStateAction<number>>;
   name: string;
@@ -19,7 +19,7 @@ export type ClaimFooterProps = {
   alert?: Array<() => void>;
 };
 
-export default function ClaimFooter(props: ClaimFooterProps) {
+export default function OrderClaimFooter(props: OrderClaimFooterProps) {
   const {phase, setPhase, name, onComplete, isValid, priceData} = props;
 
   const DATA = [

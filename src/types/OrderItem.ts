@@ -52,7 +52,7 @@ export type PackagePrice = {
 };
 
 export enum OrderItemAction {
-  Cancel = '구매 취소',
+  Cancel = '주문 취소',
   Inquire = '문의 하기',
   Delivery = '배송 조회',
   Confirm = '구매 확정',

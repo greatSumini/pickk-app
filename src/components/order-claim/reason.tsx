@@ -5,13 +5,13 @@ import {rem, REGULAR_GREY} from '@src/constants';
 import {Space, Row} from '@src/modules/atoms';
 import Section, {SectionSize} from '@src/modules/molecules/section';
 
-export type ClaimReasonProps = {
+export type OrderClaimReasonProps = {
   reason: string;
   setReason: React.Dispatch<React.SetStateAction<string>>;
   title: string;
 };
 
-export default function ClaimReason(props: ClaimReasonProps) {
+export default function OrderClaimReason(props: OrderClaimReasonProps) {
   const {reason, setReason, title} = props;
 
   return (
@@ -39,4 +39,5 @@ const StyledTextInput = styled.TextInput({
   borderStyle: 'solid',
   borderWidth: rem(1),
   borderColor: REGULAR_GREY,
+  textAlignVertical: 'top',
 });

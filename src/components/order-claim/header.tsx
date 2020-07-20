@@ -7,17 +7,17 @@ import {rem, BLACK, WHITE} from '@src/constants';
 import ArrowLeftIcon from '@src/assets/icons/arrow/left';
 import XIcon from '@src/assets/icons/x';
 
-export type ClaimHeaderProps = {
+export type OrderClaimHeaderProps = {
   phase: number;
   setPhase: React.Dispatch<React.SetStateAction<number>>;
   title: string;
 };
 
-export default function ClaimHeader({
+export default function OrderClaimHeader({
   phase,
   setPhase,
   title,
-}: ClaimHeaderProps) {
+}: OrderClaimHeaderProps) {
   const navigation = useNavigation();
   const isFirstPhase = phase === 0;
   const handleBack = () => {
@@ -38,7 +38,7 @@ export default function ClaimHeader({
       </Text>
       <StyledTouchable onPress={handleExit}>
         <XIcon
-          style={{width: '0.12rem', height: '0.12rem'}}
+          style={{width: rem(12), height: rem(12)}}
           fill={isFirstPhase ? WHITE : BLACK}
         />
       </StyledTouchable>
