@@ -23,9 +23,9 @@ const CLAIM_DATA = {
   },
 };
 
-export default function ClaimComplete() {
+export default function OrderClaimCompleteScreen() {
   const navigation = useNavigation();
-  const route = useRoute<RouteProp<AppStackParams, 'ClaimComplete'>>();
+  const route = useRoute<RouteProp<AppStackParams, 'OrderClaimComplete'>>();
   const {type} = route.params;
   const {title, description} = CLAIM_DATA[type];
 

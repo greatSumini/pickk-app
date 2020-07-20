@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 import {useCancelContext, withCancelContext} from '@src/context/cancel';
-import ClaimHeader from '../order-claim/header';
-import ClaimFooter from '../order-claim/footer';
-import ClaimReason from '../order-claim/reason';
+import OrderClaimHeader from '../order-claim/header';
+import OrderClaimFooter from '../order-claim/footer';
+import OrderClaimReason from '../order-claim/reason';
 import OrderCancelProductList, {
   OrderCancelProductListProps,
 } from './product/list';
@@ -26,7 +26,7 @@ function OrderCancelScreen() {
 
   return (
     <Wrapper>
-      <ClaimHeader {...{phase, setPhase, title}} />
+      <OrderClaimHeader {...{phase, setPhase, title}} />
       <Line />
       {phase === 0 && (
         <OrderCancelProductList
@@ -34,9 +34,9 @@ function OrderCancelScreen() {
           {...{isSelected, toggleSelect}}
         />
       )}
-      {phase === 1 && <ClaimReason {...{reason, setReason, title}} />}
+      {phase === 1 && <OrderClaimReason {...{reason, setReason, title}} />}
       <Line level={1} />
-      <ClaimFooter
+      <OrderClaimFooter
         {...{phase, setPhase, name, isValid}}
         onComplete={complete}
         priceData={[
