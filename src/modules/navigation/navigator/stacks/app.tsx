@@ -10,15 +10,17 @@ import LoginScreen from '@src/components/login';
 import OrderScreen from '@src/components/order';
 import OrderListScreen from '@src/components/order-list';
 import OrderCancelScreen from '@src/components/order-cancel';
-import ClaimCompleteScreen from '@src/components/order-claim/complete';
+import OrderClaimCompleteScreen from '@src/components/order-claim/complete';
+import OrderExchangeScreen from '@src/components/order-exchange';
 
 export type AppStackParams = {
   Search: undefined;
   PostView: {id: number};
   Channel: {id: number};
   OrderCancel: {id: number};
-  ClaimComplete: {type: 'cancel' | 'exchange' | 'refund'};
+  OrderClaimComplete: {type: 'cancel' | 'exchange' | 'refund'};
   Order: {id: number};
+  OrderExchange: {id: number};
 };
 
 export type AppStackNavigationProps = StackNavigationProp<AppStackParams>;
@@ -35,6 +37,10 @@ export default () => (
     <AppStack.Screen name='Order' component={OrderScreen} />
     <AppStack.Screen name='OrderList' component={OrderListScreen} />
     <AppStack.Screen name='OrderCancel' component={OrderCancelScreen} />
-    <AppStack.Screen name='ClaimComplete' component={ClaimCompleteScreen} />
+    <AppStack.Screen
+      name='OrderClaimComplete'
+      component={OrderClaimCompleteScreen}
+    />
+    <AppStack.Screen name='OrderExchange' component={OrderExchangeScreen} />
   </AppStack.Navigator>
 );
