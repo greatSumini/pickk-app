@@ -6,7 +6,7 @@ import {useAppContext} from '@src/context/app';
 import {useExchangePolicy} from '@src/hooks/OrderItem';
 import Section, {SectionSize} from '@src/modules/molecules/section';
 import {rem, SALE_RED, LIGHT_GREY, BLACK} from '@src/constants';
-import {Text, Row, Space, Labeled} from '@src/modules/atoms';
+import {Text, Labeled} from '@src/modules/atoms';
 
 export type OrderExchangePolicyProps = {
   orderItemId: number;
