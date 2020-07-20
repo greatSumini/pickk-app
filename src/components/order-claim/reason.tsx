@@ -39,4 +39,5 @@ const StyledTextInput = styled.TextInput({
   borderStyle: 'solid',
   borderWidth: rem(1),
   borderColor: REGULAR_GREY,
+  textAlignVertical: 'top',
 });
