@@ -5,9 +5,7 @@ import {readConfig, cancelConfig} from './config';
 import {IOrder} from '@src/interfaces/Order/IOrder';
 
 const read = async (id: number, req?: IncomingMessage): Promise<IOrder> =>
-  axios(readConfig(id, req)).then((res) => {
-    return res.data;
-  });
+  axios(readConfig(id, req)).then((res) => res.data);
 
 const cancel = async (
   orderItemIds: number[],
