@@ -63,7 +63,7 @@ export default function OrderListItem(props: OrderListItemProps) {
           {...({
             id: itemId,
             name,
-            brand,
+            brandName,
             imageUrl,
             originalPrice: paidAmount / quantity,
             productName,
