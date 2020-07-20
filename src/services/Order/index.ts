@@ -10,9 +10,12 @@ const read = async (id: number, req?: IncomingMessage): Promise<IOrder> =>
 const cancel = async (
   orderItemIds: number[],
   reason: string,
+  generateConfig?: any,
   req?: IncomingMessage,
 ): Promise<void> =>
-  axios(cancelConfig(orderItemIds, reason, req)).then(() => {});
+  axios(
+    generateConfig(cancelConfig(orderItemIds, reason, req), true),
+  ).then(() => {});
 
 const OrderService = {
   read,
