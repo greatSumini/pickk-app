@@ -52,26 +52,28 @@ export default function OrderListItem(props: OrderListItemProps) {
   };
 
   return (
-    <Wrapper
-      disabled={!hasHeader}
-      onPress={() => navigation.navigate('Order', {id: orderId})}>
-      {hasHeader && (
-        <OrderListItemHeader {...(props as OrderListItemHeaderProps)} />
-      )}
-      <OrderListItemCard
-        {...({
-          id: itemId,
-          name,
-          brand,
-          imageUrl,
-          originalPrice: paidAmount / quantity,
-          productName,
-          quantity,
-          status,
-          claimStatus,
-          orderStateDate,
-        } as OrderListItemCardProps)}
-      />
+    <Wrapper>
+      <StyledTouchable
+        disabled={!hasHeader}
+        onPress={() => navigation.navigate('Order', {id: orderId})}>
+        {hasHeader && (
+          <OrderListItemHeader {...(props as OrderListItemHeaderProps)} />
+        )}
+        <OrderListItemCard
+          {...({
+            id: itemId,
+            name,
+            brand,
+            imageUrl,
+            originalPrice: paidAmount / quantity,
+            productName,
+            quantity,
+            status,
+            claimStatus,
+            orderStateDate,
+          } as OrderListItemCardProps)}
+        />
+      </StyledTouchable>
       <Space level={1} />
       <OrderListItemFooter {...(props as OrderListItemFooterProps)} />
       <Space level={1} />
@@ -80,7 +82,11 @@ export default function OrderListItem(props: OrderListItemProps) {
   );
 }
 
-const Wrapper = styled(Touchable)({
+const Wrapper = styled.View({
   paddingHorizontal: rem(16),
+  width: '100%',
+});
+
+const StyledTouchable = styled(Touchable)({
   width: '100%',
 });
