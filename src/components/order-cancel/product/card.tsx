@@ -2,25 +2,20 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 import {OrderItem} from '@src/types';
-import OrderCancelProductDescription, {
-  OrderCancelProductDescriptionProps,
-} from './description';
+import OrderCancelProductInfo, {OrderCancelProductInfoProps} from './info';
 import CheckButton from '@src/modules/molecules/button/check';
 import {rem} from '@src/constants';
 import {Col, Row, Space, Image} from '@src/modules/atoms';
 
-export type OrderCancelProductCardProps = OrderItem & {
+export type OrderCancelProductCardProps = {
   isSelected: (item: OrderItem) => boolean;
   toggleSelect: (item: OrderItem) => void;
 };
 
 export default function OrderCancelProductCard(
-  props: OrderCancelProductCardProps,
+  props: OrderItem & OrderCancelProductCardProps,
 ) {
-  const {isSelected, toggleSelect} = props;
-  let orderItem = {...props};
-  delete orderItem.isSelected;
-  delete orderItem.toggleSelect;
+  const {isSelected, toggleSelect, ...orderItem} = props;
 
   return (
     <Wrapper>
@@ -34,16 +29,7 @@ export default function OrderCancelProductCard(
           selected={isSelected(orderItem)}
         />
         <Space direction='ROW' level={1} />
-        <Image
-          src={props.imageUrl}
-          size={50}
-          imgWidth={rem(50)}
-          imgHeight={rem(60.6)}
-        />
-        <Space direction='ROW' size={8} />
-        <OrderCancelProductDescription
-          {...(props as OrderCancelProductDescriptionProps)}
-        />
+        <OrderCancelProductInfo {...(props as OrderCancelProductInfoProps)} />
       </StyledRow>
     </Wrapper>
   );

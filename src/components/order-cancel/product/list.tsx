@@ -2,13 +2,12 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 import {OrderResponse} from '@src/types';
-import OrderCancelProductBrandCard, {
-  OrderCancelProductBrandCardProps,
-} from './brand-card';
+import OrderCancelProductBrandCard from './brand-card';
 import {Col} from '@src/modules/atoms';
+import {OrderCancelProductCardProps} from './card';
 
 export type OrderCancelProductListProps = Pick<OrderResponse, 'order'> &
-  OrderCancelProductBrandCardProps;
+  OrderCancelProductCardProps;
 
 function OrderCancelProductList(props: OrderCancelProductListProps) {
   const {order} = props;
@@ -19,7 +18,7 @@ function OrderCancelProductList(props: OrderCancelProductListProps) {
         <OrderCancelProductBrandCard
           key={brand.brandName}
           {...brand}
-          {...(props as OrderCancelProductBrandCardProps)}
+          {...(props as OrderCancelProductCardProps)}
         />
       ))}
     </Wrapper>
