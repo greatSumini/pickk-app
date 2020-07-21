@@ -12,6 +12,7 @@ import {rem, LIGHT_GREY} from '@src/constants';
 import OrderItemService from '@src/services/OrderItem';
 import {Alert} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {ButtonType} from '@src/modules/atoms/button';
 
 export type OrderItemActionButtonData = {
   [status in OrderState | ClaimStatus]: OrderItemAction[];
@@ -111,13 +112,19 @@ function OrderListItemFooter({
           ? () => Alert.alert(`${text}할 수 없는 브랜드입니다.`)
           : handlePressList[text];
         return (
-          <React.Fragment key={index}>
-            <Button key={index} title={text} onPress={onPress} />
-            {(index === 0 || index === 2) &&
-              BUTTON_DATA[claimStatus ? claimStatus : status].length !== 1 && (
-                <Space direction='ROW' size={16} />
-              )}
-          </React.Fragment>
+          <Button
+            key={index}
+            title={text}
+            onPress={onPress}
+            type={ButtonType.Secondary}
+            style={{
+              width:
+                BUTTON_DATA[claimStatus ? claimStatus : status].length !== 1
+                  ? rem(156)
+                  : '100%',
+              marginBottom: rem(12),
+            }}
+          />
         );
       })}
     </Wrapper>
