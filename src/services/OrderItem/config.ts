@@ -26,3 +26,6 @@ export const readConfig = (id: number, req?: IncomingMessage) =>
 
 export const exchangePolicyConfig = (id: number, req?: IncomingMessage) =>
   baseConfig(true, req).get(`/order_items/${id}/exchange_policy/`);
+
+export const getPackageConfig = (id: number, req?: IncomingMessage) =>
+  baseConfig(true, req).get(`/order_items/${id}/package/`);
