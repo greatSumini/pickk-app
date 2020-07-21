@@ -55,7 +55,7 @@ export default function ExchangeOptionSelect(
 
   const {values} = itemOptions.options;
   return (
-    <Section title='교환 옵션' size={SectionSize.Small} noLine={false}>
+    <Section title='교환 옵션' size={SectionSize.Small}>
       {Object.keys(values).map((valueName) => (
         <>
           <Picker

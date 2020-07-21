@@ -12,6 +12,7 @@ import OrderListScreen from '@src/components/order-list';
 import OrderCancelScreen from '@src/components/order-cancel';
 import OrderClaimCompleteScreen from '@src/components/order-claim/complete';
 import OrderExchangeScreen from '@src/components/order-exchange';
+import OrderRefundScreen from '@src/components/order-refund';
 
 export type AppStackParams = {
   Search: undefined;
@@ -21,6 +22,7 @@ export type AppStackParams = {
   OrderClaimComplete: {type: 'cancel' | 'exchange' | 'refund'};
   Order: {id: number};
   OrderExchange: {id: number};
+  OrderRefund: {id: number};
 };
 
 export type AppStackNavigationProps = StackNavigationProp<AppStackParams>;
@@ -42,5 +44,6 @@ export default () => (
       component={OrderClaimCompleteScreen}
     />
     <AppStack.Screen name='OrderExchange' component={OrderExchangeScreen} />
+    <AppStack.Screen name='OrderRefund' component={OrderRefundScreen} />
   </AppStack.Navigator>
 );

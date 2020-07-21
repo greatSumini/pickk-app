@@ -6,6 +6,7 @@ import {
   ListResponse,
   Shipment,
   ExchangePolicy,
+  OrderBrand,
 } from '@src/types';
 import {
   listConfig,
@@ -13,6 +14,7 @@ import {
   exchangeConfig,
   readConfig,
   exchangePolicyConfig,
+  getPackageConfig,
 } from './config';
 
 const list = async (
@@ -50,12 +52,19 @@ const exchangePolicy = async (
 ): Promise<ExchangePolicy> =>
   axios(exchangePolicyConfig(id, req)).then((res) => res.data);
 
+const getPackage = async (
+  id: number,
+  req?: IncomingMessage,
+): Promise<OrderBrand> =>
+  axios(getPackageConfig(id, req)).then((res) => res.data);
+
 const OrderItemService = {
   list,
   confirm,
   exchange,
   read,
   exchangePolicy,
+  getPackage,
 };
 
 export default OrderItemService;
