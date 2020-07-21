@@ -69,7 +69,7 @@ function OrderExchangePolicy(props: OrderExchangePolicyProps) {
   return (
     <>
       <NoticeWrapper>
-        <Text level={3} fontWeight='medium' lines={2}>
+        <Text level={3} fontWeight='medium' lines={transRequired ? 3 : 2}>
           아래 택배사를 이용하여{' '}
           <Text level={3} color={SALE_RED} fontWeight='bold'>
             착불로 반품 예약 후,{' '}
@@ -78,14 +78,13 @@ function OrderExchangePolicy(props: OrderExchangePolicyProps) {
               : `현금 ${fee}원을 택배에 동봉해주세요.`}
           </Text>
           {transRequired && (
-            <>
-              {'\n'}
-              (주문자명과 동일한 입금자명을 사용해주세요.)
-            </>
+            <Text level={3} fontWeight='medium' color={BLACK}>
+              {`\n(주문자명과 동일한 입금자명을 사용해주세요.)`}
+            </Text>
           )}
         </Text>
       </NoticeWrapper>
-      <Section size={SectionSize.Small} title='반송지 정보' noLine={false}>
+      <Section size={SectionSize.Small} title='반송지 정보'>
         {DATA.filter((v) => v.value).map((v) => {
           return v.label === '반품예약 바로가기' ? (
             <Labeled
