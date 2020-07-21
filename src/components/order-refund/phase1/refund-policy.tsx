@@ -3,7 +3,7 @@ import {Linking} from 'react-native';
 import styled from 'styled-components/native';
 import {useAppContext} from '@src/context/app';
 
-import {useExchangePolicy} from '@src/hooks/OrderItem';
+import {useExchangePolicy} from '@src/hooks/orderItem';
 import Section, {SectionSize} from '@src/modules/molecules/section';
 import {Text, Space, Labeled} from '@src/modules/atoms';
 import {SALE_RED, BLACK, rem, LIGHT_GREY} from '@src/constants';

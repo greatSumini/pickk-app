@@ -3,7 +3,7 @@ import React from 'react';
 import {OrderItem} from '@src/types';
 import OrderCancelProductDescription, {
   OrderCancelProductDescriptionProps,
-} from './description';
+} from './card/description';
 import {rem} from '@src/constants';
 import {Space, Image} from '@src/modules/atoms';
 

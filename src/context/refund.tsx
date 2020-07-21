@@ -5,7 +5,7 @@ import {useAppContext} from './app';
 
 import OrderService from '@src/services/Order';
 import {OrderItem, PackagePrice, Shipment} from '@src/types';
-import {useOrderRefund} from '@src/hooks/OrderItem';
+import {useOrderRefund} from '@src/hooks/orderItem';
 
 const RefundContext = createContext({
   state: {
