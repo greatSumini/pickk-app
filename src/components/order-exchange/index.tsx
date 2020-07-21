@@ -17,7 +17,7 @@ import OrderClaimProgressBar from '../order-claim/progress/bar';
 import OrderClaimHeader from '../order-claim/header';
 import OrderClaimReason from '../order-claim/reason';
 import OrderClaimFooter from '../order-claim/footer';
-import {useOrderItem} from '@src/hooks/OrderItem';
+import {useOrderItem} from '@src/hooks/orderItem';
 import OrderExchangePhase0 from './phase0';
 import {OrderExchangePhase0ProductCardProps} from './phase0/product-card';
 import OrderExchangePhase1 from './phase1';
