@@ -17,7 +17,7 @@ function OrderExchangePhase1ProductCard(
 ) {
   const {brandName, name, imageUrl, optionValues} = props;
   return (
-    <Section size={SectionSize.Small} title='교환 옵션' noLine={false}>
+    <Section size={SectionSize.Small} title='교환 옵션'>
       <Space level={1} />
       <ItemWrapper>
         <Image

@@ -15,8 +15,7 @@ function OrderClaimSentChecker({sent, setSent}: OrderClaimSentCheckerProps) {
   return (
     <Section
       size={SectionSize.Small}
-      title='직접 택배사에 반품 예약 접수를 해주셨나요?'
-      noLine={false}>
+      title='직접 택배사에 반품 예약 접수를 해주셨나요?'>
       <StyledRow>
         <CheckButton
           width={rem(20)}

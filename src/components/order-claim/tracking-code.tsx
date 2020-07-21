@@ -64,7 +64,7 @@ function OrderClaimTrackingCode(props: OrderClaimTrackingCodeProps) {
   };
 
   return (
-    <Section size={SectionSize.Small} title='운송장 입력'>
+    <Section size={SectionSize.Small} title='운송장 입력' noLine={false}>
       <Space level={1} />
       <Wrapper>
         <Picker
