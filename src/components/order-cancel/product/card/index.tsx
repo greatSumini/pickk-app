@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 import {OrderItem} from '@src/types';
-import OrderCancelProductInfo, {OrderCancelProductInfoProps} from './info';
+import OrderCancelProductInfo, {OrderCancelProductInfoProps} from '../info';
 import CheckButton from '@src/modules/molecules/button/check';
 import {rem} from '@src/constants';
 import {Col, Row, Space, Image} from '@src/modules/atoms';
