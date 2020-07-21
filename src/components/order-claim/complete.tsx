@@ -45,7 +45,11 @@ export default function OrderClaimCompleteScreen() {
         * {description}
       </Text>
       <Space level={8} />
-      <Button title='마이 페이지로' onPress={() => navigation.navigate('My')} />
+      <Button
+        title='마이 페이지로'
+        style={{width: rem(328)}}
+        onPress={() => navigation.navigate('My')}
+      />
     </Wrapper>
   );
 }
