@@ -4,7 +4,6 @@ import {OrderState, ClaimStatus} from './Order';
 export type OrderItemType = {
   id: number;
   orderId: number;
-  order: string;
   itemId: number;
   imageUrl: string;
   name: string;
