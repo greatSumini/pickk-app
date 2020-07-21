@@ -5,16 +5,12 @@ import {AppStackParams} from '@src/modules/navigation/navigator/stacks/app';
 import {useAppContext} from '@src/context/app';
 
 import {useQuestion} from '@src/hooks';
-import QuestionDetailItemCard, {QuestionDetailItemCardProps} from './card/item';
-import QuestionDetailQuestionCard, {
-  QuestionDetailQuestionCardProps,
-} from './card/question';
+import ItemCard, {QuestionDetailItemCardProps} from './card/item';
+import QuestionCard, {QuestionDetailQuestionCardProps} from './card/question';
+import AnswerCard, {QuestionDetailAnswerCardProps} from './card/answer';
 import BackHeader from '@src/modules/molecules/header/back';
 import {rem, WHITE} from '@src/constants';
 import {Space, Line, Col} from '@src/modules/atoms';
-import QuestionDetailAnswerCard, {
-  QuestionDetailAnswerCardProps,
-} from './card/answer';
 
 export default function QuestionDetailScreen() {
   const {generateConfig} = useAppContext().action;
@@ -34,13 +30,13 @@ export default function QuestionDetailScreen() {
     <Wrapper>
       <BackHeader title='문의상세' />
       <Line />
-      <QuestionDetailItemCard {...questionDetailItemCardProps} />
+      <ItemCard {...questionDetailItemCardProps} />
       <Line level={1} />
       <QnAWrapper>
-        <QuestionDetailQuestionCard {...questionDetailQuestionCardProps} />
+        <QuestionCard {...questionDetailQuestionCardProps} />
         <Space level={1} />
         <Line />
-        <QuestionDetailAnswerCard {...questionDetailAnswerCardProps} />
+        <AnswerCard {...questionDetailAnswerCardProps} />
       </QnAWrapper>
     </Wrapper>
   );
