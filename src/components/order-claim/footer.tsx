@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 import {Alert} from 'react-native';
 import {addCommaToNumber} from '@src/lib/utils';
-import {SALE_RED, BLACK, WHITE, rem} from '@src/constants';
+import {SALE_RED, BLACK, rem} from '@src/constants';
 import {Text, Button, Row} from '@src/modules/atoms';
 
 export type OrderClaimFooterProps = {
@@ -71,6 +71,7 @@ export default function OrderClaimFooter(props: OrderClaimFooterProps) {
                 }
               }
         }
+        style={{width: rem(328), marginTop: rem(6)}}
       />
     </>
   );
