@@ -1,26 +1,24 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import styled from 'styled-components/native';
 
 import ScreenNavigationProps from '@src/modules/types/screen-navigation-props';
-import {useNavigation} from '@react-navigation/native';
-import OrderListScreen from '../order-list';
-import {Space, Button} from '@src/modules/atoms';
+import MyQuestionListScreen from '../my-question-list';
+import {WHITE} from '@src/constants';
 
 export type MyScreenProps = ScreenNavigationProps;
 
 export default function MyScreen(props: MyScreenProps) {
-  const navigation = useNavigation();
-
   return (
-    <ScrollView>
-      <Space level={2} />
-      <Button
-        title='로그인하기'
-        onPress={() => {
-          navigation.navigate('Login');
-        }}
-      />
-      <OrderListScreen />
-    </ScrollView>
+    <Wrapper>
+      <MyQuestionListScreen />
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.ScrollView({
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100%',
+  minHeight: '100%',
+  backgroundColor: WHITE,
+});
