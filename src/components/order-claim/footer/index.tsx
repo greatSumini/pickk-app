@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components/native';
-
 import {Alert} from 'react-native';
-import {addCommaToNumber} from '@src/lib/utils';
-import {SALE_RED, BLACK, rem} from '@src/constants';
-import {Text, Button, Row} from '@src/modules/atoms';
+
+import OrderClaimFooterPriceRow from './price-row';
+import {rem} from '@src/constants';
+import {Button, Row} from '@src/modules/atoms';
 
 export type OrderClaimFooterProps = {
   phase: number;
@@ -38,26 +38,13 @@ export default function OrderClaimFooter(props: OrderClaimFooterProps) {
   return (
     <>
       {priceData &&
-        priceData.map((row, i) => {
-          const {label, value} = row;
-          const isLast = i === priceData.length - 1;
-          return (
-            <PriceRowWrapper>
-              <Text
-                level={isLast ? 3 : 1}
-                fontWeight={isLast ? 'bold' : 'medium'}>
-                {label}
-              </Text>
-              <Text
-                level={isLast ? 3 : 1}
-                fontWeight={isLast ? 'bold' : 'regular'}
-                color={isLast ? SALE_RED : BLACK}>
-                {value < 0 ? `(-) ` : ''}
-                {addCommaToNumber(value)}원
-              </Text>
-            </PriceRowWrapper>
-          );
-        })}
+        priceData.map((row, i) => (
+          <OrderClaimFooterPriceRow
+            key={row.label}
+            {...row}
+            isLast={i === priceData.length - 1}
+          />
+        ))}
       <Button
         title={text}
         onPress={
