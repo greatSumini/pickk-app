@@ -80,7 +80,7 @@ function OrderListItemFooter({
     [Inquire]: () => navigation.navigate('Main'),
     [Delivery]: () => navigation.navigate('Main'),
     [Confirm]: () => navigation.navigate('Main'),
-    [Refund]: () => navigation.navigate('Main'),
+    [Refund]: () => navigation.navigate('OrderRefund', {id}),
     [Exchange]: () => navigation.navigate('OrderExchange', {id}),
   };
 
