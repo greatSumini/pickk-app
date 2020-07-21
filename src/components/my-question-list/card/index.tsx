@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import {useNavigation} from '@react-navigation/native';
 
 import {IQuestion} from '@src/interfaces';
 import MyQuestionCardDescription from './description';
-import {Row, Image, Space} from '@src/modules/atoms';
+import {Touchable, Image, Space} from '@src/modules/atoms';
 import {rem} from '@src/constants';
 
 export type MyQuestionCardProps = Pick<
@@ -17,18 +18,23 @@ export default function MyQuestionCard({
   type,
   title,
   content,
+  id,
 }: MyQuestionCardProps) {
+  const navigation = useNavigation();
   const {imageUrl} = item;
   return (
-    <Wrapper>
+    <Wrapper onPress={() => navigation.navigate('QuestionDetail', {id})}>
       <Image size={50} src={imageUrl} imgWidth={rem(40)} imgHeight={rem(50)} />
       <Space direction='ROW' size={8} />
       <MyQuestionCardDescription {...{item, type, title, content, answers}} />
     </Wrapper>
   );
 }
-const Wrapper = styled(Row)({
+const Wrapper = styled(Touchable)({
+  display: 'flex',
+  flexDirection: 'row',
   alignItems: 'flex-start',
+  width: '100%',
   paddingVertical: rem(12),
   paddingHorizontal: rem(16),
 });
