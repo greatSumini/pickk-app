@@ -1,11 +1,11 @@
 export enum PostType {
   Review = 'REVIEW',
-  Look = 'LOOK'
+  Look = 'LOOK',
 }
 
 export enum ThumbnailType {
   Youtube = 'YOUTUBE',
-  Image = 'IMAGE'
+  Image = 'IMAGE',
 }
 
 export type PostItemImage = {
@@ -20,5 +20,10 @@ export enum StyleTag {
   Design = 'DESIGN',
   Price = 'PRICE',
   Texture = 'TEXTURE',
-  Individuality = 'INDIVIDUALITY'
+  Individuality = 'INDIVIDUALITY',
+}
+
+export enum PostItemType {
+  ReviewItem = 'REVIEW_ITEM',
+  LookItem = 'LOOK_ITEM',
 }
