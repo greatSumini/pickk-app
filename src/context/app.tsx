@@ -62,7 +62,6 @@ export const withAppContext = (
     config: RequestConfig,
     auth?: boolean,
   ): RequestConfig => {
-    console.log(auth, accessToken);
     if (auth && accessToken) {
       config.headers = {
         Authorization: `Bearer ${accessToken}`,

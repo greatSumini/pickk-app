@@ -8,28 +8,18 @@ import Text from '@src/modules/atoms/text';
 import {WHITE} from '@src/constants/colors';
 import rem from '@src/constants/rem';
 
-import {useAppContext} from '@src/context/app';
-
 export type SplashScreenProps = ScreenNavigationProps;
 
 export default function SplashScreen() {
-  const {getMe} = useAppContext().action;
   const navigation = useNavigation();
 
-  const signIn = async () => {
-    try {
-      await getMe();
-    } catch {}
+  useEffect(() => {
     setTimeout(() => {
       navigation.reset({
         index: 0,
         routes: [{name: 'App'}],
       });
     }, 100);
-  };
-
-  useEffect(() => {
-    signIn();
   }, []);
 
   return (

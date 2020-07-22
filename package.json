@@ -36,6 +36,7 @@
     "react-native-picker-select": "7.0.0",
     "react-native-reanimated": "^1.4.0",
     "react-native-safe-area-context": "^3.0.7",
+    "react-native-safe-area-view": "^1.1.1",
     "react-native-screens": "^2.0.0-alpha.17",
     "react-native-skeleton-placeholder": "^2.0.7",
     "react-native-snap-carousel": "^3.8.4",
