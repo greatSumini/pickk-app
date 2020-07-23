@@ -21,7 +21,7 @@ export default function NoResult({icon, text, button}: NoResultProps) {
           <Space level={4} />
         </>
       )}
-      <Text level={2} textAlign='center' preWrap>
+      <Text level={2} textAlign='center' preWrap lines={100}>
         {text}
       </Text>
       {button && (
@@ -38,5 +38,5 @@ export default function NoResult({icon, text, button}: NoResultProps) {
 }
 
 const Wrapper = styled(Col)({
-  paddingVertical: rem(10),
+  paddingVertical: rem(100),
 });
