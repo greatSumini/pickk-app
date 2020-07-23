@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import {useNavigation} from '@react-navigation/native';
+import {Alert} from 'react-native';
 
 import {
   OrderItemType,
@@ -7,12 +9,10 @@ import {
   OrderItemAction,
   OrderState,
 } from '@src/types';
-import {Space, Row, Button} from '@src/modules/atoms';
-import {rem, LIGHT_GREY} from '@src/constants';
 import OrderItemService from '@src/services/OrderItem';
-import {Alert} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 import {ButtonType} from '@src/modules/atoms/button';
+import {Row, Button} from '@src/modules/atoms';
+import {rem, LIGHT_GREY} from '@src/constants';
 
 export type OrderItemActionButtonData = {
   [status in OrderState | ClaimStatus]: OrderItemAction[];
@@ -77,7 +77,7 @@ function OrderListItemFooter({
 
   const handlePressList = {
     [Cancel]: () => navigation.navigate('OrderCancel', {id: orderId}),
-    [Inquire]: () => navigation.navigate('Main'),
+    [Inquire]: () => navigation.navigate('QuestionEdit', {id: itemId}),
     [Delivery]: () => navigation.navigate('Main'),
     [Confirm]: () => navigation.navigate('Main'),
     [Refund]: () => navigation.navigate('OrderRefund', {id}),
