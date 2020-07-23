@@ -15,6 +15,7 @@ import OrderExchangeScreen from '@src/components/order-exchange';
 import OrderRefundScreen from '@src/components/order-refund';
 import MyQuestionListScreen from '@src/components/my-question-list';
 import QuestionDetailScreen from '@src/components/question-detail';
+import QuestionEditScreen from '@src/components/question-edit';
 
 export type AppStackParams = {
   Search: undefined;
@@ -26,6 +27,7 @@ export type AppStackParams = {
   OrderExchange: {id: number};
   OrderRefund: {id: number};
   QuestionDetail: {id: number};
+  QuestionEdit: {id: number};
 };
 
 export type AppStackNavigationProps = StackNavigationProp<AppStackParams>;
@@ -50,5 +52,6 @@ export default () => (
     <AppStack.Screen name='OrderRefund' component={OrderRefundScreen} />
     <AppStack.Screen name='MyQuestionList' component={MyQuestionListScreen} />
     <AppStack.Screen name='QuestionDetail' component={QuestionDetailScreen} />
+    <AppStack.Screen name='QuestionEdit' component={QuestionEditScreen} />
   </AppStack.Navigator>
 );
