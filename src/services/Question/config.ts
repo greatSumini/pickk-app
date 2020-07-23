@@ -1,7 +1,7 @@
 import {IncomingMessage} from 'http';
 
 import {baseConfig} from '../Api';
-import {QuestionListRequestParams} from '@src/interfaces';
+import {QuestionListRequestParams, IQuestionInputDTO} from '@src/interfaces';
 
 export const listConfig = (
   params: QuestionListRequestParams,
@@ -10,3 +10,8 @@ export const listConfig = (
 
 export const readConfig = (id: number, req?: IncomingMessage) =>
   baseConfig(true, req).get(`/questions/${id}/`);
+
+export const createConfig = (
+  questionInputDTO: IQuestionInputDTO,
+  req?: IncomingMessage,
+) => baseConfig(true, req).post('/questions/', questionInputDTO);
