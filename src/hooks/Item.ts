@@ -15,6 +15,7 @@ import {
   reviewsConfig,
   discountsConfig,
   postsConfig,
+  readConfig,
 } from '@src/services/Item/config';
 
 export const useItemIsFollowing = (id: number, initialData?: any) =>
@@ -28,6 +29,9 @@ export const useItemOptions = (id: number, initialData?: any) =>
 
 export const useItemList = (params: ItemListRequestParams, initialData?: any) =>
   useRequest<ListResponse<IItem>>(listConfig(params), {initialData});
+
+export const useItem = (id: number, initialData?: any) =>
+  useRequest<IItem>(readConfig(id), {initialData});
 
 export const useItemLookList = (
   params: ListRequestParams & {o?: 'popular'},
